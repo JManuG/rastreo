@@ -106,7 +106,7 @@ class model_con extends Db
 		//echo '<pre>';
 		//print_r($stmt);
 		//echo '</pre>';
-		if($stmt){
+		if($this->obtener_fila($stmt)){
 			$msj="Insertado";
 		}else{
 			$msj="Error";
