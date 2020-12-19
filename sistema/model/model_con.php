@@ -102,11 +102,11 @@ class model_con extends Db
 		}
 
 		//echo $sql;	
-		$stmt= $db->consultar($sql);
+		$stmt= $db->preparar($sql);
 		//echo '<pre>';
 		//print_r($stmt);
 		//echo '</pre>';
-		if($this->obtener_fila($stmt)){
+		if($stmt->execute()){
 			$msj="Insertado";
 		}else{
 			$msj="Error";

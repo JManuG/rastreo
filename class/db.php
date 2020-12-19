@@ -65,14 +65,19 @@ class Db{
 	public function consultar($sql){
 		//echo $sql;
         $stmt=$this->link->prepare($sql);
-		$stmt->execute();
+
+        $stmt->execute();
 		
 		return $stmt;
 
         //$stmt=$gbd->prepare($sql);
         //$stmt->execute();
 	}
-		
+
+    public function preparar($sql){
+        $stmt=$this->link->prepare($sql);
+        return $stmt;
+    }
 	//Método para obtener una fila de resultados de la sentencia sql
 	public function obtener_fila($stmt){
             return $stmt->fetch(PDO::FETCH_NUM);
