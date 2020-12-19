@@ -2,7 +2,7 @@
 /**
  * Clase encargada de la conexion
  * autor     Marvin Abrego
- * archivo   BDD informix
+ * archivo   BDD
  * fecha     20121213
  *
  **/
