@@ -18,6 +18,13 @@ function procesarformulario(ccosto_ori,ccosto_des,destinatario,descripcion,vinet
       var res = str.split("-");
       if(res[0]==200)
       {
+        $('#destinatario').val('');
+        $('#destinatario').focus();
+        $('#descripcion').val('');
+        $('#vineta').val('');
+
+
+
         $("#respuesta").html(res[1]);
       }else
       {

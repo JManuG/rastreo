@@ -15,21 +15,21 @@ class model_con extends Db
 		$db=Db::getInstance();
 	}
 
-	public function registra_envio($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta){
+	public function registra_envio($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta)
+    {
 		$db=Db::getInstance();
-		
-		$date1=date('d/m/Y');
+		session_start();
+		$msg="";
+		$date1=date('Y-m-d');
 		//echo "Fecha 1: ".$date1."<br>";
-		$date2=date('d/m/Y H:i:s');
+		$date2=date('Y-m-d H:i:s');
+        $usr=$_SESSION['cod_user'];
 		//echo "Fecha 2: ".$date2;
 		$tiempo=time();
 		$orden=1;
         $numero_guia=0;
-		$sql_c = "SELECT id_guia 
-					FROM guia 
-					WHERE ccosto_ori='$ccosto_ori' 
-					AND ccosto_des='$ccosto_des'
-					AND fecha_date='$date1'";
+		$sql_c = "SELECT max(id_guia) 
+					FROM guia ";
 		
 		$c= $db->consultar($sql_c);
 		while ($row=$c->fetch(PDO::FETCH_NUM))
@@ -38,16 +38,41 @@ class model_con extends Db
 			$numero_guia	    =$gui_anterior+1;
 		}
 
-		if(intval($numero_guia)==0)
-		{
-			$numero_guia=0;
-		}
+		$id_envio=$numero_guia;
 
-		$insert="INSERT INTO guia (id_guia, id_envio, ori_ccosto, des_ccosto, estado,id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, id_orden, barra, comentario) 
+
+
+
+        $sql_d = "SELECT barra
+					FROM guia 
+					WHERE barra='$vineta'";
+
+        $d= $db->consultar($sql_d);
+        while ($rowd=$d->fetch(PDO::FETCH_NUM))
+        {
+            $vin_anterior       =$rowd[0];
+        }
+            if(!empty($vin_anterior))
+            {
+                $msg=" La vi&ntilde;eta ya existe...";
+            }else{
+
+    		$insert="INSERT INTO guia (id_guia, id_envio, ori_ccosto, des_ccosto, estado,id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, id_orden, barra, comentario) 
 					VALUES($numero_guia,'$id_envio', '$ccosto_ori', '$ccosto_des', '1', '$usr', '$date1', '$date2', '$tiempo', '',0, '$orden','$vineta', '$descripcion')";
-		echo $insert;	
-		$insert1= $db->consultar($insert);
-		return $numero_guia;
+	    	//echo $insert;
+		    $insert1= $db->consultar($insert);
+            }
+
+		if(empty($msg)){
+		    //echo $msg;
+            return $numero_guia;
+        }else
+        {
+            //echo $msg;
+            return $msg;
+        }
+
+
 	}
 
 	public function ing_agencia($cli_id,$id_agencia,$codigo_agencia,$nombre_agencia,$direccion_agencia,$telefono_agencia){

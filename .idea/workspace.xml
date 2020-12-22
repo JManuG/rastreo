@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Corrección agencias">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/ajax/funciones.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/ajax/funciones.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/model/model_con.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/model/model_con.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/prg/ingreso_guia.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/prg/ingreso_guia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/funciones.js" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/funciones.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1608352006529</updated>
       <workItem from="1608352009853" duration="5824000" />
+      <workItem from="1608570733656" duration="11995000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1608352414484</created>
@@ -82,6 +85,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test1" />
