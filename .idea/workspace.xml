@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Corrección agencias">
+    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Corrección formulario guias">
+      <change afterPath="$PROJECT_DIR$/sistema/prg/ar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sistema/vista/ar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/ajax/funciones.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/ajax/funciones.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistema/model/model_con.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/model/model_con.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistema/prg/ingreso_guia.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/prg/ingreso_guia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/prg/guia.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/prg/guia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/vista/funciones.js" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/funciones.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,12 +31,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../rastreo/class/db.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/sistema/vista" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\rastreoMG\sistema\vista" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -46,7 +55,8 @@
       <option name="presentableId" value="Default" />
       <updated>1608352006529</updated>
       <workItem from="1608352009853" duration="5824000" />
-      <workItem from="1608570733656" duration="11995000" />
+      <workItem from="1608570733656" duration="12959000" />
+      <workItem from="1608741308922" duration="5788000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1608352414484</created>
@@ -69,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608397677312</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Corrección formulario guias">
+      <created>1608668077408</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1608668077408</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -90,6 +107,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test1" />
     <MESSAGE value="Corrección agencias" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrección agencias" />
+    <MESSAGE value="Corrección formulario guias" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrección formulario guias" />
   </component>
 </project>
