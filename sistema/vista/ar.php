@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                   <label for="vineta">Vi&ntilde;eta</label>
-                  <input type="text" class="form-control" id="vineta" name='vineta' placeholder="vi&ntilde;eta">
+                  <input type="text" class="form-control" id="vineta" name='vineta' placeholder="vi&ntilde;eta" onclick="detalle_ar(formulario.vineta.value)" \>
                 </div>
 
 
@@ -60,8 +60,7 @@
 
               <div class="card-footer">
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modal-default"
-                        onclick="procesarformulario(formulario.ccosto_ori.value,formulario.ccosto_des.value,
-                        formulario.destinatario.value,formulario.descripcion.value,formulario.vineta.value)">
+                        onclick="procesarar(formulario.vineta.value)">
                   Procesar Ingreso
                 </button>
               </div>
