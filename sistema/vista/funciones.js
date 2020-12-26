@@ -136,6 +136,8 @@ function changeAgencia()
   });
 }
 
+
+
 function changeCCosto()
 {
   var id_ccosto = $("#id_ccosto").val();
@@ -159,38 +161,4 @@ function changeCCosto()
       //$("#nombre_agencia").val(response);
     }
   });
-}
-
-function detalle_ar()
-{
-
-  var datos_origen={
-    "vineta":vineta
-  };
-  $.ajax({
-    data:datos_origen,
-    url:'../sistema/prg/ar.php',
-    type: 'post',
-    beforeSend: function(){
-      //$("#respuesta").html("procesando");
-    },
-    success: function (response){
-      var str = response;
-      var res = str.split("-");
-      if(res[0]==200)
-      {
-        $('#destinatario').val('');
-        $('#destinatario').focus();
-        $('#descripcion').val('');
-        $('#vineta').val('');
-
-
-
-        $("#respuesta").html(res[1]);
-      }else
-      {
-        $("#respuesta").html("Error form_ingreso_guia<p> "+res[0]+res[1]+"</p>");
-      }
-    }
-  })
 }

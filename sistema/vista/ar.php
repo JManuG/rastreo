@@ -1,3 +1,37 @@
+
+<!-- ajax call -->
+<script>
+
+  function detalle_ar()
+  {
+
+    var datos_origen={
+      var vineta = $('.vineta').val();
+    };
+    $.ajax({
+      data:datos_origen,
+      url:'../sistema/prg/ar.php',
+      type: 'post',
+      beforeSend: function(){
+        //$("#respuesta").html("procesando");
+      },
+      success: function (response){
+        var str = response;
+        var res = str.split("-");
+        if(res[0]==200)
+        {
+          $('#destinatario').html(res[0]);
+          $('#descripcion').html(res[1]);
+          $('#vineta').val('');
+          //$("#respuesta").html(res[1]);
+        }else
+        {
+          $("#respuesta").html("Error form_ingreso_guia<p> "+res[0]+res[1]+"</p>");
+        }
+      }
+    })
+  }
+</script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -35,7 +69,7 @@
 
                 <div class="form-group">
                   <label for="vineta">Vi&ntilde;eta</label>
-                  <input type="text" class="form-control" id="vineta" name='vineta' placeholder="vi&ntilde;eta" onclick="detalle_ar(formulario.vineta.value)" \>
+                  <input type="text" class="form-control" id="vineta" name='vineta' placeholder="vi&ntilde;eta" onChange="detalle_ar()" \>
                 </div>
 
 
@@ -94,5 +128,4 @@
     </div>
   </section>
 </div>
-<!-- ajax call -->
-<script src="vista/funciones.js"></script>
+
