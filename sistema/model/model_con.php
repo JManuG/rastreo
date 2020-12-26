@@ -210,4 +210,69 @@ class model_con extends Db
 		//echo $msj;
 		return $msj;
 	}
+
+
+    public function consulta_vineta($vineta)
+    {
+        $db=Db::getInstance();
+        session_start();
+        $msg="";
+        $date1=date('Y-m-d');
+        //echo "Fecha 1: ".$date1."<br>";
+        $date2=date('Y-m-d H:i:s');
+        $usr=$_SESSION['cod_user'];
+        //echo "Fecha 2: ".$date2;
+        $tiempo=time();
+        $orden=1;
+        $numero_guia=0;
+
+        $sql_d = "SELECT id_guia,id_envio,ori_ccosto,des_ccosto,estado,id_usr,
+                         fecha_date,fecha_datetime,tiempo,char1,entero1,id_orden,
+                         barra,comentario
+					FROM guia 
+					WHERE barra='$vineta'";
+
+        $d= $db->consultar($sql_d);
+        $result = $d->fetch(PDO::FETCH_ASSOC);
+/*
+        while ($rowd=$d->fetch(PDO::FETCH_NUM))
+        {
+            $id_guia        =$rowd[0];
+            $id_envio       =$rowd[1];
+            $ori_ccosto     =$rowd[2];
+            $des_ccosto     =$rowd[3];
+            $estado	        =$rowd[4];
+            $id_usr	        =$rowd[5];
+            $fecha_date	    =$rowd[6];
+            $fecha_datetime	=$rowd[7];
+            $tiempo	        =$rowd[8];
+            $char1	        =$rowd[9];
+            $entero1	    =$rowd[10];
+            $id_orden	    =$rowd[11];
+            $barra	        =$rowd[12];
+            $comentario     =$rowd[13];
+
+
+        }
+*/
+
+
+        if(empty($id_guia))
+        {
+            $msg="La vi&ntilde;eta no ha sido ingresada...";
+        }
+
+        if(empty($msg)){
+            //echo $msg;
+            return $msg;
+        }else
+        {
+            //echo $msg;
+            return $result;
+        }
+
+
+    }
+
+
 }
