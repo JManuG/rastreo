@@ -613,23 +613,26 @@ if($shi_codigo=='000591')
 	}
 
 	//Centro Costo Rastreo
-	function select_ccosto(){
+	function select_ccosto()
+	{
 		@session_start();
         $bd=Db::getInstance();
 		$shi_codigo=$_SESSION['shi_codigo'];
 		
 		$sql_c = "SELECT *
 					FROM centro_costo
-					WHERE cli_id='$shi_codigo'";
+					WHERE cli_id='$shi_codigo'
+					AND ccosto_estado=1";
 
 		$datos= $bd->consultar($sql_c);
 
-		$retorno ="<select name='ccosto_des' id='ccosto_des' class=\"form-control\">sss";
+		$retorno ="<select name='id_ccosto' id='id_ccosto' class=\"form-control\" onchange='changeCCosto()'>
+						<option value=''>-</option>";
 
 		$c= $bd->consultar($sql_c);
 		
 		while ($row=$c->fetch(PDO::FETCH_NUM)){
-			$retorno .="<option value='".$row[0]."'>".$row[2]." ".$row[3]."</option>";
+			$retorno .="<option value='".$row[0]."'>".$row[3]." ".$row[4]."</option>";
 		}
 		
 		$retorno .="</select>";
@@ -638,16 +641,18 @@ if($shi_codigo=='000591')
 	}
 
 	//Agencias Rastreo
-	function select_agencias(){
+	function select_agencias()
+	{
 		@session_start();
         $bd=Db::getInstance();
 		$shi_codigo=$_SESSION['shi_codigo'];
 		
 		$sql_c = "SELECT *
 					FROM agencia
-					WHERE cli_id='$shi_codigo'";
+					WHERE cli_id='$shi_codigo'
+					AND agencia_estado=1";
 
-		$retorno ="<select name='id_agencia' id='id_agencia' class=\"form-control\">
+		$retorno ="<select name='id_agencia' id='id_agencia' class=\"form-control\" onchange='changeAgencia()'>
 					<option value=''>-</option>";
 
 		$c= $bd->consultar($sql_c);
@@ -661,6 +666,7 @@ if($shi_codigo=='000591')
 		return $retorno;
 	}
 
+	
 	function del_registro($r,$g)
 	{
 	$respuesta = new xajaxResponse();

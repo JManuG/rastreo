@@ -11,7 +11,8 @@ include('../../class/db.php');
 
 class model_con extends Db
 {
-	public function __construct(){
+	public function __construct()
+	{
 		$db=Db::getInstance();
 	}
 
@@ -75,14 +76,14 @@ class model_con extends Db
 
 	}
 
-	public function ing_agencia($cli_id,$id_agencia,$codigo_agencia,$nombre_agencia,$direccion_agencia,$telefono_agencia){
+	public function ing_agencia($cli_id,$id_agencia,$codigo_agencia,$nombre_agencia,$direccion_agencia,$telefono_agencia)
+	{
 		$db=Db::getInstance();
-		
-		$date=date('Y/m/d');
-		$datetime=date('Y/m/d H:i:s');
-		$tiempo=time();
-		//$id_usr=$_SESSION['cod_usuario'];
-		$id_usr=1;
+		session_start();
+		$date		=date('Y/m/d');
+		$datetime	=date('Y/m/d H:i:s');
+		$tiempo		=time();
+		$id_usr		=$_SESSION['cod_user'];
 
 		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
 		if($id_agencia==''){
@@ -124,6 +125,76 @@ class model_con extends Db
 						agencia_direccion='$direccion_agencia',
 						agencia_telefono='$telefono_agencia'
 					WHERE id_agencia='$id_agencia'";
+		}
+
+		//echo $sql;	
+		$stmt= $db->preparar($sql);
+		//echo '<pre>';
+		//print_r($stmt);
+		//echo '</pre>';
+		if($stmt->execute()){
+			$msj="Insertado";
+		}else{
+			$msj="Error";
+		}
+		//echo $msj;
+		return $msj;
+	}
+
+	public function ing_ccosto($id_ccosto,$cli_id,$id_agencia,$codigo_ccosto,$nombre_ccosto,$direccion_ccosto,$telefono_ccosto)
+	{
+		$db=Db::getInstance();
+		session_start();
+		$date		=date('Y/m/d');
+		$datetime	=date('Y/m/d H:i:s');
+		$tiempo		=time();
+		$id_usr		=$_SESSION['cod_user'];
+
+		//Se valida que el codigo del centro costo venga lleno para insertar sino es un update
+		if($id_ccosto==''){
+			//Insert
+			$sql="INSERT INTO rastreo.centro_costo
+								(
+								id_ccosto, 
+								id_agencia, 
+								cli_id, 
+								ccosto_codigo,
+								ccosto_nombre, 
+								centro_dirección, 
+								ccosto_telefono, 
+								ccosto_estado, 
+								char1, 
+								entero1, 
+								id_usr, 
+								fecha_date, 
+								fecha_datetime, 
+								tiempo
+								)
+					VALUES (0,
+							$id_agencia,
+							$cli_id,
+							'$codigo_ccosto',
+							'$nombre_ccosto',
+							'$direccion_ccosto',
+							'$telefono_ccosto',
+							1,
+							NULL,
+							NULL,
+							'$id_usr',
+							'$date',
+							'$datetime',
+							'$tiempo'
+							)";
+
+		}else{
+			//Update
+			$sql="UPDATE rastreo.centro_costo
+					SET ccosto_codigo='$codigo_ccosto',
+						ccosto_nombre='$nombre_ccosto',
+						centro_dirección='$direccion_ccosto',
+						ccosto_telefono='$telefono_ccosto' 
+					WHERE id_ccosto='$id_ccosto'
+					AND ccosto_estado=1";
 		}
 
 		//echo $sql;	

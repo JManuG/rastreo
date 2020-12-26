@@ -40,7 +40,7 @@
                   <!-- /.info-box -->
                 </div>
                 <input type="hidden" id="cli_id" name='cli_id' value="<?php echo $_SESSION['shi_codigo']; ?>">
-          
+                        
                 <div class="form-group">
                   <label for="id_agencia">Agencia</label>
                   <?php echo select_agencias(); ?>
@@ -48,17 +48,17 @@
 
                 <div class="form-group">
                   <label for="codigo_agencia">Codigo agencia</label>
-                  <input autofocus type="text" class="form-control" id="codigo_agencia" name='codigo_agencia' placeholder="Codigo de la agencia" required>
+                  <input autofocus type="text" class="form-control" id="codigo_agencia" name='codigo_agencia' placeholder="Codigo de la agencia"  required />
                 </div>
 
                 <div class="form-group">
                   <label for="nombre_agencia">Nombre de agencia</label>
-                  <input type="text" class="form-control" id="nombre_agencia" name='nombre_agencia' placeholder="Nombre de la agencia" required>
+                  <input type="text" class="form-control" id="nombre_agencia" name='nombre_agencia' placeholder="Nombre de la agencia"  required />
                 </div>
 
                 <div class="form-group">
                   <label for="direccion_agencia">Direcci&oacute;n</label>
-                  <input type="text" class="form-control" id="direccion_agencia" name='direccion_agencia' placeholder="Direcci&oacute;n de agencia" required>
+                  <input type="text" class="form-control" id="direccion_agencia" name='direccion_agencia' placeholder="Direcci&oacute;n de agencia"  required />
                 </div>
 
                 <div class="form-group">
