@@ -333,8 +333,8 @@ class model_con extends Db
 					WHERE barra='$vineta'";
 
         $d= $db->consultar($sql_d);
-        $result = $d->fetch(PDO::FETCH_ASSOC);
-		/*
+        $result = $d->fetch(PDO::FETCH_BOTH);
+/*
         while ($rowd=$d->fetch(PDO::FETCH_NUM))
         {
             $id_guia        =$rowd[0];

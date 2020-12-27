@@ -205,6 +205,8 @@ function changeAgencia()
   });
 }
 
+
+
 function changeCCosto()
 {
   var id_ccosto = $("#id_ccosto").val();
