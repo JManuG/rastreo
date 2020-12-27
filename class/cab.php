@@ -666,7 +666,60 @@ if($shi_codigo=='000591')
 		return $retorno;
 	}
 
-	
+	//Zoans Rastreo
+	function select_zonas()
+	{
+		@session_start();
+        $bd=Db::getInstance();
+		$shi_codigo=$_SESSION['shi_codigo'];
+		
+		$sql_c = "SELECT z.* 
+					FROM zona z 
+					INNER JOIN usuario u 
+					ON z.id_usr=u.id_usr
+					WHERE u.cli_codigo='$shi_codigo'";
+
+		$retorno ="<select name='id_zona' id='id_zona' class=\"form-control\" onchange='changeZona()'>
+					<option value=''>-</option>";
+
+		$c= $bd->consultar($sql_c);
+		
+		while ($row=$c->fetch(PDO::FETCH_NUM)){
+			$retorno .="<option value='".$row[0]."'>".$row[1]." ".$row[2]."</option>";
+		}
+		
+		$retorno .="</select>";
+
+		return $retorno;
+	}
+
+	//Mensajero Rastreo
+	function select_mensajeros()
+	{
+		@session_start();
+        $bd=Db::getInstance();
+		$shi_codigo=$_SESSION['shi_codigo'];
+		
+		$sql_c = "SELECT m.* 
+					FROM mensajero m 
+					INNER JOIN usuario u 
+					ON m.id_usr=u.id_usr
+					WHERE u.cli_codigo='$shi_codigo'";
+
+		$retorno ="<select name='id_mensajero' id='id_mensajero' class=\"form-control\" onchange='changeMensajero()'>
+					<option value=''>-</option>";
+
+		$c= $bd->consultar($sql_c);
+		
+		while ($row=$c->fetch(PDO::FETCH_NUM)){
+			$retorno .="<option value='".$row[0]."'>".$row[0]." ".$row[1]."</option>";
+		}
+		
+		$retorno .="</select>";
+
+		return $retorno;
+	}
+
 	function del_registro($r,$g)
 	{
 	$respuesta = new xajaxResponse();

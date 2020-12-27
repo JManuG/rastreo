@@ -211,6 +211,106 @@ class model_con extends Db
 		return $msj;
 	}
 
+	public function ing_zona($cli_id,$id_zona,$codigo_zona,$nombre_zona)
+	{
+		$db=Db::getInstance();
+		session_start();
+		$date		=date('Y/m/d');
+		$datetime	=date('Y/m/d H:i:s');
+		$tiempo		=time();
+		$id_usr		=$_SESSION['cod_user'];
+
+		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
+		if($id_zona==''){
+			//Insert
+			$sql="INSERT INTO rastreo.zona
+								(
+								id_zona,
+								zon_codigo,
+								zon_descripcion,
+								id_usr
+								)
+					VALUES (0,
+							'$codigo_zona',
+							'$nombre_zona',
+							'$id_usr'
+							)";
+
+		}else{
+			//Update
+			$sql="UPDATE rastreo.zona
+					SET zon_codigo='$codigo_zona',
+						zon_descripcion='$nombre_zona'
+					WHERE id_zona='$id_zona'";
+		}
+
+		//echo $sql;	
+		$stmt= $db->preparar($sql);
+		//echo '<pre>';
+		//print_r($stmt);
+		//echo '</pre>';
+		if($stmt->execute()){
+			$msj="Insertado";
+		}else{
+			$msj="Error";
+		}
+		//echo $msj;
+		return $msj;
+	}
+
+	public function ing_mensajero($id_mensajero,$nombre_mensajero,$direccion_mensajero,$telefono_mensajero)
+	{
+		$db=Db::getInstance();
+		session_start();
+		$date		=date('Y/m/d');
+		$datetime	=date('Y/m/d H:i:s');
+		$tiempo		=time();
+		$id_usr		=$_SESSION['cod_user'];
+
+		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
+		if($id_mensajero==''){
+			//Insert
+			$sql="INSERT INTO rastreo.mensajero
+								(
+								id_mensajero,
+								nombre, 
+								direccion, 
+								telefono, 
+								id_usr, 
+								fecha_date, 
+								fecha_datetime
+								)
+					VALUES (0,
+							'$nombre_mensajero',
+							'$direccion_mensajero',
+							'$telefono_mensajero',
+							'$id_usr',
+							'$date',
+							'$datetime'
+							)";
+
+		}else{
+			//Update
+			$sql="UPDATE rastreo.mensajero
+					SET nombre='$nombre_mensajero',
+						direccion='$direccion_mensajero',
+						telefono='$telefono_mensajero'
+					WHERE id_mensajero='$id_mensajero'";
+		}
+
+		//echo $sql;	
+		$stmt= $db->preparar($sql);
+		//echo '<pre>';
+		//print_r($stmt);
+		//echo '</pre>';
+		if($stmt->execute()){
+			$msj="Insertado";
+		}else{
+			$msj="Error";
+		}
+		//echo $msj;
+		return $msj;
+	}
 
     public function consulta_vineta($vineta)
     {
@@ -226,7 +326,7 @@ class model_con extends Db
         $orden=1;
         $numero_guia=0;
 
-        $sql_d = "SELECT id_guia,id_envio,ori_ccosto,des_ccosto,estado,id_usr,
+  	      $sql_d = "SELECT id_guia,id_envio,ori_ccosto,des_ccosto,estado,id_usr,
                          fecha_date,fecha_datetime,tiempo,char1,entero1,id_orden,
                          barra,comentario
 					FROM guia 
@@ -234,7 +334,7 @@ class model_con extends Db
 
         $d= $db->consultar($sql_d);
         $result = $d->fetch(PDO::FETCH_ASSOC);
-/*
+		/*
         while ($rowd=$d->fetch(PDO::FETCH_NUM))
         {
             $id_guia        =$rowd[0];
@@ -254,7 +354,7 @@ class model_con extends Db
 
 
         }
-*/
+		*/
 
 
         if(empty($id_guia))

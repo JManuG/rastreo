@@ -111,6 +111,75 @@ function procesarMantCCosto(id_ccosto,cli_id,id_agencia,codigo_ccosto,nombre_cco
   })
 }
 
+function procesarMantZona(cli_id,id_zona,codigo_zona,nombre_zona)
+{
+    var datos_origen={
+      "cli_id":cli_id,
+      "id_zona":id_zona,
+      "codigo_zona":codigo_zona,
+      "nombre_zona":nombre_zona
+    };
+    $.ajax({
+      data:datos_origen,
+      url:'../sistema/prg/mant_zonas.php',
+      type: 'post',
+      beforeSend: function(){
+        //$("#respuesta").html("procesando");
+        //$('.submitBtn').attr("disabled","disabled");
+      },
+      success: function (response){
+        var str = response;
+        var res = str.split("-");
+        if(res[0]==200)
+        {
+          $('#respuesta').html('<span style="color:green;"><b>Zona <b>'+ codigo_zona +'</b> Ingresada Correctamente.</b></span>');
+          $('#codigo_zona').val('');
+          $('#nombre_zona').val('');
+          $('#id_zona').prop('selectedIndex', 0);
+        }else
+        {
+          $("#respuesta").html('<span style="color:red;"><b>Error form_mant_zonas:</b>  <p> '+res[0]+res[1]+'</span></p>');
+          //$('.submitBtn').removeAttr("disabled");
+        }
+      }
+    })
+}
+
+function procesarMantMensajero(id_mensajero,nombre_mensajero,direccion_mensajero,telefono_mensajero)
+{
+    var datos_origen={
+      "id_mensajero":id_mensajero,
+      "nombre_mensajero":nombre_mensajero,
+      "direccion_mensajero":direccion_mensajero,
+      "telefono_mensajero":telefono_mensajero
+    };
+    $.ajax({
+      data:datos_origen,
+      url:'../sistema/prg/mant_mensajero.php',
+      type: 'post',
+      beforeSend: function(){
+        //$("#respuesta").html("procesando");
+        //$('.submitBtn').attr("disabled","disabled");
+      },
+      success: function (response){
+        var str = response;
+        var res = str.split("-");
+        if(res[0]==200)
+        {
+          $('#respuesta').html('<span style="color:green;"><b>Mensajero <b>'+ id_mensajero +'-'+nombre_mensajero +'</b> Ingresado Correctamente.</b></span>');
+          $('#nombre_mensajero').val('');
+          $('#direccion_mensajero').val('');
+          $('#telefono_mensajero').val('');
+          $('#id_mensajero').prop('selectedIndex', 0);
+        }else
+        {
+          $("#respuesta").html('<span style="color:red;"><b>Error form_mant_mensajero:</b>  <p> '+res[0]+res[1]+'</span></p>');
+          //$('.submitBtn').removeAttr("disabled");
+        }
+      }
+    })
+}
+
 function changeAgencia()
 {
   var id_agencia = $("#id_agencia").val();
@@ -157,6 +226,53 @@ function changeCCosto()
         $('#telefono_ccosto').val(res[7]);
       }
       //$("#nombre_agencia").val(response);
+    }
+  });
+}
+
+function changeZona()
+{
+  var id_zona = $("#id_zona").val();
+
+  $.ajax({
+    type: "POST",
+    data: {id_zona:id_zona},
+    url: "../sistema/prg/selects/changeZona.php",
+    cache: false,
+    success: function (response){
+      //alert(response);return false;
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        $('#codigo_zona').val(res[2]);
+        $('#nombre_zona').val(res[3]);
+      }
+      //$("#nombre_zona").val(response);
+    }
+  });
+}
+
+function changeMensajero()
+{
+  var id_mensajero = $("#id_mensajero").val();
+
+  $.ajax({
+    type: "POST",
+    data: {id_mensajero:id_mensajero},
+    url: "../sistema/prg/selects/changeMensajero.php",
+    cache: false,
+    success: function (response){
+      //alert(response);return false;
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        $('#nombre_mensajero').val(res[2]);
+        $('#direccion_mensajero').val(res[3]);
+        $('#telefono_mensajero').val(res[4]);
+      }
+      //$("#nombre_zona").val(response);
     }
   });
 }
