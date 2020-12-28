@@ -180,6 +180,43 @@ function procesarMantMensajero(id_mensajero,nombre_mensajero,direccion_mensajero
     })
 }
 
+function procesarMantUsuario(usr_cod2,usr_pass,usr_nombre,id_ccosto,perfil)
+{
+    var datos_origen={
+      "usr_cod2":usr_cod2,
+      "usr_pass":usr_pass,
+      "usr_nombre":usr_nombre,
+      "id_ccosto":id_ccosto,
+      "perfil":perfil
+    };
+    $.ajax({
+      data:datos_origen,
+      url:'../sistema/prg/mant_usuarios.php',
+      type: 'post',
+      beforeSend: function(){
+        //$("#respuesta").html("procesando");
+        //$('.submitBtn').attr("disabled","disabled");
+      },
+      success: function (response){
+        var str = response;
+        var res = str.split("-");
+        if(res[0]==200)
+        {
+          $('#respuesta').html('<span style="color:green;"><b>Usuario <b>'+ usr_cod2 +'-'+usr_nombre +'</b> Ingresado Correctamente.</b></span>');
+          $('#usr_cod2').val('');
+          $('#usr_pass').val('');
+          $('#usr_nombre').val('');
+          $('#id_ccosto').prop('selectedIndex', 0);
+          $('#id_perfil').prop('selectedIndex', 0);
+        }else
+        {
+          $("#respuesta").html('<span style="color:red;"><b>Error form_mant_usuario:</b>  <p> '+res[0]+res[1]+'</span></p>');
+          //$('.submitBtn').removeAttr("disabled");
+        }
+      }
+    })
+}
+
 function changeAgencia()
 {
   var id_agencia = $("#id_agencia").val();
@@ -204,8 +241,6 @@ function changeAgencia()
     }
   });
 }
-
-
 
 function changeCCosto()
 {

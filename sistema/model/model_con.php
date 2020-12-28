@@ -312,6 +312,89 @@ class model_con extends Db
 		return $msj;
 	}
 
+	public function ing_usuario($usr_cod2,$usr_nombre,$usr_pass,$id_ccosto,$perfil)
+	{
+		$db=Db::getInstance();
+		session_start();
+		$date		=date('Y/m/d');
+		$datetime	=date('Y/m/d H:i:s');
+		$tiempo		=time();
+		$id_usr		=$_SESSION['cod_user'];
+		$shi_codigo =isset($_SESSION['cli_id']);
+
+		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
+		//if($id_usr==''){
+			//Insert
+			$sql="INSERT INTO rastreo.usuario
+								(
+									id_usr, 
+									usr_cod, 
+									usr_pass, 
+									usr_nombre, 
+									cli_codigo, 
+									id_grupo, 
+									nivel, 
+									depto, 
+									id_ccosto, 
+									area, 
+									producto, 
+									posicion, 
+									aud_usuario_proc, 
+									aud_fecha_proc, 
+									aud_hora_proc, 
+									marca_tiempo, 
+									estado, 
+									dias_vencimiento, 
+									char1, 
+									entero1, 
+									cliente_cli_id
+								)
+					VALUES (0,
+							'$usr_cod2',
+							'".md5($usr_pass)."',
+							'$usr_nombre',
+							'$shi_codigo',
+							1,
+							$perfil,
+							0,
+							'$id_ccosto',
+							0,
+							0,
+							0,
+							'$id_usr',
+							'".date('Y/m/d')."',
+							'".date('H:i:s')."',
+							$tiempo,
+							1,
+							30,
+							0,
+							0,
+							0
+							)";
+
+		/*}else{
+			//Update
+			$sql="UPDATE rastreo.mensajero
+					SET nombre='$nombre_mensajero',
+						direccion='$direccion_mensajero',
+						telefono='$telefono_mensajero'
+					WHERE id_mensajero='$id_mensajero'";
+		}*/
+
+		//echo $sql;	
+		$stmt= $db->preparar($sql);
+		//echo '<pre>';
+		//print_r($stmt);
+		//echo '</pre>';
+		if($stmt->execute()){
+			$msj="Insertado";
+		}else{
+			$msj="Error";
+		}
+		//echo $msj;
+		return $msj;
+	}
+
     public function consulta_vineta($vineta)
     {
         $db=Db::getInstance();
@@ -334,7 +417,7 @@ class model_con extends Db
 
         $d= $db->consultar($sql_d);
         $result = $d->fetch(PDO::FETCH_BOTH);
-/*
+		/*
         while ($rowd=$d->fetch(PDO::FETCH_NUM))
         {
             $id_guia        =$rowd[0];
@@ -374,5 +457,30 @@ class model_con extends Db
 
     }
 
+	public function consulta_usuario($id_usuario)
+    {
+        $db=Db::getInstance();
+        $msg="";
+        $date1=date('Y-m-d');
+        $date2=date('Y-m-d H:i:s');
+    
+        $tiempo=time();
+        $orden=1;
+        $existe_usr=0;
+
+		$sql_c = "SELECT count(id_usr) FROM usuario WHERE usr_cod='$id_usuario'";
+		
+		$c= $db->consultar($sql_c);
+		while ($row=$c->fetch(PDO::FETCH_NUM))
+		{
+			$existe_usr	    =$row[0];
+		}
+
+        if($existe_usr >0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
 }
