@@ -640,6 +640,33 @@ if($shi_codigo=='000591')
 		return $retorno;
 	}
 
+	function select_ccosto_simple()
+	{
+		@session_start();
+        $bd=Db::getInstance();
+		$shi_codigo=$_SESSION['shi_codigo'];
+		
+		$sql_c = "SELECT *
+					FROM centro_costo
+					WHERE cli_id='$shi_codigo'
+					AND ccosto_estado=1";
+
+		$datos= $bd->consultar($sql_c);
+
+		$retorno ="<select name='id_ccosto' id='id_ccosto' class=\"form-control\">
+						<option value=''>-</option>";
+
+		$c= $bd->consultar($sql_c);
+		
+		while ($row=$c->fetch(PDO::FETCH_NUM)){
+			$retorno .="<option value='".$row[0]."'>".$row[3]." ".$row[4]."</option>";
+		}
+		
+		$retorno .="</select>";
+
+		return $retorno;
+	}
+
 	//Agencias Rastreo
 	function select_agencias()
 	{

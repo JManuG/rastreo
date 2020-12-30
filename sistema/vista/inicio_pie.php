@@ -52,5 +52,7 @@
 <script src="vista/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="vista/dist/js/demo.js"></script>
+<script src="vista/bootstrap-table-pagination.js"></script>
+<script src="vista/pagination.js"></script>
 </body>
 </html>

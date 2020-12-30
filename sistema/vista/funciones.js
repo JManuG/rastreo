@@ -1,7 +1,7 @@
-function procesarformulario(ccosto_ori,ccosto_des,destinatario,descripcion,vineta){
+function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,vineta){
   var datos_origen={
     "ccosto_ori":ccosto_ori,
-    "ccosto_des":ccosto_des,
+    "id_ccosto":id_ccosto,
     "destinatario":destinatario,
     "descripcion":descripcion,
     "vineta":vineta
@@ -23,10 +23,10 @@ function procesarformulario(ccosto_ori,ccosto_des,destinatario,descripcion,vinet
         $('#descripcion').val('');
         $('#vineta').val('');
 
-        $("#respuesta").html(res[1]);
+        $("#respuesta").html('<span style="color:green;"><b>'+ res[1]+' </b></span>');
       }else
       {
-        $("#respuesta").html("Error form_ingreso_guia<p> "+res[0]+res[1]+"</p>");
+        $("#respuesta").html('<span style="color:red;"><b>Error form_ingreso_guia:</b>  <p> '+res[0]+res[1]+'</span></p>');
       }
     }
   })
@@ -346,4 +346,65 @@ function detalle_ar()
       }
     }
   })
+}
+
+function delRegistro(id_vineta)
+{
+
+  var datos_origen={
+    "id_vineta":id_vineta
+  };
+  //console.log(id_vineta);
+  $.ajax({
+    data:datos_origen,
+    url:'../sistema/prg/utileria/proTabDel.php',
+    type: 'post',
+    beforeSend: function(){
+      //$("#respuesta").html("procesando");
+    },
+    success: function (response){
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        console.log('#div_'+res[1]);
+        $('#div_'+res[1]).html('<span style="color:green;"><b>Registro eliminado de tabla <br>correctamente.</b></span>');
+      }
+      else{
+        $('#div_'+res[1]).html('<span style="color:red;"><b>Error eliminando registro de tabla: proTabDel.</b></span>');
+      }
+    }
+  })
+}
+
+function procesarOS(id_cli)
+{
+    var datos_origen={
+      "id_cli":id_cli
+    };
+    $.ajax({
+      data:datos_origen,
+      url:'../sistema/prg/proc_OS.php',
+      type: 'post',
+      beforeSend: function(){
+        //$("#respuesta").html("procesando");
+        //$('.submitBtn').attr("disabled","disabled");
+      },
+      success: function (response){
+        var str = response;
+        var res = str.split("-");
+        if(res[0]==200)
+        {
+          $('#respuesta').html('<span style="color:green;"><b>Mensajero <b>'+ id_mensajero +'-'+nombre_mensajero +'</b> Ingresado Correctamente.</b></span>');
+          $('#nombre_mensajero').val('');
+          $('#direccion_mensajero').val('');
+          $('#telefono_mensajero').val('');
+          $('#id_mensajero').prop('selectedIndex', 0);
+        }else
+        {
+          $("#respuesta").html('<span style="color:red;"><b>Error form_mant_mensajero:</b>  <p> '+res[0]+res[1]+'</span></p>');
+          //$('.submitBtn').removeAttr("disabled");
+        }
+      }
+    })
 }

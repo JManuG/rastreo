@@ -46,8 +46,8 @@
                   <input type="hidden" id="ccosto_ori" name='ccosto_ori' value="<?php echo $_SESSION['ccosto']; ?>">
 
                 <div class="form-group">
-                  <label for="ccosto_des">Centro de costo destino</label>
-                  <?php echo select_ccosto(); ?>
+                  <label for="id_ccosto">Centro de costo destino</label>
+                  <?php echo select_ccosto_simple(); ?>
                 </div>
 
                 <div class="form-group">
@@ -70,8 +70,11 @@
 
               <div class="card-footer">
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modal-default"
-                        onclick="procesarformulario(formulario.ccosto_ori.value,formulario.ccosto_des.value,
-                        formulario.destinatario.value,formulario.descripcion.value,formulario.vineta.value)">
+                        onclick="procesarformulario(formulario.ccosto_ori.value,
+                                                    formulario.id_ccosto.value,
+                                                    formulario.destinatario.value,
+                                                    formulario.descripcion.value,
+                                                    formulario.vineta.value)">
                   Registrar Env&iacute;o
                 </button>
               </div>

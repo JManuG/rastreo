@@ -21,6 +21,34 @@ date_default_timezone_set('America/El_Salvador');
         <p>Ingreso de Gu&iacute;as</p>
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=os'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Orden de Servicio</p>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=ar'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Arribo - AR</p>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=ld'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Salida a Ruta - LD</p>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=dl'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Entregas - DL</p>
+      </a>
+    </li>
   
   </ul>
 </li>
