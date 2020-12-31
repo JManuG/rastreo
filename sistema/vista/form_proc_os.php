@@ -91,10 +91,11 @@ $db=new model_tab();
 
               <div class="card-footer">
               <form role="form" id="formulario" name="formulario" method="post">
-                <input type="hidden" id="cli_id" name='cli_id' value="<?php echo $_SESSION['shi_codigo']; ?>">
-                        
+                <input type="hidden" id="id_cli" name='id_cli' value="<?php echo $_SESSION['shi_codigo']; ?>">
+                <input type="hidden" id="id_ccosto" name='id_ccosto' value="<?php echo $id_ccosto;?>">
                 <button id="submitBtn" type="button" class="btn btn-outline-dark " data-toggle="modal" data-target="#modal-default"
-                        onclick="procesarOS(formulario.cli_id.value)">
+                        onclick="procesarOS(formulario.id_cli.value,
+                                            formulario.id_ccosto.value)">
                   Procesar Orden
                 </button>
                 </form>
@@ -110,10 +111,10 @@ $db=new model_tab();
                       </button>
                     </div>
                     <div class="modal-body" id="respuesta">
-                                X
+                                
                     </div>
                     <div class="modal-footer justify-content-between">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal" onclick="recargarTab()">Cerrar</button>
                       <!--<button type="button" class="btn btn-primary">Save changes</button>-->
                     </div>
                   </div>

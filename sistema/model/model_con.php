@@ -508,10 +508,11 @@ class model_con extends Db
 		$tiempo		=time();
 		$id_usr		=$_SESSION['cod_user'];
 		$llave      =$tiempo;
+		$estado     =1;
 
 		//Se crea primero la OS
 		$sql="INSERT INTO rastreo.orden
-				VALUES (0,'$cli_id','1','$date','OS Creada','$id_usr','$date','$datetime','$tiempo',NULL,NULL)";
+				VALUES (0,'$id_cli','1','$date','OS Creada','$id_usr','$date','$datetime','$tiempo',$estado,NULL,NULL)";
 
 		//echo $sql;	
 		$stmt= $db->preparar($sql);
@@ -519,7 +520,17 @@ class model_con extends Db
 		//print_r($stmt);
 		//echo '</pre>';
 		if($stmt->execute()){
-			$msj="Insertado";
+			$id_os ="";
+			//Buscamos el numero de OS creado segun tiempo
+			$sql_1="SELECT id_orden FROM rastreo.orden WHERE llave='$tiempo'";
+
+			$stmt_1= $db->consultar($sql_1);
+			while ($row_1=$stmt_1->fetch(PDO::FETCH_NUM))
+			{
+				$id_os =$row_1[0];
+			}
+
+			$msj=$id_os;
 		}else{
 			$msj="Error";
 		}
@@ -527,4 +538,82 @@ class model_con extends Db
 		return $msj;
 	}
 
+	public function procesar_GuiaOS($id_cli,$id_ccosto,$id_orden)
+	{
+		$db=Db::getInstance();
+		//session_start();
+		$fecha_date		=date('Y/m/d');
+		$fecha_datetime	=date('Y/m/d H:i:s');
+		$id_usr			=$_SESSION['cod_user'];
+		$marca     	 	=time();
+		$estado     	=1;
+		$cont_u     	=0;
+		$cont_i     	=0;
+
+		//Buscamos primero los registros aptos para actualziar
+		$sql="SELECT *
+				FROM rastreo.guia 
+				WHERE ori_ccosto='$id_ccosto' 
+				AND estado=1 
+				AND id_orden=1
+				ORDER BY id_envio";
+
+		$stmt= $db->consultar($sql);
+		while ($row=$stmt->fetch(PDO::FETCH_NUM))
+		{
+			$id_guia		=$row[0];
+			$id_envio		=$row[1];
+			$ori_ccosto		=$row[2];
+			$des_ccosto		=$row[3];
+			$estado			=$row[4];
+			$id_usr			=$row[5];
+			$tiempo			=$row[8];
+			$char1			=$row[9];
+			$entero1		=$row[10];
+			$barra			=$row[12];
+			$comentario		=$row[13];
+			$destinatario	=$row[14];
+
+			//Por ID guia actualizamos uno a uno
+			$upd="UPDATE rastreo.guia
+					SET id_orden='$id_orden', estado=2
+					WHERE id_guia='$id_guia'
+					AND  estado=1";
+
+			$stmt_u= $db->preparar($upd);
+	
+			//print_r($stmt);
+			if($stmt_u->execute()){
+				$msj_u=$cont_u++;
+			}else{
+				$msj_u="Error Update Guia".$id_guia;
+			}
+
+			//Luego se inserta el PI (Pre Ingreso) en movimiento
+			$ing="INSERT INTO rastreo.movimiento 
+							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
+					VALUES (0,'$id_guia',1,1,1,4,'$fecha_date','$fecha_datetime','$marca','1','INGRESO',NULL) ";
+
+			$stmt_i= $db->preparar($ing);
+
+			//print_r($stmt);
+			if($stmt_i->execute()){
+				$msj_i=$cont_i++;
+			}else{
+				$msj_i="Error Insert Guia".$id_guia;
+			}
+		}
+
+		if($msj_u > 0 && $msj_i > 0){
+			$msj="Insertado";
+		}else{
+			$msj="Error";
+		}
+
+		//echo $msj;
+		return $msj;
+	}
+
+
 }
+?>

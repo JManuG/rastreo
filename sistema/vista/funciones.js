@@ -377,10 +377,11 @@ function delRegistro(id_vineta)
   })
 }
 
-function procesarOS(id_cli)
+function procesarOS(id_cli,id_ccosto)
 {
     var datos_origen={
-      "id_cli":id_cli
+      "id_cli":id_cli,
+      "id_ccosto":id_ccosto
     };
     $.ajax({
       data:datos_origen,
@@ -395,16 +396,17 @@ function procesarOS(id_cli)
         var res = str.split("-");
         if(res[0]==200)
         {
-          $('#respuesta').html('<span style="color:green;"><b>Mensajero <b>'+ id_mensajero +'-'+nombre_mensajero +'</b> Ingresado Correctamente.</b></span>');
-          $('#nombre_mensajero').val('');
-          $('#direccion_mensajero').val('');
-          $('#telefono_mensajero').val('');
-          $('#id_mensajero').prop('selectedIndex', 0);
+          $('#respuesta').html('<span style="color:green;"><b>Orden # '+res[1] +' Creada Correctamente.</b></span>');
         }else
         {
-          $("#respuesta").html('<span style="color:red;"><b>Error form_mant_mensajero:</b>  <p> '+res[0]+res[1]+'</span></p>');
+          $("#respuesta").html('<span style="color:red;"><b>Error form_proc_os:</b>  <p> '+res[0]+res[1]+'</span></p>');
           //$('.submitBtn').removeAttr("disabled");
         }
+        
       }
     })
+}
+
+function recargarTab(){
+  location.reload(); 
 }
