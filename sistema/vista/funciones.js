@@ -407,6 +407,39 @@ function procesarOS(id_cli,id_ccosto)
     })
 }
 
+function procesarAR(id_vineta)
+{
+  var datos_origen={
+    "id_vineta":id_vineta
+  };
+  $.ajax({
+    data:datos_origen,
+    url:'../sistema/prg/proc_AR.php',
+    //url:'../sistema/prg/ar.php',
+    type: 'post',
+    beforeSend: function(){
+      //$("#respuesta").html("procesando");
+      //$('.submitBtn').attr("disabled","disabled");
+    },
+    success: function (response){
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        $('#msj_div').val();
+        $('#msj_div').html('<br><span style="color:green;"><b>Arribo Vi&ntilde;eta '+ id_vineta +' Procesado Correctamente.</b></span>');
+        $('#vineta').val('');
+      }else
+      {
+        $('#msj_div').val();
+        $("#msj_div").html('<br><span style="color:red;">Vi&ntilde;eta <b>'+ id_vineta +'</b> no procesada <br> Error: <b>'+res[1] +'</b></span></p>');
+        $('#vineta').select();
+      }
+      
+    }
+  })
+}
+
 function recargarTab(){
   location.reload(); 
 }

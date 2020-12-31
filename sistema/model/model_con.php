@@ -55,8 +55,8 @@ class model_con extends Db
             $msg=" La vi&ntilde;eta ya existe...";
         }else{
 
-    		$insert="INSERT INTO guia (id_guia, id_envio, ori_ccosto, des_ccosto, estado,id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, id_orden, barra, comentario) 
-					VALUES($numero_guia,'$id_envio', '$ccosto_ori', '$ccosto_des', '1', '$usr', '$date1', '$date2', '$tiempo', '',0, '$orden','$vineta', '$descripcion')";
+    		$insert="INSERT INTO guia (id_guia, id_envio, ori_ccosto, des_ccosto, estado,id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, id_orden, barra, comentario,destinatario) 
+					VALUES($numero_guia,'$id_envio', '$ccosto_ori', '$ccosto_des', '1', '$usr', '$date1', '$date2', '$tiempo', '',0, '$orden','$vineta', '$descripcion','$destinatario')";
 	    	//echo $insert;
 		    $insert1= $db->consultar($insert);
         }
@@ -404,14 +404,16 @@ class model_con extends Db
         $orden=1;
         $numero_guia=0;
 
-  	      $sql_d = "SELECT id_guia,id_envio,ori_ccosto,des_ccosto,estado,id_usr,
+  	    $sql_d = "SELECT id_guia,id_envio,ori_ccosto,des_ccosto,estado,id_usr,
                          fecha_date,fecha_datetime,tiempo,char1,entero1,id_orden,
                          barra,comentario
 					FROM guia 
 					WHERE barra='$vineta'";
 
-        $d= $db->consultar($sql_d);
-        $result = $d->fetch(PDO::FETCH_BOTH);
+		$d= $db->consultar($sql_d);
+
+		$result = $d->fetch(PDO::FETCH_BOTH);
+
 		/*
         while ($rowd=$d->fetch(PDO::FETCH_NUM))
         {
@@ -510,7 +512,7 @@ class model_con extends Db
 		$llave      =$tiempo;
 		$estado     =1;
 
-		//Se crea primero la OS
+		//Se crea primero la OS - Cuando se registra la Orden se ingresa con estado 1
 		$sql="INSERT INTO rastreo.orden
 				VALUES (0,'$id_cli','1','$date','OS Creada','$id_usr','$date','$datetime','$tiempo',$estado,NULL,NULL)";
 
@@ -607,6 +609,95 @@ class model_con extends Db
 		if($msj_u > 0 && $msj_i > 0){
 			$msj="Insertado";
 		}else{
+			$msj="Error";
+		}
+
+		//echo $msj;
+		return $msj;
+	}
+
+	public function procesar_AR($id_vineta)
+	{
+		$db=Db::getInstance();
+		session_start();
+		$fecha_date		=date('Y/m/d');
+		$fecha_datetime	=date('Y/m/d H:i:s');
+		$id_usr			=$_SESSION['cod_user'];
+		$id_cli         =$_SESSION['shi_codigo'];
+		$marca     	 	=time();
+		$estado     	=1;
+		$cont_u     	=0;
+		$cont_i     	=0;
+		$existe_vineta  =0;
+
+		//Buscamos si existe una vineta apta para AR  --  Debe estar la guia en estado 2 para AR 
+		$sql="SELECT g.*
+				FROM rastreo.guia g 
+				INNER JOIN rastreo.orden o
+				ON g.id_orden=o.id_orden
+				WHERE g.barra='$id_vineta'
+				AND o.cli_codigo='$id_cli'
+				AND g.estado=2";
+
+		$stmt= $db->consultar($sql);
+		while ($row=$stmt->fetch(PDO::FETCH_NUM))
+		{
+			$id_guia		=$row[0];
+			$id_envio		=$row[1];
+			$ori_ccosto		=$row[2];
+			$des_ccosto		=$row[3];
+			$estado			=$row[4];
+			$tiempo			=$row[8];
+			$char1			=$row[9];
+			$entero1		=isset($row[20]);
+			$id_orden		=$row[11];
+			$barra			=$row[12];
+			$comentario		=$row[13];
+			$destinatario	=$row[14];
+			$existe_vineta  = 1;
+		}
+
+		//Por ID guia actualizamos el estado - Se actualiza a estado 3
+		if($existe_vineta==1){
+			//ACtualizamos el estado de la guia/vineta 
+			$upd="UPDATE rastreo.guia
+					SET estado=3
+					WHERE id_envio='$id_guia'
+					AND id_orden='$id_orden'
+					AND  estado=2";
+
+			$stmt_u= $db->preparar($upd);
+	
+			//print_r($stmt);
+			if($stmt_u->execute()){
+				$msj_u="Ingresado";
+			}else{
+				$msj_u="Error Update Orden".$id_orden;
+			}
+	
+			//Luego se inserta el AR (Arribo) en movimiento
+			$ing="INSERT INTO rastreo.movimiento 
+						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
+					VALUES (0,'$id_guia',1,1,1,4,'$fecha_date','$fecha_datetime','$marca','2','ARRIBO',NULL) ";
+
+			$stmt_i= $db->preparar($ing);
+
+			//print_r($stmt);
+			if($stmt_i->execute()){
+				$msj_i="Ingresado";
+			}
+			else{
+				$msj_i="Error Insert Orden".$id_orden;
+			}
+		}
+		
+		if($existe_vineta==0){
+			$msj="Existe";
+		}
+		elseif($msj_u =='Ingresado' && $msj_i =='Ingresado'){
+			$msj="Insertado";
+		}
+		else{
 			$msj="Error";
 		}
 
