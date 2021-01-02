@@ -46,14 +46,14 @@
 
         <!-- Timelime example  -->
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-8">
             <!-- The time line -->
             <div class="timeline">
               <!-- timeline item -->
               <div>
-                <i class="fas fa-check bg-green"></i>
+                <i class="fas fa-check bg-gradient-navy"></i>
                 <div class="timeline-item">
-                  <h3 class="timeline-header"><a href="#">Solicitud Recibida</a> el Miercoles 30 de Diciembre 2020 a las 13:19:00</h3>
+                  <h3 class="timeline-header"><a href="#">Solicitud de Env&iacute;o</a> el Miercoles 30 de Diciembre 2020 a las 13:19:00</h3>
 
                 </div>
               </div>
@@ -77,18 +77,53 @@
               </div>
               <!-- END timeline item -->
               <!-- timeline time label
-              <div class="time-label">
-                <span class="bg-green">3 Jan. 2014</span>
-              </div> -->
+
+                            <!-- timeline item -->
+              <div>
+                <i class="fas fa-circle-thin bg-white"></i>
+                <div class="timeline-item">
+
+                  <h3 class="timeline-header no-border"><a href="#">Entrega</a>  Pendiente...</h3>
+                </div>
+              </div>
+              <div>
+                <i class="fas fa-circle-thin bg-white"></i>
+                <div class="timeline-item">
+
+                  <div class="card collapsed-card">
+                    <div class="card-header">
+                      <h3 class="card-title">
+                        <a href="#">Solicitud de Env&iacute;o</a> el Miercoles 30 de Diciembre 2020 a las 13:19:00
+                       </h3>
+
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                        </button>
+                      </div>
+                      <!-- /.card-tools -->
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                       por Juan P&eacute;rez
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+
+                </div>
+              </div>
+              <div>
+                <i class="fas fa-clock bg-gray"></i>
+              </div>
 
             </div>
           </div>
-          <div class="col-md-6">
-<!--            <div class="card-orange">-->
-<!--              <img class="img-fluid pad" src="vista/imgs/acuse.jpg" alt="Recolección">-->
-<!---->
-<!--              <p>Imágen de recolección</p>-->
-<!--            </div>-->
+          <div class="col-md-4">
+            <div class="card-orange">
+              <img class="img-fluid pad" src="vista/imgs/acuse.jpg" alt="Recolección">
+
+             <p>Imágen de recolección</p>
+            </div>
 
             <div class="card-orange">
               <img class="img-fluid pad" src="vista/imgs/acuse.jpg" alt="Entrega">
@@ -107,12 +142,12 @@
 
 
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-12">
         <!-- Box Comment -->
 
     <div class="card card-widget">
       <div class="card-header">
-          <span class="card-title">Remitente</span>
+          <span class="card-title">Información de env&iacute;o</span>
         <!-- /.user-block -->
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -161,73 +196,62 @@
   </div>
 
 
-        <div class="col-md-4">
-          <!-- Box Comment -->
+<!--        <div class="col-md-4">-->
 
-          <div class="card card-widget">
-            <div class="card-header">
-              <span class="card-title">Destinatario</span>
-              <!-- /.user-block -->
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Mark as read">
-                  <i class="far fa-circle"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-                </button>
-              </div>
-              <!-- /.card-tools -->
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <span class="description">información destinatario</span>
-              <!-- /.card-body -->
+<!--          <div class="card card-widget">-->
+<!--            <div class="card-header">-->
+<!--              <span class="card-title">Destinatario</span>-->
 
+<!--              <div class="card-tools">-->
+<!--                <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Mark as read">-->
+<!--                  <i class="far fa-circle"></i></button>-->
+<!--                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>-->
+<!--                </button>-->
+<!--                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>-->
+<!--                </button>-->
+<!--              </div>-->
 
+<!--            </div>-->
 
-            </div>
-          </div>
-          <div>
+<!--            <div class="card-body">-->
+<!--              <span class="description">información destinatario</span>-->
 
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div>-->
 
-          </div>
+<!--          </div>-->
 
-        </div>
+<!--        </div>-->
+
+<!--      <div class="col-md-4">-->
 
 
+<!--        <div class="card card-widget">-->
+<!--          <div class="card-header">-->
+<!--            <span class="card-title">Envío</span>-->
 
-      <div class="col-md-4">
-        <!-- Box Comment -->
+<!--            <div class="card-tools">-->
+<!--              <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Mark as read">-->
+<!--                <i class="far fa-circle"></i></button>-->
+<!--              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>-->
+<!--              </button>-->
+<!--              <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>-->
+<!--              </button>-->
+<!--            </div>-->
 
-        <div class="card card-widget">
-          <div class="card-header">
-            <span class="card-title">Envío</span>
-            <!-- /.user-block -->
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Mark as read">
-                <i class="far fa-circle"></i></button>
-              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-              </button>
-            </div>
-            <!-- /.card-tools -->
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <span class="description">Información del envío</span>
-            <!-- /.card-body -->
+<!--          </div>-->
 
+<!--          <div class="card-body">-->
+<!--            <span class="description">Información del envío</span>-->
 
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div>-->
 
-          </div>
-        </div>
-        <div>
+<!--        </div>-->
 
-
-        </div>
-
-      </div>
+<!--      </div>-->
 
 
 
