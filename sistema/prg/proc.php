@@ -48,7 +48,7 @@ class proc{
         if(!empty($_SESSION['cod_usuario'])){
             //require('../class/cab.php');
             include('vista/inicio.php');
-            include('vista/form_proc_lddl.php');
+            include('vista/form_proc_dl.php');
             ?>
             <?php
             include('vista/inicio_pie.php');

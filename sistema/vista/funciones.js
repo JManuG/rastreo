@@ -480,6 +480,38 @@ function procesarLD(numid,posicion,id_zona,id_mensajero,vineta)
   })
 }
 
+function procesarDL(numid)
+{
+  var datos_origen={
+    "numid":numid
+  };
+  $.ajax({
+    data:datos_origen,
+    url:'../sistema/prg/proc_DL.php',
+    type: 'post',
+    beforeSend: function(){
+      //$("#respuesta").html("procesando");
+      //$('.submitBtn').attr("disabled","disabled");
+    },
+    success: function (response){
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        $('#msj_div').val();
+        $('#msj_div').html('<br><span style="color:green;"><b>Entrega '+ numid +' Procesada Correctamente.</b></span>');
+        $('#numid').val('');
+      }else
+      {
+        $('#msj_div').val();
+        $("#msj_div").html('<br><span style="color:red;">Manifiesto <b>'+ numid +'</b> no procesado <br> Error: <b>'+res[1] +'</b></span></p>');
+        $('#numid').select();
+      }
+      
+    }
+  })
+}
+
 function recargarTab(){
   location.reload(); 
 }

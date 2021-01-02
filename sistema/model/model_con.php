@@ -791,7 +791,7 @@ class model_con extends Db
 
 			//Insertamos la linea de cada posicion del manifiesto generado
 			$ing_2="INSERT INTO rastreo.manifiesto_linea
-					VALUES (0,'$numid','$posicion',3,1)";
+					VALUES (0,'$numid','$posicion',3,1,'$id_guia')";
 
 			$stmt_i2= $db->preparar($ing_2);
 			//echo $ing_2;
@@ -833,6 +833,146 @@ class model_con extends Db
 		return $msj;
 	}
 
+	public function procesar_DL($numid)
+	{
+		$db=Db::getInstance();
+		session_start();
+		$fecha_date		=date('Y/m/d');
+		$fecha_datetime	=date('Y/m/d H:i:s');
+		$id_usr			=$_SESSION['cod_user'];
+		$id_cli         =$_SESSION['shi_codigo'];
+		$marca     	 	=time();
+		$cont_u     	=0;
+		$cont_i     	=0;
+		$cont_m			=0;
+		$existe_numid   =0;
+
+		//Buscamos si existe una vineta apta para DL  --  Debe estar la guia en estado 4 para DL 
+		$sql="SELECT m.* 
+				FROM rastreo.manifiesto m 
+				INNER JOIN usuario u
+				ON m.id_usr=u.id_usr
+				WHERE m.n_manifiesto='$numid'
+				AND u.id_usr='$id_usr'";
+		//echo $sql;
+		$stmt= $db->consultar($sql);
+		while ($row=$stmt->fetch(PDO::FETCH_NUM))
+		{
+			$id_manifiesto	=$row[0];
+			$n_manifiesto	=$row[1];
+			$id_zona		=$row[2];
+			$id_mensajero	=$row[3];
+			$estado			=$row[4];
+			$id_usr			=$row[5];
+			$fecha			=$row[6];
+			$fecha_datetime	=$row[7];
+			$tiempo			=$row[8];
+			$existe_numid  	= 1;
+		}
+
+		//Por ID guia actualizamos el estado - Se actualiza a estado 5
+		if($existe_numid==1){
+			//Buscamos una a una las viñetas ingresadas por numid para actualizar
+			$sql_u1="SELECT m.*,g.id_orden,g.barra
+						FROM rastreo.manifiesto_linea m 
+						INNER JOIN rastreo.guia g
+						ON m.id_envio=g.id_envio
+						INNER JOIN rastreo.usuario u
+						ON g.id_usr=u.id_usr
+						WHERE m.n_manifiesto='$numid'
+						AND m.estado=1
+						AND g.estado=4
+						AND u.cli_codigo='$id_cli'";
+			//echo $sql_u1;
+			$stmt_u1= $db->consultar($sql_u1);
+			while ($row_u1=$stmt_u1->fetch(PDO::FETCH_NUM))	
+			{
+				$id_linea		=$row_u1[0];
+				$n_manifiesto	=$row_u1[1];
+				$posicion		=$row_u1[2];
+				$id_chk			=$row_u1[3];
+				$estado			=$row_u1[4];
+				$id_envio		=$row_u1[5];
+				$id_orden		=$row_u1[6];
+				$barra			=$row_u1[7];
+
+				//Actualizamos el estado de la guia/vineta 
+				$upd="UPDATE rastreo.guia
+						SET estado=5
+						WHERE id_envio='$id_envio'
+						AND id_orden='$id_orden'
+						AND  estado=4";
+
+				$stmt_u= $db->preparar($upd);
+		
+				//print_r($stmt);
+				if($stmt_u->execute()){
+					$msj_u=$cont_u++;
+				}else{
+					$msj_u="Error Update Orden".$numid;
+				}
+				
+				//Por ser una descarga completa de manifiesto se actualiza linea a linea
+				$upd_l1="UPDATE rastreo.manifiesto_linea
+							SET id_chk=4,estado=2
+							WHERE n_manifiesto='$numid'
+							AND posicion='$posicion'
+							AND id_chk=3
+							AND estado=1";	
+
+				$stmt_l1= $db->preparar($upd_l1);
+		
+				//print_r($stmt);
+				if($stmt_l1->execute()){
+					$msj_l1=$cont_m++;
+				}else{
+					$msj_l1="Error Update Manifiesto Linea".$numid;
+				}
+
+				//Luego se inserta el DL (Entrega Efectiva) en movimiento
+				$ing="INSERT INTO rastreo.movimiento 
+							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
+						VALUES (0,'$id_envio',1,1,1,4,'$fecha_date','$fecha_datetime','$marca','4','ENTREGA EFECTIVA',NULL) ";
+				 
+				$stmt_i= $db->preparar($ing);
+
+				//print_r($stmt);
+				if($stmt_i->execute()){
+					$msj_i=$cont_i++;
+				}
+				else{
+					$msj_i="Error Insert Orden".$id_orden;
+				}
+			}
+		}
+		
+		if($existe_numid==0){
+			$msj="Existe";
+		}
+		elseif($msj_u > 0 && $msj_i > 0 && $msj_l1 > 0){
+			$msj="Insertado";
+			
+			//Actualizamos el encabezado al final
+			$upd_l2="UPDATE rastreo.manifiesto
+						SET estado=2
+						WHERE n_manifiesto='$numid'
+						AND estado=1";	
+
+			$stmt_l2= $db->preparar($upd_l2);
+
+			if($stmt_l2->execute()){
+				$msj_l2="Ing";
+			}else{
+				$msj_l2="Error Update Manifiesto".$numid;
+			}
+		}
+		else{
+			$msj="Error";
+		}
+
+		//echo $msj;
+		return $msj;
+	}
 
 
 
