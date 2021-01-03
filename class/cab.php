@@ -870,6 +870,33 @@ if($shi_codigo=='000591')
 		return $retorno;
 	}
 
+	//Motivo de DV
+	function motivo_dv(){
+		@session_start();
+        $bd=Db::getInstance();
+		$shi_codigo=$_SESSION['shi_codigo'];
+		
+		$sql_c = "SELECT *
+					FROM rastreo.motivo 
+					WHERE tipo_motivo=5
+					AND estado_motivo=1
+					ORDER BY id_motivo";
+
+		$retorno ="<select name='id_motivo' id='id_motivo' class=\"form-control\" readonly>
+					<option value=''>-</option>";
+
+		$c= $bd->consultar($sql_c);
+		
+		while ($row=$c->fetch(PDO::FETCH_NUM)){
+			$retorno .="<option value='".$row[0]."'>".$row[1]." ".$row[2]."</option>";
+		}
+		
+		$retorno .="</select>";
+
+		return $retorno;
+	}
+
+
 	function del_registro($r,$g)
 	{
 	$respuesta = new xajaxResponse();

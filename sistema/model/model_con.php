@@ -806,7 +806,7 @@ class model_con extends Db
 			//Luego se inserta LD (Salida a Ruta) en movimiento
 			$ing="INSERT INTO rastreo.movimiento 
 						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
-					VALUES (0,'$id_guia',1,1,1,4,'$fecha_date','$fecha_datetime','$marca','3','SALIDA A RUTA',NULL) ";
+					VALUES (0,'$id_guia',3,'$id_zona','$id_mensajero','$id_usr','$fecha_date','$fecha_datetime','$marca','3','SALIDA A RUTA',NULL) ";
 
 			$stmt_i= $db->preparar($ing);
 
@@ -847,12 +847,13 @@ class model_con extends Db
 		$cont_m			=0;
 		$existe_numid   =0;
 
-		//Buscamos si existe una vineta apta para DL  --  Debe estar la guia en estado 4 para DL 
+		//Buscamos si existe una vineta apta para DL 
 		$sql="SELECT m.* 
 				FROM rastreo.manifiesto m 
 				INNER JOIN usuario u
 				ON m.id_usr=u.id_usr
 				WHERE m.n_manifiesto='$numid'
+				AND m.estado=1
 				AND u.id_usr='$id_usr'";
 		//echo $sql;
 		$stmt= $db->consultar($sql);
@@ -932,7 +933,7 @@ class model_con extends Db
 				//Luego se inserta el DL (Entrega Efectiva) en movimiento
 				$ing="INSERT INTO rastreo.movimiento 
 							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
-						VALUES (0,'$id_envio',1,1,1,4,'$fecha_date','$fecha_datetime','$marca','4','ENTREGA EFECTIVA',NULL) ";
+						VALUES (0,'$id_envio',4,'$id_zona','$id_mensajero','$id_usr','$fecha_date','$fecha_datetime','$marca','4','ENTREGA EFECTIVA',NULL) ";
 				 
 				$stmt_i= $db->preparar($ing);
 
@@ -951,7 +952,7 @@ class model_con extends Db
 		}
 		elseif($msj_u > 0 && $msj_i > 0 && $msj_l1 > 0){
 			$msj="Insertado";
-			
+
 			//Actualizamos el encabezado al final
 			$upd_l2="UPDATE rastreo.manifiesto
 						SET estado=2
@@ -974,7 +975,109 @@ class model_con extends Db
 		return $msj;
 	}
 
+	public function procesar_DV($numid,$posicion,$id_motivo)
+	{
+		$db=Db::getInstance();
+		session_start();
+		$fecha_date		=date('Y/m/d');
+		$fecha_datetime	=date('Y/m/d H:i:s');
+		$id_usr			=$_SESSION['cod_user'];
+		$id_cli         =$_SESSION['shi_codigo'];
+		$marca     	 	=time();
+		$estado     	=1;
+		$existe_vineta  =0;
 
+		//Buscamos si existe una vineta apta para DV  -
+		$sql="SELECT ml.*, g.id_guia,m.id_zona,m.id_mensajero
+				FROM manifiesto m 
+				INNER JOIN manifiesto_linea ml
+				ON m.n_manifiesto=ml.n_manifiesto
+				INNER JOIN guia g
+				ON ml.id_envio=g.id_envio
+				WHERE m.n_manifiesto='$numid'
+				AND ml.posicion='$posicion'
+				AND ml.id_chk=3
+				AND ml.estado=1";
+
+		$stmt= $db->consultar($sql);
+		while ($row=$stmt->fetch(PDO::FETCH_NUM))
+		{
+			$id_linea		=$row[0];
+			$n_manifiesto	=$row[1];
+			$posicion		=$row[2];
+			$id_chk			=$row[3];
+			$estado			=$row[4];
+			$id_envio		=$row[5];
+			$id_guia		=$row[6];
+			$id_zona        =$row[7];
+			$id_mensajero   =$row[8];
+
+			$existe_vineta  = 1;
+		}
+
+		//Por id manifiesto y posicion actualizamo
+		if($existe_vineta==1){
+			//ACtualizamos el estado de la posicion en especifico del manifieso
+			$upd="UPDATE rastreo.manifiesto_linea
+					SET id_chk=5,estado=2
+					WHERE n_manifiesto='$numid'
+					AND posicion=$posicion
+					AND id_chk=3
+					AND  estado=1";
+
+			$stmt_u= $db->preparar($upd);
+	
+			//print_r($stmt);
+			if($stmt_u->execute()){
+				$msj_u="Ingresado";
+			}else{
+				$msj_u="Error Update manifiesto_linea".$numid."+".$posicion;
+			}
+	
+			//ACtualizamos el estado de la guia
+			$upd_g="UPDATE rastreo.guia
+						SET estado=6
+					WHERE id_guia='$id_guia'
+					AND  estado=4";
+
+			$stmt_g= $db->preparar($upd_g);
+	
+			//print_r($stmt);
+			if($stmt_g->execute()){
+				$msj_g="Ingresado";
+			}else{
+				$msj_g="Error Update guia".$numid."+".$posicion;
+			}
+
+			//Luego se inserta el AR (Arribo) en movimiento
+			$ing="INSERT INTO rastreo.movimiento 
+						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
+					VALUES (0,'$id_envio',5,'$id_zona','$id_mensajero','$id_usr','$fecha_date','$fecha_datetime','$marca','$id_motivo','DEVOLUCION',NULL) ";
+
+			$stmt_i= $db->preparar($ing);
+
+			//print_r($stmt);
+			if($stmt_i->execute()){
+				$msj_i="Ingresado";
+			}
+			else{
+				$msj_i="Error Insert Orden".$id_orden;
+			}
+		}
+		
+		if($existe_vineta==0){
+			$msj="Existe";
+		}
+		elseif($msj_u =='Ingresado' && $msj_i =='Ingresado' && $msj_g =='Ingresado'){
+			$msj="Insertado";
+		}
+		else{
+			$msj="Error";
+		}
+
+		//echo $msj;
+		return $msj;
+	}
 
 
 

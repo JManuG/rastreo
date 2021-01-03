@@ -49,6 +49,13 @@ date_default_timezone_set('America/El_Salvador');
         <p>Entregas - DL</p>
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=dv'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Devoluciones - DV</p>
+      </a>
+    </li>
   
   </ul>
 </li>

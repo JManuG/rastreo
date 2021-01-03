@@ -512,6 +512,37 @@ function procesarDL(numid)
   })
 }
 
+function procesarDV(numid,posicion,id_motivo)
+{
+  var datos_origen={
+    "numid":numid,
+    "posicion":posicion,
+    "id_motivo":id_motivo
+  };
+  $.ajax({
+    data:datos_origen,
+    url:'../sistema/prg/proc_DV.php',
+    type: 'post',
+    beforeSend: function(){
+      //$("#respuesta").html("procesando");
+      //$('.submitBtn').attr("disabled","disabled");
+    },
+    success: function (response){
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        $('#respuesta').html('<span style="color:green;"><b>Devolucion '+ numid +' - '+ posicion +' Procesada Correctamente.</b></span>');
+        $('#numid').val('');
+        $('#posicion').val('');
+      }else
+      {
+        $("#respuesta").html('<span style="color:red;">Devolucion <b>'+ numid +' - '+ posicion +'</b> no procesado <br> Error: <b>'+res[1] +'</b></span></p>');
+      }
+    }
+  })
+}
+
 function recargarTab(){
   location.reload(); 
 }
