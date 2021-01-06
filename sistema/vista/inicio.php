@@ -91,7 +91,7 @@
     <a href="." class="brand-link bg-navy">
       <img src="vista/imgs/envia_blanco.png" alt="Envia" class="brand-image-xs elevation-4"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Can&iacute;z Env&iacute;a</span>
+      <span class="brand-text font-weight-light">Env&iacute;aGT</span>
     </a>
 
     <!-- Sidebar -->

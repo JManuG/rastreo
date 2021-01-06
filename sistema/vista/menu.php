@@ -70,9 +70,9 @@ date_default_timezone_set('America/El_Salvador');
   </a>
   <ul class="nav nav-treeview">
     <li class="nav-item">
-      <a class="nav-link" href='index.php?prc=guia&accion=ingreso'>
+      <a class="nav-link" href='index.php?prc=movimientos'>
         <i class="far fa-circle nav-icon"></i>
-        <p>Ingreso de Gu&iacute;as</p>
+        <p>Consulta de movimientos</p>
       </a>
     </li>
 
@@ -84,16 +84,16 @@ date_default_timezone_set('America/El_Salvador');
   <a href="#" class="nav-link">
     <i class="nav-icon far fa-plus-square"></i>
     <p>
-      Reportes
+      Reportes e Informes
       <i class="fas fa-angle-left right"></i>
     </p>
   </a>
   <ul class="nav nav-treeview">
 
     <li class="nav-item">
-      <a class="nav-link" href='index.php?prc=guia&accion=ingreso'>
+      <a class="nav-link" href='index.php?prc=informe1'>
         <i class="far fa-circle nav-icon"></i>
-        <p>Ingreso de Gu&iacute;as</p>
+        <p>Informe general</p>
       </a>
     </li>
 
