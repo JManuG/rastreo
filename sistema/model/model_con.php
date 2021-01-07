@@ -549,8 +549,8 @@ class model_con extends Db
 		$id_usr			=$_SESSION['cod_user'];
 		$marca     	 	=time();
 		$estado     	=1;
-		$cont_u     	=0;
-		$cont_i     	=0;
+		$cont_u     	=1;
+		$cont_i     	=1;
 
 		//Buscamos primero los registros aptos para actualziar
 		$sql="SELECT *
@@ -581,7 +581,7 @@ class model_con extends Db
 					SET id_orden='$id_orden', estado=2
 					WHERE id_guia='$id_guia'
 					AND  estado=1";
-
+			//echo $upd;
 			$stmt_u= $db->preparar($upd);
 	
 			//print_r($stmt);
@@ -595,7 +595,7 @@ class model_con extends Db
 			$ing="INSERT INTO rastreo.movimiento 
 							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
 					VALUES (0,'$id_guia',1,1,1,4,'$fecha_date','$fecha_datetime','$marca','1','INGRESO',NULL) ";
-
+			//echo "<br><br>".$ing;
 			$stmt_i= $db->preparar($ing);
 
 			//print_r($stmt);
@@ -842,9 +842,9 @@ class model_con extends Db
 		$id_usr			=$_SESSION['cod_user'];
 		$id_cli         =$_SESSION['shi_codigo'];
 		$marca     	 	=time();
-		$cont_u     	=0;
-		$cont_i     	=0;
-		$cont_m			=0;
+		$cont_u     	=1;
+		$cont_i     	=1;
+		$cont_m			=1;
 		$existe_numid   =0;
 
 		//Buscamos si existe una vineta apta para DL 

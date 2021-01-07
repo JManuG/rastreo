@@ -543,10 +543,16 @@ function procesarDV(numid,posicion,id_motivo)
   })
 }
 
+function generarVinetas()
+{
+
+}
+
 function recargarTab(){
   location.reload(); 
 }
 
-function test(numid,id_zona){
-  alert ("Hola Mundo "+numid +" - "+id_zona );
+function test(){
+  console.log('aqui');
+  alert ("Hola Mundo ");
 }

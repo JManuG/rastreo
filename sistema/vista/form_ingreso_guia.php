@@ -63,6 +63,14 @@
                 <div class="form-group">
                   <label for="vineta">Vi&ntilde;eta</label>
                   <input type="text" class="form-control" id="vineta" name='vineta' placeholder="vi&ntilde;eta">
+
+                  <div role="form" id="form" name="form" method="post">
+                  <div class="card-footer">
+                <button type="button" class="btn btn-outline-dark" onclick="test()">
+                  Generar Vi&ntilde;eta
+                </button>   <font color='red'></font>
+              </div>
+              </div>
                 </div>
 
               </div>
