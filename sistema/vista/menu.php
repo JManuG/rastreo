@@ -8,7 +8,7 @@ date_default_timezone_set('America/El_Salvador');
 <!--Menu Procesos-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
-    <i class="nav-icon far fa-plus-square"></i>
+    <i class="nav-icon fas fa-ellipsis-h"></i>
     <p>
       Procesos
       <i class="fas fa-angle-left right"></i>
@@ -62,7 +62,7 @@ date_default_timezone_set('America/El_Salvador');
 <!--Menu Consultas-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
-    <i class="nav-icon far fa-plus-square"></i>
+    <i class="nav-icon fas fa-search "></i>
     <p>
       Consultas
       <i class="fas fa-angle-left right"></i>
@@ -82,7 +82,7 @@ date_default_timezone_set('America/El_Salvador');
 <!--Menu Reportes-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
-    <i class="nav-icon far fa-plus-square"></i>
+    <i class="nav-icon far fa-copy"></i>
     <p>
       Reportes e Informes
       <i class="fas fa-angle-left right"></i>
@@ -103,7 +103,7 @@ date_default_timezone_set('America/El_Salvador');
 <!--Menu Mantenimientos-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
-    <i class="nav-icon far fa-plus-square"></i>
+    <i class="nav-icon far fa-edit"></i>
     <p>
       Mantenimiento
       <i class="fas fa-angle-left right"></i>

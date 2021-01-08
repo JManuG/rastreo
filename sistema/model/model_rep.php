@@ -1,6 +1,6 @@
 <?php
 
-//model model_con
+//model model_rep
 //0430080126
 //
 ini_set('post_max_size', '100M');
@@ -21,14 +21,19 @@ class model_rep extends Db
     {
         $db=Db::getInstance();
 
-        $sql_c = "SELECT m.id_chk,c.chk_descripcion, count(m.id_movimiento) as cantidad FROM `movimiento` m, chk_id c where m.fecha_date between '$date1' and '$date2' ";
+        $sql_c = "
+SELECT m.id_chk,c.chk_descripcion, count(m.id_movimiento) as cantidad FROM `movimiento` m inner join chk_id c on m.id_chk=c.id_chk where m.fecha_date between '$date1' and '$date2' group by 1,2 
+ ";
 
         $c= $db->consultar($sql_c);
         while ($row=$c->fetch(PDO::FETCH_OBJ))
         {
             $data[] = $row;
         }
-    return $data;
+        if(!empty($data)) {
+            return $data;
+        }else
+            return $sql_c;
     }
 
 }
