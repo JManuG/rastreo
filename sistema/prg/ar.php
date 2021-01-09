@@ -2,16 +2,18 @@
 //ini_set ("display_errors","1" );
 //error_reporting(E_ALL);
 include('../model/model_con.php');
-$vineta = $_POST["id_vineta"];
+$vineta = 666;
 echo "# ".$vineta;
 $db = new model_con();
 
 $consulta = $db->consulta_vineta($vineta);
+echo '<pre>';
 print_r($consulta);
+echo '</pre>';
 while ($rowd=$consulta)
 {
     $id_guia        =$rowd[0];
-    echo $id_guia." Guia";
+    //echo $id_guia." Guia";
     $id_envio       =$rowd[1];
     $ori_ccosto     =$rowd[2];
     $des_ccosto     =$rowd[3];

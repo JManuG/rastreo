@@ -1079,6 +1079,58 @@ class model_con extends Db
 		return $msj;
 	}
 
+    public function consulta_correlativo(){
+        $db=Db::getInstance();
+        session_start();
+        $msg="";
+
+        $usr    =$_SESSION['cod_user'];
+        $id_cli =$_SESSION['shi_codigo'];
+	
+  	    $sql = "SELECT *
+					FROM rastreo.correlativo 
+                    WHERE id_cli='$id_cli'
+                    AND estado=1";
+		//echo $sql;
+		$stmt= $db->consultar($sql);
+		while ($row=$stmt->fetch(PDO::FETCH_NUM))
+		{
+			$id_correlativo = $row[0];
+			$id_cli			= $row[1];
+			$seq_ini        = $row[2];
+			$seq_fin        = $row[3];
+			$seq            = $row[4];
+			$estado         = $row[5];
+			$seq_new        = $seq+1;
+		}
+
+		if($seq_new > $seq_ini && $seq_new < $seq_fin){
+			//Actualizamos el nuevo registro seq en la tabla
+			$upd="UPDATE rastreo.correlativo
+					SET seq=$seq_new
+					WHERE id_cli='$id_cli'
+                    AND estado=1 ";
+
+			$stmt_u= $db->preparar($upd);
+
+			//print_r($stmt);
+			if($stmt_u->execute()){
+				$msj_u="Ingresado";
+			}
+			else{
+				$msj_u="Error Actualizando proc_GeneraVineta";
+			}
+
+			$result = $seq_new;
+		}else{
+			$result="Error";
+		}
+		
+		//echo $sql;
+		return $result;
+	}
+
+
 
 
 

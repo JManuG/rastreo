@@ -167,5 +167,4 @@ class model_tab extends Db
 		//echo $sql;
 		return $stmt;
 	}
-
 }

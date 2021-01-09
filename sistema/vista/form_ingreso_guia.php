@@ -62,15 +62,15 @@
 
                 <div class="form-group">
                   <label for="vineta">Vi&ntilde;eta</label>
-                  <input type="text" class="form-control" id="vineta" name='vineta' placeholder="vi&ntilde;eta">
+                  <input type="text" class="form-control" id="vineta" name='vineta' placeholder="vi&ntilde;eta"  autocomplete="off">
 
                   <div role="form" id="form" name="form" method="post">
-                  <div class="card-footer">
-                <button type="button" class="btn btn-outline-dark" onclick="test()">
-                  Generar Vi&ntilde;eta
-                </button>   <font color='red'></font>
-              </div>
-              </div>
+                    <div class="card-footer">
+                      <button id="boton_v" type="button" class="btn btn-outline-dark" onclick="generarVinetas()">
+                      Generar Vi&ntilde;eta
+                      </button>   <div id="div_msj">  </div>
+                    </div>
+                  </div>
                 </div>
 
               </div>

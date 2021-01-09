@@ -22,6 +22,8 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,vineta
         $('#destinatario').focus();
         $('#descripcion').val('');
         $('#vineta').val('');
+        $('#vineta').attr('readonly',false);
+        $('#boton_v').attr("disabled", false);
 
         $("#respuesta").html('<span style="color:green;"><b>'+ res[1]+' </b></span>');
       }else
@@ -545,7 +547,27 @@ function procesarDV(numid,posicion,id_motivo)
 
 function generarVinetas()
 {
-
+  var datos_origen;
+  $.ajax({
+    data:datos_origen,
+    url:'../sistema/prg/proc_GeneraVineta.php',
+    type: 'post',
+    beforeSend: function(){
+    },
+    success: function (response){
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        $('#vineta').val(res[1]);
+        $('#vineta').attr('readonly',true);
+        $('#boton_v').attr("disabled", true);
+      }else{
+        $('#vineta').val(res[1]);
+        $("#div_msj").html('<span style="color:red;"><b>'+res[1] +'</b></span></p>');
+      }
+    }
+  })
 }
 
 function recargarTab(){
@@ -553,6 +575,21 @@ function recargarTab(){
 }
 
 function test(){
-  console.log('aqui');
-  alert ("Hola Mundo ");
+  //console.log('aqui');
+  //alert ("Hola Mundo ");
+  var datos_origen;
+  $.ajax({
+    data:datos_origen,
+    url:'../sistema/prg/proc_GeneraVineta.php',
+    type: 'post',
+    beforeSend: function(){
+      //$("#respuesta").html("procesando");
+      //$('.submitBtn').attr("disabled","disabled");
+    },
+    success: function (response){
+      
+        $('#vineta').val('666');
+     
+    }
+  })
 }
