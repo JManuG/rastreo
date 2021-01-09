@@ -1,3 +1,25 @@
+
+
+<!-- jQuery -->
+<script src="vista/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="vista/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="vista/plugins/chart.js/Chart.min.js"></script>
+<!-- AdminLTE App -->
+<script src="vista/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<!--<script src="vista/dist/js/demo.js"></script>-->
+<!-- daterange picker -->
+<link rel="stylesheet" href="vista/plugins/daterangepicker/daterangepicker.css">
+<!-- InputMask -->
+<script src="vista/plugins/moment/moment.min.js"></script>
+<script src="vista/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- date-range-picker -->
+<script src="vista/plugins/daterangepicker/daterangepicker.js"></script>
+
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -9,13 +31,38 @@
         </div>
         <div class="col-sm-12">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">ChartJS</li>
+            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+            <li class="breadcrumb-item active">Informe General</li>
           </ol>
         </div>
       </div>
     </div><!-- /.container-fluid -->
   </section>
+
+
+
+  <div class=" col-sm-10 card-navy">
+    <div class="row mb-2">
+    <div class="col-sm-4">
+
+
+
+
+      <label>Selecciona el periodo:</label>
+      <div class="input-group-prepend">
+
+        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+        <input type="text" name="daterange"  class="form-control float-right" value="01/01/2018 - 01/15/2018" />
+      </div>
+
+
+    </div>
+
+
+    </div>
+
+  </div>
+
 
   <!-- Main content -->
   <section class="content">
@@ -64,28 +111,26 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="vista/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="vista/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="vista/plugins/chart.js/Chart.min.js"></script>
-<!-- AdminLTE App -->
-<script src="vista/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="vista/dist/js/demo.js"></script>
 <!-- Page specific script -->
 
   <script>
     $(document).ready(function () {
-    showGraph();
+    //showGraph();
   });
 
 
-    function showGraph()
+    $(function() {
+      $('input[name="daterange"]').daterangepicker({
+        opens: 'left'
+      }, function(start, end) {
+        showGraph(start.format('YYYY-MM-DD'),end.format('YYYY-MM-DD'));
+      });
+    });
+
+    function showGraph(f1,f2)
     {
       {
-        $.post("prg/datainforme1.php",
+        $.post("prg/datainforme1.php?f1="+f1+"&f2="+f2,
           function (data)
           {
             console.log(data);
