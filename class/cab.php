@@ -622,7 +622,8 @@ if($shi_codigo=='000591')
 		$sql_c = "SELECT *
 					FROM centro_costo
 					WHERE cli_id='$shi_codigo'
-					AND ccosto_estado=1";
+					AND ccosto_estado=1
+					AND char1 IS NULL";
 
 		$datos= $bd->consultar($sql_c);
 
@@ -649,11 +650,12 @@ if($shi_codigo=='000591')
 		$sql_c = "SELECT *
 					FROM centro_costo
 					WHERE cli_id='$shi_codigo'
-					AND ccosto_estado=1";
+					AND ccosto_estado=1
+					ANd char1 IS NULL";
 
 		$datos= $bd->consultar($sql_c);
 
-		$retorno ="<select name='id_ccosto' id='id_ccosto' class=\"form-control\">
+		$retorno ="<select name='id_ccosto' id='id_ccosto' class=\"form-control\" onchange='changeCCostoDes()'>
 						<option value=''>-</option>";
 
 		$c= $bd->consultar($sql_c);
@@ -677,7 +679,8 @@ if($shi_codigo=='000591')
 		$sql_c = "SELECT *
 					FROM agencia
 					WHERE cli_id='$shi_codigo'
-					AND agencia_estado=1";
+					AND agencia_estado=1
+					AND char1 IS NULL";
 
 		$retorno ="<select name='id_agencia' id='id_agencia' class=\"form-control\" onchange='changeAgencia()'>
 					<option value=''>-</option>";
@@ -857,6 +860,31 @@ if($shi_codigo=='000591')
 					AND m.id_mensajero !=1";
 
 		$retorno ="<select name='id_mensajero' id='id_mensajero' class=\"form-control\" readonly>
+					<option value=''>-</option>";
+
+		$c= $bd->consultar($sql_c);
+		
+		while ($row=$c->fetch(PDO::FETCH_NUM)){
+			$retorno .="<option value='".$row[0]."'>".$row[0]." ".$row[1]."</option>";
+		}
+		
+		$retorno .="</select>";
+
+		return $retorno;
+	}
+
+	function select_categoria()
+	{
+		@session_start();
+        $bd=Db::getInstance();
+		$shi_codigo=$_SESSION['shi_codigo'];
+		
+		$sql_c = "SELECT m.* 
+					FROM categoria m 
+					WHERE m.id_cli='$shi_codigo'
+					AND m.estado=1";
+
+		$retorno ="<select name='id_cat' id='id_cat' class=\"form-control\">
 					<option value=''>-</option>";
 
 		$c= $bd->consultar($sql_c);

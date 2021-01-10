@@ -11,7 +11,7 @@ $db=new model_tab();
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Orden de Servicio</h1>
+          <h1>Orden de Servicio </h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -51,7 +51,7 @@ $db=new model_tab();
                         </thead>
                         <tbody id="developers">
                         <?php 
-                            $id_ccosto = $_SESSION['ccosto_codigo'];
+                            $id_ccosto = $_SESSION['ccosto'];
                             $sql=$db->consulta_vineta_tabla($id_ccosto);
                             while ($row=$sql->fetch(PDO::FETCH_NUM))
                             { 

@@ -1,10 +1,13 @@
-function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,vineta){
+function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,vineta,tipo_envio,des_direccion,id_cat){
   var datos_origen={
     "ccosto_ori":ccosto_ori,
     "id_ccosto":id_ccosto,
     "destinatario":destinatario,
     "descripcion":descripcion,
-    "vineta":vineta
+    "vineta":vineta,
+    "tipo_envio":tipo_envio,
+    "des_direccion":des_direccion,
+    "id_cat":id_cat
   };
   $.ajax({
     data:datos_origen,
@@ -21,6 +24,7 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,vineta
         $('#destinatario').val('');
         $('#destinatario').focus();
         $('#descripcion').val('');
+        $('#des_direccion').val('');
         $('#vineta').val('');
         $('#vineta').attr('readonly',false);
         $('#boton_v').attr("disabled", false);
@@ -269,6 +273,30 @@ function changeCCosto()
   });
 }
 
+function changeCCostoDes()
+{
+  var id_ccosto = $("#id_ccosto").val();
+
+  $.ajax({
+    type: "POST",
+    data: {id_ccosto:id_ccosto},
+    url: "../sistema/prg/selects/changeCCosto.php",
+    cache: false,
+    success: function (response){
+      //alert(response);return false;
+      var str = response;
+      var res = str.split("+");
+      if(res[0]==200)
+      { 
+
+        $('#des_direccion').val(res[6]);
+        $('input[id$=destinatario]').focus();
+
+      }
+      //$("#nombre_agencia").val(response);
+    }
+  });
+}
 function changeZona()
 {
   var id_zona = $("#id_zona").val();

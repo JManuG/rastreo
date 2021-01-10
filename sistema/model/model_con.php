@@ -16,7 +16,7 @@ class model_con extends Db
 		$db=Db::getInstance();
 	}
 
-	public function registra_envio($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta)
+	public function registra_envio($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta,$tipo_envio,$des_direccion,$id_cat)
     {
 		$db=Db::getInstance();
 		session_start();
@@ -52,11 +52,12 @@ class model_con extends Db
 		
 		if(!empty($vin_anterior))
         {
-            $msg=" La vi&ntilde;eta ya existe...";
+            $msg=" La vi&ntilde;eta ya existe.";
         }else{
-
-    		$insert="INSERT INTO guia (id_guia, id_envio, ori_ccosto, des_ccosto, estado,id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, id_orden, barra, comentario,destinatario) 
-					VALUES($numero_guia,'$id_envio', '$ccosto_ori', '$ccosto_des', '1', '$usr', '$date1', '$date2', '$tiempo', '',0, '$orden','$vineta', '$descripcion','$destinatario')";
+			//char1 : Sera el campo que contiene el tipo de envio si es Externo o Interno
+			//Int1 : Sera el campo que tiene la categoria del envio 
+			$insert="INSERT INTO guia (id_guia, id_envio, ori_ccosto, des_ccosto, estado,id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, id_orden, barra, comentario,destinatario,des_direccion) 
+					VALUES($numero_guia,'$id_envio', '$ccosto_ori', '$ccosto_des', '1', '$usr', '$date1', '$date2', '$tiempo', '$tipo_envio','$id_cat', '$orden','$vineta', '$descripcion','$destinatario','$des_direccion')";
 	    	//echo $insert;
 		    $insert1= $db->consultar($insert);
         }
@@ -155,7 +156,7 @@ class model_con extends Db
 								cli_id, 
 								ccosto_codigo,
 								ccosto_nombre, 
-								centro_dirección, 
+								centro_direccion, 
 								ccosto_telefono, 
 								ccosto_estado, 
 								char1, 
@@ -186,7 +187,7 @@ class model_con extends Db
 			$sql="UPDATE rastreo.centro_costo
 					SET ccosto_codigo='$codigo_ccosto',
 						ccosto_nombre='$nombre_ccosto',
-						centro_dirección='$direccion_ccosto',
+						centro_direccion='$direccion_ccosto',
 						ccosto_telefono='$telefono_ccosto' 
 					WHERE id_ccosto='$id_ccosto'
 					AND ccosto_estado=1";
