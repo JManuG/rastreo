@@ -590,6 +590,7 @@ function generarVinetas()
         $('#vineta').val(res[1]);
         $('#vineta').attr('readonly',true);
         $('#boton_v').attr("disabled", true);
+        $("#div_msj").html('');
       }else{
         $('#vineta').val(res[1]);
         $("#div_msj").html('<span style="color:red;"><b>'+res[1] +'</b></span></p>');
