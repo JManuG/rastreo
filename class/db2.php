@@ -2,7 +2,7 @@
 /**
  * Clase encargada de la conexion
  * autor     Marvin Abrego
- * archivo   BDD informix
+ * archivo   BDD
  * fecha     20121213
  *
  **/
@@ -15,8 +15,8 @@ class dbh
 	private $stmt;
 	private $prep;
 	private $servidor='localhost';
-	private $usuario='root';
-	private $password='root';
+	private $usuario='root2';
+	private $password='1v341F1ca';
 	private $base_datos='rastreo';
 	private $link;
 	

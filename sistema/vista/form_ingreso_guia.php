@@ -46,23 +46,50 @@
                   <input type="hidden" id="ccosto_ori" name='ccosto_ori' value="<?php echo $_SESSION['ccosto']; ?>">
 
                 <div class="form-group">
-                  <label for="ccosto_des">Centro de costo destino</label>
-                  <?php echo select_ccosto(); ?>
+                  <label for="tipo_envio">Tipo env&iacute;o</label>
+                  <select name='tipo_envio' id='tipo_envio' class="form-control" >
+                    <option value='I'>INTERNO</option>
+                    <option value='E'>EXTERNO</option>
+                  </select>
+                </div>
+
+
+                <div class="form-group">
+                  <label for="id_ccosto">Centro de costo destino</label>
+                  <?php echo select_ccosto_simple(); ?>
                 </div>
 
                 <div class="form-group">
                   <label for="destinatario">Destinatario</label>
                   <input type="text" class="form-control" id="destinatario" name='destinatario' placeholder="Nombre del destinatario">
                 </div>
+                
+                <div class="form-group">
+                  <label for="des_direccion">Direcci&oacute;n</label>
+                  <input type="text" class="form-control" id="des_direccion" name='des_direccion' placeholder="Direccion del destinatario">
+                </div>
 
                 <div class="form-group">
-                  <label for="destinatario">Descripci&oacute;n del env&iacute;o</label>
+                  <label for="descripcion">Descripci&oacute;n del env&iacute;o</label>
                   <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripci&oacute;n">
                 </div>
 
                 <div class="form-group">
+                  <label for="id_cat">Categoria del env&iacute;o</label>
+                  <?php echo select_categoria(); ?>
+                </div>
+
+                <div class="form-group">
                   <label for="vineta">Vi&ntilde;eta</label>
-                  <input type="text" class="form-control" id="vineta" name='vineta' placeholder="vi&ntilde;eta">
+                  <input type="text" class="form-control" id="vineta" name='vineta' placeholder="vi&ntilde;eta"  autocomplete="off">
+
+                  <div role="form" id="form" name="form" method="post">
+                    <div class="card-footer">
+                      <button id="boton_v" type="button" class="btn btn-outline-dark" onclick="generarVinetas()">
+                      Generar Vi&ntilde;eta
+                      </button>   <div id="div_msj">  </div>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -70,8 +97,14 @@
 
               <div class="card-footer">
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modal-default"
-                        onclick="procesarformulario(formulario.ccosto_ori.value,formulario.ccosto_des.value,
-                        formulario.destinatario.value,formulario.descripcion.value,formulario.vineta.value)">
+                        onclick="procesarformulario(formulario.ccosto_ori.value,
+                                                    formulario.id_ccosto.value,
+                                                    formulario.destinatario.value,
+                                                    formulario.descripcion.value,
+                                                    formulario.vineta.value,
+                                                    formulario.tipo_envio.value,
+                                                    formulario.des_direccion.value,
+                                                    formulario.id_cat.value)">
                   Registrar Env&iacute;o
                 </button>
               </div>

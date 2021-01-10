@@ -8,7 +8,7 @@ date_default_timezone_set('America/El_Salvador');
 <!--Menu Procesos-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
-    <i class="nav-icon far fa-plus-square"></i>
+    <i class="nav-icon fas fa-ellipsis-h"></i>
     <p>
       Procesos
       <i class="fas fa-angle-left right"></i>
@@ -21,13 +21,48 @@ date_default_timezone_set('America/El_Salvador');
         <p>Ingreso de Gu&iacute;as</p>
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=os'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Orden de Servicio</p>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=ar'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Arribo - AR</p>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=ld'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Salida a Ruta - LD</p>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=dl'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Entregas - DL</p>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=dv'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Devoluciones - DV</p>
+      </a>
+    </li>
   
   </ul>
 </li>
 <!--Menu Consultas-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
-    <i class="nav-icon far fa-plus-square"></i>
+    <i class="nav-icon fas fa-search "></i>
     <p>
       Consultas
       <i class="fas fa-angle-left right"></i>
@@ -35,9 +70,9 @@ date_default_timezone_set('America/El_Salvador');
   </a>
   <ul class="nav nav-treeview">
     <li class="nav-item">
-      <a class="nav-link" href='index.php?prc=guia&accion=ingreso'>
+      <a class="nav-link" href='index.php?prc=movimientos'>
         <i class="far fa-circle nav-icon"></i>
-        <p>Ingreso de Gu&iacute;as</p>
+        <p>Consulta de movimientos</p>
       </a>
     </li>
 
@@ -47,18 +82,18 @@ date_default_timezone_set('America/El_Salvador');
 <!--Menu Reportes-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
-    <i class="nav-icon far fa-plus-square"></i>
+    <i class="nav-icon far fa-copy"></i>
     <p>
-      Reportes
+      Reportes e Informes
       <i class="fas fa-angle-left right"></i>
     </p>
   </a>
   <ul class="nav nav-treeview">
 
     <li class="nav-item">
-      <a class="nav-link" href='index.php?prc=guia&accion=ingreso'>
+      <a class="nav-link" href='index.php?prc=informe1'>
         <i class="far fa-circle nav-icon"></i>
-        <p>Ingreso de Gu&iacute;as</p>
+        <p>Informe general</p>
       </a>
     </li>
 
@@ -68,7 +103,7 @@ date_default_timezone_set('America/El_Salvador');
 <!--Menu Mantenimientos-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
-    <i class="nav-icon far fa-plus-square"></i>
+    <i class="nav-icon far fa-edit"></i>
     <p>
       Mantenimiento
       <i class="fas fa-angle-left right"></i>

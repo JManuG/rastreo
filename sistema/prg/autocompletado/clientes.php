@@ -3,7 +3,6 @@ include('../../../class/db2.php');
 /* ini_set ("display_errors","1" );
  error_reporting(E_ALL);*/
 $q=11;
-//$dbm = new PDO("informix:; hostname=urbano30; database=paqueteria; server=urbano_sv;","informix","informix");
 $dbp=dbp::getInstance();
 session_start();
 $q = strtoupper($_GET["q"]);

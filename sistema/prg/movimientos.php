@@ -145,17 +145,6 @@ public function consulta_qr2($gui)
 <?php
 }
 
-
-
-
-
-
-
-
-
-
-
-
 public function consulta_cli($ref,$gui)
 {
 ?>
@@ -231,5 +220,27 @@ public function consulta_cli($ref,$gui)
 <?php
 
 }
+
+
+public function index(){
+    session_start();
+    if(!empty($_SESSION['cod_usuario']))
+    {
+        //require('../class/cab.php');
+        include('vista/inicio.php');
+        include('vista/movform.php');
+        ?>
+
+        <?php
+        include('vista/inicio_pie.php');
+    }
+    else
+    {
+        echo "Debes iniciar session";
+    }
+
+}
+
+
 }
 ?>
