@@ -2,7 +2,7 @@
 /**
  * Clase encargada de la conexion
  * autor     Marvin Abrego
- * archivo   BDD informix
+ * archivo   BDD
  * fecha     20121213
  *
  **/
@@ -14,9 +14,11 @@ class dbh
 	public $dbp;
 	private $stmt;
 	private $prep;
-	private $servidor='localhost';
-	private $usuario='root';
-	private $password='root';
+	//private $servidor='localhost';
+	//private $usuario='root2';
+	private $servidor='rastreo.mariadb.database.azure.com';
+    private $usuario='root2@rastreo';
+	private $password='1v341F1ca';
 	private $base_datos='rastreo';
 	private $link;
 	

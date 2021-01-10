@@ -7,12 +7,16 @@
  *
  *
  **/
+
+//ini_set ("display_errors","1" );
+//error_reporting(E_ALL);
+
 date_default_timezone_set('America/El_Salvador');
 class Db{
 	//Declarando los parametros de conexion todo privado para mayor control....
-	private $servidor='localhost';
-	private $usuario='root';
-	private $password='root';
+	private $servidor='rastreo.mariadb.database.azure.com';
+    private $usuario='root2@rastreo';
+    private $password='1v341F1ca';
 	private $base_datos='rastreo';
 	private $link;
 	private $stmt; 
@@ -36,18 +40,18 @@ class Db{
 		}
 		return self::$_instance;
 	}
-	
-	/*Aca inicia la magia este metodo es que permite la conexion a la BDD y 
+	/*Aca inicia la magia este metodo es que permite la conexion a la BDD y
 	es el que llama el constructor de la clase*/
    	private function conectar(){
 
         $dsn = 'mysql:host='.$this->servidor.';dbname='.$this->base_datos;
         $opciones = array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-        );
 
+        );
+//PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
         //$gbd = new PDO($dsn, $this->usuario, $this->password, $opciones);
-   	 	$this->link= new PDO($dsn, $this->usuario, $this->password);
+   	 	$this->link= new PDO($dsn, $this->usuario, $this->password,$opciones);
    	}
 	
 	/*
@@ -62,14 +66,19 @@ class Db{
 	public function consultar($sql){
 		//echo $sql;
         $stmt=$this->link->prepare($sql);
-		$stmt->execute();
+
+        $stmt->execute();
 		
 		return $stmt;
 
         //$stmt=$gbd->prepare($sql);
         //$stmt->execute();
 	}
-		
+
+    public function preparar($sql){
+        $stmt=$this->link->prepare($sql);
+        return $stmt;
+    }
 	//Método para obtener una fila de resultados de la sentencia sql
 	public function obtener_fila($stmt){
             return $stmt->fetch(PDO::FETCH_NUM);

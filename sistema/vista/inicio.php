@@ -6,6 +6,7 @@
   <title>Env&iacute;a de Guatemala</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link  rel="icon"   href="vista/imgs/favicon.ico" type="image/ico" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="vista/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -91,7 +92,7 @@
     <a href="." class="brand-link bg-navy">
       <img src="vista/imgs/envia_blanco.png" alt="Envia" class="brand-image-xs elevation-4"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Can&iacute;z Env&iacute;a</span>
+      <span class="brand-text font-weight-light">Env&iacute;aGT</span>
     </a>
 
     <!-- Sidebar -->

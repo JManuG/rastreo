@@ -2,7 +2,7 @@
 
 // ini_set ("display_errors","1" );
 // error_reporting(E_ALL);
-
+//echo "1";
 require_once ("lib/ajax/xajax_core/xajax.inc.php");
 require_once ("class/ajax/funciones.php");
 
@@ -16,7 +16,7 @@ $_SESSION['shi_codigo']="";// Unset session variables.
 $_SESSION['shi_nombre']="";// Unset session variables.
 session_destroy(); // End Session we created earlier.
 
-//$xajax->configure('debug',true);
+$xajax->configure('debug',true);
 
 $xajax->processRequest();
 
@@ -35,7 +35,7 @@ echo "<?xml version=\'1.0\' encoding=\'UTF-8\'?>";
     <title>Envía de Guatemala</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link  rel="icon"   href="sistema/vista/imgs/favicon.ico" type="image/ico" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="sistema/vista/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
