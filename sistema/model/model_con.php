@@ -594,8 +594,8 @@ class model_con extends Db
 
 			//Luego se inserta el PI (Pre Ingreso) en movimiento
 			$ing="INSERT INTO rastreo.movimiento 
-							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
-					VALUES (0,'$id_guia',1,1,1,4,'$fecha_date','$fecha_datetime','$marca','1','INGRESO',NULL) ";
+							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
+					VALUES (0,'$id_guia',1,1,1,'$id_usr','$fecha_date','$fecha_datetime','$marca','1','INGRESO',NULL) ";
 			//echo "<br><br>".$ing;
 			$stmt_i= $db->preparar($ing);
 
@@ -678,8 +678,8 @@ class model_con extends Db
 	
 			//Luego se inserta el AR (Arribo) en movimiento
 			$ing="INSERT INTO rastreo.movimiento 
-						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
-					VALUES (0,'$id_guia',1,1,1,4,'$fecha_date','$fecha_datetime','$marca','2','ARRIBO',NULL) ";
+						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
+					VALUES (0,'$id_guia',2,1,1,'$id_usr','$fecha_date','$fecha_datetime','$marca','2','ARRIBO',NULL) ";
 
 			$stmt_i= $db->preparar($ing);
 
@@ -806,7 +806,7 @@ class model_con extends Db
 	
 			//Luego se inserta LD (Salida a Ruta) en movimiento
 			$ing="INSERT INTO rastreo.movimiento 
-						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
+						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
 					VALUES (0,'$id_guia',3,'$id_zona','$id_mensajero','$id_usr','$fecha_date','$fecha_datetime','$marca','3','SALIDA A RUTA',NULL) ";
 
 			$stmt_i= $db->preparar($ing);
@@ -933,7 +933,7 @@ class model_con extends Db
 
 				//Luego se inserta el DL (Entrega Efectiva) en movimiento
 				$ing="INSERT INTO rastreo.movimiento 
-							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
+							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
 						VALUES (0,'$id_envio',4,'$id_zona','$id_mensajero','$id_usr','$fecha_date','$fecha_datetime','$marca','4','ENTREGA EFECTIVA',NULL) ";
 				 
 				$stmt_i= $db->preparar($ing);
@@ -1052,7 +1052,7 @@ class model_con extends Db
 
 			//Luego se inserta el AR (Arribo) en movimiento
 			$ing="INSERT INTO rastreo.movimiento 
-						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripción, movimientocol)
+						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
 					VALUES (0,'$id_envio',5,'$id_zona','$id_mensajero','$id_usr','$fecha_date','$fecha_datetime','$marca','$id_motivo','DEVOLUCION',NULL) ";
 
 			$stmt_i= $db->preparar($ing);
