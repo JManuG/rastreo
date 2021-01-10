@@ -18,7 +18,11 @@
 <!-- date-range-picker -->
 <script src="vista/plugins/daterangepicker/daterangepicker.js"></script>
 
+<script>
 
+  let hoy = new Date();
+
+</script>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -41,9 +45,9 @@
 
 
 
-  <div class=" col-sm-10 card-navy">
+  <div class=" col-sm-12 card-navy">
     <div class="row mb-2">
-    <div class="col-sm-4">
+    <div class="col-sm-6">
 
 
 
@@ -52,7 +56,7 @@
       <div class="input-group-prepend">
 
         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-        <input type="text" name="daterange"  class="form-control float-right" value="01/01/2018 - 01/15/2018" />
+        <input type="text" name="daterange"  class="form-control float-right" value=document.write(hoy) + - + document.write(hoy)/>
       </div>
 
 
@@ -144,6 +148,7 @@
 
             var chartdata = {
               labels: name,
+
               datasets: [
                 {
                   label: 'Punto de control',
@@ -160,7 +165,14 @@
 
             var barGraph = new Chart(graphTarget, {
               type: 'bar',
+              options: {
+                legend: {
+                  display: false,
+                }
+              },
               data: chartdata
+
+
             });
           });
       }

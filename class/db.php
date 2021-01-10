@@ -14,8 +14,8 @@
 date_default_timezone_set('America/El_Salvador');
 class Db{
 	//Declarando los parametros de conexion todo privado para mayor control....
-	private $servidor='localhost';
-    private $usuario='root2';
+	private $servidor='rastreo.mariadb.database.azure.com';
+    private $usuario='root2@rastreo';
     private $password='1v341F1ca';
 	private $base_datos='rastreo';
 	private $link;
@@ -47,10 +47,11 @@ class Db{
         $dsn = 'mysql:host='.$this->servidor.';dbname='.$this->base_datos;
         $opciones = array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-        );
 
+        );
+//PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
         //$gbd = new PDO($dsn, $this->usuario, $this->password, $opciones);
-   	 	$this->link= new PDO($dsn, $this->usuario, $this->password);
+   	 	$this->link= new PDO($dsn, $this->usuario, $this->password,$opciones);
    	}
 	
 	/*

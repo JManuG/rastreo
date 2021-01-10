@@ -6,6 +6,7 @@
   <title>Env&iacute;a de Guatemala</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link  rel="icon"   href="vista/imgs/favicon.ico" type="image/ico" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="vista/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
