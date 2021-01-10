@@ -39,7 +39,7 @@ function valida_usuario($form){
         $existe++;
         @session_start();
         $_SESSION['cod_usuario']=$usr;
-        $_SESSION['cod_user']   =$usr;
+        $_SESSION['cod_user']   =$row[0];
         $_SESSION['nivel']	    =$row[6];
         $_SESSION['depto']	    =$row[7];
         $_SESSION['shi_codigo']	=$row[4];

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="informe1.1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/model/model_rep.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/model/model_rep.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/prg/datainforme1.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/prg/datainforme1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/informe1.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/informe1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/menu.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lrOzb6MmesgRMqSTaoMF1lbzUe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/sistema/vista/plugins/sparklines/sparkline.js" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\rastreoMG\sistema\vista" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="" />
+      <created>1608352006529</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608352006529</updated>
+      <workItem from="1608352009853" duration="5824000" />
+      <workItem from="1608570733656" duration="12959000" />
+      <workItem from="1608741308922" duration="10254000" />
+      <workItem from="1608999619331" duration="7935000" />
+      <workItem from="1609342303301" duration="21096000" />
+      <workItem from="1609884549289" duration="23112000" />
+      <workItem from="1610139620073" duration="1503000" />
+    </task>
+    <task id="LOCAL-00001" summary="test1">
+      <created>1608352414484</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608352414484</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test1">
+      <created>1608352431387</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608352431387</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Corrección agencias">
+      <created>1608397677312</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608397677312</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Corrección formulario guias">
+      <created>1608668077408</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1608668077408</updated>
+    </task>
+    <task id="LOCAL-00005" summary="arv1">
+      <created>1608749397758</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608749397758</updated>
+    </task>
+    <task id="LOCAL-00006" summary="arv1">
+      <created>1608782836845</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1608782836846</updated>
+    </task>
+    <task id="LOCAL-00007" summary="arv2">
+      <created>1609007981080</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1609007981080</updated>
+    </task>
+    <task id="LOCAL-00008" summary="mov1">
+      <created>1609364545717</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1609364545717</updated>
+    </task>
+    <task id="LOCAL-00009" summary="mov1.1">
+      <created>1609547219633</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1609547219649</updated>
+    </task>
+    <task id="LOCAL-00010" summary="informe1">
+      <created>1609974494695</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1609974494695</updated>
+    </task>
+    <task id="LOCAL-00011" summary="informe1.1">
+      <created>1609975524055</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1609975524055</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test1" />
+    <MESSAGE value="Corrección agencias" />
+    <MESSAGE value="Corrección formulario guias" />
+    <MESSAGE value="arv1" />
+    <MESSAGE value="arv2" />
+    <MESSAGE value="mov1" />
+    <MESSAGE value="mov1.1" />
+    <MESSAGE value="informe1" />
+    <MESSAGE value="informe1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="informe1.1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/sistema/vista/funciones.js</url>
+          <line>220</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

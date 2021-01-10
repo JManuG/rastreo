@@ -1,0 +1,75 @@
+<?php
+session_start();
+class proc{
+
+    public function os(){
+        if(!empty($_SESSION['cod_usuario'])){
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/form_proc_os.php');
+            ?>
+            <?php
+            include('vista/inicio_pie.php');
+        }
+        else{
+            echo "Debes iniciar session";
+        }
+    }
+
+    public function ar(){
+        if(!empty($_SESSION['cod_usuario'])){
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/form_proc_ar.php');
+            ?>
+            <?php
+            include('vista/inicio_pie.php');
+        }
+        else{
+            echo "Debes iniciar session";
+        }
+    }
+
+    public function ld(){
+        if(!empty($_SESSION['cod_usuario'])){
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/form_proc_ld.php');
+            ?>
+            <?php
+            include('vista/inicio_pie.php');
+        }
+        else{
+            echo "Debes iniciar session";
+        }
+    }
+
+    public function dl(){
+        if(!empty($_SESSION['cod_usuario'])){
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/form_proc_dl.php');
+            ?>
+            <?php
+            include('vista/inicio_pie.php');
+        }
+        else{
+            echo "Debes iniciar session";
+        }
+    }
+
+    public function dv(){
+        if(!empty($_SESSION['cod_usuario'])){
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/form_proc_dv.php');
+            ?>
+            <?php
+            include('vista/inicio_pie.php');
+        }
+        else{
+            echo "Debes iniciar session";
+        }
+    }
+}
+?>

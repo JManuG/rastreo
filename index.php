@@ -2,7 +2,7 @@
 
 // ini_set ("display_errors","1" );
 // error_reporting(E_ALL);
-
+//echo "1";
 require_once ("lib/ajax/xajax_core/xajax.inc.php");
 require_once ("class/ajax/funciones.php");
 
