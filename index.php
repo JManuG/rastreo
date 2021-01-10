@@ -35,7 +35,7 @@ echo "<?xml version=\'1.0\' encoding=\'UTF-8\'?>";
     <title>Envía de Guatemala</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link  rel="icon"   href="sistema/vista/imgs/favicon.ico" type="image/ico" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="sistema/vista/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
