@@ -6,6 +6,34 @@ include('../model/model_mov.php');
 $db = new model_mov();
 
 $barra = $_POST['vineta'];
+
+//buscamos si existe la viñeta
+ //Enca Envio   
+ $sql_0=$db->mov_enca($barra);
+
+ $existe_mov=0;
+ while ($row_0=$sql_0->fetch(PDO::FETCH_NUM))
+ { 
+     $id_guia        =$row_0[0];
+     $id_envio       =$row_0[1];
+     $ori_ccosto     =$row_0[2];
+     $des_ccosto     =$row_0[3];
+     $estado         =$row_0[4];
+     $id_usr         =$row_0[5];
+     $fecha_date     =$row_0[6];
+     $fecha_datetime =$row_0[7];
+     $tiempo         =$row_0[8];
+     $tipo_envio     =$row_0[9];
+     $categoria      =$row_0[10];
+     $id_orden       =$row_0[11];
+     $barra          =$row_0[12];
+     $comentario     =$row_0[13];
+     $destinatario   =$row_0[14];
+     $des_direccion  =$row_0[15];
+     $existe_mov     =1;
+ }
+
+ if($existe_mov==1){
 ?>
 <!-- Main content -->
 <section class="content">
@@ -18,10 +46,53 @@ $barra = $_POST['vineta'];
                 <!-- The time line -->
                 <div class="timeline">
                     <!-- timeline item -->
-                    <?php ?>
+                    <?php
+                    
+                    //Consulta para el TimeLine
+                    $sql_1=$db->mov_tl($barra);
+                    
+                    while ($row_1=$sql_1->fetch(PDO::FETCH_NUM))
+                    {
+                        $id_envio   =$row_1[1];
+                        $PI         =$row_1[2];
+                        $AR         =$row_1[3];
+                        $LD         =$row_1[4];
+                        $DL         =$row_1[5];
+                        $DV         =$row_1[6];
+
+                        if($PI > 0){
+                            $param_pi="fa-check bg-green";
+                        }else{
+                            $param_pi="fa-circle-thin bg-white";    
+                        }
+
+                        if($AR > 0){
+                            $param_ar="fa-check bg-green";    
+                        }else{
+                            $param_ar="fa-circle-thin bg-white";
+                        }
+
+                        if($LD > 0){
+                            $param_ld="fa-check bg-green";    
+                        }else{
+                            $param_ld="fa-circle-thin bg-white";
+                        }
+
+                        if($DL > 0){
+                            $param_final="fa-check bg-green";
+                            $des_final="Entrega";
+                        }elseif($DV > 0){
+                            $param_final="fa-check bg-green";
+                            $des_final="Devoluci&oacute;n";
+                        }else{
+                            $param_final="fa-circle-thin bg-white";
+                            $des_final="Entrega";   
+                        }
+                    }
+                    ?>
 
                     <div>
-                        <i class="fas fa-check bg-green"></i>
+                        <i class="fas <?php echo $param_pi;?>"></i>
                         <div class="timeline-item">
                             <h3 class="timeline-header"><a href="#">Solicitud de Env&iacute;o</a></h3>
                         </div>
@@ -29,7 +100,7 @@ $barra = $_POST['vineta'];
                     <!-- END timeline item -->
                     <!-- timeline item -->
                     <div>
-                        <i class="fas fa-check bg-green"></i>
+                        <i class="fas <?php echo $param_ar;?>"></i>
                         <div class="timeline-item">
                             <h3 class="timeline-header noborder-"><a href="#">Ingreso</a></h3>
                         </div>
@@ -37,7 +108,7 @@ $barra = $_POST['vineta'];
                     <!-- END timeline item -->
                     <!-- timeline item -->
                     <div>
-                        <i class="fas fa-circle-thin bg-white"></i>
+                        <i class="fas <?php echo $param_ld;?>"></i>
                         <div class="timeline-item">
                             <h3 class="timeline-header "><a href="#">Salida a Ruta</a></h3>
                         </div>
@@ -45,9 +116,9 @@ $barra = $_POST['vineta'];
                     <!-- END timeline item -->
                     <!-- timeline item -->
                     <div>
-                        <i class="fas fa-circle-thin bg-white"></i>
+                        <i class="fas <?php echo $param_final;?>"></i>
                         <div class="timeline-item">
-                            <h3 class="timeline-header no-border"><a href="#">Entrega</a></h3>
+                            <h3 class="timeline-header no-border"><a href="#"><?php echo $des_final;?></a></h3>
                         </div>
                     </div>
                     <?php ?>
@@ -93,31 +164,6 @@ $barra = $_POST['vineta'];
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-        
-                <?php
-                    //Enca Envio
-                    $sql_0=$db->mov_enca($barra);
-
-                    while ($row_0=$sql_0->fetch(PDO::FETCH_NUM))
-                    { 
-                        $id_guia        =$row_0[0];
-                        $id_envio       =$row_0[1];
-                        $ori_ccosto     =$row_0[2];
-                        $des_ccosto     =$row_0[3];
-                        $estado         =$row_0[4];
-                        $id_usr         =$row_0[5];
-                        $fecha_date     =$row_0[6];
-                        $fecha_datetime =$row_0[7];
-                        $tiempo         =$row_0[8];
-                        $tipo_envio     =$row_0[9];
-                        $categoria      =$row_0[10];
-                        $id_orden       =$row_0[11];
-                        $barra          =$row_0[12];
-                        $comentario     =$row_0[13];
-                        $destinatario   =$row_0[14];
-                        $des_direccion  =$row_0[15];
-                    }
-                ?>
                  <div class="row mb-12">
                     <div class="col"><b>ORDEN: </b><?php echo " ".$id_orden;?></div>
                     <div class="col"><b>VI&Ntilde;ETA: </b><?php echo " ".$barra;?></div>
@@ -207,3 +253,19 @@ $barra = $_POST['vineta'];
           <!-- /.card -->
         </div>
 </div>
+<?php 
+ }else{
+?>
+
+<div class="card-body">
+    <div class="row mb-12">
+        <div class="col"><font color='red'>VI&Ntilde;ETA CONSULTADA NO REGISTRADA EN SISTEMA</font></div>
+    </div>
+    <div class="row mb-12">
+        <div class="col"><a href="index.php?prc=movimientos">Retornar</a></div>     
+    </div>
+    <br>
+</div>
+<?php
+ }
+?>
