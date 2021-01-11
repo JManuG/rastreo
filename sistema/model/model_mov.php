@@ -99,26 +99,18 @@ class model_mov extends Db
         $orden=1;
         $existe_usr=0;
 
-		$sql = "SELECT m.id_movimiento,
-						m.id_envio,
-						m.id_chk,
-						m.descripcion,
-						m.id_zona,
-						m.id_mensajero,
-						m.id_usr,
-						m.fecha_date,
-						m.fecha_datetime,
-						fn_ccostoNombre(g.ori_ccosto) as ori_ccosto,
-						fn_ccostoNombre(g.des_ccosto) as des_ccosto,
-						g.id_orden,
+		$sql = "SELECT
 						g.barra,
-						g.destinatario,
-						g.des_direccion,
-						g.comentario
-				FROM rastreo.movimiento m
-				INNER JOIN rastreo.guia g
-				ON g.id_guia=m.id_envio
-				WHERE g.barra='100006'";
+        				m.id_envio,
+						COUNT(IF(m.id_chk=1, id_chk,NULL)) AS PI,
+        				COUNT(IF(m.id_chk=2, id_chk,NULL)) AS AR,
+        				COUNT(IF(m.id_chk=3, id_chk,NULL)) AS LD,
+        				COUNT(IF(m.id_chk=4, id_chk,NULL)) AS DL,
+        				COUNT(IF(m.id_chk=5, id_chk,NULL)) AS DV
+				FROM rastreo.guia g
+				INNER JOIN rastreo.movimiento m
+				ON g.id_envio=m.id_envio
+				WHERE g.barra=$barra";
 
 		$stmt=$db->consultar($sql);
 		//echo $sql;

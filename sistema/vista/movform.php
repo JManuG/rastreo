@@ -27,8 +27,7 @@
           <div class="col-md-6">
             <form id="buscar" name="buscar" method="post">
               <div class="input-group">
-                <input type="search" id='vineta' class="form-control form-control-lg" placeholder="Consulta el env&iacute;o aqu&iacute;"
-                >
+                <input type="search" id='vineta' class="form-control form-control-lg" placeholder="Consulta el env&iacute;o aqu&iacute;" autocomplete="off">
                 <div class="input-group-append">
                   <button type="button" class="btn btn-lg btn-default" onclick="buscarMovimientos(buscar.vineta.value)">
                     <i class="fa fa-search"></i>
@@ -42,6 +41,9 @@
     </section>
 
     <p></p>
+    <div id="content">
+      <!--Toda la data Aca-->
+    </div>
     <!--Hidden Form-->
     <div id="hiddenform" style="display: none;">
       <!--Toda la data Aca-->
