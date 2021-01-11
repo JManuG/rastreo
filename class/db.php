@@ -8,10 +8,10 @@
  *
  **/
 
-//ini_set ("display_errors","1" );
-//error_reporting(E_ALL);
+ini_set ("display_errors","1" );
+error_reporting(E_ALL);
 
-date_default_timezone_set('America/El_Salvador');
+//date_default_timezone_set('America/El_Salvador');
 class Db{
 	//Declarando los parametros de conexion todo privado para mayor control....
 	private $servidor='rastreo.mysql.database.azure.com';
