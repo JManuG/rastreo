@@ -38,6 +38,7 @@ function valida_usuario($form){
     while ($row=$bd->obtener_fila($stmt)){
         $existe++;
         @session_start();
+        echo "1";
         $_SESSION['cod_usuario']=$usr;
         $_SESSION['cod_user']   =$row[0];
         $_SESSION['nivel']	    =$row[6];
@@ -51,6 +52,7 @@ function valida_usuario($form){
         $_SESSION['ccosto_nombre']=$row[17];
     
         if($existe>0){
+            echo "2";
             //Terminando escritura de sesion
             session_write_close();
             //$respuesta->assign("mensaje","innerHTML",$_SESSION['nivel']);
@@ -62,6 +64,7 @@ function valida_usuario($form){
             $error_form="Usuario no Valido";
             $respuesta->assign("mensaje","innerHTML","<span class='textorojo_bold'>".$error_form."</span>");
         }
+        echo "3";
         return $respuesta;
     }
 }
