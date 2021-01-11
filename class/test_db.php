@@ -11,26 +11,15 @@ require 'db.php';
 /*Creamos la instancia del objeto. Ya estamos conectados*/
 $bd=Db::getInstance();
  echo "3";
- /*Creamos una consulta sencilla de los CHK*/
-$sql='SELECT cod_chk FROM chk';
- 
-/*Ejecutamos la consulta*/
-$stmt=$bd->consultar($sql);
-
-
- 
-/*Realizamos un bucle para ir obteniendo los resultados*/
-while ($row=$bd->obtener_fila($stmt,0)){
-	echo $row['cod_chk'].'<br />';
-}
 
 $sql_1="SELECT cod_usuario FROM usuario";
  
 $stmt=$bd->consultar($sql_1);
- 
+  echo "4";
 /*Realizamos un bucle para ir obteniendo los resultados*/
 while ($row=$bd->obtener_fila($stmt,0)){
+	 echo "5";
 	echo $row['cod_usuario'].'<br />';
 }
-
+ echo "6";
 ?>
