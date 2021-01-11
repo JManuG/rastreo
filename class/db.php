@@ -52,7 +52,7 @@ class Db{
 //PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
         //$gbd = new PDO($dsn, $this->usuario, $this->password, $opciones);
    	 	$this->link= new PDO($dsn, $this->usuario, $this->password);
-		echo $dsn;
+		//echo $dsn;
    	}
 	
 	/*
