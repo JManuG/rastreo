@@ -1,11 +1,10 @@
 <?php
-echo "a5";
 function valida_usuario($form){
     
-    ini_set ("display_errors","1" );
-    error_reporting(E_ALL);
+    //ini_set ("display_errors","1" );
+    //error_reporting(E_ALL);
     
-echo "0";
+//echo "0";
     
     $respuesta = new xajaxResponse();
     require 'class/db.php';
@@ -59,7 +58,7 @@ echo "0";
         $_SESSION['ccosto_nombre']=$row[17];
     
         if($existe>0){
-            echo "2";
+            //echo "2";
             //Terminando escritura de sesion
             session_write_close();
             //$respuesta->assign("mensaje","innerHTML",$_SESSION['nivel']);
@@ -71,7 +70,7 @@ echo "0";
             $error_form="Usuario no Valido";
             $respuesta->assign("mensaje","innerHTML","<span class='textorojo_bold'>".$error_form."</span>");
         }
-        echo "3";
+        //echo "3";
         return $respuesta;
     }
 }
