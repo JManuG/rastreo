@@ -43,7 +43,7 @@ $stmt=$bd->consultar($sql_1);
 /*Realizamos un bucle para ir obteniendo los resultados*/
 while ($row=$bd->obtener_fila($stmt,0)){
 	 echo "5";
-	echo $row['cod_usuario'].'<br />';
+	echo $row[0].'<br />';
 }
 print_r($row);
  echo "6";
