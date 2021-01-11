@@ -53,7 +53,8 @@ function valida_usuario($form){
         if($existe>0){
             //Terminando escritura de sesion
             session_write_close();
-            $respuesta->assign("mensaje","innerHTML",$_SESSION['nivel']);
+            //$respuesta->assign("mensaje","innerHTML",$_SESSION['nivel']);
+            echo "HolaMundo";
             //header("Location: https://www.rapidtables.com/web/dev/php-redirect.html", true, 301);
             $respuesta->script("document.location.href = 'https://rastreogtc.azurewebsites.net/sistema/index.php'");
             $respuesta->script(alert("Hello! I am an alert box!!"));
