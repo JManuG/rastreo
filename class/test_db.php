@@ -21,5 +21,6 @@ while ($row=$bd->obtener_fila($stmt,0)){
 	 echo "5";
 	echo $row['cod_usuario'].'<br />';
 }
+print_r($row);
  echo "6";
 ?>
