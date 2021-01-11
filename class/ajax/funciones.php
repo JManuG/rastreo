@@ -1,4 +1,5 @@
 <?php
+echo "a5";
 function valida_usuario($form){
     
     ini_set ("display_errors","1" );
