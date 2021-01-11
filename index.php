@@ -16,7 +16,7 @@ $_SESSION['shi_codigo']="";// Unset session variables.
 $_SESSION['shi_nombre']="";// Unset session variables.
 session_destroy(); // End Session we created earlier.
 
-$xajax->configure('debug',true);
+//$xajax->configure('debug',true);
 
 $xajax->processRequest();
 
