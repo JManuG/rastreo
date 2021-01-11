@@ -14,7 +14,7 @@
 date_default_timezone_set('America/El_Salvador');
 class Db{
 	//Declarando los parametros de conexion todo privado para mayor control....
-	private $servidor='rastreo.mariadb.database.azure.com:3306';
+	private $servidor='rastreo.mysql.database.azure.com';
     private $usuario='root2@rastreo';
     private $password='1v341F1ca';
 	private $base_datos='rastreo';
@@ -44,9 +44,9 @@ class Db{
 	es el que llama el constructor de la clase*/
    	private function conectar(){
 
-        $dsn = 'mysql:host='.$this->servidor.';dbname='.$this->base_datos;
+        $dsn = 'mysql:host='.$this->servidor.';port=3306;dbname='.$this->base_datos;
         $opciones = array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
 
         );
 //PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
