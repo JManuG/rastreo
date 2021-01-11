@@ -12,7 +12,7 @@ require 'db.php';
 $bd=Db::getInstance();
  echo "3";
 
-$sql_1="SELECT cod_usuario FROM usuario";
+$sql_1="SELECT * FROM usuario";
  
 $stmt=$bd->consultar($sql_1);
   echo "4";
