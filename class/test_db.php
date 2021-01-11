@@ -22,4 +22,5 @@ function getFruit($conn) {
         print_r($row);
     }
 }
+getFruit($conn);
 ?>
