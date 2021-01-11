@@ -1,5 +1,7 @@
 <?php
 function valida_usuario($form){
+    ini_set ("display_errors","1" );
+error_reporting(E_ALL);
     $respuesta = new xajaxResponse();
     require 'class/db.php';
     $usr	=$form['usr'];
