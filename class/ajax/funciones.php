@@ -9,6 +9,6 @@ function valida_usuario($form){
             $respuesta->assign("mensaje","innerHTML","<span class='textorojo_bold'>".$error_form."</span>");
         //}
         return $respuesta;
-    }
+    //}
 }
 ?>
