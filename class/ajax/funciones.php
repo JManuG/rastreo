@@ -1,7 +1,7 @@
 <?php
 function valida_usuario($form){
     $respuesta = new xajaxResponse();
-    //echo "<script>console.log('Hello world!');</script>";
+
     ini_set ("display_errors","1" );
     error_reporting(E_ALL);
     require 'class/db.php';
