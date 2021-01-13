@@ -1,9 +1,9 @@
 <?php
 function valida_usuario($form){
+    $respuesta = new xajaxResponse();
+    <script>console.log("Hello world!");</script>
     ini_set ("display_errors","1" );
     error_reporting(E_ALL);
-    echo "a";
-    $respuesta = new xajaxResponse();
     require 'class/db.php';
     $usr	=$form['usr'];
     $pass	=$form['pass'];
