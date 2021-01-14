@@ -15,8 +15,10 @@ error_reporting(E_ALL);
 class Db{
 	//Declarando los parametros de conexion todo privado para mayor control....
 	private $servidor='rastreo.mysql.database.azure.com';
+
         private $usuario='root2@rastreo';
         private $password='1v341F1ca';
+
 	private $base_datos='rastreo';
 	private $link;
 	private $stmt; 
