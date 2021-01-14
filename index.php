@@ -1,14 +1,14 @@
 <?php
 
-ini_set ("display_errors","1" );
-error_reporting(E_ALL);
+//ini_set ("display_errors","1" );
+//error_reporting(E_ALL);
 //echo "1";
 require_once ("lib/ajax/xajax_core/xajax.inc.php");
 require_once ("class/ajax/funciones.php");
 
 $xajax = new xajax();
-//$xajax->registerFunction("valida_usuario
-$xajax->register(XAJAX_FUNCTION, array('valida_usuario', &$this, 'valida_usuario'));
+$xajax->registerFunction("valida_usuario");
+//$xajax->register(XAJAX_FUNCTION, array('valida_usuario', &$this, 'valida_usuario'));
 session_start();
 $_SESSION['ccosto']="";// Unset session variables.
 $_SESSION['usrcod']="";// Unset session variables.
@@ -17,7 +17,7 @@ $_SESSION['shi_codigo']="";// Unset session variables.
 $_SESSION['shi_nombre']="";// Unset session variables.
 session_destroy(); // End Session we created earlier.
 
-$xajax->configure('debug',true);
+//$xajax->configure('debug',true);
 
 $xajax->processRequest();
 
