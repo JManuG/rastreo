@@ -44,9 +44,9 @@ class Db{
 	es el que llama el constructor de la clase*/
    	private function conectar(){
 
-        $dsn = 'mysql:host='.$this->servidor.';dbname='.$this->base_datos;
+        $dsn = 'mysql:host='.$this->servidor.';port=3306;dbname='.$this->base_datos;
         $opciones = array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
 
         );
 //PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
