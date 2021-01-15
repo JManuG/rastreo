@@ -44,7 +44,7 @@ function valida_usuario($form){
     while ($row=$bd->obtener_fila($stmt)){
         $existe++;
         @session_start();
-        echo "1";
+        //echo "1";
         $_SESSION['cod_usuario']=$usr;
         $_SESSION['cod_user']   =$row[0];
         $_SESSION['nivel']	    =$row[6];
