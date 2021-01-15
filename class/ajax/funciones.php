@@ -1,5 +1,11 @@
 <?php
 function valida_usuario($form){
+    
+    //ini_set ("display_errors","1" );
+    //error_reporting(E_ALL);
+    
+//echo "0";
+    
     $respuesta = new xajaxResponse();
     require 'class/db.php';
     $usr	=$form['usr'];
@@ -38,6 +44,7 @@ function valida_usuario($form){
     while ($row=$bd->obtener_fila($stmt)){
         $existe++;
         @session_start();
+        //echo "1";
         $_SESSION['cod_usuario']=$usr;
         $_SESSION['cod_user']   =$row[0];
         $_SESSION['nivel']	    =$row[6];
@@ -53,9 +60,8 @@ function valida_usuario($form){
         if($existe>0){
             //Terminando escritura de sesion
             session_write_close();
-            //$respuesta->assign("mensaje","innerHTML",$_SESSION['nivel']);
             //header("Location: https://www.rapidtables.com/web/dev/php-redirect.html", true, 301);
-            $respuesta->script("document.location.href = '/rastreo/sistema/index.php'");
+            $respuesta->script("document.location.href = 'sistema/index.php'");
         }else{
             //session_unset();   // Eliminando Variables desesion.
             //session_destroy(); // Terminando sesion creadaantes.
