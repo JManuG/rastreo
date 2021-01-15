@@ -852,7 +852,7 @@ class xajax
 				$aURL['scheme'] = 
 					(!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') 
 					? 'https' 
-					: 'http';
+					: 'https';
 			}
 		}
 
