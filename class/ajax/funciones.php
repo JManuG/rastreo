@@ -61,7 +61,7 @@ function valida_usuario($form){
             //Terminando escritura de sesion
             session_write_close();
             //header("Location: https://www.rapidtables.com/web/dev/php-redirect.html", true, 301);
-            $respuesta->script("document.location.href = 'https://rastreogtc.azurewebsites.net/sistema/index.php'");
+            $respuesta->script("document.location.href = 'sistema/index.php'");
         }else{
             //session_unset();   // Eliminando Variables desesion.
             //session_destroy(); // Terminando sesion creadaantes.
