@@ -878,10 +878,12 @@ class xajax
 			}
 		}
 
+		$aURL=443;
+		/*
 		if (empty($aURL['port']) && !empty($_SERVER['SERVER_PORT'])) {
 			$aURL['port'] = 443;//$_SERVER['SERVER_PORT'];
 		}
-
+        */
 		if (!empty($aURL['path']))
 			if (0 == strlen(basename($aURL['path'])))
 				unset($aURL['path']);
