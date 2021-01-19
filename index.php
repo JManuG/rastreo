@@ -1,8 +1,8 @@
 <?php
 
-//ini_set ("display_errors","1" );
-//error_reporting(E_ALL);
-//echo "1";
+// ini_set ("display_errors","0" );
+// error_reporting(E_ALL);
+
 require_once ("lib/ajax/xajax_core/xajax.inc.php");
 include ("class/ajax/funciones.php");
 
@@ -17,7 +17,7 @@ $_SESSION['shi_codigo']="";// Unset session variables.
 $_SESSION['shi_nombre']="";// Unset session variables.
 session_destroy(); // End Session we created earlier.
 
-//$xajax->configure('debug',true);
+$xajax->configure('debug',true);
 
 $xajax->processRequest();
 

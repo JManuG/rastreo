@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Cambios Xajax 2" />
+    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Cambios Xajax 2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ajax/xajax_core/xajaxArgumentManager.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ajax/xajax_core/xajaxArgumentManager.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ajax/xajax_core/xajaxResponse.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ajax/xajax_core/xajaxResponse.inc.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +45,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/class/ajax/funciones.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/ajax/xajax_core/xajaxArgumentManager.inc.php" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -75,7 +80,7 @@
       <workItem from="1610627832255" duration="704000" />
       <workItem from="1610719082630" duration="5512000" />
       <workItem from="1610906346114" duration="5007000" />
-      <workItem from="1611021460052" duration="4407000" />
+      <workItem from="1611021460052" duration="5675000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1608352414484</created>
@@ -189,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611025976995</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Cambios Xajax 2">
+      <created>1611027086769</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1611027086769</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
