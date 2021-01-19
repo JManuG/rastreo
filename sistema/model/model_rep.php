@@ -20,22 +20,59 @@ class model_rep extends Db
     public function informe1($date1, $date2)
     {
         $db=Db::getInstance();
+        $id_mov="";
+        $id_env="";
 
-        $sql_c = "SELECT m.id_chk,c.chk_descripcion, count(m.id_movimiento) as cantidad 
-                    FROM `movimiento` m 
-                    INNER JOIN chk_id c ON m.id_chk=c.id_chk 
-                    WHERE m.fecha_date BETWEEN '$date1' AND '$date2' 
-                    GROUP BY 1,2";
+        $data =array();
+        /*
+        $data['cantidad']=0;
+        $data['chk_descripcion']="";
+        */
+        $sql = "select max(id_movimiento) as id_movimiento, id_envio from movimiento
+                where id_envio in (
+                select id_envio from guia where fecha_date between '2021-01-01' and '2021-01-19')
+                group by 2";
 
-        $c= $db->consultar($sql_c);
-        while ($row=$c->fetch(PDO::FETCH_OBJ))
+        $a= $db->consultar($sql);
+        while ($rowa=$a->fetch(PDO::FETCH_OBJ))
         {
-            $data[] = $row;
+            $id_mov=$rowa->id_movimiento;
+            $id_env=$rowa->id_envio;
+
+            $sql_b="select c.chk_descripcion from movimiento m inner join chk_id c on m.id_chk=c.id_chk where id_movimiento=$id_mov";
+            $b= $db->consultar($sql_b);
+            while ($rowb=$b->fetch(PDO::FETCH_OBJ))
+            {
+                $id_check=$rowb->chk_descripcion;
+
+                //if(isset($data['chk_descripcion'])) {
+                    $dat['chk'] = $data[$id_check];
+                    $dat['cantidad'][$id_check]=$dat['cantidad'][$id_check] + 1;
+                //}
+
+                //if(isset($data[$id_check])) {
+                    //$data[$id_check] = $data[$id_check] + 1;
+                //}
+
+            }
+
+
+
+            $id_check=$rowb->chk_descripcion;
+
+
+            $data['chk_descripcion'] = $dat[$id_check];
+            $data['cantidad']=$dat['cantidad'];
+
+
+
         }
+
+
         if(!empty($data)) {
             return $data;
         }else
-            return $sql_c;
+            return "Error en la data";//$sql_c;
     }
 
 }
