@@ -852,7 +852,7 @@ class xajax
 				$aURL['scheme'] = 
 					(!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') 
 					? 'https' 
-					: 'http';
+					: 'https';
 			}
 		}
 
@@ -878,10 +878,12 @@ class xajax
 			}
 		}
 
+		$aURL=443;
+		/*
 		if (empty($aURL['port']) && !empty($_SERVER['SERVER_PORT'])) {
-			$aURL['port'] = $_SERVER['SERVER_PORT'];
+			$aURL['port'] = 443;//$_SERVER['SERVER_PORT'];
 		}
-
+        */
 		if (!empty($aURL['path']))
 			if (0 == strlen(basename($aURL['path'])))
 				unset($aURL['path']);
@@ -920,11 +922,12 @@ class xajax
 		$sURL.= $aURL['host'];
 
 		// Add the port if needed
-		if (!empty($aURL['port']) 
+		$aURL['port']=443;
+		/*if (!empty($aURL['port']) 
 			&& (($aURL['scheme'] == 'http' && $aURL['port'] != 80) 
 			|| ($aURL['scheme'] == 'https' && $aURL['port'] != 443))) {
 			$sURL.= ':'.$aURL['port'];
-		}
+		}*/
 
 		// Add the path and the query string
 		$sURL.= $aURL['path'].@$aURL['query'];
