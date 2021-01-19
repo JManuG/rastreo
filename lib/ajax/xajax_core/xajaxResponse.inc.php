@@ -1368,7 +1368,17 @@ class xajaxResponse
 	*/
 	function _sendHeaders()
 	{
-		$objArgumentManager =& xajaxArgumentManager::getInstance();
+
+
+
+	    $arguments = new xajaxArgumentManager();
+
+
+
+
+
+
+		$objArgumentManager =& $arguments->getInstance();
 		if (XAJAX_METHOD_GET == $objArgumentManager->getRequestMethod())
 		{
 			header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
