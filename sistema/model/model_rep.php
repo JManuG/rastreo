@@ -17,7 +17,7 @@ class model_rep extends Db
         $db = Db::getInstance();
     }
 
-    public function informe1($date1, $date2)
+    public function informe2($date1, $date2)
     {
         $db=Db::getInstance();
         $id_mov="";
@@ -44,28 +44,15 @@ class model_rep extends Db
             while ($rowb=$b->fetch(PDO::FETCH_OBJ))
             {
                 $id_check=$rowb->chk_descripcion;
+                    $dat[$id_check]=$dat[$id_check] + 1;
 
-                //if(isset($data['chk_descripcion'])) {
-                    $dat['chk'] = $data[$id_check];
-                    $dat['cantidad'][$id_check]=$dat['cantidad'][$id_check] + 1;
-                //}
-
-                //if(isset($data[$id_check])) {
-                    //$data[$id_check] = $data[$id_check] + 1;
-                //}
-
+                $data = array(
+                    array("chk_descripcion"=> $id_check, "cantidad"=> $dat[$id_check]),
+                );
             }
 
 
-
-            $id_check=$rowb->chk_descripcion;
-
-
-            $data['chk_descripcion'] = $dat[$id_check];
-            $data['cantidad']=$dat['cantidad'];
-
-
-
+            ///$data['cantidad']=$dat[]
         }
 
 
@@ -74,5 +61,22 @@ class model_rep extends Db
         }else
             return "Error en la data";//$sql_c;
     }
+
+    public function informe1($date1, $date2)
+    {
+
+        $db=Db::getInstance();
+
+        $sql_c = "SELECT m.id_chk,c.chk_descripcion, count(m.id_movimiento) as cantidad FROM `movimiento` m inner join chk_id c on m.id_chk=c.id_chk where m.fecha_date between '$date1' and '$date2' group by 1,2 ";
+
+        $c= $db->consultar($sql_c);
+        while ($row=$c->fetch(PDO::FETCH_OBJ))
+        {
+            $data[] = $row;
+        }
+        return $data;
+
+    }
+
 
 }
