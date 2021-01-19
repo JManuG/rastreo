@@ -66,6 +66,7 @@ class model_rep extends Db
     {
 
 
+
         $db=Db::getInstance();
 
         $sql_c = "SELECT m.id_chk,c.chk_descripcion, count(m.id_movimiento) as cantidad FROM `movimiento` m inner join chk_id c on m.id_chk=c.id_chk where m.fecha_date between '$date1' and '$date2' group by 1,2 ";
