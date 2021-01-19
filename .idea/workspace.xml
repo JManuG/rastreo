@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Cambios Xajax 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/model/model_rep.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/model/model_rep.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistema/vista/informe1.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/informe1.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sistema/vista/inicio_pie.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.php" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -89,7 +88,7 @@
       <workItem from="1610719082630" duration="5512000" />
       <workItem from="1610906346114" duration="5007000" />
       <workItem from="1611021460052" duration="6326000" />
-      <workItem from="1611065655977" duration="7733000" />
+      <workItem from="1611065655977" duration="11300000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1608352414484</created>
@@ -217,7 +216,21 @@
       <option name="project" value="LOCAL" />
       <updated>1611028328365</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Cambios Xajax 3">
+      <created>1611091073865</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1611091073865</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Cambios Xajax 3">
+      <created>1611091156757</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1611091156757</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
