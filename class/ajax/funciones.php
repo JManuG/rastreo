@@ -7,6 +7,7 @@ function valida_usuario($form){
 //echo "0";
     
     $respuesta = new xajaxResponse();
+
     require 'class/db.php';
     $usr	=$form['usr'];
     $pass	=$form['pass'];
@@ -67,8 +68,6 @@ function valida_usuario($form){
             //session_destroy(); // Terminando sesion creadaantes.
             $error_form="Usuario no Valido";
             $respuesta->assign("mensaje","innerHTML","<span class='textorojo_bold'>".$error_form."</span>");
-        }
         return $respuesta;
-    }
 }
 ?>

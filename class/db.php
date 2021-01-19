@@ -8,15 +8,17 @@
  *
  **/
 
-//ini_set ("display_errors","1" );
-//error_reporting(E_ALL);
+ini_set ("display_errors","1" );
+error_reporting(E_ALL);
 
-date_default_timezone_set('America/El_Salvador');
+//date_default_timezone_set('America/El_Salvador');
 class Db{
 	//Declarando los parametros de conexion todo privado para mayor control....
 	private $servidor='rastreo.mysql.database.azure.com';
-    private $usuario='root2@rastreo';
-    private $password='1v341F1ca';
+
+        private $usuario='root2@rastreo';
+        private $password='1v341F1ca';
+
 	private $base_datos='rastreo';
 	private $link;
 	private $stmt; 
@@ -51,7 +53,8 @@ class Db{
         );
 //PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
         //$gbd = new PDO($dsn, $this->usuario, $this->password, $opciones);
-   	 	$this->link= new PDO($dsn, $this->usuario, $this->password,$opciones);
+   	 	$this->link= new PDO($dsn, $this->usuario, $this->password);
+		//echo $dsn;
    	}
 	
 	/*
