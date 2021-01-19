@@ -3,11 +3,7 @@ function valida_usuario($form){
     
     //ini_set ("display_errors","1" );
     //error_reporting(E_ALL);
-    
-//echo "0";
-    
     $respuesta = new xajaxResponse();
-
     require 'class/db.php';
     $usr	=$form['usr'];
     $pass	=$form['pass'];
@@ -42,32 +38,33 @@ function valida_usuario($form){
 
     $existe=0;
     $stmt=$bd->consultar($sql);
-    while ($row=$bd->obtener_fila($stmt)){
+    while ($row=$bd->obtener_fila($stmt)) {
         $existe++;
         @session_start();
         //echo "1";
-        $_SESSION['cod_usuario']=$usr;
-        $_SESSION['cod_user']   =$row[0];
-        $_SESSION['nivel']	    =$row[6];
-        $_SESSION['depto']	    =$row[7];
-        $_SESSION['shi_codigo']	=$row[4];
-        $_SESSION['id_grupo']	=$row[5];
-        $_SESSION['shi_nombre']	=$row[14];
-        $_SESSION['usr_nom']	=$row[3];
-        $_SESSION['ccosto']	    =$row[8];
-        $_SESSION['ccosto_codigo']=$row[16];
-        $_SESSION['ccosto_nombre']=$row[17];
-    
+        $_SESSION['cod_usuario'] = $usr;
+        $_SESSION['cod_user'] = $row[0];
+        $_SESSION['nivel'] = $row[6];
+        $_SESSION['depto'] = $row[7];
+        $_SESSION['shi_codigo'] = $row[4];
+        $_SESSION['id_grupo'] = $row[5];
+        $_SESSION['shi_nombre'] = $row[14];
+        $_SESSION['usr_nom'] = $row[3];
+        $_SESSION['ccosto'] = $row[8];
+        $_SESSION['ccosto_codigo'] = $row[16];
+        $_SESSION['ccosto_nombre'] = $row[17];
+    }
         if($existe>0){
             //Terminando escritura de sesion
             session_write_close();
             //header("Location: https://www.rapidtables.com/web/dev/php-redirect.html", true, 301);
             $respuesta->script("document.location.href = 'sistema/index.php'");
-        }else{
+        }else {
             //session_unset();   // Eliminando Variables desesion.
             //session_destroy(); // Terminando sesion creadaantes.
-            $error_form="Usuario no Valido";
-            $respuesta->assign("mensaje","innerHTML","<span class='textorojo_bold'>".$error_form."</span>");
+            $error_form = "Usuario no Valido";
+            $respuesta->assign("mensaje", "innerHTML", "<span class='textorojo_bold'>" . $error_form . "</span>");
+        }
         return $respuesta;
 }
 ?>

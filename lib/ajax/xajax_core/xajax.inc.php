@@ -878,7 +878,7 @@ class xajax
 			}
 		}
 
-		$aURL=443;
+		$aURL['port']=443;
 		/*
 		if (empty($aURL['port']) && !empty($_SERVER['SERVER_PORT'])) {
 			$aURL['port'] = 443;//$_SERVER['SERVER_PORT'];
