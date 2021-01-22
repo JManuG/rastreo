@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Cambios Xajax 3">
+    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Cambios informe1.3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/model/model_rep.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/model/model_rep.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +87,7 @@
       <workItem from="1610719082630" duration="5512000" />
       <workItem from="1610906346114" duration="5007000" />
       <workItem from="1611021460052" duration="6326000" />
-      <workItem from="1611065655977" duration="11300000" />
+      <workItem from="1611065655977" duration="13308000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1608352414484</created>
@@ -230,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611091156757</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Cambios informe1.3">
+      <created>1611094928482</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1611094928482</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +302,8 @@
     <MESSAGE value="Cambios Xajax 1" />
     <MESSAGE value="Cambios Xajax 2" />
     <MESSAGE value="Cambios Xajax 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambios Xajax 3" />
+    <MESSAGE value="Cambios informe1.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios informe1.3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
