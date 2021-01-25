@@ -29,9 +29,6 @@ if($ccosto_ori=='' || $ccosto_ori ==NULL){
 }elseif($descripcion=='' || $descripcion ==NULL){
     $retorno = "La descripcion esta vacia";
     $sql="";
-}elseif($vineta=='' || $vineta ==NULL){
-    $retorno = "Ingrese una vi&ntilde;eta valida";
-    $sql="";
 }elseif($id_cat=='' || $id_cat ==NULL){
     $retorno = "Ingrese una categoria valida";
     $sql="";

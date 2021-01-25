@@ -4,7 +4,6 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_e
     "id_ccosto":id_ccosto,
     "destinatario":destinatario,
     "descripcion":descripcion,
-    //"vineta":vineta,
     "tipo_envio":tipo_envio,
     "des_direccion":des_direccion,
     "id_cat":id_cat
