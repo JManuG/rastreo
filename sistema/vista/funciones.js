@@ -1,10 +1,10 @@
-function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,vineta,tipo_envio,des_direccion,id_cat){
+function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_envio,des_direccion,id_cat){
   var datos_origen={
     "ccosto_ori":ccosto_ori,
     "id_ccosto":id_ccosto,
     "destinatario":destinatario,
     "descripcion":descripcion,
-    "vineta":vineta,
+    //"vineta":vineta,
     "tipo_envio":tipo_envio,
     "des_direccion":des_direccion,
     "id_cat":id_cat
@@ -25,11 +25,11 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,vineta
         $('#destinatario').focus();
         $('#descripcion').val('');
         $('#des_direccion').val('');
-        $('#vineta').val('');
-        $('#vineta').attr('readonly',false);
-        $('#boton_v').attr("disabled", false);
+        //$('#vineta').val('');
+        //$('#vineta').attr('readonly',false);
+        ///$('#boton_v').attr("disabled", false);
 
-        $("#respuesta").html('<span style="color:green;"><b>'+ res[1]+' </b></span>');
+        $("#respuesta").html('<span style="color:green;"><b>'+ res[1]+' </b><a href="../sistema/prg/generaAcuse.php?v='+ res[6]+'" target="_blank">Envio '+ res[6]+' </a> </span>');
       }else
       {
         $("#respuesta").html('<span style="color:red;"><b>Error form_ingreso_guia:</b>  <p> '+res[0]+res[1]+'</span></p>');

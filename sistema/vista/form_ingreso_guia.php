@@ -78,7 +78,7 @@
                   <label for="id_cat">Categoria del env&iacute;o</label>
                   <?php echo select_categoria(); ?>
                 </div>
-
+                <!--
                 <div class="form-group">
                   <label for="vineta">Vi&ntilde;eta</label>
                   <input type="text" class="form-control" id="vineta" name='vineta' placeholder="vi&ntilde;eta"  autocomplete="off">
@@ -91,7 +91,7 @@
                     </div>
                   </div>
                 </div>
-
+                -->
               </div>
               <!-- /.card-body -->
 
@@ -101,7 +101,6 @@
                                                     formulario.id_ccosto.value,
                                                     formulario.destinatario.value,
                                                     formulario.descripcion.value,
-                                                    formulario.vineta.value,
                                                     formulario.tipo_envio.value,
                                                     formulario.des_direccion.value,
                                                     formulario.id_cat.value)">
