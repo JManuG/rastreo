@@ -71,5 +71,19 @@ class proc{
             echo "Debes iniciar session";
         }
     }
+
+    public function carga_xls(){
+        if(!empty($_SESSION['cod_usuario'])){
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/form_carga.php');
+            ?>
+            <?php
+            include('vista/inicio_pie.php');
+        }
+        else{
+            echo "Debes iniciar session";
+        }
+    }
 }
 ?>

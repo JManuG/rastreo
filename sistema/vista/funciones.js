@@ -31,7 +31,7 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_e
         $("#respuesta").html('<span style="color:green;"><b>'+ res[1]+' </b><a href="../sistema/prg/generaAcuse.php?v='+ res[6]+'" target="_blank">Envio '+ res[6]+' </a> </span>');
       }else
       {
-        $("#respuesta").html('<span style="color:red;"><b>Error form_ingreso_guia:</b>  <p> '+res[0]+res[1]+'</span></p>');
+        $("#respuesta").html('<span style="color:red;"><b>Error form_ingreso_guia validar:</b>  <p> '+res[0]+res[1]+'</span></p>');
       }
     }
   })
