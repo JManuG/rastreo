@@ -56,6 +56,13 @@ date_default_timezone_set('America/El_Salvador');
         <p>Devoluciones - DV</p>
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=carga_xls'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Carga Base Envios</p>
+      </a>
+    </li>
   
   </ul>
 </li>
