@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="id_cat">Categoria del env&iacute;o</label>
+                  <label for="id_cat">Categoria del env&iacute;o Form</label>
                   <?php echo select_categoria(); ?>
                 </div>
                 <!--
@@ -104,7 +104,7 @@
                                                     formulario.tipo_envio.value,
                                                     formulario.des_direccion.value,
                                                     formulario.id_cat.value)">
-                  Registrar Env&iacute;o
+                  Registrar Env&iacute;o en Sistema
                 </button>
               </div>
 
