@@ -7,13 +7,15 @@ $ccosto_ori     =$_POST["ccosto_ori"];
 $ccosto_des     =$_POST["id_ccosto"];//ccosto_des
 $destinatario   =$_POST["destinatario"];
 $descripcion    =$_POST["descripcion"];
-$vineta         =$_POST["vineta"];
+//$vineta         =$_POST["vineta"];
 //ultimos add
 $tipo_envio     =$_POST["tipo_envio"];
 $des_direccion  =$_POST["des_direccion"];
 $id_cat         =$_POST["id_cat"];
 
 $db=new model_con();
+
+$vineta= $db->consulta_correlativo();
 
 if($ccosto_ori=='' || $ccosto_ori ==NULL){
     $retorno = "Centro costo origen esta vacio";
@@ -26,9 +28,6 @@ if($ccosto_ori=='' || $ccosto_ori ==NULL){
     $sql="";
 }elseif($descripcion=='' || $descripcion ==NULL){
     $retorno = "La descripcion esta vacia";
-    $sql="";
-}elseif($vineta=='' || $vineta ==NULL){
-    $retorno = "Ingrese una vi&ntilde;eta valida";
     $sql="";
 }elseif($id_cat=='' || $id_cat ==NULL){
     $retorno = "Ingrese una categoria valida";
