@@ -480,7 +480,7 @@ class model_con extends Db
             return 0;
         }
 	}
-	
+	/*
 	public function consulta_vineta_tabla($id_ccosto)
     {
         $db=Db::getInstance();
@@ -501,7 +501,7 @@ class model_con extends Db
 		
 		return $stmt;
 	}
-
+	*/
 	public function procesar_OS($id_cli)
     {
 		$db=Db::getInstance();
@@ -1062,7 +1062,7 @@ class model_con extends Db
 				$msj_i="Ingresado";
 			}
 			else{
-				$msj_i="Error Insert Orden".$id_orden;
+				$msj_i="Error Insert Orden".$id_envio;
 			}
 		}
 		
@@ -1131,6 +1131,31 @@ class model_con extends Db
 		return $result;
 	}
 
+	public function data_acuse($vineta)
+    {
+        $db=Db::getInstance();
+
+		$sql = "SELECT 
+					id_envio,ori_ccosto,
+					fn_AgeXCc(ori_ccosto) AS age_ori,
+					fn_ccostoNombre(ori_ccosto) AS ori_ccosto_nombre,
+					des_ccosto, 
+					fn_AgeXCc(des_ccosto) AS age_des,
+					fn_ccostoNombre(des_ccosto) AS des_ccosto_nombre,
+					fn_usrNombre(id_usr) AS usr_ori,
+					fecha_datetime,barra,comentario,destinatario,
+					char1 as tipo,
+					fn_catNombre(entero1) as categoria,
+					fn_ccostoDirNombre(ori_ccosto) as ccDirOri,
+					fn_ccostoDirNombre(des_ccosto) as ccDirdes
+			FROM rastreo.guia 
+			WHERE barra='$vineta'
+			ORDER BY id_envio";
+
+		$stmt=$db->consultar($sql);
+		//echo $sql;
+		return $stmt;
+	}
 
 
 
