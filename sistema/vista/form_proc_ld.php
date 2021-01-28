@@ -44,7 +44,7 @@
                   <!-- /.info-box -->
                 </div>
                 <input type="hidden" id="cli_id" name='cli_id' value="<?php echo $_SESSION['shi_codigo']; ?>">
-                      
+                <!--    
                 <div class="form-group">
                   <label for="numid"># Manifiesto</label>
                   <input type="text" class="form-control" id="numid" name='numid' value="<?php echo genera_numid(); ?>" readonly />
@@ -54,7 +54,7 @@
                   <label for="posicion">Posicion</label>
                   <input  type="text" class="form-control" id="posicion" name='posicion' value="1" readonly/>
                 </div>
-
+                -->
                 <div class="form-group">
                   <label for="id_zona">Zona</label>
                   <?php echo zona_ld(); ?>
@@ -66,11 +66,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="vineta">Vi&ntilde;eta</label>
+                  <label for="vineta">Etiqueta</label>
                   <input type="text" class="form-control" id="vineta"  name='vineta' autofocus 
-                  onchange="procesarLD($('#numid').val(),
-                                        $('#posicion').val(),
-                                        $('#id_zona').val(),
+                  onchange="procesarLD($('#id_zona').val(),
                                         $('#id_mensajero').val(),
                                         $('#vineta').val());
                                         return false;"/>
@@ -91,7 +89,7 @@
                   <!-- /.info-box -->
                 </div>
               <!-- /.card-body -->
-
+                <!--
                 <form>
                 <div class="card-footer">
                 <button id="submitBtn" type="button" class="btn btn-outline-dark " data-toggle="modal" data-target="#modal-default"
@@ -100,7 +98,7 @@
                 </button>
               </div>
                 </form>
-
+              -->
               
               <div class="modal fade" id="modal-default">
                 <div class="modal-dialog">
