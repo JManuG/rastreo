@@ -68,7 +68,7 @@
 
               </div>
               <!-- /.card-body -->
-
+              <!--
               <div class="card-footer">
                 <button id="submitBtn" type="button" class="btn btn-outline-dark " data-toggle="modal" data-target="#modal-default"
                         onclick="procesarMantAgencia(formulario.cli_id.value,formulario.id_agencia.value,formulario.codigo_agencia.value,
@@ -76,7 +76,7 @@
                   Registrar Agencia
                 </button>
               </div>
-
+              -->
               <div class="modal fade" id="modal-default">
                 <div class="modal-dialog">
                   <div class="modal-content">

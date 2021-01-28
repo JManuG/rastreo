@@ -7,13 +7,14 @@ $ccosto_ori     =$_POST["ccosto_ori"];
 $ccosto_des     =$_POST["id_ccosto"];//ccosto_des
 $destinatario   =$_POST["destinatario"];
 $descripcion    =$_POST["descripcion"];
-$vineta         =$_POST["vineta"];
 //ultimos add
 $tipo_envio     =$_POST["tipo_envio"];
 $des_direccion  =$_POST["des_direccion"];
 $id_cat         =$_POST["id_cat"];
 
 $db=new model_con();
+
+$vineta= $db->consulta_correlativo();
 
 if($ccosto_ori=='' || $ccosto_ori ==NULL){
     $retorno = "Centro costo origen esta vacio";
@@ -27,11 +28,8 @@ if($ccosto_ori=='' || $ccosto_ori ==NULL){
 }elseif($descripcion=='' || $descripcion ==NULL){
     $retorno = "La descripcion esta vacia";
     $sql="";
-}elseif($vineta=='' || $vineta ==NULL){
-    $retorno = "Ingrese una vi&ntilde;eta valida";
-    $sql="";
 }elseif($id_cat=='' || $id_cat ==NULL){
-    $retorno = "Ingrese una categoria valida";
+    $retorno = "Ingrese una categoria valida, seleccione una de la lista";
     $sql="";
 }elseif($des_direccion=='' || $des_direccion ==NULL){
     $retorno = "Direcci&oacute;n destino esta vacia";
@@ -49,7 +47,7 @@ if($ccosto_ori=='' || $ccosto_ori ==NULL){
 
     if (intval($sql)>0)
     {
-        $retorno="200-Vi&ntilde;eta ingresada correctamente -".$ccosto_ori."-".$ccosto_des."-".$destinatario."-".$descripcion."-".$vineta;
+        $retorno="200-Ingresado correctamente -".$ccosto_ori."-".$ccosto_des."-".$destinatario."-".$descripcion."-".$vineta;
     
     }else{
         $retorno="409-".$sql;
