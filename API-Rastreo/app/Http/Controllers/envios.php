@@ -10,5 +10,8 @@ use Response;
 
 class envios extends Controller
 {
-    //
+   public function en()
+   {
+       echo "hola";
+   }
 }

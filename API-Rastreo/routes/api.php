@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Usr;
+use App\Http\Controllers\Reportes;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,5 +28,7 @@ Route::get('/wel',[Usr::class, 'wel']);
 Route::get('/change',[Usr::class, 'cambio']);
 Route::post('/cambiopass',[Usr::class, 'cambio_p']);
 
-//reporte
-Route::get('/reported',[Usr::class, 'rep_detalle']);
+//reporte de ingresos nuevos
+Route::get('/reported',[Reportes::class, 'rep_detalle']);
+
+Route::get('/en',[envios::class, 'en']);
