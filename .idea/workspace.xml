@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Cambios informe1.3">
+      <change afterPath="$PROJECT_DIR$/public/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/api/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistema/model/model_rep.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/model/model_rep.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,18 +43,21 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1lrOzb6MmesgRMqSTaoMF1lbzUe" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ChangesTree.GroupingKeys" value="" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/api/login.php" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -87,7 +93,10 @@
       <workItem from="1610719082630" duration="5512000" />
       <workItem from="1610906346114" duration="5007000" />
       <workItem from="1611021460052" duration="6326000" />
-      <workItem from="1611065655977" duration="13308000" />
+      <workItem from="1611065655977" duration="18607000" />
+      <workItem from="1611325558378" duration="2511000" />
+      <workItem from="1611533163086" duration="1305000" />
+      <workItem from="1611796594229" duration="1189000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1608352414484</created>
@@ -236,7 +245,21 @@
       <option name="project" value="LOCAL" />
       <updated>1611094928482</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Cambios informe1.3">
+      <created>1611098410991</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1611098410991</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Cambios informe1.3">
+      <created>1611098560746</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1611098560746</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +310,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test1" />
     <MESSAGE value="Corrección agencias" />
     <MESSAGE value="Corrección formulario guias" />
@@ -310,7 +334,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/sistema/vista/funciones.js</url>
-          <line>226</line>
+          <line>225</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
