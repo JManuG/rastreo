@@ -706,7 +706,7 @@ class model_con extends Db
 		return $msj;
 	}
 
-	public function procesar_LD($numid,$posicion,$id_zona,$id_mensajero,$vineta)
+	public function procesar_LD($id_zona,$id_mensajero,$vineta)
 	{
 		$db=Db::getInstance();
 		session_start();
@@ -719,6 +719,8 @@ class model_con extends Db
 		$cont_u     	=0;
 		$cont_i     	=0;
 		$existe_vineta  =0;
+		$numid          =date('Ymdhis');
+		$posicion       =1;
 
 		//Buscamos si existe una vineta apta para LD  --  Debe estar la guia en estado 3 para LD
 		$sql="SELECT g.*
