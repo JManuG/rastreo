@@ -21,4 +21,12 @@ class Reportes extends Controller
         return $data;
 
     }
+
+    public function rep_ingresos(Request $request)
+    {
+        $sql = "select * from guia";
+        $data = DB::select($sql);
+
+        return View('reporte_detalle',['data'=>$data]);
+    }
 }

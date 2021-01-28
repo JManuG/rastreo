@@ -32,6 +32,29 @@
 
 <?php print_r($data);?>
 
+<table>
+    <thead>
+    <tr>
+        <th>Transaccion</th>
+        <th>Remitente</th>
+        <th>destinatario</th>
+        <th>zona</th>
+        <th>Categoria</th>
+        <th>Estado</th>
+        <th>mensajero</th>
+        <th>consulta</th>
+        <th>reimprecion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    foreach($data as $row){
+            echo "<tr><td>".$row['id_guia']."</td></tr>";
+    }
+    ?>
+    </tbody>
+</table>
+
   <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
