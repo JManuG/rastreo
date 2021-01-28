@@ -30,5 +30,6 @@ Route::post('/cambiopass',[Usr::class, 'cambio_p']);
 
 //reporte de ingresos nuevos
 Route::get('/reported',[Reportes::class, 'rep_detalle']);
+Route::get('/repingreso',[Reportes::class, 'rep_ingresos']);
 
 Route::get('/en',[envios::class, 'en']);

@@ -1,7 +1,7 @@
 <?php
-//@session_start();
-//$usr=$_SESSION['cod_usuario'];
-$usr="enviagt";
+@session_start();
+$usr=$_SESSION['cod_usuario'];
+//$usr="enviagt";
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,7 @@ $usr="enviagt";
   <link rel="stylesheet" href="../../../sistema/vista/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  
+
   <script>
     function comprobarClave(){
     clave1 = document.getElementById('c1');
@@ -52,7 +52,7 @@ $usr="enviagt";
     else
        alert("Las dos claves son distintas...\nRealizaríamos las acciones del caso negativo")
        return false*/
-} 
+}
 </script>
 
 <style type="text/css">
