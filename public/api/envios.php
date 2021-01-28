@@ -18,7 +18,7 @@
               'insuranceId'=>0,
               'nit'=>"",
               'cliId'=>"",
-              'char1'=>"",
+              'char1'=>"Altos de Verapaz zona 15, Ciudad de Guatemala",
               'estado'=>0,
             ],
             [
@@ -38,7 +38,7 @@
                 'insuranceId'=>0,
                 'nit'=>"",
                 'cliId'=>"",
-                'char1'=>"",
+                'char1'=>"Arkadia Nivel 1 Departamento de Seguridad de datos",
                 'estado'=>0,
             ],
             [
@@ -58,7 +58,7 @@
                 'insuranceId'=>0,
                 'nit'=>"",
                 'cliId'=>"",
-                'char1'=>"",
+                'char1'=>"Agencia Zona 9 Anexo nivel 2",
                 'estado'=>0,
             ],
             [
@@ -78,7 +78,7 @@
                 'insuranceId'=>0,
                 'nit'=>"",
                 'cliId'=>"",
-                'char1'=>"",
+                'char1'=>"Primer nivel, Créditos y Cobros",
                 'estado'=>0,
             ],
             [
@@ -98,7 +98,7 @@
                 'insuranceId'=>0,
                 'nit'=>"",
                 'cliId'=>"",
-                'char1'=>"",
+                'char1'=>"Edificio Arkadia Nivel 1 Gestión comercial",
                 'estado'=>0,
             ],
 
