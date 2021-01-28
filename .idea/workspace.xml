@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Cambios informe1.3">
-      <change afterPath="$PROJECT_DIR$/public/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/api/login.php" afterDir="false" />
+    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Cambios login1">
+      <change afterPath="$PROJECT_DIR$/public/api/envios.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/api/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +55,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/api/login.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -69,6 +67,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\rastreoMG\public\api" />
       <recent name="C:\xampp\htdocs\rastreoMG" />
       <recent name="C:\xampp\htdocs\rastreoMG\sistema\vista" />
     </key>
@@ -96,7 +95,7 @@
       <workItem from="1611065655977" duration="18607000" />
       <workItem from="1611325558378" duration="2511000" />
       <workItem from="1611533163086" duration="1305000" />
-      <workItem from="1611796594229" duration="1189000" />
+      <workItem from="1611796594229" duration="2699000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1608352414484</created>
@@ -259,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611098560746</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Cambios login1">
+      <created>1611797809872</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1611797809872</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +333,8 @@
     <MESSAGE value="Cambios Xajax 2" />
     <MESSAGE value="Cambios Xajax 3" />
     <MESSAGE value="Cambios informe1.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambios informe1.3" />
+    <MESSAGE value="Cambios login1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios login1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
