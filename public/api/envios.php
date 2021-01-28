@@ -19,7 +19,7 @@
               'nit'=>"",
               'cliId'=>"",
               'char1'=>"",
-              'estado'=>4,
+              'estado'=>5,
             ],
             [
                 'idPedido'=> random_int(101,200),
@@ -39,7 +39,7 @@
                 'nit'=>"",
                 'cliId'=>"",
                 'char1'=>"",
-                'estado'=>4,
+                'estado'=>5,
             ],
             [
                 'idPedido'=> random_int(201,300),
@@ -59,7 +59,7 @@
                 'nit'=>"",
                 'cliId'=>"",
                 'char1'=>"",
-                'estado'=>4,
+                'estado'=>5,
             ],
             [
                 'idPedido'=> random_int(301,400),
@@ -79,7 +79,7 @@
                 'nit'=>"",
                 'cliId'=>"",
                 'char1'=>"",
-                'estado'=>4,
+                'estado'=>5,
             ],
             [
                 'idPedido'=> random_int(401,500),
@@ -99,7 +99,7 @@
                 'nit'=>"",
                 'cliId'=>"",
                 'char1'=>"",
-                'estado'=>4,
+                'estado'=>5,
             ],
 
         );
