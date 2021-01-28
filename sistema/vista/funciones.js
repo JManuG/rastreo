@@ -469,11 +469,9 @@ function procesarAR(id_vineta)
   })
 }
 
-function procesarLD(numid,posicion,id_zona,id_mensajero,vineta)
+function procesarLD(id_zona,id_mensajero,vineta)
 {
   var datos_origen={
-    "numid":numid,
-    "posicion":posicion,
     "id_zona":id_zona,
     "id_mensajero":id_mensajero,
     "vineta":vineta
@@ -490,13 +488,13 @@ function procesarLD(numid,posicion,id_zona,id_mensajero,vineta)
       var str = response;
       var res = str.split("-");
 
-      var total = parseInt(posicion)+1;; // Convertir el valor a un entero (número).
+      //var total = parseInt(posicion)+1;; // Convertir el valor a un entero (número).
 	
       if(res[0]==200)
       {
         $('#msj_div').val();
         $('#msj_div').html('<br><span style="color:green;"><b>Salida a ruta '+ vineta +' Procesada Correctamente.</b></span>');
-        $('#posicion').val(total);
+        //$('#posicion').val(total);
         $('#vineta').val('');
       }else
       {
