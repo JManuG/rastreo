@@ -22,7 +22,8 @@
               'estado'=>0,
             ],
             [
-                'idPedido'=> random_int(101,200),
+                    
+                    'idPedido'=> random_int(101,200),
                 'idRequest'=>"3",
                 'quantity'=>0,
                 'total'=>0.0,
