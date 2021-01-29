@@ -446,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611898926941</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="login y db service">
+      <created>1611935357441</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1611935357441</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,7 +528,8 @@
     <MESSAGE value="Cambios informe1.3" />
     <MESSAGE value="cambio de usuarios" />
     <MESSAGE value="env" />
-    <option name="LAST_COMMIT_MESSAGE" value="env" />
+    <MESSAGE value="login y db service" />
+    <option name="LAST_COMMIT_MESSAGE" value="login y db service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
