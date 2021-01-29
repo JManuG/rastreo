@@ -106,7 +106,7 @@ $x2=$x1->reporte_n();
                     <td>".$row->estado."</td>
                     <td>".$row->mensajero."</td>
                     <!--td>Consulta</td-->
-                    <td><a href='prg/generaAcuse.php?v=$row->barra'>Reimpresión</a></td>
+                    <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'>Reimpresión</a></td>
 
 </tr>";
             }
