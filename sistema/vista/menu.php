@@ -98,6 +98,13 @@ date_default_timezone_set('America/El_Salvador');
   <ul class="nav nav-treeview">
 
     <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=repor_ingresos1'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Reporte de ingresos</p>
+      </a>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link" href='index.php?prc=informe1'>
         <i class="far fa-circle nav-icon"></i>
         <p>Informe general</p>
