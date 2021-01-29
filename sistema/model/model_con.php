@@ -316,7 +316,7 @@ class model_con extends Db
 		$datetime	=date('Y/m/d H:i:s');
 		$tiempo		=time();
 		$id_usr		=$_SESSION['cod_user'];
-		$shi_codigo =isset($_SESSION['cli_id']);
+		$shi_codigo =1;//isset($_SESSION['cli_id']);
 
 		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
 		//if($id_usr==''){
@@ -1135,8 +1135,12 @@ class model_con extends Db
 
 	public function data_acuse($vineta)
     {
-        $db=Db::getInstance();
 
+
+
+
+        $db=Db::getInstance();
+/*
 		$sql = "SELECT 
 					id_envio,ori_ccosto,
 					fn_AgeXCc(ori_ccosto) AS age_ori,
@@ -1153,6 +1157,26 @@ class model_con extends Db
 			FROM rastreo.guia 
 			WHERE barra='$vineta'
 			ORDER BY id_envio";
+*/
+
+        $sql="SELECT 
+	id_envio,ori_ccosto,
+	fn_AgeXCc(ori_ccosto) AS age_ori,
+	fn_ccostoNombre(ori_ccosto) AS ori_ccosto_nombre,
+	des_ccosto, 
+	fn_AgeXCc(des_ccosto) AS age_des,
+	fn_ccostoNombre(des_ccosto) AS des_ccosto_nombre,
+	fn_usrNombre(g.id_usr) AS usr_ori,
+	g.fecha_datetime,barra,comentario,destinatario,
+	g.char1 as tipo,
+	fn_catNombre(g.entero1) as categoria,
+	fn_ccostoDirNombre(ori_ccosto) as ccDirOri,
+	fn_ccostoDirNombre(des_ccosto) as ccDirdes,
+    c.ccosto_codigo
+	FROM rastreo.guia g inner join centro_costo c
+    on g.des_ccosto=c.id_ccosto
+    WHERE g.barra='$vineta'
+	ORDER BY g.id_envio";
 
 		$stmt=$db->consultar($sql);
 		//echo $sql;
