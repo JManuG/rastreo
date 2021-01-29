@@ -1,10 +1,13 @@
 <?php
 
 //ini_set ("display_errors","0" );
-//error_reporting(E_ALL);
+/*error_reporting(E_ALL);
 $u=$_POST['correo'];
 $p=md5($_POST['password']);
 $dvi=$_POST['deviceid'];
+*/
+$u="enviagt";
+$p=md5("enviagt");
 include("db_extend.php");
 $x1=new model_con();
 
