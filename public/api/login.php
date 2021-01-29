@@ -2,14 +2,13 @@
 
 //ini_set ("display_errors","0" );
 //error_reporting(E_ALL);
-$u=$_POST['CORREO'];
+$u=$_POST['correo'];
 $p=md5($_POST['password']);
 $dvi=$_POST['deviceid'];
 include("db_extend.php");
 $x1=new model_con();
 
     $x2=$x1->login($u,$p);
-
     /**/
 foreach($x2 as $row) {
     $a = array(
