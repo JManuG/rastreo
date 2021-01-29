@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="cambio de usuarios">
-      <change afterPath="$PROJECT_DIR$/sistema/vista/reporte_ingresos.php" afterDir="false" />
+    <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="env">
+      <change afterPath="$PROJECT_DIR$/sistema/vista/repor_ingresos1.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Reportes.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Reportes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Rastreo/resources/views/reporte_detalle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/resources/views/reporte_detalle.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/vista/form_carga.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/form_carga.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,6 +186,9 @@
       <recent name="C:\xampp\htdocs\rastreoMG\public\api" />
       <recent name="C:\xampp\htdocs\rastreoMG" />
       <recent name="C:\xampp\htdocs\rastreoMG\sistema\vista" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\proyectos\rastreo\sistema\vista\reporte_1.php" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -441,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611870370017</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="env">
+      <created>1611898926941</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1611898926941</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -515,7 +522,8 @@
     <MESSAGE value="Cambios api2" />
     <MESSAGE value="Cambios informe1.3" />
     <MESSAGE value="cambio de usuarios" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambio de usuarios" />
+    <MESSAGE value="env" />
+    <option name="LAST_COMMIT_MESSAGE" value="env" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -524,11 +532,6 @@
           <url>file://$PROJECT_DIR$/sistema/vista/funciones.js</url>
           <line>225</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/sistema/vista/form_carga.php</url>
-          <line>9</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
