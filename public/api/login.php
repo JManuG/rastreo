@@ -2,8 +2,9 @@
 
 //ini_set ("display_errors","0" );
 //error_reporting(E_ALL);
-$u=$_GET['usr'];
-$p=md5($_GET['pss']);
+$u=$_POST['CORREO'];
+$p=md5($_POST['password']);
+$dvi=$_POST['deviceid'];
 include("db_extend.php");
 $x1=new model_con();
 
