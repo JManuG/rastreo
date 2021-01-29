@@ -116,6 +116,106 @@ class model_mov extends Db
 		//echo $sql;
 		return $stmt;
 	}
+
+	public function mov_tl2($barra){
+        $db=Db::getInstance();
+        $msg="";
+        $date1=date('Y-m-d');
+        $date2=date('Y-m-d H:i:s');
+
+        $tiempo=time();
+        $orden=1;
+        $existe_usr=0;
+
+        $sql = "
+        select
+        g.barra,
+        m.id_envio,
+        max(IF(m.id_chk=1, m.fecha_Datetime,0)) AS PI,
+        max(IF(m.id_chk=2, m.fecha_Datetime,0)) AS AR,
+        max(IF(m.id_chk=3, m.fecha_Datetime,0)) AS LD,
+        max(IF(m.id_chk=4, m.fecha_datetime,0)) AS DL,
+        max(IF(m.id_chk=5, m.fecha_datetime,0)) AS DV
+        FROM rastreo.guia g
+        INNER JOIN rastreo.movimiento m
+        ON g.id_envio=m.id_envio
+        WHERE g.barra=$barra
+        group by 1,2
+        ";
+
+        $stmt=$db->consultar($sql);
+        //echo $sql;
+        return $stmt;
+
+
+
+    }
+
+
+    public function recurso_origen($barra){
+        $db=Db::getInstance();
+
+        $tiempo=time();
+
+        $sql = "select r.imagen, r.latitud, r.longitud
+                from recurso r 
+                inner join movimiento m 
+                on r.id_movimiento=m.id_movimiento
+                inner join guia g
+                on m.id_envio=g.id_envio
+                where m.id_chk=2
+                and g.barra=$barra;";
+        $stmt=$db->consultar($sql);
+        //echo $sql;
+        return $stmt;
+
+    }
+
+
+    public function recurso_destino($barra){
+        $db=Db::getInstance();
+
+        $tiempo=time();
+
+        $sql = "select r.imagen, r.latitud, r.longitud
+                from recurso r 
+                inner join movimiento m 
+                on r.id_movimiento=m.id_movimiento
+                inner join guia g
+                on m.id_envio=g.id_envio
+                where m.id_chk=2
+                and g.barra=$barra;";
+        $stmt=$db->consultar($sql);
+        //echo $sql;
+        return $stmt;
+
+    }
+
+
+
+
+
+
+
+
+    public function humanizando_fecha($fechac)
+    {
+        $fecha = substr($fechac, 0, 10);
+        $hora=substr($fechac, 10,9);
+        $numeroDia = date('d', strtotime($fecha));
+        $dia = date('l', strtotime($fecha));
+        $mes = date('F', strtotime($fecha));
+        $anio = date('Y', strtotime($fecha));
+        $dias_ES = array("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo");
+        $dias_EN = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+        $nombredia = str_replace($dias_EN, $dias_ES, $dia);
+        $meses_ES = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+        $meses_EN = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
+        return $nombredia." ".$numeroDia." de ".$nombreMes." de ".$anio." a las ".$hora;
+
+    }
+
 	
 	
 }

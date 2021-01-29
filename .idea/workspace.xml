@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="Cambios informe1.3">
-      <change beforePath="$PROJECT_DIR$/.idea/rastreoMG.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/rastreoMG.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Reportes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/envios.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/envios.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Reportes.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Reportes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API-Rastreo/resources/views/change_password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/resources/views/change_password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API-Rastreo/resources/views/reporte_detalle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/resources/views/reporte_detalle.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Rastreo/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,21 +20,19 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="composer.json" />
       </list>
     </option>
   </component>
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="origin/master" />
   </component>
-  <component name="Git.Pull.Settings">
-    <option name="OPTIONS">
-      <set>
-        <option value="REBASE" />
-      </set>
-    </option>
-  </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="development" />
@@ -49,11 +47,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="GithubProjectSettings">
-    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
-    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="JManuG" />
-    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="rastreo" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -166,17 +159,21 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1lrOzb6MmesgRMqSTaoMF1lbzUe" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ChangesTree.GroupingKeys" value="" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -184,11 +181,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\rastreoMG\public\api" />
       <recent name="C:\xampp\htdocs\rastreoMG" />
       <recent name="C:\xampp\htdocs\rastreoMG\sistema\vista" />
     </key>
@@ -213,7 +210,11 @@
       <workItem from="1610719082630" duration="5512000" />
       <workItem from="1610906346114" duration="5007000" />
       <workItem from="1611021460052" duration="6326000" />
-      <workItem from="1611065655977" duration="13308000" />
+      <workItem from="1611065655977" duration="18607000" />
+      <workItem from="1611325558378" duration="2511000" />
+      <workItem from="1611533163086" duration="1305000" />
+      <workItem from="1611796594229" duration="7598000" />
+      <workItem from="1611845447161" duration="1869000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1608352414484</created>
@@ -362,7 +363,77 @@
       <option name="project" value="LOCAL" />
       <updated>1611094928482</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Cambios informe1.3">
+      <created>1611098410991</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1611098410991</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Cambios informe1.3">
+      <created>1611098560746</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1611098560746</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Cambios login1">
+      <created>1611797809872</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1611797809872</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Cambios login2">
+      <created>1611799324938</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1611799324938</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Cambios login3">
+      <created>1611800170409</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1611800170409</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Cambios api1">
+      <created>1611802105592</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1611802105592</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Cambios api1">
+      <created>1611803560398</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1611803560398</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Cambios api2">
+      <created>1611845473042</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1611845473042</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Cambios api2">
+      <created>1611846570376</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1611846570376</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Cambios informe1.3">
+      <created>1611867596550</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1611867596550</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,6 +484,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test1" />
     <MESSAGE value="Corrección agencias" />
     <MESSAGE value="Corrección formulario guias" />
@@ -428,6 +500,11 @@
     <MESSAGE value="Cambios Xajax 1" />
     <MESSAGE value="Cambios Xajax 2" />
     <MESSAGE value="Cambios Xajax 3" />
+    <MESSAGE value="Cambios login1" />
+    <MESSAGE value="Cambios login2" />
+    <MESSAGE value="Cambios login3" />
+    <MESSAGE value="Cambios api1" />
+    <MESSAGE value="Cambios api2" />
     <MESSAGE value="Cambios informe1.3" />
     <option name="LAST_COMMIT_MESSAGE" value="Cambios informe1.3" />
   </component>
@@ -436,7 +513,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/sistema/vista/funciones.js</url>
-          <line>226</line>
+          <line>225</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

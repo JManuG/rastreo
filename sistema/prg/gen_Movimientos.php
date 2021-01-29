@@ -49,7 +49,7 @@ $barra = $_POST['vineta'];
                     <?php
                     
                     //Consulta para el TimeLine
-                    $sql_1=$db->mov_tl($barra);
+                    $sql_1=$db->mov_tl2($barra);
                     
                     while ($row_1=$sql_1->fetch(PDO::FETCH_NUM))
                     {
@@ -60,33 +60,72 @@ $barra = $_POST['vineta'];
                         $DL         =$row_1[5];
                         $DV         =$row_1[6];
 
-                        if($PI > 0){
+                        if(($PI)!=0){
                             $param_pi="fa-check bg-green";
+                            $datetime_pi=$db->humanizando_fecha($row_1[2]);
                         }else{
-                            $param_pi="fa-circle-thin bg-white";    
+                            $param_pi="fa-circle-thin bg-white";
+                            $datetime_pi="";
                         }
 
-                        if($AR > 0){
-                            $param_ar="fa-check bg-green";    
+                        if(($AR)!=0){
+
+
+                            $row_imagen_ar=$db->recurso_origen($barra);
+                            while ($row_ar=$row_imagen_ar->fetch(PDO::FETCH_NUM))
+                            {
+                                $imagen_ar=base64_encode($row_ar[0]);
+                                $lat_ar=$row_ar[1];
+                                $lon_ar=$row_ar[2];
+                            }
+
+
+
+
+
+                            $param_ar="fa-check bg-green";
+                            $datetime_ar=$db->humanizando_fecha($row_1[3]);
                         }else{
                             $param_ar="fa-circle-thin bg-white";
+                            $datetime_ar="";
                         }
 
-                        if($LD > 0){
-                            $param_ld="fa-check bg-green";    
+                        if($LD != 0){
+                            $param_ld="fa-check bg-green";
+                            $datetime_ld=$db->humanizando_fecha($row_1[4]);
                         }else{
                             $param_ld="fa-circle-thin bg-white";
+                            $datetime_ld="";
                         }
 
-                        if($DL > 0){
+                        if($DL != 0){
                             $param_final="fa-check bg-green";
                             $des_final="Entrega";
-                        }elseif($DV > 0){
+                            $datetime_dl=$db->humanizando_fecha($row_1[5]);
+
+                            $imagen_dl="";
+                            $lat_dl=0;
+                            $lon_dl=0;
+                            $geo_dl="";
+
+                            $row_imagen_dl=$db->recurso_origen($barra);
+                            while ($row_dl=$row_imagen_dl->fetch(PDO::FETCH_NUM))
+                            {
+                                $imagen_dl=base64_encode($row_dl[0]);
+                                $lat_dl=$row_dl[1];
+                                $lon_dl=$row_dl[2];
+                                $geo_dl="https://www.google.com/maps/place/".$lat_dl.",".$lon_dl;
+                            }
+
+
+                        }elseif($DV != 0){
                             $param_final="fa-check bg-green";
                             $des_final="Devoluci&oacute;n";
+                            $datetime_dl=$db->humanizando_fecha($row_1[6]);
                         }else{
                             $param_final="fa-circle-thin bg-white";
-                            $des_final="Entrega";   
+                            $des_final="Entrega";
+                            $datetime_dl="";
                         }
                     }
                     ?>
@@ -94,7 +133,8 @@ $barra = $_POST['vineta'];
                     <div>
                         <i class="fas <?php echo $param_pi;?>"></i>
                         <div class="timeline-item">
-                            <h3 class="timeline-header"><a href="#">Solicitud de Env&iacute;o</a></h3>
+                            <h3 class="timeline-header"><a href="#">Solicitud de Env&iacute;o</a> <?php echo $datetime_pi; ?></h3>
+
                         </div>
                     </div>
                     <!-- END timeline item -->
@@ -102,7 +142,7 @@ $barra = $_POST['vineta'];
                     <div>
                         <i class="fas <?php echo $param_ar;?>"></i>
                         <div class="timeline-item">
-                            <h3 class="timeline-header noborder-"><a href="#">Ingreso</a></h3>
+                            <h3 class="timeline-header noborder-"><a href="#">Ingreso</a> <?php echo $datetime_ar; ?></h3>
                         </div>
                     </div>
                     <!-- END timeline item -->
@@ -110,7 +150,7 @@ $barra = $_POST['vineta'];
                     <div>
                         <i class="fas <?php echo $param_ld;?>"></i>
                         <div class="timeline-item">
-                            <h3 class="timeline-header "><a href="#">Salida a Ruta</a></h3>
+                            <h3 class="timeline-header "><a href="#">Salida a Ruta</a> <?php echo $datetime_ld; ?></h3>
                         </div>
                     </div>
                     <!-- END timeline item -->
@@ -118,7 +158,9 @@ $barra = $_POST['vineta'];
                     <div>
                         <i class="fas <?php echo $param_final;?>"></i>
                         <div class="timeline-item">
-                            <h3 class="timeline-header no-border"><a href="#"><?php echo $des_final;?></a></h3>
+                            <h3 class="timeline-header no-border"><a href="#"><?php echo $des_final;?></a> <?php echo $datetime_dl; ?>
+                                <?php echo $geo_dl; ?>
+                            </h3>
                         </div>
                     </div>
                     <?php ?>
@@ -130,12 +172,12 @@ $barra = $_POST['vineta'];
 
             <div class="col-md-4">
                 <div class="card-orange">
-                    <img class="img-fluid pad" src="vista/imgs/acuse.jpg" alt="Recolección">
+                    <img class="img-fluid pad" src="'data:image/jpeg;base64,<?php echo $imagen_ar;?>" alt="Recolección">
                     <p>Imágen de recolección</p>
                 </div>
 
                 <div class="card-orange">
-                    <img class="img-fluid pad" src="vista/imgs/acuse.jpg" alt="Entrega">
+                    <img class="img-fluid pad" src="'data:image/jpeg;base64,<?php echo $imagen_dl;?>" alt="Entrega">
                     <p>Imágen de Entrega</p>
                 </div>
             </div>
@@ -197,62 +239,62 @@ $barra = $_POST['vineta'];
     </div>
 </div>
 
-<!-- Main row -->
-<div class="row">
-        <!-- Left col -->
-        <div class="col-md-8">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Coordenadas de fin de proceso</h3>
+     <!-- Main row -->
+     <div class="row">
+         <!-- Left col -->
+         <div class="col-md-8">
+             <div class="card">
+                 <div class="card-header">
+                     <h3 class="card-title">Coordenadas de fin de proceso</h3>
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body p-0">
-              <div class="d-md-flex">
-                <div class="p-1 flex-fill" style="overflow: hidden">
-                  <!-- Map will be created here -->
-                  <div id="world-map-markers" style="height: 325px; overflow: hidden">
-                    <div class="map">
+                     <div class="card-tools">
+                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                             <i class="fas fa-minus"></i>
+                         </button>
+                         <button type="button" class="btn btn-tool" data-card-widget="remove">
+                             <i class="fas fa-times"></i>
+                         </button>
+                     </div>
+                 </div>
+                 <!-- /.card-header -->
+                 <div class="card-body p-0">
+                     <div class="d-md-flex">
+                         <div class="p-1 flex-fill" style="overflow: hidden">
+                             <!-- Map will be created here -->
+                             <div id="world-map-markers" style="height: 325px; overflow: hidden">
+                                 <div class="map">
 
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d36735.391016478556!2d-90.5269779011658!3d14.58012972001122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a3ec427650ff%3A0xc4e8a64136d7a539!2sZone%2014%2C%20Guatemala%20City%2C%20Guatemala!5e0!3m2!1sen!2ssv!4v1609364277988!5m2!1sen!2ssv" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-pane-right bg-navy pt-2 pb-2 pl-4 pr-4">
-                  <div class="description-block mb-4">
-                    <div class="sparkbar pad" data-color="#fff">latitud</div>
-                    <h5 class="description-header"></h5>
-                    <span class="description-text">Latitud</span>
-                  </div>
-                  <!-- /.description-block -->
-                  <div class="description-block mb-4">
-                    <div class="sparkbar pad" data-color="#fff">longitud</div>
-                    <h5 class="description-header"></h5>
-                    <span class="description-text">Longitud</span>
-                  </div>
-                    <!-- /.description-block -->
-                  <div class="description-block">
-                    <div class="sparkbar pad" data-color="#fff">Altura</div>
-                    <h5 class="description-header"></h5>
-                    <span class="description-text">Altura</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div><!-- /.card-pane-right -->
-              </div><!-- /.d-md-flex -->
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-</div>
+                                     <iframe src="<?php echo $geo_dl; ?>" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="card-pane-right bg-navy pt-2 pb-2 pl-4 pr-4">
+                             <div class="description-block mb-4">
+                                 <div class="sparkbar pad" data-color="#fff">latitud</div>
+                                 <h5 class="description-header"></h5>
+                                 <span class="description-text">Latitud</span>
+                             </div>
+                             <!-- /.description-block -->
+                             <div class="description-block mb-4">
+                                 <div class="sparkbar pad" data-color="#fff">longitud</div>
+                                 <h5 class="description-header"></h5>
+                                 <span class="description-text">Longitud</span>
+                             </div>
+                             <!-- /.description-block -->
+                             <div class="description-block">
+                                 <div class="sparkbar pad" data-color="#fff">Altura</div>
+                                 <h5 class="description-header"></h5>
+                                 <span class="description-text">Altura</span>
+                             </div>
+                             <!-- /.description-block -->
+                         </div><!-- /.card-pane-right -->
+                     </div><!-- /.d-md-flex -->
+                 </div>
+                 <!-- /.card-body -->
+             </div>
+             <!-- /.card -->
+         </div>
+     </div>
 <?php 
  }else{
 ?>
