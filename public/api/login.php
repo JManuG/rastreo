@@ -2,17 +2,28 @@
 
 //ini_set ("display_errors","0" );
 //error_reporting(E_ALL);
+$u=$_POST['CORREO'];
+$p=md5($_POST['password']);
+$dvi=$_POST['deviceid'];
+include("db_extend.php");
+$x1=new model_con();
 
-        $a=array(
-            'id' => 1001,
-            'nombre' => 'Marvin',
-            'apellido' => 'Abrego',
-            'telefono' => '75489856',
-            'correo' => 'mabrego@enia.com.gt',
-            'comercio_id' => 1,
+    $x2=$x1->login($u,$p);
+
+    /**/
+foreach($x2 as $row) {
+    $a = array(
+        'id' => $row->id_usr,
+            'nombre' => $row->usr_nombre,
+            'apellido' => ' ',
+            'telefono' => $row->telefono,
+            'correo' => trim($row->usr_nombre.'@envia.com.gt'),
+            'comercio_id' => $row->id_ccosto,
             'foto' => 'null',
             'token' => '8fdsf1g885dfgg6489g7f8886448fgggf4fgffg886'
 
         );
-    echo json_encode($a);
+    }
+
+    echo json_encode($a);/**/
 ?>
