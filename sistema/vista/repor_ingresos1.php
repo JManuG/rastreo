@@ -47,9 +47,9 @@ $x2=$x1->reporte_n();
         </div>
       </div>
     </div><!-- /.container-fluid -->
-<table id="table_id" class="display" border="1">
-    <thead>
-    <tr>
+    <table id="table_id" class="display" border="1">
+      <thead>
+      <tr>
         <th>Transaccion</th>
         <th>Remitente</th>
         <th>destinatario</th>
@@ -60,12 +60,12 @@ $x2=$x1->reporte_n();
         <th>mensajero</th>
         <th>consulta</th>
         <th>reimprecion</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    foreach($x2 as $row){
-            echo "<tr><td>".$row->barra."</td>
+      </tr>
+      </thead>
+      <tbody>
+      <?php
+      foreach($x2 as $row){
+        echo "<tr><td>".$row->barra."</td>
                     <td>".$row->remitente."</td>
                     <td>".$row->destinatario."</td>
                     <td>".$row->direccion."</td>
@@ -77,10 +77,10 @@ $x2=$x1->reporte_n();
                     <td><a href='#'>Reimprecion</a></td>
 
 </tr>";
-    }
-    ?>
-    </tbody>
-</table>
+      }
+      ?>
+      </tbody>
+    </table>
     <script>$(document).ready( function () {
         $('#table_id').DataTable();
       } );

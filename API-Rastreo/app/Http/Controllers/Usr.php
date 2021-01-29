@@ -9,6 +9,11 @@ use Response;
 class Usr extends Controller
 {
     public function wel(){
+        ini_set('display_errors', 1);
+
+        ini_set('display_startup_errors', 1);
+
+        error_reporting(E_ALL);
         //$sql = "SHOW TABLES FROM rastreo";
         //$sql = "select * from agencia";
         //$sql = "select * from categoria";
@@ -16,12 +21,12 @@ class Usr extends Controller
         //$sql = "select * from chk_id";
         //$sql = "select * from cliente";
         //$sql = "select * from correlativo";
-        $sql = "select * from guia";
+        //$sql = "select * from guia";
         //$sql = "select * from manifiesto";
-        //$sql = "select * from manifiesto_linea";
-        //$sql = "select * from mensajero";
+        //$sql = "select * from manifiesto_linea  where id_envio=92";
+        $sql = "select * from mensajero";
         //$sql = "select * from motivo";
-        //$sql = "select * from movimiento";
+        //$sql = "select * from movimiento where id_movimiento=(select max(id_movimiento) from movimiento where id_envio=65)";
         //$sql = "select * from orden";
         //$sql = "select * from recurso";
         //$sql = "select * from usuario";
@@ -81,7 +86,7 @@ class Usr extends Controller
         $affected = DB::table()
                         ->where('usr_cod','=',$usr)
                         ->update(['usr_pass' => $newpass]);
-        
+
         return $affected;
         */
     }
@@ -96,9 +101,9 @@ class Usr extends Controller
         $affected = DB::table('usuario')
                         ->where('usr_cod','=',$usr)
                         ->update(['usr_pass' => $pass]);
-        
-    
-        return 
+
+
+        return
         View('resultado',['resultado'=>$affected]);
     }
 
