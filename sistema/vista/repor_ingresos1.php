@@ -86,8 +86,8 @@ $x2=$x1->reporte_n();
                 Estado</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                 Mensajero</th>
-              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                Consulta</th>
+              <!--th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+                Consulta</th-->
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                 Reimprecion</th>
             </tr>
@@ -105,8 +105,8 @@ $x2=$x1->reporte_n();
                     <td>".$row->categoria."</td>
                     <td>".$row->estado."</td>
                     <td>".$row->mensajero."</td>
-                    <td>Consulta</td>
-                    <td><a href='#'>Reimprecion</a></td>
+                    <!--td>Consulta</td-->
+                    <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'>Reimpresión</a></td>
 
 </tr>";
             }
@@ -123,7 +123,7 @@ $x2=$x1->reporte_n();
               <th rowspan="1" colspan="1">Categoria</th>
               <th rowspan="1" colspan="1">Estado</th>
               <th rowspan="1" colspan="1">Mensajero</th>
-              <th rowspan="1" colspan="1">Consulta</th>
+              <!--th rowspan="1" colspan="1">Consulta</th-->
               <th rowspan="1" colspan="1">Reimprecion</th>
             </tr>
             </tfoot>
