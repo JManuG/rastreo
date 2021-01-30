@@ -1,5 +1,5 @@
 <?php
-class repor_ingresos1{
+class reportehistorico{
 
     public function index(){
 
@@ -8,7 +8,7 @@ class repor_ingresos1{
         {
             //require('../class/cab.php');
             include('vista/inicio.php');
-            include('vista/repor_ingresos1.php');
+            include('vista/reportehistorico.php');
             include('vista/inicio_pie.php');
         }
         else

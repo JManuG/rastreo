@@ -15,6 +15,7 @@ class model_con extends Db
         //datos no encontrados: apellido, correo,
         $sql="select 
                 u.id_usr,
+                mj.id_mensajero,
                 u.usr_nombre,
                 mj.telefono,
                 cc.id_ccosto
@@ -39,30 +40,43 @@ class model_con extends Db
     public function manifiesto($id_usr)
     {
         //captura lso datos de manifiesto.
-        $sql="select 
-                
-                from usuario u
-                inner join mensajero msj on msj.id_usr=u.id_usr
-                inner join manifiesto mf on mf.id_mensajero=msj.id_mensajero
-        ";
+
+        $db=Db::getInstance();
+
+
 
         $sql="select
-                            gi.barra as barra,
-                            gi.destinatario as destinatario,
+                            gi.barra as idPedido,
+                            gi.destinatario as name,
                             cct.ccosto_nombre as centro_costo,
-                            gi.des_direccion as direccion,
+                            gi.des_direccion as address,
                             ct.des_cat as categoria,
                             mv.descripcion as estado,
-                            
+                            gi.fecha_datetime as createdAt,
+                            gi.comentario as comments,
+                            cct.ccosto_nombre as centro_costo,
+                            z.zon_descripcion as address
+       
                         from guia gi
                         inner join usuario us on us.id_usr=gi.id_usr
                         inner join centro_costo cct on cct.id_ccosto=gi.des_ccosto
                         inner join categoria ct on ct.id_cat=gi.entero1
                         inner join movimiento mv on mv.id_envio=gi.id_envio
-                        left join manifiesto_linea ml on ml.id_envio=gi.id_envio
-                        left join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
-                        left join mensajero mj on mj.id_mensajero=mnf.id_mensajero
-                        where us.id_usr=$id_usr";
+                        inner join manifiesto_linea ml on ml.id_envio=gi.id_envio
+                        inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
+                        inner join zona z on z.id_zona=mv.id_zona
+                        inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
+                        where mj.id_mensajero=$id_usr";
+        $c= $db->consultar($sql);
+
+        //print_r($c);
+        while ($row=$c->fetch(PDO::FETCH_OBJ))
+        {
+            $data[] = $row;
+        }
+
+        //print_r($data);
+        return $data;
 
     }
 
