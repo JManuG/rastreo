@@ -18,8 +18,10 @@ class proc{
 
     public function ar(){
         if(!empty($_SESSION['cod_usuario'])){
+
             //require('../class/cab.php');
             include('vista/inicio.php');
+
             include('vista/form_proc_ar.php');
             ?>
             <?php
@@ -30,6 +32,8 @@ class proc{
         }
     }
 
+
+    
     public function ld(){
         if(!empty($_SESSION['cod_usuario'])){
             //require('../class/cab.php');
@@ -43,6 +47,8 @@ class proc{
             echo "Debes iniciar session";
         }
     }
+
+
 
     public function dl(){
         if(!empty($_SESSION['cod_usuario'])){

@@ -1,7 +1,10 @@
 <?php
+if(isset($_POST['id'])){
 
-        $a=array(
-            'status' => 'ok',
-        );
-    echo json_encode($a);
+}else{
+    $data= array(
+
+    );
+}
+
 ?>

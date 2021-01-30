@@ -6,17 +6,21 @@ $x1= new model_con();
 $x2=$x1->reporte_n();
 
 //print_r($x2);
-
+include ("model/model_tab.php");
+$db=new model_tab();
 ?>
 
-<link rel="stylesheet" href="vista/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="vista/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<link rel="stylesheet" href="vista/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js">
-</script>
+<style type="text/css">
+  .ocultar{
+    display: none;
 
+  }
+
+  .mostrar{
+    display:block;
+  }
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -41,32 +45,12 @@ $x2=$x1->reporte_n();
 
 
 
-    <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6">
-          <div class="dt-buttons btn-group flex-wrap">
-            <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="example1" type="button">
-              <span>Copy</span>
-            </button> <button class="btn btn-secondary buttons-csv buttons-html5" tabindex="0" aria-controls="example1" type="button">
-              <span>CSV</span>
-            </button> <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="example1" type="button">
-              <span>Excel</span>
-            </button> <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="example1" type="button">
-              <span>PDF</span>
-            </button> <button class="btn btn-secondary buttons-print" tabindex="0" aria-controls="example1" type="button">
-              <span>Print</span>
-            </button><div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle buttons-colvis" tabindex="0" aria-controls="example1" type="button" aria-haspopup="true" aria-expanded="false">
-                <span>Column visibility</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-6"><div id="example1_filter" class="dataTables_filter">
-            <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label>
-          </div>
-        </div>
-      </div>
       <div class="row"><div class="col-sm-12">
+          <div id="ok" class="alert alert-success ocultar" role="alert">
+            Prosesando solicitud de arrivo(...)
+          </div>
 
-          <table id="table_id" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+          <table id="table_id" class="table table-hover table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
 
             <thead>
             <tr role="row">
@@ -86,16 +70,24 @@ $x2=$x1->reporte_n();
                 Estado</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                 Mensajero</th>
-              <!--th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                Consulta</th-->
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+                Arribar</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                 Reimprecion</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="developers">
 
             <?php
+            $cn=0;
             foreach($x2 as $row){
+              $cn++;
+              if($row->mensajero==""){
+                  $msj="<a href='index.php?prc=proc&accion=ld&br=$row->barra' target='_blank' ><i class='fas fa-people-carry fa-2x'></i></a>";
+              }else{
+                $msj=$row->mensajero;
+              }
+              if($row->estado=="ARRIBO" or $row->estado=="INGRESO"){
               echo "<tr role='row' class='odd'>
                     <td class='dtr-control sorting_1' tabindex='0'>".$row->barra."</td>
                     <td>".$row->remitente."</td>
@@ -104,11 +96,31 @@ $x2=$x1->reporte_n();
                      <td>".$row->centro_costo."</td>
                     <td>".$row->categoria."</td>
                     <td>".$row->estado."</td>
-                    <td>".$row->mensajero."</td>
-                    <!--td>Consulta</td-->
-                    <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'>Reimpresión</a></td>
+                    <td>".$msj
+
+
+                ."</td>
+                    <td>
+                    <div id='ok".$cn."' class='alert alert-success ocultar' role='alert'>
+                            Prosesando solicitud de arrivo(...)
+                        </div>
+                    <button type='button' class='btn btn-link' id='vineta' name='vineta' autocomplete='off' autofocus placeholder='vi&ntilde;eta' onclick='procesarAR(".$row->barra.");recargar(".$cn.");' >
+                      <i class='fas fa-inbox fa-2x'></i></button>
+                    
+                    <script src='vista/funciones.js'></script>
+                    <script>
+                        function recargar(c){
+                            $('p').show();
+                            document.getElementById('ok'+c).classList.remove('ocultar');
+                            setTimeout('document.location.reload()',3000);
+                    }
+                    </script>
+                
+                    </td>
+                    <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'><i class='fas fa-print fa-2x'></i></a></td>
 
 </tr>";
+              }//fin validacion de estado
             }
             ?>
 
@@ -123,89 +135,16 @@ $x2=$x1->reporte_n();
               <th rowspan="1" colspan="1">Categoria</th>
               <th rowspan="1" colspan="1">Estado</th>
               <th rowspan="1" colspan="1">Mensajero</th>
-              <!--th rowspan="1" colspan="1">Consulta</th-->
+              <th rowspan="1" colspan="1">Arribar</th>
               <th rowspan="1" colspan="1">Reimprecion</th>
             </tr>
             </tfoot>
-          </table></div></div>
-      <div class="row">
-        <div class="col-sm-12 col-md-5">
-          <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-            Showing 1 to 10 of 57 entries
+
+          </table>
+
+          <div class="col-md-12 text-center">
+            <ul class="pagination" id="developer_page"></ul>
           </div>
         </div>
-        <div class="col-sm-12 col-md-7">
-          <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-            <ul class="pagination">
-              <li class="paginate_button page-item previous disabled" id="example1_previous">
-                <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-              </li>
-              <li class="paginate_button page-item active">
-                <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-              </li>
-              <li class="paginate_button page-item ">
-                <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-              </li>
-              <li class="paginate_button page-item ">
-                <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-              </li>
-              <li class="paginate_button page-item ">
-                <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-              </li>
-              <li class="paginate_button page-item ">
-                <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-              </li>
-              <li class="paginate_button page-item ">
-                <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-              </li><li class="paginate_button page-item next" id="example1_next">
-                <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+
       </div>
-    </div>
-
-
-
-    <!-- DataTables  & Plugins -->
-    <script src="vista/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="vista/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="vista/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="vista/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="vista/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="vista/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="vista/plugins/jszip/jszip.min.js"></script>
-    <script src="vista/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="vista/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="vista/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="vista/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="vista/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="vista/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="vista/dist/js/demo.js"></script>
-    <!-- Page specific script -->
-    <script>
-      $(function () {
-        $("#example1").DataTable({
-          "responsive": true, "lengthChange": false, "autoWidth": false,
-          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false,
-          "responsive": true,
-        });
-      });
-    </script>
-
-<script>
-  $(document).ready( function () {
-    $('#table_id').DataTable();
-  } );
-</script>

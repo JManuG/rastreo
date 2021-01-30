@@ -103,6 +103,12 @@ date_default_timezone_set('America/El_Salvador');
         <p>Reporte de ingresos</p>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=reportehistorico'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Reporte de ingresos historico</p>
+      </a>
+    </li>
 
     <li class="nav-item">
       <a class="nav-link" href='index.php?prc=informe1'>
