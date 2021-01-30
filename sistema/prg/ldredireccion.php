@@ -1,14 +1,13 @@
 <?php
-class repor_ingresos1{
+class dlredic{
 
     public function index(){
-
         session_start();
         if(!empty($_SESSION['cod_usuario']))
         {
             //require('../class/cab.php');
             include('vista/inicio.php');
-            include('vista/repor_ingresos1.php');
+            include('vista/form_proc_ld.php');
             include('vista/inicio_pie.php');
         }
         else

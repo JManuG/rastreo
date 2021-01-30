@@ -2,14 +2,14 @@
 
 include('../../class/db.php');
 
-class model_con extends Db
+class historico_ingresos extends Db
 {
   public function __construct()
   {
     $db=Db::getInstance();
   }
 
-  public function reporte_n()
+  public function reporte_h($f1,$f2)
   {
     $db=Db::getInstance();
     $sql = "select
@@ -20,8 +20,8 @@ class model_con extends Db
                             gi.des_direccion as direccion,
                             ct.des_cat as categoria,
                             mv.descripcion as estado,
-                            mj.nombre as mensajero
-       
+                            mj.nombre as mensajero,
+                            gi.fecha_datetime as fecha
                         from guia gi
                         inner join usuario us on us.id_usr=gi.id_usr
                         inner join centro_costo cct on cct.id_ccosto=gi.des_ccosto
@@ -31,10 +31,13 @@ class model_con extends Db
                         left join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
                         left join mensajero mj on mj.id_mensajero=mnf.id_mensajero
         where mv.id_movimiento=(select max(id_movimiento) from movimiento where id_envio=gi.id_envio)
+                and gi.fecha_date between '".$f1."' and '".$f2."' 
                         order by gi.barra desc";
 
     //and mv.descripcion='ARRIBO' or mv.descripcion='INGRESO'
     $c= $db->consultar($sql);
+
+    //print_r($c);
 
     while ($row=$c->fetch(PDO::FETCH_OBJ))
     {
@@ -46,3 +49,4 @@ class model_con extends Db
 
 }
 ?>
+
