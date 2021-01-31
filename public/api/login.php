@@ -2,14 +2,14 @@
 
 //ini_set ("display_errors","0" );
 //error_reporting(E_ALL);
-$u=$_POST['correo'];
-$p=md5($_POST['password']);
-$dvi=$_POST['deviceid'];
-/*
-$u="enviagt";
-$p=md5("enviagt");
-*/
+$u=$_GET['correo'];
+$p=md5($_GET['password']);
+$dvi=$_GET['deviceid'];
 
+//$u="enviagt";
+//$p=md5("enviagt");
+
+echo $u."---".$p."---".$dvi;
 include("db_extend.php");
 $x1=new model_con();
 
@@ -17,6 +17,7 @@ $x1=new model_con();
     /**/
 $tk=20;
 $token=$x1->generar_token_seguro($tk);
+
 foreach($x2 as $row) {
     $a = array(
             'id' => (int)$row->id_mensajero,
