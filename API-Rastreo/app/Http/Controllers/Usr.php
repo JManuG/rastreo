@@ -21,14 +21,14 @@ class Usr extends Controller
         //$sql = "select * from chk_id";
         //$sql = "select * from cliente";
         //$sql = "select * from correlativo";
-        $sql = "select * from guia";
+        //$sql = "select * from guia";
         //$sql = "select * from manifiesto";
         //$sql = "select * from manifiesto_linea  where id_envio=92";
         //$sql = "select * from mensajero";
         //$sql = "select * from motivo";
-        //$sql = "select * from movimiento where id_movimiento=(select max(id_movimiento) from movimiento where id_envio=65)";
+        //$sql = "select * from movimiento";
         //$sql = "select * from orden";
-        //$sql = "select * from recurso";
+        $sql = "select * from recurso";
         //$sql = "select * from usuario";
         //$sql = "select * from zona";
         //$sql="select gi.barra as idPedido, gi.destinatario as name, cct.ccosto_nombre as centro_costo, gi.des_direccion as address, ct.des_cat as categoria, mv.descripcion as estado, gi.fecha_datetime as createdAt, gi.comentario as comments, cct.ccosto_nombre as centro_costo, z.zon_descripcion as address from guia gi inner join usuario us on us.id_usr=gi.id_usr inner join centro_costo cct on cct.id_ccosto=gi.des_ccosto inner join categoria ct on ct.id_cat=gi.entero1 inner join movimiento mv on mv.id_envio=gi.id_envio inner join manifiesto_linea ml on ml.id_envio=gi.id_envio inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto inner join zona z on z.id_zona=mv.id_zona inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero where mj.id_mensajero=3 ";
