@@ -218,7 +218,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="42469000" />
+      <workItem from="1611939836626" duration="43366000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1608352414484</created>
@@ -528,7 +528,28 @@
       <option name="project" value="LOCAL" />
       <updated>1612055838842</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="reporte">
+      <created>1612056016491</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1612056016491</updated>
+    </task>
+    <task id="LOCAL-00046" summary="login actualizado">
+      <created>1612056163252</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1612056163252</updated>
+    </task>
+    <task id="LOCAL-00047" summary="login actualizado 2">
+      <created>1612056417930</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1612056417930</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,8 +601,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="test1" />
-    <MESSAGE value="Corrección agencias" />
     <MESSAGE value="Corrección formulario guias" />
     <MESSAGE value="arv1" />
     <MESSAGE value="arv2" />
@@ -605,7 +624,9 @@
     <MESSAGE value="env" />
     <MESSAGE value="login y db service" />
     <MESSAGE value="reporte" />
-    <option name="LAST_COMMIT_MESSAGE" value="reporte" />
+    <MESSAGE value="login actualizado" />
+    <MESSAGE value="login actualizado 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="login actualizado 2" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
