@@ -218,7 +218,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="43366000" />
+      <workItem from="1611939836626" duration="44779000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1608352414484</created>
@@ -549,7 +549,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612056417930</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="login actualizado 3">
+      <created>1612056815735</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1612056815735</updated>
+    </task>
+    <task id="LOCAL-00049" summary="login actualizado 4">
+      <created>1612058864713</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1612058864713</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,8 +615,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Corrección formulario guias" />
-    <MESSAGE value="arv1" />
     <MESSAGE value="arv2" />
     <MESSAGE value="mov1" />
     <MESSAGE value="mov1.1" />
@@ -626,7 +638,9 @@
     <MESSAGE value="reporte" />
     <MESSAGE value="login actualizado" />
     <MESSAGE value="login actualizado 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="login actualizado 2" />
+    <MESSAGE value="login actualizado 3" />
+    <MESSAGE value="login actualizado 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="login actualizado 4" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
