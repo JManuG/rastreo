@@ -106,7 +106,7 @@ $x1=new model_con();
 
         );
 
-   $id=	$_POST['id'];
+   $id=	$_GET['mensajero'];
 
    $x2=$x1->manifiesto($id);
         $b=array();
@@ -137,4 +137,5 @@ $x1=new model_con();
         //echo $cnt."<br>";
         //print_r($b);
     echo json_encode($b);
+
 ?>
