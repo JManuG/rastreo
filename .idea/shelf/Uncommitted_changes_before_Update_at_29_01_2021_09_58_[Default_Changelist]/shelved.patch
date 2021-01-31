@@ -1,0 +1,18 @@
+Index: public/api/login.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\n//ini_set (\"display_errors\",\"0\" );\r\n//error_reporting(E_ALL);\r\n$u=$_POST['CORREO'];\r\n$p=md5($_POST['password']);\r\n$dvi=$_POST['deviceid'];\r\ninclude(\"db_extend.php\");\r\n$x1=new model_con();\r\n\r\n    $x2=$x1->login($u,$p);\r\n\r\n    /**/\r\nforeach($x2 as $row) {\r\n    $a = array(\r\n        'id' => $row->id_usr,\r\n            'nombre' => $row->usr_nombre,\r\n            'apellido' => ' ',\r\n            'telefono' => $row->telefono,\r\n            'correo' => trim($row->usr_nombre.'@envia.com.gt'),\r\n            'comercio_id' => $row->id_ccosto,\r\n            'foto' => 'null',\r\n            'token' => '8fdsf1g885dfgg6489g7f8886448fgggf4fgffg886'\r\n\r\n        );\r\n    }\r\n\r\n    echo json_encode($a);/**/\r\n?>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/api/login.php b/public/api/login.php
+--- a/public/api/login.php	(revision 3d0715f76fd3b455000af067c5b43fe8eb50ed22)
++++ b/public/api/login.php	(date 1611935825559)
+@@ -9,7 +9,6 @@
+ $x1=new model_con();
+ 
+     $x2=$x1->login($u,$p);
+-
+     /**/
+ foreach($x2 as $row) {
+     $a = array(
