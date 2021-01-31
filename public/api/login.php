@@ -1,7 +1,7 @@
 <?php
 
 //ini_set ("display_errors","0" );
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 $u=$_POST['correo'];
 $p=md5($_POST['password']);
 $dvi=$_POST['deviceid'];
@@ -29,8 +29,15 @@ foreach($x2 as $row) {
         );
     }
 
+if($a!=null) {
     echo json_encode($a);/**/
-
+}else{
+    $f=array(
+        'status'=>'404',
+        'informe'=>'usuario invalido'
+    );
+    echo json_encode($f);
+}
 
 
 /*
