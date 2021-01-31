@@ -12,7 +12,7 @@ $dvi=$_POST['deviceid'];
 echo $u."---".$p."---".$dvi;
 include("db_extend.php");
 $x1=new model_con();
-
+ 
     $x2=$x1->login($u,$p);
     /**/
 $tk=20;
