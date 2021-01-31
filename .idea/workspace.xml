@@ -218,14 +218,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="61283000" />
-    </task>
-    <task id="LOCAL-00014" summary="debug2">
-      <created>1610378751649</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1610378751649</updated>
+      <workItem from="1611939836626" duration="61765000" />
     </task>
     <task id="LOCAL-00015" summary="Cambios Xajax 1">
       <created>1610731104164</created>
@@ -563,7 +556,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612122940862</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="lista de envios cambio 34">
+      <created>1612123981833</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1612123981833</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

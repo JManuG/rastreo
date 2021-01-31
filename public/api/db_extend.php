@@ -69,6 +69,8 @@ class model_con extends Db
                         where mj.id_mensajero=$id_usr
                         and mv.id_chk=3
                         and gi.estado=4";
+
+
         $c= $db->consultar($sql);
 
         //print_r($c);
