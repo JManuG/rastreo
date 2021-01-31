@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="login y db service">
       <change afterPath="$PROJECT_DIR$/no perder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/api/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -218,21 +217,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="49691000" />
-    </task>
-    <task id="LOCAL-00003" summary="Corrección agencias">
-      <created>1608397677312</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1608397677312</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Corrección formulario guias">
-      <created>1608668077408</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1608668077408</updated>
+      <workItem from="1611939836626" duration="50519000" />
     </task>
     <task id="LOCAL-00005" summary="arv1">
       <created>1608749397758</created>
@@ -563,7 +548,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612070153191</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="login actualizado 4">
+      <created>1612075336703</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1612075336703</updated>
+    </task>
+    <task id="LOCAL-00053" summary="login actualizado 4">
+      <created>1612076154076</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1612076154077</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
