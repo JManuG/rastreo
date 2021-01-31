@@ -1,10 +1,7 @@
 <?php
-if(isset($_POST['id'])){
+$postdata = json_decode(file_get_contents("php://input"));
 
-}else{
-    $data= array(
+print_r($postdata);
 
-    );
-}
 
 ?>
