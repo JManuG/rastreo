@@ -49,7 +49,7 @@ class model_con extends Db
                             gi.barra as idPedido,
                             gi.destinatario as name,
                             cct.ccosto_nombre as centro_costo,
-                            gi.des_direccion as address,
+                            gi.des_direccion as direccion,
                             ct.des_cat as categoria,
                             mv.descripcion as estado,
                             gi.fecha_datetime as createdAt,
@@ -69,6 +69,8 @@ class model_con extends Db
                         where mj.id_mensajero=$id_usr
                         and mv.id_chk=3
                         and gi.estado=4";
+
+
         $c= $db->consultar($sql);
 
         //print_r($c);
