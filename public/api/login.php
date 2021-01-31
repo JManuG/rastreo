@@ -15,6 +15,8 @@ $x1=new model_con();
 
     $x2=$x1->login($u,$p);
     /**/
+$tk=20;
+$token=$x1->generar_token_seguro($tk);
 foreach($x2 as $row) {
     $a = array(
             'id' => (int)$row->id_mensajero,
@@ -24,16 +26,18 @@ foreach($x2 as $row) {
             'correo' => trim($row->usr_nombre.'@envia.com.gt'),
             'comercio_id' => (int)$row->id_ccosto,
             'foto' => 'null',
-            'token' => '8fdsf1g885dfgg6489g7f8886448fgggf4fgffg886',
+            'token' => $token,
             'status'=>'200'
         );
     }
 
 if($a!=null) {
-    http_response_code(200);
+    //http_response_code(200);
+    header("HTTP/1.1 200 OK");
     echo json_encode($a);/**/
 }else{
-    http_response_code(404);
+    //http_response_code(404);
+    header("HTTP/1.1 404 Not Found");
     $f=array(
         'status'=>'404',
         'informe'=>'usuario invalido'
