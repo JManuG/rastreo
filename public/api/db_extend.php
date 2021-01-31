@@ -19,14 +19,14 @@ class model_con extends Db
                 u.usr_nombre,
                 mj.telefono,
                 cc.id_ccosto
-                from usuario u
-                inner join mensajero mj on mj.id_usr=u.id_usr
+                from mensajero mj
+                inner join usuario u on u.usr_cod=mj.telefono
                 inner join centro_costo cc on cc.id_ccosto=u.id_ccosto
                 where u.usr_cod='$u' and u.usr_pass='$p'";
 
         $c= $db->consultar($sql);
 
-        //print_r($c);
+        //print_r($sql);
         while ($row=$c->fetch(PDO::FETCH_OBJ))
         {
             $data[] = $row;
