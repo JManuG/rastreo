@@ -24,8 +24,8 @@ foreach($x2 as $row) {
             'correo' => trim($row->usr_nombre.'@envia.com.gt'),
             'comercio_id' => (int)$row->id_ccosto,
             'foto' => 'null',
-            'token' => '8fdsf1g885dfgg6489g7f8886448fgggf4fgffg886'
-
+            'token' => '8fdsf1g885dfgg6489g7f8886448fgggf4fgffg886',
+            'status'=>'200'
         );
     }
 
