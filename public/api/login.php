@@ -2,19 +2,28 @@
 
 //ini_set ("display_errors","0" );
 //error_reporting(E_ALL);
-$u=$_POST['correo'];
-$p=md5($_POST['password']);
-$dvi=$_POST['deviceid'];
 
 //$u="enviagt";
 //$p=md5("enviagt");
 
-//
+///**/
+
+$postdata = json_decode(file_get_contents("php://input"));
+
+//print_r($postdata);
+
+$u=trim($postdata->correo);
+$p=md5(trim($postdata->password));
+$dvi=$postdata->device_id;
+
 include("db_extend.php");
 $x1=new model_con();
  
-    $x2=$x1->login($u,$p);
-    /**/
+$x2=$x1->login($u,$p);
+
+
+
+
 $tk=20;
 $token=$x1->generar_token_seguro($tk);
 
