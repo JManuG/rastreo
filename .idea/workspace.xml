@@ -5,6 +5,7 @@
       <change afterPath="$PROJECT_DIR$/no perder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/api/envios.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/envios.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/api/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,14 +219,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="51420000" />
-    </task>
-    <task id="LOCAL-00008" summary="mov1">
-      <created>1609364545717</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1609364545717</updated>
+      <workItem from="1611939836626" duration="52412000" />
     </task>
     <task id="LOCAL-00009" summary="mov1.1">
       <created>1609547219633</created>
@@ -563,7 +557,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612077041398</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="envios actualizado 2">
+      <created>1612077078108</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1612077078108</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,7 +616,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="mov1.1" />
     <MESSAGE value="informe1" />
     <MESSAGE value="informe1.1" />
     <MESSAGE value="informe1.2" />
@@ -640,7 +640,8 @@
     <MESSAGE value="login actualizado 4" />
     <MESSAGE value="login actualizado 289" />
     <MESSAGE value="login actualizado 290" />
-    <option name="LAST_COMMIT_MESSAGE" value="login actualizado 290" />
+    <MESSAGE value="envios actualizado 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="envios actualizado 2" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
