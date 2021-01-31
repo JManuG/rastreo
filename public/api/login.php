@@ -30,6 +30,7 @@ foreach($x2 as $row) {
     }
 
 if($a!=null) {
+    http_response_code(200);
     echo json_encode($a);/**/
 }else{
     http_response_code(404);
