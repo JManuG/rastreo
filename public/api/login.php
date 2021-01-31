@@ -32,6 +32,7 @@ foreach($x2 as $row) {
 if($a!=null) {
     echo json_encode($a);/**/
 }else{
+    http_response_code(404);
     $f=array(
         'status'=>'404',
         'informe'=>'usuario invalido'
