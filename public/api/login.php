@@ -1,8 +1,7 @@
 <?php
 
 //ini_set ("display_errors","0" );
-//error_reporting(E_ALL);
-
+error_reporting(E_ALL);
 $u=$_POST['correo'];
 $p=md5($_POST['password']);
 $dvi=$_POST['deviceid'];
@@ -10,10 +9,7 @@ $dvi=$_POST['deviceid'];
 $u="enviagt";
 $p=md5("enviagt");
 */
-/*
-$u="ikdfhgdf";
-$p="kfghjkldfgj";
-*/
+
 include("db_extend.php");
 $x1=new model_con();
 
@@ -32,15 +28,9 @@ foreach($x2 as $row) {
 
         );
     }
-if($a!=null) {
+
     echo json_encode($a);/**/
-}else{
-    $fail=array(
-        'status'=> '404',
-        'informe'=>'Usuario no valido'
-    );
-    echo json_encode($fail);
-}
+
 
 
 /*
