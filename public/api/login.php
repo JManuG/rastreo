@@ -9,7 +9,7 @@ $dvi=$_POST['deviceid'];
 //$u="enviagt";
 //$p=md5("enviagt");
 
-//echo $u."---".$p."---".$dvi;
+//
 include("db_extend.php");
 $x1=new model_con();
  
