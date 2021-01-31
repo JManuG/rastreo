@@ -217,14 +217,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="50519000" />
-    </task>
-    <task id="LOCAL-00005" summary="arv1">
-      <created>1608749397758</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1608749397758</updated>
+      <workItem from="1611939836626" duration="50857000" />
     </task>
     <task id="LOCAL-00006" summary="arv1">
       <created>1608782836845</created>
@@ -562,7 +555,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612076154077</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="login actualizado 289">
+      <created>1612076176992</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1612076176992</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,7 +614,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="arv2" />
     <MESSAGE value="mov1" />
     <MESSAGE value="mov1.1" />
     <MESSAGE value="informe1" />
@@ -639,7 +638,8 @@
     <MESSAGE value="login actualizado 2" />
     <MESSAGE value="login actualizado 3" />
     <MESSAGE value="login actualizado 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="login actualizado 4" />
+    <MESSAGE value="login actualizado 289" />
+    <option name="LAST_COMMIT_MESSAGE" value="login actualizado 289" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
