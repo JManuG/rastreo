@@ -66,7 +66,9 @@ class model_con extends Db
                         inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
                         inner join zona z on z.id_zona=mv.id_zona
                         inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
-                        where mj.id_mensajero=$id_usr";
+                        where mj.id_mensajero=$id_usr
+                        and mv.id_chk=3
+                        and gi.estado=4";
         $c= $db->consultar($sql);
 
         //print_r($c);
@@ -83,6 +85,8 @@ class model_con extends Db
     public function geolocal()
     {
         //geolocalizacion y fotos.
+
+
 
     }
 

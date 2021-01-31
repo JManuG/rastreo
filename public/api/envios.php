@@ -6,7 +6,7 @@ include("db_extend.php");
 $x1=new model_con();
 
 
-   $id=	$_POST['mensajero'];
+   $id=	$_GET['mensajero'];
 
    $x2=$x1->manifiesto($id);
         $b=array();
