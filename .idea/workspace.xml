@@ -4,7 +4,9 @@
     <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="login y db service">
       <change afterPath="$PROJECT_DIR$/no perder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/api/db_extend.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/db_extend.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/api/cestado.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/cestado.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/api/envios.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/envios.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,21 +220,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="61765000" />
-    </task>
-    <task id="LOCAL-00015" summary="Cambios Xajax 1">
-      <created>1610731104164</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1610731104164</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Cambios Xajax 2">
-      <created>1611025976995</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1611025976995</updated>
+      <workItem from="1611939836626" duration="64156000" />
     </task>
     <task id="LOCAL-00017" summary="Cambios Xajax 2">
       <created>1611027086769</created>
@@ -563,7 +551,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612123981833</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="lista de envios cambio 35">
+      <created>1612124471129</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1612124471129</updated>
+    </task>
+    <task id="LOCAL-00065" summary="lista de envios cambio 35">
+      <created>1612124992108</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1612124992108</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,7 +617,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="informe1.2" />
     <MESSAGE value="debug1" />
     <MESSAGE value="debug2" />
     <MESSAGE value="Cambios Xajax 1" />
@@ -640,7 +641,8 @@
     <MESSAGE value="envios actualizado 2" />
     <MESSAGE value="login cambio final 1" />
     <MESSAGE value="lista de envios cambio 34" />
-    <option name="LAST_COMMIT_MESSAGE" value="lista de envios cambio 34" />
+    <MESSAGE value="lista de envios cambio 35" />
+    <option name="LAST_COMMIT_MESSAGE" value="lista de envios cambio 35" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
