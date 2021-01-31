@@ -2,9 +2,9 @@
 
 //ini_set ("display_errors","0" );
 //error_reporting(E_ALL);
-$u=$_GET['correo'];
-$p=md5($_GET['password']);
-$dvi=$_GET['deviceid'];
+$u=$_POST['correo'];
+$p=md5($_POST['password']);
+$dvi=$_POST['deviceid'];
 
 //$u="enviagt";
 //$p=md5("enviagt");
@@ -33,12 +33,12 @@ foreach($x2 as $row) {
     }
 
 if($a!=null) {
-    //http_response_code(200);
-    header("HTTP/1.1 200 OK");
+    http_response_code(200);
+    //header("HTTP/1.1 200 OK");
     echo json_encode($a);/**/
 }else{
-    //http_response_code(404);
-    header("HTTP/1.1 404 Not Found");
+    http_response_code(404);
+    //header("HTTP/1.1 404 Not Found");
     $f=array(
         'status'=>'404',
         'informe'=>'usuario invalido'
