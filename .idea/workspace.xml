@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="login y db service">
       <change afterPath="$PROJECT_DIR$/no perder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/api/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/api/envios.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/envios.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,14 +218,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="50857000" />
-    </task>
-    <task id="LOCAL-00006" summary="arv1">
-      <created>1608782836845</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1608782836846</updated>
+      <workItem from="1611939836626" duration="51374000" />
     </task>
     <task id="LOCAL-00007" summary="arv2">
       <created>1609007981080</created>
@@ -562,7 +556,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612076176992</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="login actualizado 290">
+      <created>1612076518913</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1612076518914</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,7 +615,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="mov1" />
     <MESSAGE value="mov1.1" />
     <MESSAGE value="informe1" />
     <MESSAGE value="informe1.1" />
@@ -639,7 +639,8 @@
     <MESSAGE value="login actualizado 3" />
     <MESSAGE value="login actualizado 4" />
     <MESSAGE value="login actualizado 289" />
-    <option name="LAST_COMMIT_MESSAGE" value="login actualizado 289" />
+    <MESSAGE value="login actualizado 290" />
+    <option name="LAST_COMMIT_MESSAGE" value="login actualizado 290" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
