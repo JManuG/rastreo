@@ -137,4 +137,5 @@ $x1=new model_con();
         //echo $cnt."<br>";
         //print_r($b);
     echo json_encode($b);
+
 ?>
