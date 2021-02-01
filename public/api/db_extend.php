@@ -116,7 +116,7 @@ class model_con extends Db
 					VALUES (0,$id_guia,$chk,1,'$id_usr','$id_usr','$fecha_date','$fecha_datetime','$marca','1','MENSAJERO',NULL) ";
         $c= $db->consultar($sql);
 
-
+//echo $sql;
     }
 
     public function obtener_movimeinto($barra,$id_guia,$chk){
