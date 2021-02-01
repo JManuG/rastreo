@@ -108,7 +108,7 @@ $barra = $_POST['vineta'];
                             $lon_dl=0;
                             $geo_dl="";
 
-                            $row_imagen_dl=$db->recurso_origen($barra);
+                            $row_imagen_dl=$db->recurso_destino($barra);
                             while ($row_dl=$row_imagen_dl->fetch(PDO::FETCH_NUM))
                             {
                                 $imagen_dl=base64_encode($row_dl[0]);
@@ -159,7 +159,9 @@ $barra = $_POST['vineta'];
                         <i class="fas <?php echo $param_final;?>"></i>
                         <div class="timeline-item">
                             <h3 class="timeline-header no-border"><a href="#"><?php echo $des_final;?></a> <?php echo $datetime_dl; ?>
-                                <?php echo $geo_dl; ?>
+                                <a href="<?php echo $geo_dl; ?>" target="_blank">
+                                        <i class="fas fa-map-marker-alt mr-1"></i>
+                                    </a>
                             </h3>
                         </div>
                     </div>
@@ -263,7 +265,7 @@ $barra = $_POST['vineta'];
                              <!-- Map will be created here -->
                              <div id="world-map-markers" style="height: 325px; overflow: hidden">
                                  <div class="map">
-
+                                     <?php echo "GEO ".$geo_dl; ?>
                                      <iframe src="<?php echo $geo_dl; ?>" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                  </div>
                              </div>
