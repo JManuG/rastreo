@@ -55,7 +55,8 @@ class model_con extends Db
                             gi.fecha_datetime as createdAt,
                             gi.comentario as comments,
                             cct.ccosto_nombre as centro_costo,
-                            z.zon_descripcion as address
+                            z.zon_descripcion as address,
+                            gi.estado as estado_guia
        
                         from guia gi
                         inner join usuario us on us.id_usr=gi.id_usr
@@ -68,7 +69,7 @@ class model_con extends Db
                         inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
                         where mj.id_mensajero=$id_usr
                         and mv.id_chk=3
-                        and gi.estado=4";
+                        and gi.estado=3";
 
 
         $c= $db->consultar($sql);
@@ -174,5 +175,8 @@ public function carga_img($movimeinto,$barra,$imagen)
 
         return bin2hex(random_bytes(($longitud - ($longitud % 2)) / 2));
     }
+
+
+
 }
 ?>
