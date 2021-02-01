@@ -54,7 +54,7 @@ while ($row=$mov->fetch(PDO::FETCH_ASSOC))
 
 
 
-$x2=$x1->recursoup($pedido,$longitude,$longitude,$fecha,$data_time,$resurce,$userid,$pro,$marca,$mv);
+$x2=$x1->recursoup($pedido,$latitude,$longitude,$fecha,$data_time,$resurce,$userid,$pro,$marca,$mv);
 //echo "--".$proceso."---".$pro;
 /**/
 ?>
