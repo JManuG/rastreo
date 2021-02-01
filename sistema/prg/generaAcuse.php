@@ -125,7 +125,7 @@ while ($row1=$stmt1->fetch(PDO::FETCH_NUM))
     $ccDirOri       =$row1[14];
     $fecha_datetime =$row1[8];
 }
-$ajuste=(60*60*7);
+$ajuste=(60*60*6);
 
 $tiempo=explode(" ",$fecha_datetime);
 
