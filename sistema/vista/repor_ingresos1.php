@@ -58,12 +58,14 @@ $db=new model_tab();
                 Transaccion</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
                 Remitente</th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
+                Departamento</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
                 Destinatario</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">
                 Zona</th>
-              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                Centro de Costo</th>
+              <!--th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+                Centro de Costo</th-->
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                 Categoria</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
@@ -91,9 +93,11 @@ $db=new model_tab();
               echo "<tr role='row' class='odd'>
                     <td class='dtr-control sorting_1' tabindex='0'>".$row->barra."</td>
                     <td>".$row->remitente."</td>
+                    <td>".$row->remitente_dep."</td>
                     <td>".$row->destinatario."</td>
+                    
                     <td>".$row->direccion."</td>
-                     <td>".$row->centro_costo."</td>
+                     
                     <td>".$row->categoria."</td>
                     <td>".$row->estado."</td>
                     <td>".$msj
@@ -129,9 +133,9 @@ $db=new model_tab();
             <tr>
               <th rowspan="1" colspan="1">Transaccion</th>
               <th rowspan="1" colspan="1">Remitente</th>
+              <th rowspan="1" colspan="1">Departamento</th>
               <th rowspan="1" colspan="1">Destinatario</th>
               <th rowspan="1" colspan="1">Zona</th>
-              <th rowspan="1" colspan="1">Centro de Costo</th>
               <th rowspan="1" colspan="1">Categoria</th>
               <th rowspan="1" colspan="1">Estado</th>
               <th rowspan="1" colspan="1">Mensajero</th>

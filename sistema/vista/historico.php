@@ -21,9 +21,12 @@ class historico_ingresos extends Db
                             ct.des_cat as categoria,
                             mv.descripcion as estado,
                             mj.nombre as mensajero,
-                            gi.fecha_datetime as fecha
+                            gi.fecha_datetime as fecha,
+                            cctu.ccosto_nombre as remitente_dep
+
                         from guia gi
                         inner join usuario us on us.id_usr=gi.id_usr
+                            inner join centro_costo cctu on cctu.id_ccosto=us.id_ccosto
                         inner join centro_costo cct on cct.id_ccosto=gi.des_ccosto
                         inner join categoria ct on ct.id_cat=gi.entero1
                         inner join movimiento mv on mv.id_envio=gi.id_envio
