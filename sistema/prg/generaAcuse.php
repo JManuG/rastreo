@@ -1,6 +1,6 @@
 <?php
-ini_set ("display_errors","1" );
-error_reporting(E_ALL);
+//ini_set ("display_errors","1" );
+//error_reporting(E_ALL);>
 include('../model/model_con.php');
 require('../lib/fpdf16/fpdf.php');
 
@@ -97,23 +97,6 @@ $stmt=$cab->data_acuse2($vineta);
 //Fecha y Hora
 
 
-if($categoria==1)
-{
-    $cat="Restringido";
-}
-elseif($categoria==2)
-{
-    $cat="Delicado";
-}
-elseif($categoria==3)
-{
-    $cat="Privado";
-}
-elseif($categoria==4)
-{
-$cat="Normal";
-}
-
 
 while ($row=$stmt->fetch(PDO::FETCH_NUM))
 {
@@ -142,13 +125,30 @@ while ($row1=$stmt1->fetch(PDO::FETCH_NUM))
     $ccDirOri       =$row1[14];
     $fecha_datetime =$row1[8];
 }
-$ajuste=(60*60*6);
+$ajuste=(60*60*7);
 
 $tiempo=explode(" ",$fecha_datetime);
 
 
+if($categoria==1)
+{
+    $cat="Restringido";
+}
+elseif($categoria==2)
+{
+    $cat="Delicado";
+}
+elseif($categoria==3)
+{
+    $cat="Privado";
+}
+elseif($categoria==4)
+{
+    $cat="Normal";
+}
 
-$fechat=(strototime($fecha_datetime))-$ajuste;
+
+$fechat=strtotime($fecha_datetime)-$ajuste;
 
 $datet=date("d-m-Y H:i:s",$fechat);
 
