@@ -1201,8 +1201,6 @@ class model_con extends Db
     {
 
 
-
-
         $db=Db::getInstance();
 /*
 		$sql = "SELECT 
@@ -1223,7 +1221,7 @@ class model_con extends Db
 			ORDER BY id_envio";
 */
 
-        $sql="SELECT 
+       /* $sql="SELECT
 	id_envio,ori_ccosto,
 	fn_AgeXCc(ori_ccosto) AS age_ori,
 	fn_ccostoNombre(ori_ccosto) AS ori_ccosto_nombre,
@@ -1240,13 +1238,53 @@ class model_con extends Db
 	FROM rastreo.guia g inner join centro_costo c
     on g.des_ccosto=c.id_ccosto
     WHERE g.barra='$vineta'
-	ORDER BY g.id_envio";
+	ORDER BY g.id_envio";*/
+
+    $sql="
+    SELECT 
+	id_envio,ori_ccosto,
+	fn_AgeXCc(ori_ccosto) AS age_ori,
+	fn_ccostoNombre(ori_ccosto) AS ori_ccosto_nombre,
+	des_ccosto, 
+	fn_AgeXCc(des_ccosto) AS age_des,
+	fn_ccostoNombre(des_ccosto) AS des_ccosto_nombre,
+	s.usr_nombre AS usr_ori,
+	g.fecha_datetime,barra,comentario,destinatario,
+	g.char1 as tipo
+	FROM rastreo.guia g inner join usuario s
+    on g.id_usr=s.id_usr
+    WHERE g.barra='$vineta'";
 
 		$stmt=$db->consultar($sql);
 		//echo $sql;
 		return $stmt;
 	}
 
+
+    public function data_acuse2($vineta)
+    {
+
+
+        $db=Db::getInstance();
+
+
+        $sql="
+	SELECT `detalle_acuse`.`barra`,
+    `detalle_acuse`.`tipo_envio`,
+    `detalle_acuse`.`nombre_destinatario`,
+    `detalle_acuse`.`ccosto`,
+    `detalle_acuse`.`nombre_ccosto`,
+    `detalle_acuse`.`direccion`,
+    `detalle_acuse`.`agencia`,
+    `detalle_acuse`.`descripcion`,
+    `detalle_acuse`.`categoría`
+    FROM `rastreo`.`detalle_acuse`
+    WHERE barra='$vineta'";
+
+        $stmt=$db->consultar($sql);
+        //echo $sql;
+        return $stmt;
+    }
 
 
 

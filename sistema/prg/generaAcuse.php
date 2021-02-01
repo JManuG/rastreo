@@ -60,7 +60,7 @@ $pdf->SetFont('times','',11);
 $pdf->Text(10,31,'Trasaccion: ');
 $pdf->Text(10,37,'Remitente: ');
 $pdf->Text(10,43,'Sede: ');
-$pdf->Text(10,49,'Direccion: ');
+//$pdf->Text(10,49,'Direccion: ');
 $pdf->Text(130,31,'Fecha y hora: ');
 $pdf->Text(130,37,'Nivel/Extension: ');
 $pdf->Text(130,43,'Departamento: ');
@@ -79,47 +79,48 @@ $pdf->Text(10,68,'Prioridad: ');
 $pdf->Text(10,75,'Destino:');
 $pdf->Text(10,82,'Direccion: ');
 $pdf->Text(10,89,'Descripcion de la encomienda: ');
-$pdf->Text(130,62,'Zona: ');
-$pdf->Text(130,68,'Tipo de gestion: ');
+//$pdf->Text(130,62,'Zona: ');
+//$pdf->Text(130,68,'Tipo de gestion: ');
 //
 $pdf->Text(10,198,'Destinatario: ');
 $pdf->Text(10,205,'Prioridad: ');
 $pdf->Text(10,212,'Destino: ');
 $pdf->Text(10,219,'Direccion: ');
 $pdf->Text(10,226,'Descripcion de la encomienda: ');
-$pdf->Text(130,198  ,'Zona: ');
-$pdf->Text(130,205,'Tipo de gestion: ');
+//$pdf->Text(130,198  ,'Zona: ');
+//$pdf->Text(130,205,'Tipo de gestion: ');
 
-//Llanando Variables
-$stmt=$cab->data_acuse($vineta);
+//Llenando Variables
+$stmt=$cab->data_acuse2($vineta);
 
 while ($row=$stmt->fetch(PDO::FETCH_NUM))
 {
-    $id_envio           =$row[0];
-    $ori_ccosto         =$row[1];
-    $age_ori            =$row[2];
-    $ori_ccosto_nombre  =$row[3];
-    $des_ccosto         =$row[4];
-    $age_des            =utf8_decode($row[5]);
-    $des_ccosto_nombre  =$row[6];
-    $usr_ori            =$row[7];
-    $fecha_datetime     =$row[8];
-    $barra              =$row[9];
-    $comentario         =$row[10];
-    $destinatario       =$row[11];
-    $tipo               =$row[12];
-    $categoria          =$row[13];
-    $ccDirOri           =$row[14];
-    $ccDirDes           =utf8_decode($row[15]);
-    $ccosto_codigo      =$row[16];
-
-
-    if($tipo=='I'){
-        $tipo='INTERNO';
-    }else{
-        $tipo='EXTERNO';
-    }
+    $barra=$row[0];
+    $tipo_envio=$row[1];
+    $nombre_destinatario=$row[2];
+    $ccosto=$row[3];
+    $nombre_ccosto=$row[4];
+    $direccion=utf8_decode($row[5]);
+    $agencia=$row[6];
+    $descripcion=utf8_decode($row[7]);
+    $categoria=$row[8];
 }
+
+
+$stmt1=$cab->data_acuse($vineta);
+
+while ($row1=$stmt1->fetch(PDO::FETCH_NUM))
+{
+    $ori_ccosto     =$row1[1];
+    $age_ori        =$row1[2];
+    $ori_ccosto_nombre=$row1[3];
+    $des_ccosto     =$row1[4];
+    $age_des        =$row1[5];
+    $usr_ori        =utf8_decode($row1[7]);
+    $ccDirOri       =$row1[14];
+    $fecha_datetime =$row1[9];
+}
+
 
 //Comepletando informacion
 $pdf->Text(30,31,$vineta);
@@ -138,19 +139,19 @@ $pdf->Text(160,166,$fecha_datetime);
 $pdf->Text(160,172,'');
 $pdf->Text(160,178,'');
 
-$pdf->Text(30,62,$destinatario);
+$pdf->Text(30,62,$nombre_destinatario);
 $pdf->Text(30,68,$categoria);
-$pdf->Text(30,75,$ccosto_codigo." ".$age_des);
-$pdf->Text(30,82,$ccDirDes);
-$pdf->Text(60,89,$comentario);
+$pdf->Text(30,75,$ccosto." ".$nombre_ccosto);
+$pdf->Text(30,82,$direccion);
+$pdf->Text(60,89,$descripcion);
 $pdf->Text(160,62,'');
 $pdf->Text(160,68,'');
 
-$pdf->Text(30,198,$destinatario);
+$pdf->Text(30,198,$nombre_destinatario);
 $pdf->Text(30,205,$categoria);
-$pdf->Text(30,212,$ccosto_codigo." ".$age_des);
-$pdf->Text(30,219,$ccDirDes);
-$pdf->Text(60,226,$comentario);
+$pdf->Text(30,212,$ccosto." ".$nombre_ccosto." ".$agencia);
+$pdf->Text(30,219,$direccion);
+$pdf->Text(60,226,$descripcion);
 $pdf->Text(160,198,'');
 $pdf->Text(160,205,'');
 
