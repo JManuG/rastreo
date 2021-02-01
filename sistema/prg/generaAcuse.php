@@ -143,7 +143,7 @@ $pdf->Text(160,178,'');
 
 $pdf->Text(30,62,$nombre_destinatario);
 $pdf->Text(30,68,$categoria);
-$pdf->Text(30,75,$ccosto." ".$nombre_ccosto);
+$pdf->Text(30,75,$ccosto." ".$nombre_ccosto." ".$agencia);
 $pdf->Text(30,82,$direccion);
 $pdf->Text(60,89,$descripcion);
 $pdf->Text(160,62,'');
