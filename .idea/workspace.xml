@@ -220,21 +220,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="68306000" />
-    </task>
-    <task id="LOCAL-00018" summary="Cambios Xajax 3">
-      <created>1611028328365</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1611028328365</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Cambios Xajax 3">
-      <created>1611091073865</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1611091073865</updated>
+      <workItem from="1611939836626" duration="74930000" />
     </task>
     <task id="LOCAL-00020" summary="Cambios Xajax 3">
       <created>1611091156757</created>
@@ -565,7 +551,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612127619834</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="update cestado">
+      <created>1612131793482</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1612131793482</updated>
+    </task>
+    <task id="LOCAL-00068" summary="update cestado">
+      <created>1612132763386</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1612132763386</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +617,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="debug1" />
     <MESSAGE value="debug2" />
     <MESSAGE value="Cambios Xajax 1" />
     <MESSAGE value="Cambios Xajax 2" />
@@ -642,7 +641,8 @@
     <MESSAGE value="login cambio final 1" />
     <MESSAGE value="lista de envios cambio 34" />
     <MESSAGE value="lista de envios cambio 35" />
-    <option name="LAST_COMMIT_MESSAGE" value="lista de envios cambio 35" />
+    <MESSAGE value="update cestado" />
+    <option name="LAST_COMMIT_MESSAGE" value="update cestado" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
