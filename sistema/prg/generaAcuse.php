@@ -1,6 +1,6 @@
 <?php
-ini_set ("display_errors","1" );
-error_reporting(E_ALL);
+//ini_set ("display_errors","1" );
+//error_reporting(E_ALL);>
 include('../model/model_con.php');
 require('../lib/fpdf16/fpdf.php');
 
@@ -59,7 +59,7 @@ $pdf->SetFont('Arial','B',16);
 $pdf->SetFont('times','',11);
 $pdf->Text(10,31,'Trasaccion: ');
 $pdf->Text(10,37,'Remitente: ');
-$pdf->Text(10,43,'Departamento: ');
+$pdf->Text(10,43,'Depto: ');
 //$pdf->Text(10,49,'Direccion: ');
 $pdf->Text(130,31,'Fecha y hora: ');
 $pdf->Text(130,37,'Nivel/Extension: ');
@@ -67,7 +67,7 @@ $pdf->Text(130,37,'Nivel/Extension: ');
 //
 $pdf->Text(10,166,'Trasaccion: ');
 $pdf->Text(10,172,'Remitente: ');
-$pdf->Text(10,178,'Departamento: ');
+$pdf->Text(10,178,'Depto: ');
 $pdf->Text(10,184,'Direccion: ');
 $pdf->Text(130,166,'Fecha y hora: ');
 $pdf->Text(130,172,'Nivel/Extension: ');
@@ -97,23 +97,6 @@ $stmt=$cab->data_acuse2($vineta);
 //Fecha y Hora
 
 
-if($tipo_envio==1)
-{
-    $tipo_envio1="Restringido";
-}
-elseif($tipo_envio==2)
-{
-    $tipo_envio1="Delicado";
-}
-elseif($tipo_envio==3)
-{
-    $tipo_envio1="Privado";
-}
-elseif($tipo_envio==4)
-{
-$tipo_envio1="Normal";
-}
-
 
 while ($row=$stmt->fetch(PDO::FETCH_NUM))
 {
@@ -142,14 +125,39 @@ while ($row1=$stmt1->fetch(PDO::FETCH_NUM))
     $ccDirOri       =$row1[14];
     $fecha_datetime =$row1[8];
 }
+$ajuste=(60*60*7);
 
+$tiempo=explode(" ",$fecha_datetime);
+
+
+if($categoria==1)
+{
+    $cat="Restringido";
+}
+elseif($categoria==2)
+{
+    $cat="Delicado";
+}
+elseif($categoria==3)
+{
+    $cat="Privado";
+}
+elseif($categoria==4)
+{
+    $cat="Normal";
+}
+
+
+$fechat=strtotime($fecha_datetime)-$ajuste;
+
+$datet=date("d-m-Y H:i:s",$fechat);
 
 //Comepletando informacion
 $pdf->Text(30,31,$vineta);
 $pdf->Text(30,37,$usr_ori);
 $pdf->Text(30,43,$ori_ccosto_nombre);
 $pdf->Text(30,49,$ccDirOri);
-$pdf->Text(160,31,$fecha_datetime);
+$pdf->Text(160,31,$datet);
 $pdf->Text(160,37,'');
 $pdf->Text(160,43,'');
 //
@@ -157,21 +165,21 @@ $pdf->Text(30,166,$vineta);
 $pdf->Text(30,172,$usr_ori);
 $pdf->Text(30,178,$ori_ccosto_nombre);
 $pdf->Text(30,184,$ccDirOri);
-$pdf->Text(160,166,$fecha_datetime);
+$pdf->Text(160,166,$datet);
 $pdf->Text(160,172,'');
 $pdf->Text(160,178,'');
 
 $pdf->Text(30,62,$nombre_destinatario);
-$pdf->Text(30,68,$categoria);
-$pdf->Text(30,75,$agencia);
+$pdf->Text(30,68,$cat);
+$pdf->Text(50,75,$agencia);
 $pdf->Text(30,82,$direccion);
 $pdf->Text(60,89,$descripcion);
 $pdf->Text(160,62,'');
 $pdf->Text(160,68,'');
 
 $pdf->Text(30,198,$nombre_destinatario);
-$pdf->Text(30,205,$categoria);
-$pdf->Text(30,212,$agencia);
+$pdf->Text(30,205,$cat);
+$pdf->Text(50,212,$agencia);
 $pdf->Text(30,219,$direccion);
 $pdf->Text(60,226,$descripcion);
 $pdf->Text(160,198,'');
