@@ -148,7 +148,13 @@ class model_con extends Db
 
 
 
-
+public function carga_img($movimeinto,$barra,$imagen)
+{
+    $db=Db::getInstance();
+    $sql="update recurso set foto=".$imagen."
+    where char1=".$barra;
+    $c=$db->consultar($sql);
+}
 
 
 
