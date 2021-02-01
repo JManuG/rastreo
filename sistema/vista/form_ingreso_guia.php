@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="agencia">Agencia ó Edificio</label>
+                  <label for="agencia">Agencia o Edificio</label>
                   <input type="text" class="form-control" id="agencia" name='agencia' placeholder="Agencia">
                 </div>
 
