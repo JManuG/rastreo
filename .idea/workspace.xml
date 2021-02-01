@@ -7,7 +7,10 @@
       <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/model/model_con.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/model/model_con.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/prg/generaAcuse.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/prg/generaAcuse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistema/vista/form_ingreso_guia.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/form_ingreso_guia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/historico.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/historico.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/repor_ingresos1.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/repor_ingresos1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/reporte_ingresos.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/reporte_ingresos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/reportehistorico.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/reportehistorico.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,35 +224,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="102829000" />
-    </task>
-    <task id="LOCAL-00030" summary="Cambios api2">
-      <created>1611846570376</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1611846570376</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Cambios informe1.3">
-      <created>1611867596550</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1611867596550</updated>
-    </task>
-    <task id="LOCAL-00032" summary="cambio de usuarios">
-      <created>1611870370017</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1611870370017</updated>
-    </task>
-    <task id="LOCAL-00033" summary="env">
-      <created>1611898926941</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1611898926941</updated>
+      <workItem from="1611939836626" duration="108390000" />
     </task>
     <task id="LOCAL-00034" summary="login y db service">
       <created>1611935357441</created>
@@ -566,7 +541,35 @@
       <option name="project" value="LOCAL" />
       <updated>1612199788279</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="for ingreso guia actualizacion 1">
+      <created>1612203978873</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1612203978873</updated>
+    </task>
+    <task id="LOCAL-00080" summary="for ingreso guia actualizacion 2">
+      <created>1612204535804</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1612204535804</updated>
+    </task>
+    <task id="LOCAL-00081" summary="for ingreso guia actualizacion 2">
+      <created>1612204623721</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1612204623721</updated>
+    </task>
+    <task id="LOCAL-00082" summary="for ingreso guia actualizacion 2">
+      <created>1612205409818</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1612205409818</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,8 +621,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Cambios Xajax 3" />
-    <MESSAGE value="Cambios login1" />
     <MESSAGE value="Cambios login2" />
     <MESSAGE value="Cambios login3" />
     <MESSAGE value="Cambios api1" />
@@ -643,7 +644,9 @@
     <MESSAGE value="update datos" />
     <MESSAGE value="update datos 45" />
     <MESSAGE value="update datos 46" />
-    <option name="LAST_COMMIT_MESSAGE" value="update datos 46" />
+    <MESSAGE value="for ingreso guia actualizacion 1" />
+    <MESSAGE value="for ingreso guia actualizacion 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="for ingreso guia actualizacion 2" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
