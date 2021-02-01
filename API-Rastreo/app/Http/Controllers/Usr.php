@@ -34,6 +34,8 @@ class Usr extends Controller
 
         $sql="select * from recurso where char1=100078";
 
+
+
         $datos=DB::select($sql);
 
 

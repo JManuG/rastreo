@@ -91,8 +91,8 @@ class model_con extends Db
         //comentar el porblema
         $sql = "update guia set estado='" . $estado . "'
         where barra='" . $barra . "'";
-        $db->consultar($sql);
-
+        $c=$db->consultar($sql);
+        //print_r($c);
     }
 
     public function obtener_guia($barra){
