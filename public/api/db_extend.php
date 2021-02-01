@@ -117,6 +117,7 @@ class model_con extends Db
 							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
 					VALUES (0,'$id_guia',$chk,1,'$id_usr','$id_usr','$fecha_date','$fecha_datetime','$marca','1','MENSAJERO',NULL) ";
         $c= $db->consultar($sql);
+
     }
 
     public function manifiestoup(){
