@@ -107,13 +107,13 @@ class model_con extends Db
 
 
 
-    public function movimeintoup($id_guia,$id_usr,$fecha_date,$fecha_datetime,$marca,$chk){
+    public function movimeintoup($id_guia,$id_usr,$fecha_date,$fecha_datetime,$marca,$chk,$des){
         $db=Db::getInstance();
 
 
         $sql="INSERT INTO movimiento 
 							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
-					VALUES (0,$id_guia,$chk,1,'$id_usr','$id_usr','$fecha_date','$fecha_datetime','$marca','1','MENSAJERO',NULL) ";
+					VALUES (0,$id_guia,$chk,1,'$id_usr','$id_usr','$fecha_date','$fecha_datetime','$marca','1','$des',NULL) ";
         $c= $db->consultar($sql);
 
 //echo $sql;
