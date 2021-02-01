@@ -130,7 +130,7 @@
                   <input type="text" class="form-control" id="des_direccion" name='des_direccion' placeholder="Direccion del destinatario">
                 </div>
                 <div class="form-group">
-                  <label for="agencia">Agencia</label>
+                  <label for="agencia">Agencia ó Edificio</label>
                   <input type="text" class="form-control" id="agencia" name='agencia' placeholder="Agencia">
                 </div>
 
