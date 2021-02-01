@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/api/cestado.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/cestado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/api/db_extend.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/db_extend.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,14 +219,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="81070000" />
-    </task>
-    <task id="LOCAL-00024" summary="Cambios login1">
-      <created>1611797809872</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1611797809872</updated>
+      <workItem from="1611939836626" duration="82262000" />
     </task>
     <task id="LOCAL-00025" summary="Cambios login2">
       <created>1611799324938</created>
@@ -565,7 +557,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612149670150</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="update datos 46">
+      <created>1612149927354</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1612149927354</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
