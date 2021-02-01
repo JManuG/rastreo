@@ -93,6 +93,8 @@ $pdf->Text(130,205,'Tipo de gestion: ');
 //Llanando Variables
 $stmt=$cab->data_acuse($vineta);
 
+
+
 while ($row=$stmt->fetch(PDO::FETCH_NUM))
 {
     $id_envio           =$row[0];
