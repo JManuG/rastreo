@@ -32,8 +32,8 @@ class Usr extends Controller
         //$sql = "select * from usuario";
         //$sql = "select * from zona";
 
-        $sql="insert into recurso (id_recurso, id_movimiento, url, tipo, estado, latitud, longitud, altitud, id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, imagen)
-        VALUES(0,310,'-','-',2,'-90.51948486','-90.51948486','0',4,'2021-01-31','2021-01-31 18:11:05.987184','1612142879','4','1','')";
+        $sql="select * from recurso where char1=100069";
+
         $datos=DB::select($sql);
 
 

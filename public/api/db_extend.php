@@ -84,20 +84,6 @@ class model_con extends Db
 
     }
 
-    public function recursoup($barra,$latitud,$longitud,$fecha,$fecha_datetime,$foto,$id_usr,$estado,$tiempo,$movimiento)
-    {
-        //geolocalizacion y fotos.
-        $db=Db::getInstance();
-
-        $sql="insert into recurso 
-                (id_recurso, id_movimiento, url, tipo, estado, latitud, longitud, altitud, id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, imagen)
-                VALUES(0,$movimiento,'-','-',$estado,'$latitud','$longitud','0',$id_usr,'$fecha','$fecha_datetime','$tiempo','$barra','1','$foto')";
-        $c= $db->consultar($sql);
-
-
-
-    }
-
     public function guiaup($estado,$barra)
     {
 
@@ -108,7 +94,7 @@ class model_con extends Db
         $db->consultar($sql);
     }
 
-         public function obtener_guia($barra){
+    public function obtener_guia($barra){
 
         $db=Db::getInstance();
         $sql2="select id_guia from guia
@@ -117,6 +103,8 @@ class model_con extends Db
 
         return $gui;
     }
+
+
 
     public function movimeintoup($id_guia,$id_usr,$fecha_date,$fecha_datetime,$marca,$chk){
         $db=Db::getInstance();
@@ -139,6 +127,27 @@ class model_con extends Db
 
         return $mov;
     }
+
+
+    public function recursoup($barra,$latitud,$longitud,$fecha,$fecha_datetime,$foto,$id_usr,$estado,$tiempo,$movimiento)
+    {
+        //geolocalizacion y fotos.
+        $db=Db::getInstance();
+
+        $sql="insert into recurso 
+                (id_recurso, id_movimiento, url, tipo, estado, latitud, longitud, altitud, id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, imagen)
+                VALUES(0,$movimiento,'-','-',$estado,'$latitud','$longitud','0',$id_usr,'$fecha','$fecha_datetime','$tiempo','$barra','1','$foto')";
+        $c= $db->consultar($sql);
+
+        print_r($c);
+
+    }
+
+
+
+
+
+
 
 
 
