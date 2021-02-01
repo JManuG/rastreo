@@ -62,15 +62,15 @@ $pdf->Text(10,37,'Remitente: ');
 $pdf->Text(10,43,'Depto: ');
 //$pdf->Text(10,49,'Direccion: ');
 $pdf->Text(130,31,'Fecha y hora: ');
-$pdf->Text(130,37,'Nivel/Extension: ');
+//$pdf->Text(130,37,'Nivel/Extension: ');
 //$pdf->Text(130,43,': ');
 //
 $pdf->Text(10,166,'Trasaccion: ');
 $pdf->Text(10,172,'Remitente: ');
 $pdf->Text(10,178,'Depto: ');
-$pdf->Text(10,184,'Direccion: ');
+//$pdf->Text(10,184,'Direccion: ');
 $pdf->Text(130,166,'Fecha y hora: ');
-$pdf->Text(130,172,'Nivel/Extension: ');
+//$pdf->Text(130,172,'Nivel/Extension: ');
 //$pdf->Text(130,178,': ');
 
 //Textos 2
