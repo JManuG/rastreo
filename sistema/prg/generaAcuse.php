@@ -59,24 +59,24 @@ $pdf->SetFont('Arial','B',16);
 $pdf->SetFont('times','',11);
 $pdf->Text(10,31,'Trasaccion: ');
 $pdf->Text(10,37,'Remitente: ');
-$pdf->Text(10,43,'Sede: ');
+$pdf->Text(10,43,'Departamento: ');
 //$pdf->Text(10,49,'Direccion: ');
 $pdf->Text(130,31,'Fecha y hora: ');
 $pdf->Text(130,37,'Nivel/Extension: ');
-$pdf->Text(130,43,'Departamento: ');
+//$pdf->Text(130,43,': ');
 //
 $pdf->Text(10,166,'Trasaccion: ');
 $pdf->Text(10,172,'Remitente: ');
-$pdf->Text(10,178,'Sede: ');
+$pdf->Text(10,178,'Departamento: ');
 $pdf->Text(10,184,'Direccion: ');
 $pdf->Text(130,166,'Fecha y hora: ');
 $pdf->Text(130,172,'Nivel/Extension: ');
-$pdf->Text(130,178,'Departamento: ');
+//$pdf->Text(130,178,': ');
 
 //Textos 2
 $pdf->Text(10,62,'Destinatario: ');
 $pdf->Text(10,68,'Prioridad: ');
-$pdf->Text(10,75,'Destino:');
+$pdf->Text(10,75,'Agencia o edificio:');
 $pdf->Text(10,82,'Direccion: ');
 $pdf->Text(10,89,'Descripcion de la encomienda: ');
 //$pdf->Text(130,62,'Zona: ');
@@ -84,7 +84,7 @@ $pdf->Text(10,89,'Descripcion de la encomienda: ');
 //
 $pdf->Text(10,198,'Destinatario: ');
 $pdf->Text(10,205,'Prioridad: ');
-$pdf->Text(10,212,'Destino: ');
+$pdf->Text(10,212,'Agencia o edificio: ');
 $pdf->Text(10,219,'Direccion: ');
 $pdf->Text(10,226,'Descripcion de la encomienda: ');
 //$pdf->Text(130,198  ,'Zona: ');
@@ -93,6 +93,26 @@ $pdf->Text(10,226,'Descripcion de la encomienda: ');
 //Llenando Variables
 $stmt=$cab->data_acuse2($vineta);
 
+//prioridad
+//Fecha y Hora
+
+
+if($tipo_envio==1)
+{
+    $tipo_envio1="Restringido";
+}
+elseif($tipo_envio==2)
+{
+    $tipo_envio1="Delicado";
+}
+elseif($tipo_envio==3)
+{
+    $tipo_envio1="Privado";
+}
+elseif($tipo_envio==4)
+{
+$tipo_envio1="Normal";
+}
 
 
 while ($row=$stmt->fetch(PDO::FETCH_NUM))
@@ -120,7 +140,7 @@ while ($row1=$stmt1->fetch(PDO::FETCH_NUM))
     $age_des        =$row1[5];
     $usr_ori        =utf8_decode($row1[7]);
     $ccDirOri       =$row1[14];
-    $fecha_datetime =$row1[9];
+    $fecha_datetime =$row1[8];
 }
 
 
@@ -143,7 +163,7 @@ $pdf->Text(160,178,'');
 
 $pdf->Text(30,62,$nombre_destinatario);
 $pdf->Text(30,68,$categoria);
-$pdf->Text(30,75,$ccosto." ".$nombre_ccosto." ".$agencia);
+$pdf->Text(30,75,$agencia);
 $pdf->Text(30,82,$direccion);
 $pdf->Text(60,89,$descripcion);
 $pdf->Text(160,62,'');
@@ -151,7 +171,7 @@ $pdf->Text(160,68,'');
 
 $pdf->Text(30,198,$nombre_destinatario);
 $pdf->Text(30,205,$categoria);
-$pdf->Text(30,212,$ccosto." ".$nombre_ccosto." ".$agencia);
+$pdf->Text(30,212,$agencia);
 $pdf->Text(30,219,$direccion);
 $pdf->Text(60,226,$descripcion);
 $pdf->Text(160,198,'');
