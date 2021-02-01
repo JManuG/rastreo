@@ -220,14 +220,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="74930000" />
-    </task>
-    <task id="LOCAL-00020" summary="Cambios Xajax 3">
-      <created>1611091156757</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1611091156757</updated>
+      <workItem from="1611939836626" duration="77558000" />
     </task>
     <task id="LOCAL-00021" summary="Cambios informe1.3">
       <created>1611094928482</created>
@@ -565,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612132763386</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="update datos">
+      <created>1612143756577</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1612143756577</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +617,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="debug2" />
     <MESSAGE value="Cambios Xajax 1" />
     <MESSAGE value="Cambios Xajax 2" />
     <MESSAGE value="Cambios Xajax 3" />
@@ -642,7 +641,8 @@
     <MESSAGE value="lista de envios cambio 34" />
     <MESSAGE value="lista de envios cambio 35" />
     <MESSAGE value="update cestado" />
-    <option name="LAST_COMMIT_MESSAGE" value="update cestado" />
+    <MESSAGE value="update datos" />
+    <option name="LAST_COMMIT_MESSAGE" value="update datos" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">

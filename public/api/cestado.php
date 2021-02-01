@@ -38,7 +38,7 @@ else{$pro=0;}
 
 $x2=$x1->movimeintoup($gi,$userid,$fecha, $data_time, $marca, $pro);
 
-$mov=$x1->obtener_movimeinto($pedido,$gi,$proceso);
+$mov=$x1->obtener_movimeinto($pedido,$gi,$pro);
 
 while ($row=$mov->fetch(PDO::FETCH_ASSOC))
 {
@@ -47,7 +47,8 @@ while ($row=$mov->fetch(PDO::FETCH_ASSOC))
 }
 
 
-$x2=$x1->recursoup($proceso,$longitude,$longitude,$fecha,$data_time,$resurce,$userid,$pro,$marca,$mv);
+
+$x2=$x1->recursoup($pedido,$longitude,$longitude,$fecha,$data_time,$resurce,$userid,$pro,$marca,$mv);
 
 
 ?>
