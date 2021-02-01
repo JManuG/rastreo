@@ -11,7 +11,8 @@ $descripcion    =$_POST["descripcion"];
 $tipo_envio     =$_POST["tipo_envio"];
 $des_direccion  =$_POST["des_direccion"];
 $id_cat         =$_POST["id_cat"];
-
+$ccosto_nombre  =$_POST["ccosto_nombre"];
+$agencia        =$_POST["agencia"];
 $db=new model_con();
 
 $vineta= $db->consulta_correlativo();
@@ -42,18 +43,23 @@ if($ccosto_ori=='' || $ccosto_ori ==NULL){
     }else{
         $ccosto_des=$ccosto_des;
     }
-    		
+
+    $con=$db->d_acuse($vineta,$tipo_envio,$destinatario,$ccosto_des,$ccosto_nombre,$des_direccion,$agencia,$descripcion,$id_cat);
     $sql=$db->registra_envio($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta,$tipo_envio,$des_direccion,$id_cat);
+
 
     if (intval($sql)>0)
     {
-        $retorno="200-Ingresado correctamente -".$ccosto_ori."-".$ccosto_des."-".$destinatario."-".$descripcion."-".$vineta;
-    
+
+        $retorno="200-Ingresado correctamente $con -".$ccosto_ori."-".$ccosto_des."-".$destinatario."-".$descripcion."-".$vineta."-".$con;
+
+        //$db->consultar($con);
+
     }else{
         $retorno="409-".$sql;
     }
 }
 
-echo $retorno."-".$sql;
+echo $retorno.$con."-".$sql;
 
 

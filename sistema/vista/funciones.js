@@ -1,4 +1,4 @@
-function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_envio,des_direccion,id_cat){
+function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_envio,des_direccion,id_cat,ccosto_nombre,agencia){
   var datos_origen={
     "ccosto_ori":ccosto_ori,
     "id_ccosto":id_ccosto,
@@ -6,7 +6,9 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_e
     "descripcion":descripcion,
     "tipo_envio":tipo_envio,
     "des_direccion":des_direccion,
-    "id_cat":id_cat
+    "id_cat":id_cat,
+    "ccosto_nombre":ccosto_nombre,
+    "agencia":agencia
   };
   $.ajax({
     data:datos_origen,

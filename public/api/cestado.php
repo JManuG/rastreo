@@ -42,7 +42,7 @@ if($proceso==4){$pro=2;}*/
 
 /**/
 
-$x2=$x1->movimeintoup($gi,$userid,$fecha, $data_time, $marca, $pro);
+$x2=$x1->movimeintoup($gi,$userid,$fecha, $data_time, $marca, $pro, $descripcion);
 
 $mov=$x1->obtener_movimeinto($pedido,$gi,$pro);
 

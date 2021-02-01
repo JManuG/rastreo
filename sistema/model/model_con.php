@@ -16,6 +16,25 @@ class model_con extends Db
 		$db=Db::getInstance();
 	}
 
+    public function  d_acuse($vineta,$tipo_envio,$destinatario,$ccosto_des,$ccosto_nombre,$des_direccion,$agencia,$descripcion,$id_cat){
+        $db=Db::getInstance();
+        $con="insert into detalle_acuse(barra,tipo_envio,nombre_destinatario,ccosto,nombre_ccosto,direccion,agencia,descripcion,categoría) 
+                              values ('$vineta','$tipo_envio','$destinatario','$ccosto_des','$ccosto_nombre','$des_direccion','$agencia','$descripcion','$id_cat')";
+        $stmt= $db->preparar($con);
+        //echo '<pre>';
+        //print_r($stmt);
+        //echo '</pre>';
+        if($stmt->execute()){
+            $msj="Insertado";
+        }else{
+            $msj="Error".$con;
+        }
+        //echo $msj;
+        return $msj;
+
+
+    }
+
 	public function registra_envio($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta,$tipo_envio,$des_direccion,$id_cat)
     {
 		$db=Db::getInstance();

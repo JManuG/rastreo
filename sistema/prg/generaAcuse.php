@@ -93,6 +93,8 @@ $pdf->Text(10,226,'Descripcion de la encomienda: ');
 //Llenando Variables
 $stmt=$cab->data_acuse2($vineta);
 
+
+
 while ($row=$stmt->fetch(PDO::FETCH_NUM))
 {
     $barra=$row[0];

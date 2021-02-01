@@ -55,7 +55,8 @@ class model_con extends Db
                             gi.fecha_datetime as createdAt,
                             gi.comentario as comments,
                             cct.ccosto_nombre as centro_costo,
-                            z.zon_descripcion as address
+                            z.zon_descripcion as address,
+                            gi.estado as estado_guia
        
                         from guia gi
                         inner join usuario us on us.id_usr=gi.id_usr
@@ -68,7 +69,7 @@ class model_con extends Db
                         inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
                         where mj.id_mensajero=$id_usr
                         and mv.id_chk=3
-                        and gi.estado=4";
+                        and gi.estado=3";
 
 
         $c= $db->consultar($sql);
@@ -107,13 +108,13 @@ class model_con extends Db
 
 
 
-    public function movimeintoup($id_guia,$id_usr,$fecha_date,$fecha_datetime,$marca,$chk){
+    public function movimeintoup($id_guia,$id_usr,$fecha_date,$fecha_datetime,$marca,$chk,$des){
         $db=Db::getInstance();
 
 
         $sql="INSERT INTO movimiento 
 							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
-					VALUES (0,$id_guia,$chk,1,'$id_usr','$id_usr','$fecha_date','$fecha_datetime','$marca','1','MENSAJERO',NULL) ";
+					VALUES (0,$id_guia,$chk,1,'$id_usr','$id_usr','$fecha_date','$fecha_datetime','$marca','1','$des',NULL) ";
         $c= $db->consultar($sql);
 
 //echo $sql;
@@ -148,7 +149,13 @@ class model_con extends Db
 
 
 
-
+public function carga_img($movimeinto,$barra,$imagen)
+{
+    $db=Db::getInstance();
+    $sql="update recurso set foto=".$imagen."
+    where char1=".$barra;
+    $c=$db->consultar($sql);
+}
 
 
 
@@ -168,5 +175,8 @@ class model_con extends Db
 
         return bin2hex(random_bytes(($longitud - ($longitud % 2)) / 2));
     }
+
+
+
 }
 ?>
