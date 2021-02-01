@@ -4,8 +4,8 @@
     <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="login y db service">
       <change afterPath="$PROJECT_DIR$/no perder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/api/cestado.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/cestado.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/api/db_extend.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/db_extend.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,14 +219,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="82262000" />
-    </task>
-    <task id="LOCAL-00025" summary="Cambios login2">
-      <created>1611799324938</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1611799324938</updated>
+      <workItem from="1611939836626" duration="82978000" />
     </task>
     <task id="LOCAL-00026" summary="Cambios login3">
       <created>1611800170409</created>
@@ -564,7 +557,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612149927354</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="update datos 46">
+      <created>1612152395108</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1612152395108</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
