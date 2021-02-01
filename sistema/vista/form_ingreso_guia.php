@@ -32,12 +32,12 @@
       select: function (event, ui) {
         // Set selection
         $('#destinatario').val(ui.item.label); // display the selected text
-        $('#cod_destinatario').val(ui.item.value); // save selected id to input
-        $('#id_ccosto').val(ui.item.id_ccosto); // save selected id to input
-        $('#ccosto_nombre').val(ui.item.ccosto_nombre); // save selected id to input
-        $('#des_direccion').val(ui.item.ccosto_direccion); // save selected id to input
-        $('#agencia').val(ui.item.agencia); // save selected id to input
-        $('#ccosto').val(ui.item.ccosto); // save selected id to input
+        $('#cod_destinatario1').val(ui.item.value); // save selected id to input
+        $('#id_ccosto1').val(ui.item.id_ccosto); // save selected id to input
+        $('#ccosto_nombre1').val(ui.item.ccosto_nombre); // save selected id to input
+        $('#des_direccion1').val(ui.item.ccosto_direccion); // save selected id to input
+        $('#agencia1').val(ui.item.agencia); // save selected id to input
+        $('#ccosto1').val(ui.item.ccosto); // save selected id to input
         return false;
       }
     });
@@ -116,7 +116,7 @@
                 </div>
                 <div class="form-group">
                   <label for="id_ccosto">Centro de costo destino</label>
-                  <input type="text" id="id_ccosto" name="id_ccosto"  class="form-control" onchange='changeCCostoDes()'>
+                  <input type="text" id="id_ccosto" name="id_ccosto"  class="form-control" onchange='changeCCostoDes1()'>
                   <?php //echo select_ccosto_simple(); ?>
                 </div>
 
@@ -168,7 +168,10 @@
                                                     formulario.descripcion.value,
                                                     formulario.tipo_envio.value,
                                                     formulario.des_direccion.value,
-                                                    formulario.id_cat.value)">
+                                                    formulario.id_cat.value,
+                                                    formulario.ccosto_nombre.value,
+                                                    formulario.agencia.value
+                                                )">
                   Registrar Env&iacute;o
                 </button>
               </div>
