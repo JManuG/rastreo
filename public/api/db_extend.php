@@ -91,8 +91,8 @@ class model_con extends Db
         //comentar el porblema
         $sql = "update guia set estado='" . $estado . "'
         where barra='" . $barra . "'";
-        $db->consultar($sql);
-
+        $c=$db->consultar($sql);
+        //print_r($c);
     }
 
     public function obtener_guia($barra){
@@ -116,7 +116,7 @@ class model_con extends Db
 					VALUES (0,$id_guia,$chk,1,'$id_usr','$id_usr','$fecha_date','$fecha_datetime','$marca','1','MENSAJERO',NULL) ";
         $c= $db->consultar($sql);
 
-
+//echo $sql;
     }
 
     public function obtener_movimeinto($barra,$id_guia,$chk){

@@ -32,7 +32,9 @@ class Usr extends Controller
         //$sql = "select * from usuario";
         //$sql = "select * from zona";
 
-        $sql="select * from recurso where char1=100070";
+        $sql="select * from recurso where char1=100078";
+
+
 
         $datos=DB::select($sql);
 
