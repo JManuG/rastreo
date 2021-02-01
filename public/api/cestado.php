@@ -30,8 +30,8 @@ $data_time=$fecha." ".$tiempo;
 
 $marca=time();
 
-if($proceso=='6' or $proceso=='8'){$pro='4';}
-if($proceso=='4'){$pro='2';}
+if($proceso==6 or $proceso==8){$pro=4;}
+if($proceso==4){$pro=2;}
 else{$pro=0;}
 
 
