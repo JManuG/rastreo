@@ -108,7 +108,7 @@
                 </div>
 
                 <div>
-                  <span>Nombre Destinatario:</span>
+                  <label for="tipo_envio">Nombre Destinatario:</label>
                   <br>
                   <span><input type='text' id='destinatario' class="form-control"></span>
 
@@ -136,16 +136,16 @@
                   <?php echo select_categoria(); ?>
                 </div>
 
-                <div class="form-group">
-                  <label for="id_ccosto">Centro de costo destino</label>
-                  <input type="text" id="id_ccosto" name="id_ccosto"  class="form-control" onchange='changeCCostoDes1()'>
+                <!--div class="form-group">
+                  <label for="id_ccosto">Centro de costo destino</label-->
+                  <input type="hidden" id="id_ccosto" name="id_ccosto"  class="form-control" onchange='changeCCostoDes1()' value="1" >
                   <?php //echo select_ccosto_simple(); ?>
-                </div>
+                <!--/div-->
 
-                <div class="form-group">
-                  <label for="id_ccosto">Centro de costo destino</label>
-                  <input type="text" id="ccosto_nombre" name="ccosto_nombre" class="form-control" >
-                </div>
+                <!--div class="form-group">
+                  <label for="id_ccosto">Centro de costo destino</label-->
+                  <input type="hidden" id="ccosto_nombre" name="ccosto_nombre" class="form-control" value="1" >
+                <!--/div-->
 
                 <!--
                 <div class="form-group">
