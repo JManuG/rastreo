@@ -114,25 +114,17 @@
 
 
                 </div>
-                <div class="form-group">
-                  <label for="id_ccosto">Centro de costo destino</label>
-                  <input type="text" id="id_ccosto" name="id_ccosto"  class="form-control" onchange='changeCCostoDes1()'>
-                  <?php //echo select_ccosto_simple(); ?>
-                </div>
 
                 <div class="form-group">
-                  <label for="id_ccosto">Centro de costo destino</label>
-                  <input type="text" id="ccosto_nombre" name="ccosto_nombre" class="form-control" >
+                  <label for="agencia">Agencia o Edificio</label>
+                  <input type="text" class="form-control" id="agencia" name='agencia' placeholder="Agencia">
                 </div>
-                
+
                 <div class="form-group">
                   <label for="des_direccion">Direcci&oacute;n</label>
                   <input type="text" class="form-control" id="des_direccion" name='des_direccion' placeholder="Direccion del destinatario">
                 </div>
-                <div class="form-group">
-                  <label for="agencia">Agencia ó Edificio</label>
-                  <input type="text" class="form-control" id="agencia" name='agencia' placeholder="Agencia">
-                </div>
+
 
                 <div class="form-group">
                   <label for="descripcion">Descripci&oacute;n del env&iacute;o</label>
@@ -143,6 +135,18 @@
                   <label for="id_cat">Categoria del env&iacute;o</label>
                   <?php echo select_categoria(); ?>
                 </div>
+
+                <div class="form-group">
+                  <label for="id_ccosto">Centro de costo destino</label>
+                  <input type="text" id="id_ccosto" name="id_ccosto"  class="form-control" onchange='changeCCostoDes1()'>
+                  <?php //echo select_ccosto_simple(); ?>
+                </div>
+
+                <div class="form-group">
+                  <label for="id_ccosto">Centro de costo destino</label>
+                  <input type="text" id="ccosto_nombre" name="ccosto_nombre" class="form-control" >
+                </div>
+
                 <!--
                 <div class="form-group">
                   <label for="vineta">Vi&ntilde;eta</label>
