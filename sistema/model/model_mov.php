@@ -157,12 +157,12 @@ class model_mov extends Db
 
         $tiempo=time();
 
-        $sql = "select r.imagen, r.latitud, r.longitud
+        $sql = "select r.imagen, r.latitud, r.longitud, r.estado
                 from recurso r 
                 inner join guia g
-                on r.char1=g.id_envio
-                where m.estado=2
-                and g.barra=$barra;";
+                on r.char1=g.barra
+                where g.barra=$barra
+                and r.estado=2;";
         $stmt=$db->consultar($sql);
         //echo $sql;
         return $stmt;
@@ -175,12 +175,12 @@ class model_mov extends Db
 
         $tiempo=time();
 
-        $sql = "select r.imagen, r.latitud, r.longitud
+        $sql = "select r.imagen, r.latitud, r.longitud, r.estado
                 from recurso r 
                 inner join guia g
-                on r.char1=g.id_envio
-                where m.estado=4
-                and g.barra=$barra;";
+                on r.char1=g.barra
+                where g.barra=$barra
+                and r.estado=4;";
         $stmt=$db->consultar($sql);
         //echo $sql;
         return $stmt;
