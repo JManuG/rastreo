@@ -262,6 +262,9 @@ class model_con extends Db
 		$datetime	=date('Y/m/d H:i:s');
 		$tiempo		=time();
 		$id_usr		=$_SESSION['cod_user'];
+	    $perfil     =4;
+        $id_ccosto  =366;
+        $shi_codigo=1;
 
 		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
 		if($id_mensajero==''){
@@ -284,6 +287,67 @@ class model_con extends Db
 							'$date',
 							'$datetime'
 							)";
+
+
+
+
+            $sql2="INSERT INTO rastreo.usuario
+								(
+									id_usr, 
+									usr_cod, 
+									usr_pass, 
+									usr_nombre, 
+									cli_codigo, 
+									id_grupo, 
+									nivel, 
+									depto, 
+									id_ccosto, 
+									area, 
+									producto, 
+									posicion, 
+									aud_usuario_proc, 
+									aud_fecha_proc, 
+									aud_hora_proc, 
+									marca_tiempo, 
+									estado, 
+									dias_vencimiento, 
+									char1, 
+									entero1, 
+									cliente_cli_id
+								)
+					VALUES (0,
+							'$telefono_mensajero',
+							'".md5($telefono_mensajero)."',
+							'$nombre_mensajero',
+							'$shi_codigo',
+							1,
+							$perfil,
+							0,
+							'$id_ccosto',
+							0,
+							0,
+							0,
+							'$id_usr',
+							'".date('Y/m/d')."',
+							'".date('H:i:s')."',
+							$tiempo,
+							1,
+							30,
+							0,
+							0,
+							0
+							)";
+
+
+            $stmt2= $db->preparar($sql2);
+            //echo '<pre>';
+            //print_r($stmt);
+            //echo '</pre>';
+            if($stmt2->execute()){
+                $msj="Insertado";
+            }else{
+                $msj="Error";
+            }
 
 		}else{
 			//Update
