@@ -102,11 +102,11 @@ while ($row=$stmt->fetch(PDO::FETCH_NUM))
 {
     $barra=$row[0];
     $tipo_envio=$row[1];
-    $nombre_destinatario=$row[2];
+    $nombre_destinatario=utf8_decode($row[2]);
     $ccosto=$row[3];
-    $nombre_ccosto=$row[4];
+    $nombre_ccosto=utf8_decode($row[4]);
     $direccion=utf8_decode($row[5]);
-    $agencia=$row[6];
+    $agencia=utf8_decode($row[6]);
     $descripcion=utf8_decode($row[7]);
     $categoria=$row[8];
 }
@@ -118,11 +118,11 @@ while ($row1=$stmt1->fetch(PDO::FETCH_NUM))
 {
     $ori_ccosto     =$row1[1];
     $age_ori        =$row1[2];
-    $ori_ccosto_nombre=$row1[3];
+    $ori_ccosto_nombre=utf8_decode($row1[3]);
     $des_ccosto     =$row1[4];
     $age_des        =$row1[5];
     $usr_ori        =utf8_decode($row1[7]);
-    $ccDirOri       =$row1[14];
+    $ccDirOri       =utf8_decode($row1[14]);
     $fecha_datetime =$row1[8];
 }
 $ajuste=(60*60*6);
