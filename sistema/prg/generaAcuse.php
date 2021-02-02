@@ -62,15 +62,15 @@ $pdf->Text(10,37,'Remitente: ');
 $pdf->Text(10,43,'Depto: ');
 //$pdf->Text(10,49,'Direccion: ');
 $pdf->Text(130,31,'Fecha y hora: ');
-$pdf->Text(130,37,'Nivel/Extension: ');
+//$pdf->Text(130,37,'Nivel/Extension: ');
 //$pdf->Text(130,43,': ');
 //
 $pdf->Text(10,166,'Trasaccion: ');
 $pdf->Text(10,172,'Remitente: ');
 $pdf->Text(10,178,'Depto: ');
-$pdf->Text(10,184,'Direccion: ');
+//$pdf->Text(10,184,'Direccion: ');
 $pdf->Text(130,166,'Fecha y hora: ');
-$pdf->Text(130,172,'Nivel/Extension: ');
+//$pdf->Text(130,172,'Nivel/Extension: ');
 //$pdf->Text(130,178,': ');
 
 //Textos 2
@@ -102,11 +102,11 @@ while ($row=$stmt->fetch(PDO::FETCH_NUM))
 {
     $barra=$row[0];
     $tipo_envio=$row[1];
-    $nombre_destinatario=$row[2];
+    $nombre_destinatario=utf8_decode($row[2]);
     $ccosto=$row[3];
-    $nombre_ccosto=$row[4];
+    $nombre_ccosto=utf8_decode($row[4]);
     $direccion=utf8_decode($row[5]);
-    $agencia=$row[6];
+    $agencia=utf8_decode($row[6]);
     $descripcion=utf8_decode($row[7]);
     $categoria=$row[8];
 }
@@ -118,14 +118,14 @@ while ($row1=$stmt1->fetch(PDO::FETCH_NUM))
 {
     $ori_ccosto     =$row1[1];
     $age_ori        =$row1[2];
-    $ori_ccosto_nombre=$row1[3];
+    $ori_ccosto_nombre=utf8_decode($row1[3]);
     $des_ccosto     =$row1[4];
     $age_des        =$row1[5];
     $usr_ori        =utf8_decode($row1[7]);
-    $ccDirOri       =$row1[14];
+    $ccDirOri       =utf8_decode($row1[14]);
     $fecha_datetime =$row1[8];
 }
-$ajuste=(60*60*7);
+$ajuste=(60*60*6);
 
 $tiempo=explode(" ",$fecha_datetime);
 
