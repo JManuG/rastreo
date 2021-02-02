@@ -69,7 +69,7 @@ class model_con extends Db
                         inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
                         where mj.id_mensajero=$id_usr
                         and mv.id_chk=3
-                        and gi.estado=3";
+                        and gi.estado=4";
 
 
         $c= $db->consultar($sql);
@@ -152,8 +152,9 @@ class model_con extends Db
 public function carga_img($movimeinto,$barra,$imagen)
 {
     $db=Db::getInstance();
-    $sql="update recurso set foto=".$imagen."
-    where char1=".$barra;
+    $sql="update recurso set foto='".$imagen."'
+    where char1='".$barra."'";
+    print_r($sql);
     $c=$db->consultar($sql);
 }
 
