@@ -27,10 +27,10 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_e
         $('#descripcion').val('');
         $('#des_direccion').val('');
         $('#cod_destinatario').val('');
-        $('#id_ccosto').val('');
+        //$('#id_ccosto').val('');
         $('#ccosto_nombre').val('');
         $('#agencia').val('');
-        $('#ccosto').val('');
+        //$('#ccosto').val('');
 
         //$('#vineta').val('');
         //$('#vineta').attr('readonly',false);

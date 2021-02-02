@@ -1,6 +1,11 @@
 <?php
 include("historico.php");
 
+$nivel=$_SESSION['nivel'];
+
+
+
+
 $x1= new historico_ingresos();
 if(isset($_GET['f1'])){
   $f1=$_GET['f1'];
@@ -10,9 +15,13 @@ if(isset($_GET['f1'])){
   $f2=date('Y-m-d');
 }
 
-echo $f1;
-$x2=$x1->reporte_h($f1,$f2);
 
+
+if($nivel>2){
+  $x2=$x1->reporte_h2($f1,$f2);
+}else {
+  $x2=$x1->reporte_h($f1,$f2);
+}
 
 //print_r($x2);
 include ("model/model_tab.php");
@@ -61,7 +70,7 @@ $db=new model_tab();
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Reporte de ingresos historico</h1>
+          <h1>Reporte de ingresos historico </h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -110,10 +119,19 @@ $db=new model_tab();
               Categoria</th>
             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
               Estado</th>
+
             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
               Mensajero</th>
+            <?php
+            if($nivel>2){
+
+            }else{
+            ?>
             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
               Arribar</th>
+            <?php
+            }
+            ?>
             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
               Reimprecion</th>
           </tr>
@@ -130,26 +148,43 @@ $db=new model_tab();
               $msj=$row->mensajero;
             }
 
-              echo "<tr role='row' class='odd'>
-                    <td class='dtr-control sorting_1' tabindex='0'>".$row->barra."</td>
+          if($nivel>2){
+            echo "<tr role='row' class='odd'>
+                    <td class='dtr-control sorting_1' tabindex='0'>" . $row->barra . "</td>
                     
-                    <td>".$row->remitente."</td>
-                    <td>".$row->remitente_dep."</td>
-                    <td>".$row->fecha."</td>
-                    <td>".$row->destinatario."</td>
-                    <td>".$row->direccion."</td>
+                    <td>" . $row->remitente . "</td>
+                    <td>" . $row->remitente_dep . "</td>
+                    <td>" . $row->fecha . "</td>
+                    <td>" . $row->destinatario . "</td>
+                    <td>" . $row->direccion . "</td>
                      
-                    <td>".$row->categoria."</td>
-                    <td>".$row->estado."</td>
-                    <td>".$msj
+                    <td>" . $row->categoria . "</td>
+                    <td>" . $row->estado . "</td>
+                    <td>" . $row->mensajero . "</td>
+                    <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'><i class='fas fa-print fa-2x'></i></a></td></tr>";
+
+          }else {
+
+            echo "<tr role='row' class='odd'>
+                    <td class='dtr-control sorting_1' tabindex='0'>" . $row->barra . "</td>
+                    
+                    <td>" . $row->remitente . "</td>
+                    <td>" . $row->remitente_dep . "</td>
+                    <td>" . $row->fecha . "</td>
+                    <td>" . $row->destinatario . "</td>
+                    <td>" . $row->direccion . "</td>
+                     
+                    <td>" . $row->categoria . "</td>
+                    <td>" . $row->estado . "</td>
+                    <td>" . $msj
 
 
-                ."</td>
+              . "</td>
                     <td>
-                    <div id='ok".$cn."' class='alert alert-success ocultar' role='alert'>
+                    <div id='ok" . $cn . "' class='alert alert-success ocultar' role='alert'>
                             Prosesando solicitud de arrivo(...)
                         </div>
-                    <button type='button' class='btn btn-link' id='vineta' name='vineta' autocomplete='off' autofocus placeholder='vi&ntilde;eta' onclick='procesarAR(".$row->barra.");recargar(".$cn.");' >
+                    <button type='button' class='btn btn-link' id='vineta' name='vineta' autocomplete='off' autofocus placeholder='vi&ntilde;eta' onclick='procesarAR(" . $row->barra . ");recargar(" . $cn . ");' >
                       <i class='fas fa-inbox fa-2x'></i></button>
                     
                     <script src='vista/funciones.js'></script>
@@ -165,7 +200,7 @@ $db=new model_tab();
                     <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'><i class='fas fa-print fa-2x'></i></a></td>
 
 </tr>";
-            //fin validacion de estado
+          }//fin validacion de estado
           }
           ?>
 
@@ -182,7 +217,15 @@ $db=new model_tab();
             <th rowspan="1" colspan="1">Categoria</th>
             <th rowspan="1" colspan="1">Estado</th>
             <th rowspan="1" colspan="1">Mensajero</th>
+            <?php
+            if($nivel>2){
+
+            }else{
+            ?>
             <th rowspan="1" colspan="1">Arribar</th>
+            <?php
+            }
+            ?>
             <th rowspan="1" colspan="1">Reimprecion</th>
           </tr>
           </tfoot>
