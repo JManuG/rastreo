@@ -4,7 +4,16 @@
 //echo "1";
 //Incluimos el FrontController
 require '../class/controlador.php';
+session_start();
 //Lo iniciamos con su método estático main.
+if(!empty($_SESSION['cod_usuario'])){
 FrontController::main();
+}else{
+    ?>
+    <script>
+        window.location.replace("https://rastreogtc.azurewebsites.net");
+    </script>
+    <?php
+}
 
 ?>
