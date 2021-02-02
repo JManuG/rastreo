@@ -1,4 +1,15 @@
 function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_envio,des_direccion,id_cat,ccosto_nombre,agencia){
+
+
+  destinatario    =quitarAcentos(destinatario);
+  descripcion     =quitarAcentos(descripcion);
+  tipo_envio      =quitarAcentos(tipo_envio);
+  des_direccion   =quitarAcentos(des_direccion);
+
+  ccosto_nombre   =quitarAcentos(ccosto_nombre);
+  agencia         =quitarAcentos(agencia);
+
+
   var datos_origen={
     "ccosto_ori":ccosto_ori,
     "id_ccosto":id_ccosto,
@@ -24,12 +35,12 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_e
       {
         $('#destinatario').val('');
         $('#destinatario').focus();
-        $('#descripcion').val('');
-        $('#des_direccion').val('');
-        $('#cod_destinatario').val('');
+        //$('#descripcion').val('');
+        //$('#des_direccion').val('');
+        //$('#cod_destinatario').val('');
         //$('#id_ccosto').val('');
-        $('#ccosto_nombre').val('');
-        $('#agencia').val('');
+        //$('#ccosto_nombre').val('');
+        //$('#agencia').val('');
         //$('#ccosto').val('');
 
         //$('#vineta').val('');
@@ -44,6 +55,29 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_e
     }
   })
 }
+
+////warning///
+
+function quitarAcentos(cadena){
+  const acentos = {'á':'a','é':'e','í':'i','ó':'o','ú':'u','Á':'A','É':'E','Í':'I','Ó':'O','Ú':'U'};
+  return cadena.split('').map( letra => acentos[letra] || letra).join('').toString();
+}
+
+function removeSpecials(str)
+{
+  var lower = str.toLowerCase();
+  var upper = str.toUpperCase();
+  var res = "";
+  var sp= "";
+  for(var i=0; i<lower.length; ++i) {
+    if(lower[i] != upper[i]||lower[i].trim() === ' ')
+    {res += str[i];}
+
+  }
+  return res;
+}
+///warning/// else{res += sp+str[i];}
+
 
 function procesarMantAgencia(cli_id,id_agencia,codigo_agencia,nombre_agencia,direccion_agencia,telefono_agencia)
 {

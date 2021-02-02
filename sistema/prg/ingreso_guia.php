@@ -2,17 +2,19 @@
 //ini_set ("display_errors","1" );
 //error_reporting(E_ALL);
 include('../model/model_con.php');
+//$texto = preg_replace('([^A-Za-z0-9 ])', ' ', $texto);
 
-$ccosto_ori     =$_POST["ccosto_ori"];
-$ccosto_des     =$_POST["id_ccosto"];//ccosto_des
-$destinatario   =$_POST["destinatario"];
-$descripcion    =$_POST["descripcion"];
+$ccosto_ori     =$_POST["ccosto_ori"];//preg_replace('([^A-Za-z0-9 ])', ' ', $_POST["ccosto_ori"]);
+$ccosto_des     =$_POST["id_ccosto"];//preg_replace('([^A-Za-z0-9 ])', ' ', $_POST["id_ccosto"]);//ccosto_des
+$destinatario   =preg_replace('([^A-Za-z0-9 ])', '', $_POST["destinatario"]);
+$descripcion    =preg_replace('([^A-Za-z0-9 ])', '', $_POST["descripcion"]);
 //ultimos add
-$tipo_envio     =$_POST["tipo_envio"];
-$des_direccion  =$_POST["des_direccion"];
-$id_cat         =$_POST["id_cat"];
-$ccosto_nombre  =$_POST["ccosto_nombre"];
-$agencia        =$_POST["agencia"];
+$tipo_envio     =preg_replace('([^A-Za-z0-9 ])', '', $_POST["tipo_envio"]);
+$des_direccion  =preg_replace('([^A-Za-z0-9 ])', '', $_POST["des_direccion"]);
+$id_cat         =$_POST["id_cat"];//preg_replace('([^A-Za-z0-9 ])', '', $_POST["id_cat"]);
+$ccosto_nombre  =preg_replace('([^A-Za-z0-9 ])', '', $_POST["ccosto_nombre"]);
+$agencia        =preg_replace('([^A-Za-z0-9 ])', '', $_POST["agencia"]);
+
 $db=new model_con();
 
 $vineta= $db->consulta_correlativo();
