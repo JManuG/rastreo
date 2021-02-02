@@ -138,7 +138,7 @@
 
                 <!--div class="form-group">
                   <label for="id_ccosto">Centro de costo destino</label-->
-                  <input type="hidden" id="id_ccosto" name="id_ccosto"  class="form-control" onchange='changeCCostoDes1()' value="1" >
+                  <input type="hidden" id="id_ccosto" name="id_ccosto"  class="form-control" onchange='' value="1" >
                   <?php //echo select_ccosto_simple(); ?>
                 <!--/div-->
 
