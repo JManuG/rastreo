@@ -2,13 +2,20 @@
 include("reporte_ingresos.php");
 
 $x1= new model_con();
+//109412
+$nivel=$_SESSION['nivel'];
 
-$x2=$x1->reporte_n();
+if($nivel>2){
+  $x2 = $x1->reporte_n2();
+}else {
+  $x2 = $x1->reporte_n();
+}
 
 //print_r($x2);
 include ("model/model_tab.php");
 $db=new model_tab();
 ?>
+
 
 
 <style type="text/css">
@@ -28,7 +35,7 @@ $db=new model_tab();
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Reporte de ingresos</h1>
+          <h1>Reporte de ingresos </h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -70,10 +77,20 @@ $db=new model_tab();
                 Categoria</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                 Estado</th>
+              <?php
+              if($nivel>2){
+
+              }else{
+              ?>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                 Mensajero</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                 Arribar</th>
+              <?php
+
+              }
+              ?>
+
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                 Reimprecion</th>
             </tr>
@@ -89,6 +106,23 @@ $db=new model_tab();
               }else{
                 $msj=$row->mensajero;
               }
+
+            if($nivel>2) {
+              echo "<tr role='row' class='odd'>
+                    <td class='dtr-control sorting_1' tabindex='0'>".$row->barra."</td>
+                    <td>".$row->remitente."</td>
+                    <td>".$row->remitente_dep."</td>
+                    <td>".$row->destinatario."</td>
+                    
+                    <td>".$row->direccion."</td>
+                     
+                    <td>".$row->categoria."</td>
+                    <td>".$row->estado."</td>
+                    <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'><i class='fas fa-print fa-2x'></i></a></td>
+
+                    </tr>";
+
+            }else{
               if($row->estado=="ARRIBO" or $row->estado=="INGRESO"){
               echo "<tr role='row' class='odd'>
                     <td class='dtr-control sorting_1' tabindex='0'>".$row->barra."</td>
@@ -125,6 +159,10 @@ $db=new model_tab();
 
 </tr>";
               }//fin validacion de estado
+
+              }
+
+
             }
             ?>
 
@@ -138,8 +176,16 @@ $db=new model_tab();
               <th rowspan="1" colspan="1">Zona</th>
               <th rowspan="1" colspan="1">Categoria</th>
               <th rowspan="1" colspan="1">Estado</th>
+              <?php
+              if($nivel>2){
+
+              }else{
+              ?>
               <th rowspan="1" colspan="1">Mensajero</th>
               <th rowspan="1" colspan="1">Arribar</th>
+              <?php
+              }
+              ?>
               <th rowspan="1" colspan="1">Reimprecion</th>
             </tr>
             </tfoot>

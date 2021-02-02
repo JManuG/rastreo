@@ -5,9 +5,12 @@
       <change afterPath="$PROJECT_DIR$/no perder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/api/db_extend.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/db_extend.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/api/imagen.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/imagen.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/model/model_con.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/model/model_con.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/prg/generaAcuse.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/prg/generaAcuse.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/vista/historico.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/historico.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/menu.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/vista/repor_ingresos1.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/repor_ingresos1.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/vista/reporte_ingresos.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/reporte_ingresos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/vista/reportehistorico.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/reportehistorico.php" afterDir="false" />
@@ -224,14 +227,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="108390000" />
-    </task>
-    <task id="LOCAL-00034" summary="login y db service">
-      <created>1611935357441</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1611935357441</updated>
+      <workItem from="1611939836626" duration="119167000" />
     </task>
     <task id="LOCAL-00035" summary="login y db service">
       <created>1611935575793</created>
@@ -569,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612205409818</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="for ingreso guia actualizacion 2">
+      <created>1612209816666</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1612209816673</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -3,6 +3,8 @@ $shi_codigo=$_SESSION['shi_codigo'];
 $shi_nombre=strtoupper($_SESSION['cod_usuario']);
 
 date_default_timezone_set('America/El_Salvador');
+$nivel=$_SESSION['nivel'];
+
 ?>
 
 <!--Menu Procesos-->
@@ -28,7 +30,13 @@ date_default_timezone_set('America/El_Salvador');
         <p>Orden de Servicio</p>
       </a>
     </li>
+    <?php
+    if($nivel>2){
+    ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+    }else{
 
+
+    ?>
     <li class="nav-item">
       <a class="nav-link" href='index.php?prc=proc&accion=ar'>
         <i class="far fa-circle nav-icon"></i>
@@ -63,9 +71,14 @@ date_default_timezone_set('America/El_Salvador');
         <p>Carga Base Envios</p>
       </a>
     </li>
-  
+    <?php
+      ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+    }
+    ?>
   </ul>
 </li>
+
+
 <!--Menu Consultas-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
@@ -110,16 +123,35 @@ date_default_timezone_set('America/El_Salvador');
       </a>
     </li>
 
+    <?php
+    if($nivel>2){
+      ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+    }else{
+
+
+    ?>
     <li class="nav-item">
       <a class="nav-link" href='index.php?prc=informe1'>
         <i class="far fa-circle nav-icon"></i>
         <p>Informe general</p>
       </a>
     </li>
+    <?php
+      ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+    }
 
+    ?>
 
   </ul>
 </li>
+
+<?php
+if($nivel>2){
+  ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+}else{
+
+
+?>
 <!--Menu Mantenimientos-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
@@ -166,7 +198,13 @@ date_default_timezone_set('America/El_Salvador');
 </li>
 
 
+<?php
 
+  ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+}
+
+
+?>
 
 
 
