@@ -31,9 +31,10 @@ $x1=new model_con();
                 'nit'=>"",
                 'cliId'=>"",
                 'char1'=>$row->direccion,
-                'estado'=>$row->estado_guia
+                'estado'=>0
             ];
         }
+        //'estado'=>$row->estado_guia
         //echo $cnt."<br>";
         //print_r($b);
     echo json_encode($b);
