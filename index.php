@@ -25,7 +25,12 @@ $xajax->processRequest();
 echo "<?xml version=\'1.0\' encoding=\'UTF-8\'?>";
 
 		$xajax->printJavascript('lib/ajax/');
-
+$info='';
+if(isset($_GET['m'])){
+    $info="<div class='alert alert-danger' role='alert'>
+        Su sesión a expirado por motivos de seguridad!!<br> favor ingresar nuevamente.
+        </div>;";
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +61,7 @@ echo "<?xml version=\'1.0\' encoding=\'UTF-8\'?>";
     </div>
     <!-- /.login-logo -->
     <div class="card">
+        <?php echo $info;?>
         <div class="card-body login-card-body bg-gradient-navy">
             <p class="login-box-msg"><img src="sistema/vista/imgs/envia5.png" width="200"></p>
 
