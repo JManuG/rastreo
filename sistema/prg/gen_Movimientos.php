@@ -111,7 +111,7 @@ $barra = $_POST['vineta'];
                             $row_imagen_dl=$db->recurso_destino($barra);
                             while ($row_dl=$row_imagen_dl->fetch(PDO::FETCH_NUM))
                             {
-                                $imagen_dl=base64_encode($row_dl[0]);
+                                $imagen_dl=$row_dl[0];
                                 $lat_dl=$row_dl[1];
                                 $lon_dl=$row_dl[2];
                                 $geo_dl="https://www.google.com/maps/place/".$lat_dl.",".$lon_dl;
@@ -181,6 +181,47 @@ $barra = $_POST['vineta'];
                 <div class="card-orange">
                     <img class="img-fluid pad" src="'data:image/jpeg;base64,<?php echo $imagen_dl;?>" alt="Entrega">
                     <p>Imágen de Entrega</p>
+                    <?php
+                    $img = '<img id="myImg" alt="Entrega Efectiva" style="width:100%;max-width:300px" src="data:image/jpeg;base64,'. $imagen_dl .'" >
+                    
+                    <!--------------------------------------Waning-------------------------------->
+                    <div id="myModal" class="modal">
+
+                        <!-- The Close Button -->
+                        <span class="close">&times;</span>
+
+                        <!-- Modal Content (The Image) -->
+                        <img class="modal-content" id="img01">
+
+                        <div id="caption"></div>
+                    </div>
+                    <!--------------------------------------Waning-------------------------------->
+                    <script>
+                        // Get the modal
+                        var modal = document.getElementById("myModal");
+
+                        // Get the image and insert it inside the modal - use its "alt" text as a caption
+                        var img = document.getElementById("myImg");
+                        var modalImg = document.getElementById("img01");
+                        var captionText = document.getElementById("caption");
+                        img.onclick = function(){
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+
+                        // Get the <span> element that closes the modal
+                        var span = document.getElementsByClassName("close")[0];
+
+                        // When the user clicks on <span> (x), close the modal
+                        span.onclick = function() {
+                            modal.style.display = "none";
+                        }
+                    </script>';
+                    print $img;
+                    ?>
+
+
                 </div>
             </div>
             <!-- /.col -->
@@ -194,12 +235,12 @@ $barra = $_POST['vineta'];
 <div class="row">
     <div class="col-md-12">
         <!-- Box Comment -->
-        <div class="card card-widget">
+        <div class="card card-widget collapsed-card">
             <div class="card-header">
                 <span class="card-title">Información de env&iacute;o</span>
                 <!-- /.user-block -->
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
                         </button>
                         <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
                         </button>
