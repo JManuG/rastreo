@@ -9,9 +9,10 @@ session_start();
 if(!empty($_SESSION['cod_usuario'])){
 FrontController::main();
 }else{
+    $info="estatus";
     ?>
     <script>
-        window.location.replace("https://rastreogtc.azurewebsites.net");
+        window.location.replace("https://rastreogtc.azurewebsites.net?m='<?php echo $info;?>'");
     </script>
     <?php
 }
