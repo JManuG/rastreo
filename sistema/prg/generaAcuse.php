@@ -4,11 +4,12 @@
 include('../model/model_con.php');
 require('../lib/fpdf16/fpdf.php');
 
+
 //$vineta="100028";
 $vineta = $_GET['v'];
 $cab=new model_con();
-
 $pdf = new FPDF('P','mm','Letter');
+
 $pdf->AddPage();
 $pdf->SetFont('Arial','B',16);
 //$pdf->Cell(40,10,'Hello World!');
@@ -173,7 +174,14 @@ $pdf->Text(30,62,$nombre_destinatario);
 $pdf->Text(30,68,$cat);
 $pdf->Text(50,75,$agencia);
 $pdf->Text(30,82,$direccion);
-$pdf->Text(60,89,$descripcion);
+//$pdf->Text(60,89,$descripcion);
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+$pdf->SetXY($x + 49, $y + 75);
+
+$pdf->MultiCell(145,5,$descripcion,0,'J',false);
+
+
 $pdf->Text(160,62,'');
 $pdf->Text(160,68,'');
 
@@ -181,7 +189,13 @@ $pdf->Text(30,198,$nombre_destinatario);
 $pdf->Text(30,205,$cat);
 $pdf->Text(50,212,$agencia);
 $pdf->Text(30,219,$direccion);
-$pdf->Text(60,226,$descripcion);
+//$pdf->Text(60,226,$descripcion);
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+$pdf->SetXY($x + 49, $y + 122);
+
+$pdf->MultiCell(145,5,$descripcion,0,'J',false);
+
 $pdf->Text(160,198,'');
 $pdf->Text(160,205,'');
 
