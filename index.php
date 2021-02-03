@@ -29,7 +29,7 @@ $info='';
 if(isset($_GET['m'])){
     $info="<div class='alert alert-danger' role='alert'>
         Su sesión a expirado por motivos de seguridad!!<br> favor ingresar nuevamente.
-        </div>;";
+        </div>";
 }
 ?>
 
