@@ -69,7 +69,8 @@ class model_con extends Db
                         inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
                         where mj.id_mensajero=$id_usr
                         and mv.id_chk=3
-                        and gi.estado=4";
+                        and gi.estado=4
+                        and ml.estado=1";
 
 
         $c= $db->consultar($sql);
@@ -99,7 +100,7 @@ class model_con extends Db
     public function obtener_guia($barra){
 
         $db=Db::getInstance();
-        $sql2="select id_guia from guia
+        $sql2="select id_guia,id_envio from guia
         where barra='".$barra."'";
         $gui=$db->consultar($sql2);
 
@@ -149,11 +150,11 @@ class model_con extends Db
 
 
 
-public function carga_img($movimeinto,$barra,$imagen)
+public function carga_img($movimiento,$barra,$imagen)
 {
     $db=Db::getInstance();
     $imagen=addcslashes($imagen,"\x00\'\"\r\n");
-    $sql="update recurso set imagen=_binary'".$imagen."'
+    $sql="update recurso set imagen=_binary'".$imagen."', tipo='".$movimiento."'
     where char1='".$barra."'";
 
     $c=$db->consultar($sql);
@@ -164,9 +165,9 @@ public function carga_img($movimeinto,$barra,$imagen)
 
 
 
-    public function manifiestoup(){
+    public function manifiestoup($id_envio){
         $db=Db::getInstance();
-        $sql="";
+        $sql="update manifiesto_linea set estado=2 where id_envio=".$id_envio;
         $c= $db->consultar($sql);
     }
 
