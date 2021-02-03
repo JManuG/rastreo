@@ -80,6 +80,7 @@
         }
     }
 </style>
+
 <?php
 //ini_set ("display_errors","1" );
 //error_reporting(E_ALL);
@@ -264,7 +265,7 @@ $barra = $_POST['vineta'];
                     <img class="img-fluid pad" src="'data:image/jpeg;base64,<?php echo $imagen_dl;?>" alt="Entrega">
                     <p>Imágen de Entrega</p>
                     <?php
-                    $img = '<img id="myImg" alt="Entrega Efectiva" style="width:100%;max-width:300px" src="data:image/jpeg;base64,'. $imagen_dl .'" >
+                    $img = '<img id="myImg" alt="Entrega Efectiva" style="width:20%;" src="data:image/jpeg;base64,'. $imagen_dl .'" >
                     
                     <!--------------------------------------Waning-------------------------------->
                     <div id="myModal" class="modal">
