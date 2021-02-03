@@ -60,8 +60,9 @@ if(isset($_GET['m'])){
 <!--        <b>Env&iacute;a</b> de Guatemala-->
     </div>
     <!-- /.login-logo -->
+    <?php echo $info;?>
     <div class="card">
-        <?php echo $info;?>
+
         <div class="card-body login-card-body bg-gradient-navy">
             <p class="login-box-msg"><img src="sistema/vista/imgs/envia5.png" width="200"></p>
 
