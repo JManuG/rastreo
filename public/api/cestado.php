@@ -26,6 +26,7 @@ $gui=$x1->obtener_guia($pedido);
 while ($row=$gui->fetch(PDO::FETCH_ASSOC))
 {
     $gi= $row['id_guia'];
+    $id_envio=$row['id_envio'];
 }
 
 
@@ -52,6 +53,7 @@ while ($row=$mov->fetch(PDO::FETCH_ASSOC))
     $mv= $row['max(id_movimiento)'];
 }
 
+$x1->manifiestoup($id_envio);
 
 
 $x2=$x1->recursoup($pedido,$latitude,$longitude,$fecha,$data_time,$resurce,$userid,$pro,$marca,$mv);
