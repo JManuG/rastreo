@@ -772,7 +772,7 @@ if($shi_codigo=='000591')
 		$c= $bd->consultar($sql_c);
 		
 		while ($row=$c->fetch(PDO::FETCH_NUM)){
-			$retorno .="<option value='".$row[2]."'>".$row[1]." - ".$row[3]."</option>";
+			$retorno .="<option value='".$row[2]."'>".$row[2]." ".$row[1]." - ".$row[3]."</option>";
 		}
 		
 		$retorno .="</select>";
