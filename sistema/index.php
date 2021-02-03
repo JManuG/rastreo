@@ -9,7 +9,7 @@ session_start();
 if(!empty($_SESSION['cod_usuario'])){
 FrontController::main();
 }else{
-    $info=md5('Su sesión a expirado por motivos de seguridad!! favor ingresar nuevamente.');
+    $info="estatus";
     ?>
     <script>
         window.location.replace("https://rastreogtc.azurewebsites.net?m='<?php echo $info;?>'");
