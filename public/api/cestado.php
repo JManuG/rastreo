@@ -10,7 +10,7 @@ $tiempo=$postdata->tiempo;
 $resurce=$postdata->resource;
 $userid=$postdata->userid;
 
-if($proceso==6 or $proceso==8){$pro=4;}
+if($proceso==6 or $proceso==8){$pro=5;}
 if($proceso==5){$pro=3;}
 if($proceso==4){$pro=2;}
 //else{$pro=0;}
