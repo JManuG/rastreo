@@ -152,10 +152,13 @@ class model_con extends Db
 public function carga_img($movimeinto,$barra,$imagen)
 {
     $db=Db::getInstance();
-    $sql="update recurso set foto='".$imagen."'
+    $imagen=addcslashes($imagen,"\x00\'\"\r\n");
+    $sql="update recurso set imagen=_binary'".$imagen."'
     where char1='".$barra."'";
-    print_r($sql);
+
     $c=$db->consultar($sql);
+
+
 }
 
 
@@ -176,7 +179,6 @@ public function carga_img($movimeinto,$barra,$imagen)
 
         return bin2hex(random_bytes(($longitud - ($longitud % 2)) / 2));
     }
-
 
 
 }

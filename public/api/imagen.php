@@ -7,6 +7,13 @@ $postdata = json_decode(file_get_contents("php://input"));
 $barra=$_GET['barra'];
 $imagen=$postdata->image;
 
+
 $x2=$x1->carga_img('ENTREGA',$barra,$imagen);
 
+$return=array(
+    'status'=>'200',
+    'descripcion'=>'imagen ingresada con exito'
+);
+
+return json_encode($return);
 ?>
