@@ -155,8 +155,6 @@ public function carga_img($movimeinto,$barra,$imagen)
     $imagen=addcslashes($imagen,"\x00\'\"\r\n");
     $sql="update recurso set imagen=_binary'".$imagen."'
     where char1='".$barra."'";
-    //$img = '<img src="data:image/jpeg;base64,' . $imagen . '">';
-    //print $img;
 
     $c=$db->consultar($sql);
 
@@ -181,7 +179,6 @@ public function carga_img($movimeinto,$barra,$imagen)
 
         return bin2hex(random_bytes(($longitud - ($longitud % 2)) / 2));
     }
-
 
 
 }

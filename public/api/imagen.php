@@ -16,5 +16,4 @@ $return=array(
 );
 
 return json_encode($return);
-
 ?>
