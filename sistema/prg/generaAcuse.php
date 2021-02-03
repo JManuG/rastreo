@@ -192,7 +192,25 @@ $pdf->Text(30,219,$direccion);
 //$pdf->Text(60,226,$descripcion);
 $x = $pdf->GetX();
 $y = $pdf->GetY();
-$pdf->SetXY($x + 49, $y + 122);
+switch($y){
+    case "90.00125";
+    $y2=132;
+    break;
+
+    case "95.00125";
+        $y2=127;
+        break;
+
+    case "100.00125";
+        $y2=122;
+        break;
+
+    case "105.00125";
+        $y2=117;
+        break;
+}
+$pdf->SetXY($x + 49, $y+$y2);
+$y3=$y2+$y;
 
 $pdf->MultiCell(145,5,$descripcion,0,'J',false);
 
