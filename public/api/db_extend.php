@@ -56,10 +56,14 @@ class model_con extends Db
                             gi.comentario as comments,
                             cct.ccosto_nombre as centro_costo,
                             z.zon_descripcion as address,
-                            gi.estado as estado_guia
+                            gi.estado as estado_guia,
+                            us.id_usr as remitente,
+                            us.usr_nombre as nombre_remitente,
+                            cctr.ccosto_nombre as dep_remitente
        
                         from guia gi
                         inner join usuario us on us.id_usr=gi.id_usr
+                        inner join centro_costo cctr on cctr.id_ccosto=us.id_ccosto
                         inner join centro_costo cct on cct.id_ccosto=gi.des_ccosto
                         inner join categoria ct on ct.id_cat=gi.entero1
                         inner join movimiento mv on mv.id_envio=gi.id_envio
