@@ -7,13 +7,13 @@ include('../model/model_con.php');
 $ccosto_ori     =$_POST["ccosto_ori"];//preg_replace('([^A-Za-z0-9 ])', ' ', $_POST["ccosto_ori"]);
 $ccosto_des     =$_POST["id_ccosto"];//preg_replace('([^A-Za-z0-9 ])', ' ', $_POST["id_ccosto"]);//ccosto_des
 $destinatario   =preg_replace('([^A-Za-z0-9 ])', '', $_POST["destinatario"]);
-$descripcion    =preg_replace('([^A-Za-z0-9 ])', '', $_POST["descripcion"]);
+$descripcion    =$_POST["descripcion"];
 //ultimos add
 $tipo_envio     =preg_replace('([^A-Za-z0-9 ])', '', $_POST["tipo_envio"]);
-$des_direccion  =preg_replace('([^A-Za-z0-9 ])', '', $_POST["des_direccion"]);
+$des_direccion  =$_POST["des_direccion"];
 $id_cat         =$_POST["id_cat"];//preg_replace('([^A-Za-z0-9 ])', '', $_POST["id_cat"]);
 $ccosto_nombre  =preg_replace('([^A-Za-z0-9 ])', '', $_POST["ccosto_nombre"]);
-$agencia        =preg_replace('([^A-Za-z0-9 ])', '', $_POST["agencia"]);
+$agencia        =$_POST["agencia"];
 
 $db=new model_con();
 
@@ -26,7 +26,10 @@ if($ccosto_ori=='' || $ccosto_ori ==NULL){
     $retorno = "Centro costo destino esta vacio<br>Env&iacute;o marcado como Interno";
     $sql="";
 }elseif($destinatario=='' || $destinatario ==NULL){
-    $retorno = "Destinatario esta vacio";
+    $retorno = array(
+        'codigo'=> 409,
+        'mensaje'=>"Destinatario esta vacio",
+    );
     $sql="";
 }elseif($descripcion=='' || $descripcion ==NULL){
     $retorno = "La descripcion esta vacia";
@@ -53,15 +56,20 @@ if($ccosto_ori=='' || $ccosto_ori ==NULL){
     if (intval($sql)>0)
     {
 
-        $retorno="200-Ingresado correctamente $con -".$ccosto_ori."-".$ccosto_des."-".$destinatario."-".$descripcion."-".$vineta."-".$con;
-
-        //$db->consultar($con);
+        $retorno=array(
+            'codigo'=>200,
+            'mensaje'=>'Ingresado correctamente',
+            'barra'=>$vineta,
+        );
+        //"200-Ingresado correctamente $con -".$ccosto_ori."-".$ccosto_des."-".$destinatario."-".$descripcion."-".$vineta."-".$con;;
 
     }else{
         $retorno="409-".$sql;
     }
 }
 
-echo $retorno.$con."-".$sql;
+echo json_encode($retorno);
+
+//echo $retorno."-".$sql;
 
 
