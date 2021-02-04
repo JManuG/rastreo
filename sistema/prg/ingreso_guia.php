@@ -32,13 +32,29 @@ if($ccosto_ori=='' || $ccosto_ori ==NULL){
     );
     $sql="";
 }elseif($descripcion=='' || $descripcion ==NULL){
-    $retorno = "La descripcion esta vacia";
+    $retorno = array(
+        'codigo'=> 409,
+        'mensaje'=>"La descripcion esta vacia",
+    );
+
     $sql="";
 }elseif($id_cat=='' || $id_cat ==NULL){
-    $retorno = "Ingrese una categoria valida, seleccione una de la lista";
+
+    $retorno = array(
+        'codigo'=> 409,
+        'mensaje'=>"Ingrese una categoria valida, seleccione una de la lista",
+    );
+
+
     $sql="";
 }elseif($des_direccion=='' || $des_direccion ==NULL){
-    $retorno = "Direcci&oacute;n destino esta vacia";
+
+    $retorno = array(
+        'codigo'=> 409,
+        'mensaje'=>"Direcci&oacute;n destino esta vacia",
+    );
+
+
     $sql="";
 }else{
     //Para efecto de envios EXTERNOS se colocara como ccosto_des = 1, el codigo 1 quedaria reservado para ccosto_externo
@@ -64,7 +80,11 @@ if($ccosto_ori=='' || $ccosto_ori ==NULL){
         //"200-Ingresado correctamente $con -".$ccosto_ori."-".$ccosto_des."-".$destinatario."-".$descripcion."-".$vineta."-".$con;;
 
     }else{
-        $retorno="409-".$sql;
+
+        $retorno = array(
+            'codigo'=> 409,
+            'mensaje'=>$sql,
+        );
     }
 }
 
