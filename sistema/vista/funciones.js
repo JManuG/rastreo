@@ -32,7 +32,7 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_e
     success: function (response){
       var str = JSON.parse(response);
       //var res = str.split("-");
-      console.log('codigo de proceso'+str.codigo);
+      //console.log('codigo de proceso'+str.codigo);
       if(str.codigo==200)
       {
         $('#destinatario').val('');
