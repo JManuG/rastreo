@@ -148,6 +148,8 @@ $db=new model_tab();
               $msj=$row->mensajero;
             }
 
+
+
           if($nivel>2){
             echo "<tr role='row' class='odd'>
                     <td class='dtr-control sorting_1' tabindex='0'>" . $row->barra . "</td>
@@ -316,6 +318,7 @@ $db=new model_tab();
           responsive: "true",
           "scrollX": true,
           "scrollY": 400,
+          "order": [[ 0, "desc" ]],
           dom: 'Bfrtilp',
           buttons:[
             {
