@@ -97,7 +97,7 @@ $db=new model_tab();
           Prosesando solicitud de arrivo(...)
         </div>
 
-        <table id="table_id" class="table table-hover table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+        <table id="example" class="table table-hover table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
 
           <thead>
           <tr role="row">
@@ -259,3 +259,73 @@ $db=new model_tab();
 
     </script>
 
+    <script src="vista/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="vista/plugins/jquery/jquery.min.js"></script>
+
+    <script src="vista/DataTables/datatables.min.js"></script>
+
+    <script>
+
+      $(document).ready(function() {
+        $('#example').DataTable( {
+          //traduccion de la libreria al español
+          language: {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+              "first": "Primero",
+              "last": "Ultimo",
+              "next": "Siguiente",
+              "previous": "Anterior"
+            }
+          },
+          //funcion para poder selecionar el estado de forma dinamica.
+          initComplete: function () {
+            this.api().columns(7).every( function () {
+              var column = this;
+              var select = $('<select><option value="">Estado</option></select>')
+                .appendTo( $(column.header()).empty() )
+                .on( 'change', function () {
+                  var val = $.fn.dataTable.util.escapeRegex(
+                    $(this).val()
+                  );
+
+                  column
+                    .search( val ? '^'+val+'$' : '', true, false )
+                    .draw();
+                } );
+
+              column.data().unique().sort().each( function ( d, j ) {
+                select.append( '<option value="'+d+'">'+d+'</option>' )
+              } );
+            } );
+          },
+
+          //funcion par alos botones de exportacion...
+          responsive: "true",
+          "scrollX": true,
+          "scrollY": 400,
+          dom: 'Bfrtilp',
+          buttons:[
+            {
+              extend    :   'excelHtml5',
+              text      :   '<i class="fas fa-file-excel fa-x2"></i>',
+              titleAttrs:   'Exportar a Excel',
+              className :   'btn btn-success'
+            },
+          ]
+
+        } );
+      } );
+    </script>

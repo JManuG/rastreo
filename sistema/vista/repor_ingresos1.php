@@ -57,7 +57,7 @@ $db=new model_tab();
             Prosesando solicitud de arrivo(...)
           </div>
 
-          <table id="table_id" class="table table-hover table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+          <table id="example" class="table table-hover table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
 
             <thead>
             <tr role="row">
@@ -192,9 +192,94 @@ $db=new model_tab();
 
           </table>
 
-          <div class="col-md-12 text-center">
-            <ul class="pagination" id="developer_page"></ul>
-          </div>
+
         </div>
 
       </div>
+
+    <script src="vista/plugins/jquery/jquery.min.js"></script>
+
+    <script src="vista/DataTables/datatables.min.js"></script>
+
+
+
+    <!--buttons for exporting to excel, html5 and flash-->
+
+    <script src="vista/DataTables/Buttons-1.6.5/js/dataTables.buttons.min.js"></script>
+    <script src="DataTables/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+    <script src="DataTables/Buttons-1.6.5/js/buttons.bootstrap4.min.js"></script>
+    <script src="DataTables/Buttons-1.6.5/js/buttons.colVis.min.js"></script>
+    <script src="DataTables/Buttons-1.6.5/js/buttons.html5.min.js"></script>
+    <script src="DataTables/Scroller-2.0.3/js/dataTables.scroller.min.js"></script>
+
+
+
+    <!--script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script-->
+
+
+    <script>
+
+      $(document).ready(function() {
+        $('#example').DataTable( {
+          //traduccion de la libreria al español
+          language: {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+              "first": "Primero",
+              "last": "Ultimo",
+              "next": "Siguiente",
+              "previous": "Anterior"
+            }
+          },
+          //funcion para poder selecionar el estado de forma dinamica.
+          initComplete: function () {
+            this.api().columns(6).every( function () {
+              var column = this;
+              var select = $('<select><option value="">Estado</option></select>')
+                .appendTo( $(column.header()).empty() )
+                .on( 'change', function () {
+                  var val = $.fn.dataTable.util.escapeRegex(
+                    $(this).val()
+                  );
+
+                  column
+                    .search( val ? '^'+val+'$' : '', true, false )
+                    .draw();
+                } );
+
+              column.data().unique().sort().each( function ( d, j ) {
+                select.append( '<option value="'+d+'">'+d+'</option>' )
+              } );
+            } );
+          },
+
+          //funcion par alos botones de exportacion...
+          responsive: "true",
+          "scrollX": true,
+          dom: 'Bfrtilp',
+          buttons:[
+            {
+              extend    :   'excelHtml5',
+              text      :   '<i class="fas fa-file-excel fa-2x"></i>',
+              titleAttrs:   'Exportar a Excel',
+              className :   'btn btn-success'
+            },
+          ] /**/
+
+        } );
+      } );
+    </script>
+
+

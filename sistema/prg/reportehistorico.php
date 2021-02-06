@@ -9,7 +9,8 @@ class reportehistorico{
             //require('../class/cab.php');
             include('vista/inicio.php');
             include('vista/reportehistorico.php');
-            include('vista/inicio_pie.php');
+            include('vista/pie_report.php');
+            //include('vista/inicio_pie.php');
         }
         else
         {
