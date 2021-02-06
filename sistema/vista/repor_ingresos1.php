@@ -268,6 +268,8 @@ $db=new model_tab();
           //funcion par alos botones de exportacion...
           responsive: "true",
           "scrollX": true,
+          "scrollY": 400,
+          "order": [[ 0, "desc" ]],
           dom: 'Bfrtilp',
           buttons:[
             {
