@@ -149,7 +149,6 @@ $db=new model_tab();
             }
 
 
-
           if($nivel>2){
             echo "<tr role='row' class='odd'>
                     <td class='dtr-control sorting_1' tabindex='0'>" . $row->barra . "</td>
