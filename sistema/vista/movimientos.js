@@ -13,6 +13,7 @@ function buscarMovimientos(vineta)
         },
         success: function (response){
             var str = response;
+          document.getElementById('ok').classList.add('ocultar');
             $("#hiddenform").html(str)
         }
     })
