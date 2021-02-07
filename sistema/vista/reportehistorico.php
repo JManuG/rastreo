@@ -122,6 +122,9 @@ $db=new model_tab();
 
             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
               Mensajero</th>
+            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+              Imagen</th>
+
             <?php
             if($nivel>2){
 
@@ -148,20 +151,52 @@ $db=new model_tab();
               $msj=$row->mensajero;
             }
 
+            $imagen=$x1->get_img($row->barra);
+
+            if($imagen==""){
+              $img='<i class="fas fa-eye-slash fa-2x"></i>';
+            }else{
+              $img='<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal'.$cn.'" style="width:auto;">
+                    <i class="fas fa-file-image fa-2x"></i></button>
+                    <!--------------------------------------Waning-------------------------------->
+                                            <!-- Modal -->
+                          <div class="modal fade" id="myModal'.$cn.'" " role="dialog">
+                            <div class="modal-dialog">
+                            
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h4 class="modal-title">Imagen de Recolección</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <img id="myImg" alt="Entrega Efectiva" style="width:99%;" src="data:image/jpeg;base64,'. $imagen .'">
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                              
+                            </div>
+                          </div>
+                    <!--------------------------------------Waning-------------------------------->';
+            }
+
 
           if($nivel>2){
             echo "<tr role='row' class='odd'>
                     <td class='dtr-control sorting_1' tabindex='0'>" . $row->barra . "</td>
                     
-                    <td>" . $row->remitente . "</td>
-                    <td>" . $row->remitente_dep . "</td>
-                    <td>" . $row->fecha . "</td>
+                    <td>" . $row->remitente    . "</td>
+                    <td>" . $row->remitente_dep. "</td>
+                    <td>" . $row->fecha        . "</td>
                     <td>" . $row->destinatario . "</td>
-                    <td>" . $row->direccion . "</td>
+                    <td>" . $row->direccion    . "</td>
                      
-                    <td>" . $row->categoria . "</td>
-                    <td>" . $row->estado . "</td>
-                    <td>" . $row->mensajero . "</td>
+                    <td>" . $row->categoria    . "</td>
+                    <td>" . $row->estado       . "</td>
+                    <td>" . $row->mensajero    . "</td>
+                    <td>" . $img               . "</td>
                     <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'><i class='fas fa-print fa-2x'></i></a></td></tr>";
 
           }else {
@@ -177,10 +212,9 @@ $db=new model_tab();
                      
                     <td>" . $row->categoria . "</td>
                     <td>" . $row->estado . "</td>
-                    <td>" . $msj
-
-
-              . "</td>
+                    <td>" . $msj. "</td>
+                    <td>".$img."</td>
+                    
                     <td>
                     <div id='ok" . $cn . "' class='alert alert-success ocultar' role='alert'>
                             Prosesando solicitud de arrivo(...)
