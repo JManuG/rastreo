@@ -92,6 +92,24 @@ class historico_ingresos extends Db
     return $data;
   }
 
+  public function get_img($barra){
+    $db=Db::getInstance();
+    $sql = "select r.imagen
+                from recurso r 
+                inner join guia g
+                on r.char1=g.barra
+                where g.barra=$barra
+                and r.estado=4";
+    $c=$db->consultar($sql);
+    $imagen="";
+    while ($row_dl=$c->fetch(PDO::FETCH_NUM))
+    {
+      $imagen=$row_dl[0];
+    }
+
+    return $imagen;
+  }
+
 }
 ?>
 
