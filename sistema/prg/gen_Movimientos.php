@@ -1,8 +1,96 @@
 
+<style>
+    /* Style the Image Used to Trigger the Modal */
+    #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (Image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation - Zoom in the Modal */
+    .modal-content, #caption {
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+        .modal-content {
+            width: 100%;
+        }
+    }
+</style>
 
 <?php
 //ini_set ("display_errors","1" );
 //error_reporting(E_ALL);
+
+//America/Guatemala
+
+date_default_timezone_set ( 'America/Guatemala');
+
+ini_set("date.timezone", 'America/Guatemala');
+
 include('../model/model_mov.php');
 
 $db = new model_mov();
@@ -103,7 +191,7 @@ $barra = $_POST['vineta'];
                         if($DL != 0){
                             $param_final="fa-check bg-green";
                             $des_final="Entrega";
-                            $datetime_dl=$db->humanizando_fecha($row_1[5]);
+                            $datetime_dl=$db->humanizando_fecha2($row_1[5]);
 
                             $imagen_dl="";
                             $lat_dl=0;
@@ -123,7 +211,16 @@ $barra = $_POST['vineta'];
                         }elseif($DV != 0){
                             $param_final="fa-check bg-green";
                             $des_final="Devoluci&oacute;n";
-                            $datetime_dl=$db->humanizando_fecha($row_1[6]);
+                            $datetime_dl=$db->humanizando_fecha2($row_1[6]);
+
+                            $row_imagen_dl=$db->recurso_destino($barra);
+                            while ($row_dl=$row_imagen_dl->fetch(PDO::FETCH_NUM))
+                            {
+                                $imagen_dl=$row_dl[0];
+                                $lat_dl=$row_dl[1];
+                                $lon_dl=$row_dl[2];
+                                $geo_dl="https://www.google.com/maps/place/".$lat_dl.",".$lon_dl;
+                            }
                         }else{
                             $param_final="fa-circle-thin bg-white";
                             $des_final="Entrega";
@@ -180,40 +277,51 @@ $barra = $_POST['vineta'];
                     <p>Imágen de recolección</p>
                 </div>
 
-
+                <div class="card-orange">
+                    <img class="img-fluid pad" src="'data:image/jpeg;base64,<?php echo $imagen_dl;?>" alt="Entrega">
+                    <p>Imágen de Entrega</p>
                     <?php
-                    $img = '<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" style="width:auto;">
-                            <img id="myImg" alt="Entrega Efectiva" style="width:20%;" src="data:image/jpeg;base64,'. $imagen_dl .'">
-                            </button>
+                    $img = '<img id="myImg" alt="Entrega Efectiva" style="width:20%;" src="data:image/jpeg;base64,'. $imagen_dl .'" >
                     
                     <!--------------------------------------Waning-------------------------------->
-                                            <!-- Modal -->
-                          <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
-                            
-                              <!-- Modal content-->
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                  <h4 class="modal-title">Imagen de Recolección</h4>
-                                </div>
-                                <div class="modal-body">
-                                  <img id="myImg" alt="Entrega Efectiva" style="width:99%;" src="data:image/jpeg;base64,'. $imagen_dl .'">
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                              
-                            </div>
-                          </div>
+                    <div id="myModal" class="modal">
+
+                        <!-- The Close Button -->
+                        <span class="close">&times;</span>
+
+                        <!-- Modal Content (The Image) -->
+                        <img class="modal-content" id="img01">
+
+                        <div id="caption"></div>
+                    </div>
                     <!--------------------------------------Waning-------------------------------->
-                   ';
+                    <script>
+                        // Get the modal
+                        var modal = document.getElementById("myModal");
+
+                        // Get the image and insert it inside the modal - use its "alt" text as a caption
+                        var img = document.getElementById("myImg");
+                        var modalImg = document.getElementById("img01");
+                        var captionText = document.getElementById("caption");
+                        img.onclick = function(){
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+
+                        // Get the <span> element that closes the modal
+                        var span = document.getElementsByClassName("close")[0];
+
+                        // When the user clicks on <span> (x), close the modal
+                        span.onclick = function() {
+                            modal.style.display = "none";
+                        }
+                    </script>';
                     print $img;
                     ?>
 
 
-
+                </div>
             </div>
             <!-- /.col -->
         </div>
@@ -261,9 +369,15 @@ $barra = $_POST['vineta'];
                     $sql=$db->mov_completo($barra);
 
                     while ($row=$sql->fetch(PDO::FETCH_NUM))
-                    { 
+                    {
+
+                        if($row[2]==4||$row[2]==5||$row[3]=="ENVIO EN RUTA"||$row[3]=="ENVIO RECIBIDO POR MENSAJERO")
+                        {
+                            echo "<p><span class='description'>".$row[8]." : <b>".$row[3]."</b></span></p>";
+                        }else{
+                            echo "<p><span class='description'>".$db->correccion_fecha_hora1($row[8])." : <b>".$row[3]."</b></span></p>";
+                        }
                 ?>
-                   <p><span class="description"><?php echo $row[8]." : <b>".$row[3]."</b>"; ?></span></p>
                     <!-- /.card-body -->
                 <?php
                     }
@@ -273,62 +387,7 @@ $barra = $_POST['vineta'];
     </div>
 </div>
 
-     <!-- Main row -->
-     <div class="row">
-         <!-- Left col -->
-         <div class="col-md-8">
-             <div class="card">
-                 <div class="card-header">
-                     <h3 class="card-title">Coordenadas de fin de proceso</h3>
 
-                     <div class="card-tools">
-                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                             <i class="fas fa-minus"></i>
-                         </button>
-                         <button type="button" class="btn btn-tool" data-card-widget="remove">
-                             <i class="fas fa-times"></i>
-                         </button>
-                     </div>
-                 </div>
-                 <!-- /.card-header -->
-                 <div class="card-body p-0">
-                     <div class="d-md-flex">
-                         <div class="p-1 flex-fill" style="overflow: hidden">
-                             <!-- Map will be created here -->
-                             <div id="world-map-markers" style="height: 325px; overflow: hidden">
-                                 <div class="map">
-                                     <?php echo "GEO ".$geo_dl; ?>
-                                     <iframe src="<?php echo $geo_dl; ?>" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="card-pane-right bg-navy pt-2 pb-2 pl-4 pr-4">
-                             <div class="description-block mb-4">
-                                 <div class="sparkbar pad" data-color="#fff">latitud</div>
-                                 <h5 class="description-header"></h5>
-                                 <span class="description-text">Latitud</span>
-                             </div>
-                             <!-- /.description-block -->
-                             <div class="description-block mb-4">
-                                 <div class="sparkbar pad" data-color="#fff">longitud</div>
-                                 <h5 class="description-header"></h5>
-                                 <span class="description-text">Longitud</span>
-                             </div>
-                             <!-- /.description-block -->
-                             <div class="description-block">
-                                 <div class="sparkbar pad" data-color="#fff">Altura</div>
-                                 <h5 class="description-header"></h5>
-                                 <span class="description-text">Altura</span>
-                             </div>
-                             <!-- /.description-block -->
-                         </div><!-- /.card-pane-right -->
-                     </div><!-- /.d-md-flex -->
-                 </div>
-                 <!-- /.card-body -->
-             </div>
-             <!-- /.card -->
-         </div>
-     </div>
 <?php 
  }else{
 ?>

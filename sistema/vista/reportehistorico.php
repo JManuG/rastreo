@@ -91,6 +91,15 @@ $db=new model_tab();
     <br>
 
 
+    <div class="row"><div class="col-sm-12">
+        <div id="load" class="alert alert-success" role="alert">
+          <div class="text-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            Cargando informacion...
+          </div>
+        </div>
 
     <div class="row"><div class="col-sm-12">
         <div id="ok" class="alert alert-success ocultar" role="alert">
@@ -101,28 +110,28 @@ $db=new model_tab();
 
           <thead>
           <tr role="row">
-            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+            <th>
               Transaccion</th>
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
+            <th class="sorting" >
               Remitente</th>
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
+            <th>
             Departamento</th>
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
+            <th>
               Fecha</th>
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
+            <th>
               Destinatario</th>
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">
+            <th>
               Zona</th>
             <!--th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
               Centro de Costo</th-->
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+            <th>
               Categoria</th>
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+            <th>
               Estado</th>
 
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+            <th>
               Mensajero</th>
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+            <th>
               Imagen</th>
 
             <?php
@@ -130,12 +139,12 @@ $db=new model_tab();
 
             }else{
             ?>
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+              <th>
               Arribar</th>
             <?php
             }
             ?>
-            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+            <th>
               Reimprecion</th>
           </tr>
           </thead>
@@ -365,3 +374,13 @@ $db=new model_tab();
         } );
       } );
     </script>
+    <?php
+
+    echo '<script>
+                          $(function() {
+                            document.getElementById("load").classList.add("ocultar");
+                            //console.log("entra")
+                          });
+                      </script>';
+
+    ?>
