@@ -59,7 +59,7 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-        <?php echo date('d-m-Y'); ?>
+        <?php echo date('d-m-Y H:i:s'); ?>
         </a>
 
 
