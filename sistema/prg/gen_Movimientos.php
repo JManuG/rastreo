@@ -369,9 +369,15 @@ $barra = $_POST['vineta'];
                     $sql=$db->mov_completo($barra);
 
                     while ($row=$sql->fetch(PDO::FETCH_NUM))
-                    { 
+                    {
+
+                        if($row[2]==4||$row[2]==5||$row[3]=="ENVIO EN RUTA"||$row[3]=="ENVIO RECIBIDO POR MENSAJERO")
+                        {
+                            echo "<p><span class='description'>".$row[8]." : <b>".$row[3]."</b></span></p>";
+                        }else{
+                            echo "<p><span class='description'>".$db->correccion_fecha_hora1($row[8])." : <b>".$row[3]."</b></span></p>";
+                        }
                 ?>
-                   <p><span class="description"><?php echo $db->correccion_fecha_hora1($row[8])." : <b>".$row[3]."</b>"; ?></span></p>
                     <!-- /.card-body -->
                 <?php
                     }
