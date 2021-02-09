@@ -64,7 +64,12 @@ class model_mov extends Db
         $orden=1;
         $existe_usr=0;
 
-		$sql = "SELECT id_guia,
+        //$sql_time="SET time_zone = '-6:00';";
+        //$stmt=$db->consultar($sql_time);
+
+		$sql = "
+                
+                        SELECT id_guia,
 						id_envio,
 						fn_ccostoNombre(ori_ccosto) as ori_ccosto,
 						fn_ccostoNombre(des_ccosto) as des_ccosto,
@@ -194,8 +199,10 @@ class model_mov extends Db
 
 
 
-    public function humanizando_fecha($fechac)
+    public function humanizando_fecha($fechaa)
     {
+        $tiempo=strtotime($fechaa);
+        $fechac=date('d-m-Y H:i:s',($tiempo-(60*60*7)));
         $fecha = substr($fechac, 0, 10);
         $hora=substr($fechac, 10,9);
         $numeroDia = date('d', strtotime($fecha));
@@ -212,7 +219,35 @@ class model_mov extends Db
 
     }
 
-	
-	
+    public function humanizando_fecha2($fechaa)
+    {
+        $tiempo=strtotime($fechaa);
+        $fechac=date('d-m-Y H:i:s',$tiempo);
+        $fecha = substr($fechac, 0, 10);
+        $hora=substr($fechac, 10,9);
+        $numeroDia = date('d', strtotime($fecha));
+        $dia = date('l', strtotime($fecha));
+        $mes = date('F', strtotime($fecha));
+        $anio = date('Y', strtotime($fecha));
+        $dias_ES = array("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo");
+        $dias_EN = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+        $nombredia = str_replace($dias_EN, $dias_ES, $dia);
+        $meses_ES = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+        $meses_EN = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
+        return $nombredia." ".$numeroDia." de ".$nombreMes." de ".$anio." a las ".$hora;
+
+    }
+
+
+
+    public function correccion_fecha_hora1($fecha){
+	    $tiempo=strtotime($fecha);
+        $fechac=date('d-m-Y H:i:s',($tiempo-(60*60*7)));
+        return $fechac;
+
+    }
+
+
 }
 ?>
