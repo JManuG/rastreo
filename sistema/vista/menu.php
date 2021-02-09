@@ -130,12 +130,23 @@ $nivel=$_SESSION['nivel'];
 
 
     ?>
+
+      <li class="nav-item">
+        <a class="nav-link" href='index.php?prc=rep_usuario&accion=usuarios'>
+          <i class="far fa-circle nav-icon"></i>
+          <p>Reporte general de Usuarios</p>
+        </a>
+      </li>
+
+
     <li class="nav-item">
       <a class="nav-link" href='index.php?prc=informe1'>
         <i class="far fa-circle nav-icon"></i>
         <p>Informe general</p>
       </a>
     </li>
+
+
     <?php
       ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
     }
