@@ -137,7 +137,7 @@ class model_tab extends Db
         }
 	}
 	
-	public function consulta_vineta_tabla($id_ccosto)
+	public function consulta_vineta_tabla($id_ccosto,$id_usr)
     {
         $db=Db::getInstance();
         $msg="";
@@ -159,6 +159,7 @@ class model_tab extends Db
 						fecha_datetime,barra,comentario,destinatario
 				FROM rastreo.guia 
 				WHERE ori_ccosto='$id_ccosto' 
+				  and id_usr = $id_usr
 				AND estado=1 
 				AND id_orden=1
 				ORDER BY id_envio";
