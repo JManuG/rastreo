@@ -24,14 +24,16 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_e
   $.ajax({
     data:datos_origen,
     url:'../sistema/prg/ingreso_guia.php',
+
     type: 'post',
     beforeSend: function(){
       //$("#respuesta").html("procesando");
     },
     success: function (response){
-      var str = response;
-      var res = str.split("-");
-      if(res[0]==200)
+      var str = JSON.parse(response);
+      //var res = str.split("-");
+      //console.log('codigo de proceso'+str.codigo);
+      if(str.codigo==200)
       {
         $('#destinatario').val('');
         $('#destinatario').focus();
@@ -47,10 +49,10 @@ function procesarformulario(ccosto_ori,id_ccosto,destinatario,descripcion,tipo_e
         //$('#vineta').attr('readonly',false);
         ///$('#boton_v').attr("disabled", false);
 
-        $("#respuesta").html('<span style="color:green;"><b>'+ res[1]+' </b><a href="../sistema/prg/generaAcuse.php?v='+ res[6]+'" target="_blank">Envio '+ res[6]+' </a> </span>');
+        $("#respuesta").html('<span style="color:green;"><b>'+ str.mensaje+' </b><a href="../sistema/prg/generaAcuse.php?v='+ str.barra+'" target="_blank">Envio '+ str.barra+' </a> </span>');
       }else
       {
-        $("#respuesta").html('<span style="color:red;"><b>Error form_ingreso_guia validar:</b>  <p> '+res[0]+res[1]+'</span></p>');
+        $("#respuesta").html('<span style="color:red;"><b>Error form_ingreso_guia validar:</b>  <p> '+str.mensaje+'</span></p>');
       }
     }
   })

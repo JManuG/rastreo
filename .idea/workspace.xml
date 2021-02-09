@@ -2,16 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc3b8768-a9f3-47a4-a8fb-e29f3e7d2ba6" name="Default Changelist" comment="login y db service">
-      <change afterPath="$PROJECT_DIR$/no perder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sistema/vista/usr_mante_proc.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sistema/vista/usr_mantenimieto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_01_2021_11_49_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_01_2021_11_49__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_01_2021_12_09_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_01_2021_12_09__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_01_2021_17_06_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_01_2021_17_06__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_01_2021_19_17_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_01_2021_19_17__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_01_2021_19_33_[Default_Changelist]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" beforeDir="false" afterPath="$PROJECT_DIR$/API-Rastreo/app/Http/Controllers/Usr.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/api/db_extend.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/db_extend.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/api/imagen.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/imagen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/cab.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/cab.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/api/test_resource.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/api/test_resource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/model/model_con.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/model/model_con.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistema/prg/generaAcuse.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/prg/generaAcuse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/model/model_mov.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/model/model_mov.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/prg/gen_Movimientos.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/prg/gen_Movimientos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/vista/historico.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/historico.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistema/vista/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistema/vista/repor_ingresos1.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/repor_ingresos1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/inicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/inicio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/movform.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/movform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema/vista/movimientos.js" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/movimientos.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/vista/reporte_ingresos.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/reporte_ingresos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sistema/vista/reportehistorico.php" beforeDir="false" afterPath="$PROJECT_DIR$/sistema/vista/reportehistorico.php" afterDir="false" />
     </list>
@@ -227,231 +239,7 @@
       <workItem from="1611533163086" duration="1305000" />
       <workItem from="1611796594229" duration="7598000" />
       <workItem from="1611845447161" duration="1869000" />
-      <workItem from="1611939836626" duration="119167000" />
-    </task>
-    <task id="LOCAL-00035" summary="login y db service">
-      <created>1611935575793</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1611935575793</updated>
-    </task>
-    <task id="LOCAL-00036" summary="login y db service">
-      <created>1611936305344</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1611936305344</updated>
-    </task>
-    <task id="LOCAL-00037" summary="login y db service">
-      <created>1611937126147</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1611937126147</updated>
-    </task>
-    <task id="LOCAL-00038" summary="login y db service">
-      <created>1611939253644</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1611939253644</updated>
-    </task>
-    <task id="LOCAL-00039" summary="reporte">
-      <created>1611942560241</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1611942560241</updated>
-    </task>
-    <task id="LOCAL-00040" summary="reporte">
-      <created>1611943289072</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1611943289072</updated>
-    </task>
-    <task id="LOCAL-00041" summary="reporte">
-      <created>1611943353639</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1611943353639</updated>
-    </task>
-    <task id="LOCAL-00042" summary="reporte">
-      <created>1611943756202</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1611943756202</updated>
-    </task>
-    <task id="LOCAL-00043" summary="reporte">
-      <created>1612047954624</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1612047954625</updated>
-    </task>
-    <task id="LOCAL-00044" summary="reporte">
-      <created>1612055838842</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1612055838842</updated>
-    </task>
-    <task id="LOCAL-00045" summary="reporte">
-      <created>1612056016491</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1612056016491</updated>
-    </task>
-    <task id="LOCAL-00046" summary="login actualizado">
-      <created>1612056163252</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1612056163252</updated>
-    </task>
-    <task id="LOCAL-00047" summary="login actualizado 2">
-      <created>1612056417930</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1612056417930</updated>
-    </task>
-    <task id="LOCAL-00048" summary="login actualizado 3">
-      <created>1612056815735</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1612056815735</updated>
-    </task>
-    <task id="LOCAL-00049" summary="login actualizado 4">
-      <created>1612058864713</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1612058864713</updated>
-    </task>
-    <task id="LOCAL-00050" summary="login actualizado 4">
-      <created>1612065175578</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1612065175580</updated>
-    </task>
-    <task id="LOCAL-00051" summary="login actualizado 4">
-      <created>1612070153191</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1612070153191</updated>
-    </task>
-    <task id="LOCAL-00052" summary="login actualizado 4">
-      <created>1612075336703</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1612075336703</updated>
-    </task>
-    <task id="LOCAL-00053" summary="login actualizado 4">
-      <created>1612076154076</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1612076154077</updated>
-    </task>
-    <task id="LOCAL-00054" summary="login actualizado 289">
-      <created>1612076176992</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1612076176992</updated>
-    </task>
-    <task id="LOCAL-00055" summary="login actualizado 290">
-      <created>1612076518913</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1612076518914</updated>
-    </task>
-    <task id="LOCAL-00056" summary="login actualizado 290">
-      <created>1612077041398</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1612077041398</updated>
-    </task>
-    <task id="LOCAL-00057" summary="envios actualizado 2">
-      <created>1612077078108</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1612077078108</updated>
-    </task>
-    <task id="LOCAL-00058" summary="envios actualizado 2">
-      <created>1612078432292</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1612078432292</updated>
-    </task>
-    <task id="LOCAL-00059" summary="login cambio final 1">
-      <created>1612113916955</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1612113916955</updated>
-    </task>
-    <task id="LOCAL-00060" summary="login cambio final 1">
-      <created>1612120382951</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1612120382951</updated>
-    </task>
-    <task id="LOCAL-00061" summary="login cambio final 1">
-      <created>1612121611846</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1612121611846</updated>
-    </task>
-    <task id="LOCAL-00062" summary="lista de envios cambio 34">
-      <created>1612122940862</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1612122940862</updated>
-    </task>
-    <task id="LOCAL-00063" summary="lista de envios cambio 34">
-      <created>1612123981833</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1612123981833</updated>
-    </task>
-    <task id="LOCAL-00064" summary="lista de envios cambio 35">
-      <created>1612124471129</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1612124471129</updated>
-    </task>
-    <task id="LOCAL-00065" summary="lista de envios cambio 35">
-      <created>1612124992108</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1612124992108</updated>
-    </task>
-    <task id="LOCAL-00066" summary="lista de envios cambio 35">
-      <created>1612127619834</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1612127619834</updated>
+      <workItem from="1611939836626" duration="284523000" />
     </task>
     <task id="LOCAL-00067" summary="update cestado">
       <created>1612131793482</created>
@@ -572,7 +360,231 @@
       <option name="project" value="LOCAL" />
       <updated>1612209816673</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="actualizacion menu e informes de ingreso de registros.">
+      <created>1612283814743</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1612283814743</updated>
+    </task>
+    <task id="LOCAL-00085" summary="envio">
+      <created>1612285253566</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1612285253566</updated>
+    </task>
+    <task id="LOCAL-00086" summary="envio comit estado 0">
+      <created>1612286181185</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1612286181185</updated>
+    </task>
+    <task id="LOCAL-00087" summary="agencias con problemas">
+      <created>1612289553492</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1612289553492</updated>
+    </task>
+    <task id="LOCAL-00088" summary="formulario de ingreso de guias">
+      <created>1612302049993</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1612302049993</updated>
+    </task>
+    <task id="LOCAL-00089" summary="index sesion actualizacion">
+      <created>1612302308755</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1612302308755</updated>
+    </task>
+    <task id="LOCAL-00090" summary="index sesion actualizacion, funcionesjs, form ingreso guia">
+      <created>1612302453516</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1612302453516</updated>
+    </task>
+    <task id="LOCAL-00091" summary="pdf modificado multi lineas">
+      <created>1612333159240</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1612333159240</updated>
+    </task>
+    <task id="LOCAL-00092" summary="modificacion de imagenes">
+      <created>1612362784570</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1612362784570</updated>
+    </task>
+    <task id="LOCAL-00093" summary="modificacion de imagenes">
+      <created>1612362812375</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1612362812375</updated>
+    </task>
+    <task id="LOCAL-00094" summary="modificacion de imagenes">
+      <created>1612362850410</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1612362850410</updated>
+    </task>
+    <task id="LOCAL-00095" summary="modificacion de imagenes">
+      <created>1612363044219</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1612363044219</updated>
+    </task>
+    <task id="LOCAL-00096" summary="modificacion de imagenes">
+      <created>1612363249788</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1612363249788</updated>
+    </task>
+    <task id="LOCAL-00097" summary="modificacion de imagenes">
+      <created>1612364479261</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1612364479261</updated>
+    </task>
+    <task id="LOCAL-00098" summary="modificacion de estado">
+      <created>1612364985623</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1612364985623</updated>
+    </task>
+    <task id="LOCAL-00099" summary="modificacion de estado">
+      <created>1612365328167</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1612365328167</updated>
+    </task>
+    <task id="LOCAL-00100" summary="modificacion de estado">
+      <created>1612365701598</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1612365701598</updated>
+    </task>
+    <task id="LOCAL-00101" summary="generacion de acuse">
+      <created>1612375861989</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1612375861989</updated>
+    </task>
+    <task id="LOCAL-00102" summary="cambios varios 1">
+      <created>1612385304685</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1612385304685</updated>
+    </task>
+    <task id="LOCAL-00103" summary="cambios varios 1">
+      <created>1612386031547</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1612386031547</updated>
+    </task>
+    <task id="LOCAL-00104" summary="cambios varios 1">
+      <created>1612386730928</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1612386730928</updated>
+    </task>
+    <task id="LOCAL-00105" summary="actualizacion de - # 123456789">
+      <created>1612469148099</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1612469148099</updated>
+    </task>
+    <task id="LOCAL-00106" summary="cambio api opcion manifiestos inclucion cmapos adicionales, de remitente, codigo, nombre y departamento.">
+      <created>1612470787249</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1612470787249</updated>
+    </task>
+    <task id="LOCAL-00107" summary="cambio api opcion manifiestos inclucion cmapos adicionales, de remitente, codigo, nombre y departamento.">
+      <created>1612471613021</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1612471613021</updated>
+    </task>
+    <task id="LOCAL-00108" summary="cambio de estados 6movil convertir a 4,&#10;8 movil convertir a 5">
+      <created>1612474525674</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1612474525674</updated>
+    </task>
+    <task id="LOCAL-00109" summary="cambio de estados 6movil convertir a 4,&#10;8 movil convertir a 5">
+      <created>1612477564603</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1612477564603</updated>
+    </task>
+    <task id="LOCAL-00110" summary="cambio de estados 6movil convertir a 4,&#10;8 movil convertir a 5">
+      <created>1612478877506</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1612478877506</updated>
+    </task>
+    <task id="LOCAL-00111" summary="cambio de estados 6movil convertir a 4,&#10;8 movil convertir a 5">
+      <created>1612479040117</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1612479040117</updated>
+    </task>
+    <task id="LOCAL-00112" summary="reportes filtros y libreria dataTables">
+      <created>1612581304710</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1612581304710</updated>
+    </task>
+    <task id="LOCAL-00113" summary="reportes cambios finales roden de numeor viñeta.">
+      <created>1612587129198</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1612587129198</updated>
+    </task>
+    <task id="LOCAL-00114" summary="reportes cambios finales roden de numeor viñeta.">
+      <created>1612587306648</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1612587306648</updated>
+    </task>
+    <task id="LOCAL-00115" summary="reporte imagenes">
+      <created>1612734267834</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1612734267834</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -624,24 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Cambios login2" />
-    <MESSAGE value="Cambios login3" />
-    <MESSAGE value="Cambios api1" />
-    <MESSAGE value="Cambios api2" />
-    <MESSAGE value="Cambios informe1.3" />
-    <MESSAGE value="cambio de usuarios" />
-    <MESSAGE value="env" />
-    <MESSAGE value="login y db service" />
-    <MESSAGE value="reporte" />
-    <MESSAGE value="login actualizado" />
-    <MESSAGE value="login actualizado 2" />
-    <MESSAGE value="login actualizado 3" />
-    <MESSAGE value="login actualizado 4" />
-    <MESSAGE value="login actualizado 289" />
-    <MESSAGE value="login actualizado 290" />
-    <MESSAGE value="envios actualizado 2" />
-    <MESSAGE value="login cambio final 1" />
-    <MESSAGE value="lista de envios cambio 34" />
     <MESSAGE value="lista de envios cambio 35" />
     <MESSAGE value="update cestado" />
     <MESSAGE value="update datos" />
@@ -649,7 +643,25 @@
     <MESSAGE value="update datos 46" />
     <MESSAGE value="for ingreso guia actualizacion 1" />
     <MESSAGE value="for ingreso guia actualizacion 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="for ingreso guia actualizacion 2" />
+    <MESSAGE value="actualizacion menu e informes de ingreso de registros." />
+    <MESSAGE value="envio" />
+    <MESSAGE value="envio comit estado 0" />
+    <MESSAGE value="agencias con problemas" />
+    <MESSAGE value="formulario de ingreso de guias" />
+    <MESSAGE value="index sesion actualizacion" />
+    <MESSAGE value="index sesion actualizacion, funcionesjs, form ingreso guia" />
+    <MESSAGE value="pdf modificado multi lineas" />
+    <MESSAGE value="modificacion de imagenes" />
+    <MESSAGE value="modificacion de estado" />
+    <MESSAGE value="generacion de acuse" />
+    <MESSAGE value="cambios varios 1" />
+    <MESSAGE value="actualizacion de - # 123456789" />
+    <MESSAGE value="cambio api opcion manifiestos inclucion cmapos adicionales, de remitente, codigo, nombre y departamento." />
+    <MESSAGE value="cambio de estados 6movil convertir a 4,&#10;8 movil convertir a 5" />
+    <MESSAGE value="reportes filtros y libreria dataTables" />
+    <MESSAGE value="reportes cambios finales roden de numeor viñeta." />
+    <MESSAGE value="reporte imagenes" />
+    <option name="LAST_COMMIT_MESSAGE" value="reporte imagenes" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -657,7 +669,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/sistema/vista/funciones.js</url>
-          <line>233</line>
+          <line>269</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

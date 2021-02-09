@@ -28,7 +28,12 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+  <link rel="stylesheet" href="vista/DataTables/datatables.min.css">
 
+  <!--botones-->
+  <link rel="stylesheet" href="vista/DataTables/DataTables-1.10.23/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="vista/DataTables/Buttons-1.6.5/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="vista/DataTables/Scroller-2.0.3/css/scroller.bootstrap4.min.css">
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

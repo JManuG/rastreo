@@ -180,7 +180,7 @@ class model_mov extends Db
                 inner join guia g
                 on r.char1=g.barra
                 where g.barra=$barra
-                and r.estado=4;";
+                and r.estado=4";
         $stmt=$db->consultar($sql);
         //echo $sql;
         return $stmt;
