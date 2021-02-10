@@ -92,7 +92,7 @@ echo'<style type="text/css">
                             <td>'.$row['usr']  .'</td>
                             <td>'.$row['ccosto']  .'</td>
                             <td>'.$perfil         .'</td>
-                            <td><form action="index.php?prc=rep_usuario&accion=editar" method="post" target="_blank">
+                            <td><form name="formulario'.$cn.'" action="index.php?prc=rep_usuario&accion=editar" method="post" target="_blank">
                                     <input type="hidden" value="'.$row['id'].'" name="id">
                                     <input type="hidden" value="'.$row['ccosto'].'" name="ccosto">
                                     <input type="hidden" value="'.$perfil.'" name="perfil">
@@ -103,7 +103,8 @@ echo'<style type="text/css">
                                 <td>
                                 <form action="index.php?prc=rep_usuario&accion=cambiar&usr='.base64_encode($row['usr']).'" method="post" target="_blank">
                                 
-                                <button class="btn btn-link"><i class="fa fa-user-shield fa-2x"></i></td>';
+                                <button class="btn btn-link"><i class="fa fa-user-shield fa-2x"></i></button>
+                                </form></td>';
 
                 }
 
