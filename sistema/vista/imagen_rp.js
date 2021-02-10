@@ -1,4 +1,5 @@
 function solicitar_imagen(barra){
+  document.getElementById('carga').classList.remove('ocultar');
   $("#imagen").html('');
   var dtorigen = {'barra':barra};
   $.ajax({
@@ -9,10 +10,11 @@ function solicitar_imagen(barra){
       var img = JSON.parse(response);
 
       if(img.codigo==200){ //codigo satisfactorio//
-
+        document.getElementById('carga').classList.add('ocultar');
         $("#imagen").html('<img src="data:image/jpeg;base64,'+img.imagen+'" style="width:150%;" >');
 
       }else{ //codigo de error//
+        document.getElementById('carga').classList.add('ocultar');
         $("#imagen").html('<div class="alert alert-danger" role="alert">' + img.imagen + '</div>');
       }
     }
