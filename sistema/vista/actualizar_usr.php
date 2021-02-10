@@ -10,7 +10,7 @@ $perfil=$_POST['perfil'];
 
 $string='';
 if($nombre!=''){$string="usr_nombre='".$nombre."'";}
-if($usuario!=''){$string="usr_cod='".$usuario."'";}
+if($usuario!=''){$string=$string."usr_cod='".$usuario."'";}
 if($ccosto!=''){$string=$string.",id_ccosto=".$ccosto;}
 if($perfil!=''){$string=$string.",nivel=".$perfil;
   switch ($perfil){
