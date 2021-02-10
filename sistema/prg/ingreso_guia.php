@@ -7,13 +7,23 @@ include('../model/model_con.php');
 $ccosto_ori     =$_POST["ccosto_ori"];//preg_replace('([^A-Za-z0-9 ])', ' ', $_POST["ccosto_ori"]);
 $ccosto_des     =$_POST["id_ccosto"];//preg_replace('([^A-Za-z0-9 ])', ' ', $_POST["id_ccosto"]);//ccosto_des
 $destinatario   =preg_replace('([^A-Za-z0-9 ])', '', $_POST["destinatario"]);
-$descripcion    =$_POST["descripcion"];
+$descripcion    =str_replace("'"," ",str_replace('"','',$_POST["descripcion"]));
 //ultimos add
 $tipo_envio     =preg_replace('([^A-Za-z0-9 ])', '', $_POST["tipo_envio"]);
 $des_direccion  =$_POST["des_direccion"];
 $id_cat         =$_POST["id_cat"];//preg_replace('([^A-Za-z0-9 ])', '', $_POST["id_cat"]);
 $ccosto_nombre  =preg_replace('([^A-Za-z0-9 ])', '', $_POST["ccosto_nombre"]);
 $agencia        =$_POST["agencia"];
+
+$des_direccion=str_replace('"','',$des_direccion);
+$des_direccion=str_replace("'", " ", $des_direccion);
+
+$descripcion=str_replace('"','',$descripcion);
+$descripcion=str_replace("'", " ", $descripcion);
+
+$agencia=str_replace('"','',$agencia);
+$agencia=str_replace("'", " ", $agencia);
+
 
 $db=new model_con();
 
