@@ -21,3 +21,34 @@ function solicitar_imagen(barra){
 
   });
 }
+
+function actualizar(usr_nombre,id_ccosto,perfil,id){
+  document.getElementById('formulario').classList.add('ocultar');
+  document.getElementById('carga').classList.remove('ocultar');
+  var datos = {
+    'nombre':usr_nombre,
+    'costo':id_ccosto,
+    'perfil':perfil,
+    'id_usr':id
+  }
+  $.ajax({
+    data: datos,
+    url:'vista/actualizar_usr.php',
+    type:'post',
+    success:function (response) {
+      var usr = JSON.parse(response);
+
+      if(usr.codigo==200){
+        document.getElementById('carga').classList.add('ocultar');
+        $("#respuesta").html('<br><br><div class="alert alert-success" role="alert">' +
+          usr.mensaje +
+          '</div>');
+      }else{
+        document.getElementById('carga').classList.add('ocultar');
+        $("#respuesta").html('<br><br><div class="alert alert-secondary" role="alert">' +
+          usr.mensaje +
+          '</div>');
+      }
+    }
+  });
+}

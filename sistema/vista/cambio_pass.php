@@ -104,7 +104,7 @@ if(isset($_POST['clave2'])){
   <div class="card">
     <?php
     if(isset($_GET['usr'])){
-    $usr    = $_GET['usr'];
+    $usr    = base64_decode($_GET['usr']);
 
 
     ?>
