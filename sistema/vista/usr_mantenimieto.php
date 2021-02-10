@@ -10,6 +10,17 @@ if(isset($_POST['id'])){
 
 }
 ?>
+
+<style type="text/css">
+  .ocultar{
+    display: none;
+
+  }
+
+  .mostrar{
+    display:block;
+  }
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -37,24 +48,31 @@ if(isset($_POST['id'])){
           <!-- general form elements -->
           <div class="card card-orange">
             <div class="card-header">
-              <h3 class="card-title">Formulario de Ingreso de Usuarios</h3>
+              <h3 class="card-title">Formulario de Actualización de Datos Personales </h3>
             </div>
             <!-- /.card-header -->
-            <!-- form start -->
-            <form role="form" id="formulario" name="formulario" method="post">
-              <div class="card-body">
+            <div class="text-center ocultar text-primary" id="carga">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>  Prosesando la informacion...
+            </div>
 
-                <div class="col-md-12 col-sm-6 col-12">
+            <!-- form start -->
+            <form role="form"  name="formulario" method="post">
+
+
+                <div class="col-md-12 col-sm-6 col-12" id="respuesta">
 
                   <!-- /.info-box -->
                 </div>
+              <div class="card-body" id="formulario" >
                 <!--
                 <div class="form-group">
                   <label for="usr_cod">Codigo</label>
-                  <?php echo select_usuario(); ?>
+                  <?php //echo select_usuario(); ?>
                 </div>
                 -->
-                <div class="form-group">
+                <!--div class="form-group">
                   <label for="usr_cod2">Usuario </label>
                   <input autofocus type="text" maxlength='16' class="form-control" id="usr_cod2" name='usr_cod2' placeholder="Usuario"  required />
                 </div>
@@ -62,42 +80,41 @@ if(isset($_POST['id'])){
                 <div class="form-group">
                   <label for="usr_pass">Contrase&ntilde;a </label>
                   <input type="password" class="form-control" id="usr_pass" name='usr_pass' placeholder="Contraseña"  required />
-                </div>
+                </div-->
 
                 <div class="form-group">
                   <label for="usr_nombre">Nombre Usuario </label>
-                  <input type="text" class="form-control" id="usr_nombre" name='usr_nombre' placeholder="Nombre Usuario"  required />
+                  <input type="text" class="form-control" id="usr_nombre" name='usr_nombre' placeholder="Nombre Usuario"  value="<?php echo $nombre;?>" required />
                 </div>
 
                 <div class="form-group">
-                  <label for="id_ccosto">Centro de Costo </label>
+                  <label for="id_ccosto">Centro de Costo Actual: <?php echo $ccosto; ?></label>
                   <?php echo select_age_ccosto(); ?>
                 </div>
 
                 <div class="form-group">
-                  <label for="perfil">Perfil</label>
+                  <label for="perfil">Perfil Actual: <?php echo $perfil; ?></label>
                   <select name='perfil' id='perfil' class="form-control">
                     <option value=''>-</option>
                     <option value='1'>Administrador</option>
                     <option value='2'>Soporte</option>
                     <option value='3'>Agencia</option>
+                    <option value='4'>Mensajero</option>
                   </select>
                 </div>
-
+            <input type="hidden" name="id_usr" id="id_usr" value="<?php echo $id;?>">
                 <div class="card-footer">
                   <button id="submitBtn" type="button" class="btn btn-outline-dark " data-toggle="modal" data-target="#modal-default"
-                          onclick="procesarMantUsuario(
-                                                       formulario.usr_cod2.value,
-                                                       formulario.usr_pass.value,
-                                                       formulario.usr_nombre.value,
+                          onclick="actualizar( formulario.usr_nombre.value,
                                                        formulario.id_ccosto.value,
-                                                       formulario.perfil.value
+                                                       formulario.perfil.value,
+                                                       formulario.id_usr.value
                                                        )">
-                    Registrar Usuario
+                    Actualizar usuario
                   </button>
                 </div>
 
-                <div class="modal fade" id="modal-default">
+                <!--div-- class="modal fade" id="modal-default">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -111,13 +128,13 @@ if(isset($_POST['id'])){
                       </div>
                       <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-                      </div>
+                        <--<button type="button" class="btn btn-primary">Save changes</button>-->
+                      <!--/div>
                     </div>
-                    <!-- /.modal-content -->
-                  </div>
-                  <!-- /.modal-dialog -->
-                </div>
+                    <-- /.modal-content -->
+                  <!--/div>
+                  <-- /.modal-dialog -->
+                <!--/div-->
             </form>
           </div>
           <!-- /.card -->
@@ -127,4 +144,4 @@ if(isset($_POST['id'])){
   </section>
 </div>
 <!-- ajax call -->
-<script src="vista/funciones.js"></script>
+<script src="vista/imagen_rp.js"></script>

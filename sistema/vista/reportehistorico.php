@@ -273,6 +273,13 @@ $db=new model_tab();
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Imagen de Recolección</h4>
             </div>
+
+            <div class="text-center ocultar text-primary" id="carga">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>  Cargando Imagen...
+
+            </div>
             <div class="modal-body" id="imagen">
               <img id="myImg" alt="Entrega Efectiva" style="width:150%;" >
             </div>
