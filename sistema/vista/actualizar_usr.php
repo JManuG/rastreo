@@ -9,10 +9,11 @@ $ccosto=$_POST['costo'];
 $perfil=$_POST['perfil'];
 
 $string='';
+
 if($nombre!=''){$string="usr_nombre='".$nombre."'";}
-if($usuario!=''){$string=$string."usr_cod='".$usuario."'";}
-if($ccosto!=''){$string=$string.",id_ccosto=".$ccosto;}
-if($perfil!=''){$string=$string.",nivel=".$perfil;
+if($usuario!=''){$string=$string.", usr_cod='".$usuario."'";}
+if($ccosto!=''){$string=$string.", id_ccosto=".$ccosto;}
+if($perfil!=''){$string=$string.", nivel=".$perfil;
   switch ($perfil){
     case 1:
       $perfil='Administrador';
