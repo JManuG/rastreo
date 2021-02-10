@@ -36,7 +36,7 @@ $data=array(
   'nombre'=>$nombre,
   'ccosto'=>$ccosto,
   'perfil'=>$perfil,
-  'mensaje'=>'actualizacion realizada exitosamente '.$resultado
+  'mensaje'=>'actualizacion realizada exitosamente '
 );
 
 echo json_encode($data);
