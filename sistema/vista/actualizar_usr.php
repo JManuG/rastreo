@@ -3,12 +3,14 @@ include ('usr_mante_proc.php');
 $x1 = new usuarios();
 
 $id_usr=$_POST['id_usr'];
+$usuario=$_POST['usuario'];
 $nombre=$_POST['nombre'];
 $ccosto=$_POST['costo'];
 $perfil=$_POST['perfil'];
 
 $string='';
 if($nombre!=''){$string="usr_nombre='".$nombre."'";}
+if($usuario!=''){$string="usr_cod='".$usuario."'";}
 if($ccosto!=''){$string=$string.",id_ccosto=".$ccosto;}
 if($perfil!=''){$string=$string.",nivel=".$perfil;
   switch ($perfil){
