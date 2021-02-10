@@ -160,35 +160,14 @@ $db=new model_tab();
               $msj=$row->mensajero;
             }
 
-            $imagen=$x1->get_img($row->barra);
+            $imagen=$row->ge;
 
-            if($imagen==""){
+            if($imagen==1 or $imagen==2 or $imagen==3){
               $img='<i class="fas fa-eye-slash fa-2x"></i>';
-            }else{
-              $img='<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal'.$cn.'" style="width:auto;">
+            } else{
+              $img='<button type="button" class="btn btn-success btn-sm openBtn" data-toggle="modal" data-target="#myModal" style="width:auto;" onclick="solicitar_imagen('.$row->barra.')">
                     <i class="fas fa-file-image fa-2x"></i></button>
-                    <!--------------------------------------Waning-------------------------------->
-                                            <!-- Modal -->
-                          <div class="modal fade" id="myModal'.$cn.'" " role="dialog">
-                            <div class="modal-dialog">
-                            
-                              <!-- Modal content-->
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                  <h4 class="modal-title">Imagen de Recolección</h4>
-                                </div>
-                                <div class="modal-body">
-                                  <img id="myImg" alt="Entrega Efectiva" style="width:99%;" src="data:image/jpeg;base64,'. $imagen .'">
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                              
-                            </div>
-                          </div>
-                    <!--------------------------------------Waning-------------------------------->';
+                    ';
             }
 
 
@@ -220,7 +199,7 @@ $db=new model_tab();
                     <td>" . $row->direccion . "</td>
                      
                     <td>" . $row->categoria . "</td>
-                    <td>" . $row->estado . "</td>
+                    <td>" . $row->estado. "</td>
                     <td>" . $msj. "</td>
                     <td>".$img."</td>
                     
@@ -282,6 +261,39 @@ $db=new model_tab();
       </div>
 
     </div>
+
+        <!--------------------------------------Waning-------------------------------->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Imagen de Recolección</h4>
+            </div>
+            <div class="modal-body" id="imagen">
+              <img id="myImg" alt="Entrega Efectiva" style="width:150%;" >
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+<script>
+  function imagen(barra) {
+  console.log('vista/img_reporte.php?b='+barra);
+  $('#myModal').HTML="";
+    $('.modal-body').load('vista/img_reporte.php?b='+barra,function () {
+          $('#myModal').modal({show:true});
+    });
+  }
+</script>
+      <!--------------------------------------Waning-------------------------------->
+
 
     <script>
       $(document).ready(function () {
@@ -359,7 +371,7 @@ $db=new model_tab();
           //funcion par alos botones de exportacion...
           responsive: "true",
           "scrollX": true,
-          "scrollY": 400,
+          //"scrollY": 400,
           "order": [[ 0, "desc" ]],
           dom: 'Bfrtilp',
           buttons:[
@@ -384,3 +396,4 @@ $db=new model_tab();
                       </script>';
 
     ?>
+        <script src="vista/imagen_rp.js"></script>
