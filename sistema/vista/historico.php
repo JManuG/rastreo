@@ -22,7 +22,8 @@ class historico_ingresos extends Db
                             mv.descripcion as estado,
                             mj.nombre as mensajero,
                             gi.fecha_datetime as fecha,
-                            cctu.ccosto_nombre as remitente_dep
+                            cctu.ccosto_nombre as remitente_dep,
+                            gi.estado as ge
 
                         from guia gi
                         inner join usuario us on us.id_usr=gi.id_usr
