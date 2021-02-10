@@ -57,6 +57,7 @@ echo'<style type="text/css">
             <tr role="row">
               <td>N°                  </td>
               <td>Nombre              </td>
+              <td>Credencial          </td>
               <td>Centro de Costo     </td>
               <td>Perfil              </td>
               <td>Editar              </td>
@@ -88,6 +89,7 @@ echo'<style type="text/css">
                   $cn++;
                   echo '<tr><td>'.$cn             .'</td>
                             <td>'.$row['nombre']  .'</td>
+                            <td>'.$row['usr']  .'</td>
                             <td>'.$row['ccosto']  .'</td>
                             <td>'.$perfil         .'</td>
                             <td><form action="index.php?prc=rep_usuario&accion=editar" method="post" target="_blank">
@@ -95,6 +97,7 @@ echo'<style type="text/css">
                                     <input type="hidden" value="'.$row['ccosto'].'" name="ccosto">
                                     <input type="hidden" value="'.$perfil.'" name="perfil">
                                     <input type="hidden" value="'.$row['nombre'].'" name="nombre">
+                                    <input type="hidden" value="'.$row['usr'].'" name="usr">
                                     <button class="btn btn-link"><i class="fa fa-user-edit fa-2x"></i></button>
                                 </form> </td>
                                 <td>
@@ -112,6 +115,7 @@ echo'<style type="text/css">
             <tr>
               <td>N°                  </td>
               <td>Nombre              </td>
+              <td>Credencial          </td>
               <td>Centro de Costo     </td>
               <td>Perfil              </td>
               <td>Editar              </td>
@@ -174,7 +178,7 @@ echo'<style type="text/css">
           },
           //funcion para poder selecionar el estado de forma dinamica.
           initComplete: function () {
-            this.api().columns(3).every( function () {
+            this.api().columns(4).every( function () {
               var column = this;
               var select = $('<select><option value="">perfil</option></select>')
                 .appendTo( $(column.header()).empty() )
