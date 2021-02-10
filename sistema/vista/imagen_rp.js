@@ -22,10 +22,11 @@ function solicitar_imagen(barra){
   });
 }
 
-function actualizar(usr_nombre,id_ccosto,perfil,id){
+function actualizar(usr_usuario,usr_nombre,id_ccosto,perfil,id){
   document.getElementById('formulario').classList.add('ocultar');
   document.getElementById('carga').classList.remove('ocultar');
   var datos = {
+    'usuario':usr_usuario,
     'nombre':usr_nombre,
     'costo':id_ccosto,
     'perfil':perfil,

@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 if(isset($_POST['id'])){
   $id=$_POST['id'];
   $nombre=$_POST['nombre'];
+  $usr=$_POST['usr'];
   $ccosto=$_POST['ccosto'];
   $perfil=$_POST['perfil'];
 
@@ -72,12 +73,12 @@ if(isset($_POST['id'])){
                   <?php //echo select_usuario(); ?>
                 </div>
                 -->
-                <!--div class="form-group">
+                <div class="form-group">
                   <label for="usr_cod2">Usuario </label>
-                  <input autofocus type="text" maxlength='16' class="form-control" id="usr_cod2" name='usr_cod2' placeholder="Usuario"  required />
+                  <input autofocus type="text" maxlength='16' class="form-control" id="usr_cod2" name='usr_cod2' placeholder="Usuario"  value="<?php echo $usr;?>" required />
                 </div>
 
-                <div class="form-group">
+                <!--div class="form-group">
                   <label for="usr_pass">Contrase&ntilde;a </label>
                   <input type="password" class="form-control" id="usr_pass" name='usr_pass' placeholder="Contraseña"  required />
                 </div-->
@@ -105,7 +106,8 @@ if(isset($_POST['id'])){
             <input type="hidden" name="id_usr" id="id_usr" value="<?php echo $id;?>">
                 <div class="card-footer">
                   <button id="submitBtn" type="button" class="btn btn-outline-dark " data-toggle="modal" data-target="#modal-default"
-                          onclick="actualizar( formulario.usr_nombre.value,
+                          onclick="actualizar( formulario.usr_cod2.value,
+                                                       formulario.usr_nombre.value,
                                                        formulario.id_ccosto.value,
                                                        formulario.perfil.value,
                                                        formulario.id_usr.value
