@@ -22,19 +22,29 @@ class usuarios extends Db{
     $db=Db::getInstance();
     $pss=md5($pass);
     $sql="update usuario set usr_pass='".$pss."' where usr_cod='".$usr."'";
-    echo $sql;
+    //echo $sql;
     $datos=$db->consultar($sql);
     if(!$datos){
       die('No se puede consultar: '.$datos);
     }
   }
 
-  public function editar(){
+  public function editar($string,$usr)
+  {
 
-    $db=Db::getInstance();
+    $db = Db::getInstance();
 
-    $sql="update usario set ";
+    $sql = "update usuario set " . $string . " where id_usr=" . $usr;
 
+    $db->consultar($sql);
+
+   /* $sql2="select u.usr_nombre, cc.ccosto_nombre from usuario u
+            inner join centro_costo cc on cc.id_ccosto=u.id_ccosto
+            where u.id_usr=".$usr;
+
+    $data=$db->consultar($sql2);*/
+
+    return $sql;
   }
 
 }

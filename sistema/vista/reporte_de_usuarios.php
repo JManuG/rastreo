@@ -90,15 +90,15 @@ echo'<style type="text/css">
                             <td>'.$row['nombre']  .'</td>
                             <td>'.$row['ccosto']  .'</td>
                             <td>'.$perfil         .'</td>
-                            <td><!--form action="index.php?prc=rep_usuario&accion=editar" method="post" target="_blank">
+                            <td><form action="index.php?prc=rep_usuario&accion=editar" method="post" target="_blank">
                                     <input type="hidden" value="'.$row['id'].'" name="id">
                                     <input type="hidden" value="'.$row['ccosto'].'" name="ccosto">
                                     <input type="hidden" value="'.$perfil.'" name="perfil">
                                     <input type="hidden" value="'.$row['nombre'].'" name="nombre">
                                     <button class="btn btn-link"><i class="fa fa-user-edit fa-2x"></i></button>
-                                </form--> </td>
+                                </form> </td>
                                 <td>
-                                <form action="index.php?prc=rep_usuario&accion=cambiar&usr='.$row['usr'].'" method="post" target="_blank">
+                                <form action="index.php?prc=rep_usuario&accion=cambiar&usr='.base64_encode($row['usr']).'" method="post" target="_blank">
                                 
                                 <button class="btn btn-link"><i class="fa fa-user-shield fa-2x"></i></td>';
 
