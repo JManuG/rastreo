@@ -1,4 +1,5 @@
 <?php
+
 include("reporte_ingresos.php");
 
 $x1= new model_con();
@@ -268,7 +269,7 @@ $db=new model_tab();
           //funcion par alos botones de exportacion...
           responsive: "true",
           "scrollX": true,
-          "scrollY": 400,
+          //"scrollY": 400,
           "order": [[ 0, "desc" ]],
           dom: 'Bfrtilp',
           buttons:[
