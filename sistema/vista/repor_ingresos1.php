@@ -93,7 +93,7 @@ $db=new model_tab();
               ?>
 
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                Reimprecion</th>
+                Reimpresi&oacute;n</th>
             </tr>
             </thead>
             <tbody id="developers">
@@ -187,7 +187,7 @@ $db=new model_tab();
               <?php
               }
               ?>
-              <th rowspan="1" colspan="1">Reimprecion</th>
+              <th rowspan="1" colspan="1">Reimpresi&oacute;n</th>
             </tr>
             </tfoot>
 
