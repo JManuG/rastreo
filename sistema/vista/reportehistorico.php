@@ -145,7 +145,7 @@ $db=new model_tab();
             }
             ?>
             <th>
-              Reimprecion</th>
+              Reimpresi&oacute;n</th>
           </tr>
           </thead>
           <tbody id="developers">
@@ -249,7 +249,7 @@ $db=new model_tab();
             <?php
             }
             ?>
-            <th rowspan="1" colspan="1">Reimprecion</th>
+            <th rowspan="1" colspan="1">Reimpresi&oacute;n</th>
           </tr>
           </tfoot>
 
