@@ -21,7 +21,8 @@ class model_con extends Db
                             ct.des_cat as categoria,
                             mv.descripcion as estado,
                             mj.nombre as mensajero,
-                            cctu.ccosto_nombre as remitente_dep
+                            cctu.ccosto_nombre as remitente_dep,
+                            mv.id_motivo as idm
        
                         from guia gi
                         inner join usuario us on us.id_usr=gi.id_usr
@@ -33,6 +34,7 @@ class model_con extends Db
                         left join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
                         left join mensajero mj on mj.id_mensajero=mnf.id_mensajero
         where mv.id_movimiento=(select max(id_movimiento) from movimiento where id_envio=gi.id_envio)
+        
                         order by gi.barra desc";
 
     //and mv.descripcion='ARRIBO' or mv.descripcion='INGRESO'
@@ -69,7 +71,9 @@ class model_con extends Db
                         inner join movimiento mv on mv.id_envio=gi.id_envio
                         left join manifiesto_linea ml on ml.id_envio=gi.id_envio
                         left join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
-                        left join mensajero mj on mj.id_mensajero=mnf.id_mensajero
+                        left join mensajero mj on mj.id_mensajero=mnf.id_mensajero      
+                       
+
         where mv.id_movimiento=(select max(id_movimiento) from movimiento where id_envio=gi.id_envio)
         and gi.id_usr=".$_SESSION['cod_user']."
                         order by gi.barra desc";
@@ -84,6 +88,53 @@ class model_con extends Db
 
     return $data;
   }
+
+////////////////////////////////////////////WARNING///////////////////////////////////
+///
+  public function centro_costos(){
+
+    $db=Db::getInstance();
+
+    $sql="select * from centro_costo";
+
+    $c=$db->consultar($sql);
+
+    while ($row=$c->fetch(PDO::FETCH_OBJ))
+    {
+      $data[] = $row;
+    }
+
+    return $data;
+  }
+
+
+  public function centroc($id_ccosto){
+
+    $db=Db::getInstance();
+
+    $sql="select c.ccosto_codigo, c.ccosto_nombre, c.centro_direccion, c.ccosto_telefono, a.agencia_nombre from centro_costo c 
+          inner join agencia a on a.id_agencia=c.id_agencia 
+         where c.id_ccosto=".$id_ccosto;
+
+    $c=$db->consultar($sql);
+
+    while ($row=$c->fetch(PDO::FETCH_OBJ))
+    {
+      $data[] = $row;
+    }
+
+    return $data;
+
+  }
+
+  public function centroup($string, $id_cc){
+    $db=Db::getInstance();
+    $sql="update centro_costo set ".$string." where id_ccosto=".$id_cc;
+    $db->consultar($sql);
+    //echo $sql;
+  }
+
+
 
 }
 ?>
