@@ -137,7 +137,12 @@ $nivel=$_SESSION['nivel'];
           <p>Reporte general de Usuarios</p>
         </a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link" href='index.php?prc=centro_costos&accion=centrocosto'>
+          <i class="far fa-circle nav-icon"></i>
+          <p>Reporte de Centros de Costos</p>
+        </a>
+      </li>
 
     <li class="nav-item">
       <a class="nav-link" href='index.php?prc=informe1'>
