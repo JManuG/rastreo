@@ -80,17 +80,10 @@ $mensajeros=$x1->get_mensajero();
 
 
     <div class="row"><div class="col-sm-12">
-        <div id="load" class="alert alert-success" role="alert">
-          <div class="text-center">
-            <div class="spinner-border" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            Cargando informacion...
-          </div>
-        </div>
+
         <?php
 
-        if(!empty($_POST['barra'])){
+        if(!empty($_POST['barra']) and isset($_POST['mensajero'])){
           $barra=$_POST['barra'];
           $mensajero=$_POST['mensajero'];
 
@@ -105,12 +98,31 @@ $mensajeros=$x1->get_mensajero();
               $cnt++;
               $manifiesto=$x1->gui_mj($v,$mensajero);
 
-              print "<br>".$manifiesto."<br>";
             }
 
+          print '<div class="alert alert-success" role="alert">
+                       se relaizo la reasignacion de de la mensajeria exitosamente!!
+                      </div>
+                      <script>
+                      function redir(){
+                          window.location="index.php?prc=control_guia&accion=guias";
+                      }
+                      setTimeout("redir()",3000);
+                            </script>';
 
         }else{
         ?>
+
+        <div id="load" class="alert alert-success" role="alert">
+          <div class="text-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            Cargando informacion...
+          </div>
+        </div>
+
+
         <form name="cambiomj" action="index.php?prc=control_guia&accion=guias" method="post">
         <div class="row">
           <div class="col">
@@ -119,13 +131,18 @@ $mensajeros=$x1->get_mensajero();
             <div class="container">
               <div class="row align-items-center">
                 <div class="col"><br></div>
-                <div class="col"><br></div>
+
                 <div class="col">
                     <button class="btn btn-danger" type="button" onclick="mostrar('guias','mensajeros')">Mensajeros</button>
                     <button class="btn btn-danger" type="button" onclick="mostrar('mensajeros','guias')">Guias</button>
                     <button class="btn btn-success" type="submit" >Procesar</button>
                   <br>
                 </div>
+
+                <div class="col"><br></div>
+
+
+
               </div>
             </div>
 
@@ -147,6 +164,7 @@ $mensajeros=$x1->get_mensajero();
               <th>direccion</th>
               </tr>
               </thead>
+
 
               <tbody>
                     <?PHP
@@ -232,7 +250,7 @@ $mensajeros=$x1->get_mensajero();
         </div>
           </div>
 
-          s
+
             <div class="col-md-12 text-center">
               <ul class="pagination" id="developer_page"></ul>
             </div>
