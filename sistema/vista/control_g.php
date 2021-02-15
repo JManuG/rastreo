@@ -165,6 +165,7 @@ $mensajeros=$x1->get_mensajero();
               </tr>
               </thead>
 
+
               <tbody>
                     <?PHP
                           foreach ($guias_ruta as $row){
