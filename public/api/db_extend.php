@@ -190,6 +190,22 @@ public function carga_img($movimiento,$barra,$imagen)
         return bin2hex(random_bytes(($longitud - ($longitud % 2)) / 2));
     }
 
+    function consul($sql)
+    {
+       $db = Db::getInstance();
+       $c=$db->consultar($sql);
+
+        while ($row=$c->fetch(PDO::FETCH_OBJ))
+        {
+            $data[] = $row;
+        }
+
+        //print_r($data);
+        return $data;
+
+
+    }
+
 
 }
 ?>
