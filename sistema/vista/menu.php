@@ -168,6 +168,32 @@ if($nivel>2){
 
 
 ?>
+
+  <!--Menu Mantenimientos-->
+  <li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-cogs"></i>
+      <p>
+        Masivos
+        <i class="fas fa-angle-left right"></i>
+      </p>
+    </a>
+
+    <ul class="nav nav-treeview">
+
+      <li class="nav-item">
+        <a class="nav-link" href='index.php?prc=control_guia&accion=guias'>
+          <i class="fas fa-cog nav-icon"></i>
+          <p>Reasignacion de Mensajero</p>
+        </a>
+      </li>
+
+
+    </ul>
+  </li>
+
+
+
 <!--Menu Mantenimientos-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
