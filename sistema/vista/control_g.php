@@ -1,10 +1,10 @@
 <?php
-
+/*
 ini_set('display_errors', 1);
 
 ini_set('display_startup_errors', 1);
 
-error_reporting(E_ALL);
+error_reporting(E_ALL);*/
 
 
 include ('vista/control_gs.php');
@@ -58,7 +58,7 @@ $mensajeros=$x1->get_mensajero();
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Reporte de ingresos historico </h1>
+          <h1>Reasignacion de Manifiesto a Mensajero </h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -70,7 +70,7 @@ $mensajeros=$x1->get_mensajero();
     </div><!-- /.container-fluid -->
 
 
-    <label>Selecciona el periodo: <?php //echo $f1."-".$f2?></label>
+    <!--label>Selecciona el periodo: <?php //echo $f1."-".$f2?></label-->
     <div class="input-group-prepend ocultar">
 
       <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -89,10 +89,25 @@ $mensajeros=$x1->get_mensajero();
           </div>
         </div>
         <?php
-        print_r($_POST['barra']);
+
         if(!empty($_POST['barra'])){
           $barra=$_POST['barra'];
           $mensajero=$_POST['mensajero'];
+
+          //print_r($barra);
+          //print_r($mensajero);
+            $i=count($barra);
+            $cnt=0;
+            while ($cnt<$i){
+
+              //print $barra[$cnt]."<br>";
+              $v=$barra[$cnt];
+              $cnt++;
+              $manifiesto=$x1->gui_mj($v,$mensajero);
+
+              print "<br>".$manifiesto."<br>";
+            }
+
 
         }else{
         ?>

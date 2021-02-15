@@ -85,7 +85,7 @@ class control_gs extends Db{
   public function gui_mj($vineta,$id_mensajero){
 
     $db=Db::getInstance();
-    session_start();
+    //session_start();
     $fecha_date		=date('Y/m/d');
     $fecha_datetime	=date('Y/m/d H:i:s');
     $id_usr			=$_SESSION['cod_user'];
@@ -127,14 +127,36 @@ class control_gs extends Db{
     }
 
    //update manifiesto_linea
+
+
+
     $mlinea="select n_manifiesto from manifiesto_linea where id_envio=".$id_envio;
 
     $ml=$db->consultar($mlinea);
-     while ($row=$stmt->fetch(PDO::FETCH_NUM))
+
+    $n_manifiesto='';
+
+     while ($row=$ml->fetch(PDO::FETCH_NUM))
     {
       $n_manifiesto=$row[0];
     }
 
+    if($n_manifiesto!=''){
+
+      //se relaizo el cmabio del mensajero asignado en el manifiesto
+      $nmsql="update manifiesto set id_mensajero=".$id_mensajero." where n_manifiesto=".$n_manifiesto;
+
+      $db->consultar($nmsql);
+
+      ///se relaiza la actualizacion d elinformaicon del mensajero asignado a la tabla de linea manifiesto
+      ///
+      $lmsql="update manifiesto_linea set id_mensajero=".$id_mensajero." where n_manifiesto=".$n_manifiesto;
+
+      $db->consultar($lmsql);
+
+    }
+
+      return $n_manifiesto;
     //update linea.
 
   }
