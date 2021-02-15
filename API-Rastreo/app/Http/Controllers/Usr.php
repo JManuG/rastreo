@@ -17,32 +17,47 @@ class Usr extends Controller
         //$sql = "SHOW TABLES FROM rastreo";
         //$sql = "select * from agencia";
         //$sql = "select * from categoria";
-        //$sql = "select * from centro_costo";
+        //$sql = "select * from centro_costo where id_ccosto=381";
         //$sql = "select * from chk_id";
         //$sql = "select * from cliente";
         //$sql = "select * from correlativo";
-        //$sql = "select estado,barra from guia";
+        $sql = "select * from manifiesto_linea";
         //$sql = "select * from manifiesto";
-        //$sql = "select * from manifiesto_linea  where id_envio=92";
+        //$sql = "select * from guia";
         //$sql = "select * from mensajero";
-        //$sql = "select * from motivo";
-        //$sql = "select max(id_movimiento) from movimiento where id_envio=79 and id_chk=4";
+        //$sql = "select * from recurso";
+        //$sql = "select * from movimiento" ;
         //$sql = "select * from orden";
         //$sql = "select * from recurso";
-        //$sql = "select * from usuario";
+        //$sql = "select * from usuario where id_usr=4";
         //$sql = "select * from zona";
 
-        $sql="select * from recurso where char1=100034";
+        //$sql="update centro_costo set ccosto_codigo='998', ccosto_nombre='test', centro_direccion='test', ccosto_telefono='7895' where id_costo=381 ";
+       // $c=DB::select($sql);
+
+        //return $c;
+
+           //$sql="update usuario set usr_code=nahernandez where usr_cod='118724'";
+
+        $barra='100109';
+
+        /*$sql = "select mj.nombre,mj.id_mensajero,u.id_usr, u.usr_cod from mensajero mj
+            inner join usuario u on u.id_usr=mj.id_usr";*/
+
+        $c=DB::select($sql);
+
+        //$imagen="";
+
+        return $c;
+/*
+        foreach ($c as $row)
+        {
+            $imagen=$row->imagen;
+        }
 
 
-
-        $datos=DB::select($sql);
-
-
-        return $datos;
-
-        $token= csrf_token();
-        echo $token;
+        $img = '<img src="data:image/jpeg;base64,' . $imagen . '">';
+        print $img;*/
     }
 
     //inicio de sesion de usurio api.
