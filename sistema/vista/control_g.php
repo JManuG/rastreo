@@ -134,7 +134,7 @@ $mensajeros=$x1->get_mensajero();
 
                 <div class="col">
                     <button class="btn btn-danger" type="button" onclick="mostrar('guias','mensajeros')">Mensajeros</button>
-                    <button class="btn btn-danger" type="button" onclick="mostrar('mensajeros','guias')">Guias</button>
+                    <button class="btn btn-danger" type="button" onclick="mostrar('mensajeros','guias')">Paso Anterior</button>
                     <button class="btn btn-success" type="submit" >Procesar</button>
                   <br>
                 </div>
