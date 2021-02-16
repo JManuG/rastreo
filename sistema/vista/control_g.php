@@ -142,7 +142,6 @@ $mensajeros=$x1->get_mensajero();
                 <div class="col"><br></div>
 
 
-
               </div>
             </div>
 
