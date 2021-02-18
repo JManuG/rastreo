@@ -208,7 +208,7 @@ $mensajeros = $x1->get_mensajero();
                   <th>ESTADO</th>
                   <th>direccion</th>
                   </tr>
-
+                  </tfoot>
                 </table>
 
               </div>
