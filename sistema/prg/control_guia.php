@@ -16,5 +16,21 @@ class control_guia{
         }
 
     }
+
+    public function g_asignacion_m(){
+        if(!empty($_SESSION['cod_usuario']))
+        {
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/asignacion_m.php');
+            include('vista/pie_report.php');
+            //include('vista/inicio_pie.php');
+        }
+        else
+        {
+            echo "Debes iniciar session";
+        }
+
+    }
 }
 ?>
