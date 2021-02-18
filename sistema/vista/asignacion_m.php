@@ -111,7 +111,7 @@ $mensajeros = $x1->get_mensajero();
 
               }else{
 
-                    
+
               ?>
 
           <div id="load" class="alert alert-success" role="alert">
@@ -172,7 +172,6 @@ $mensajeros = $x1->get_mensajero();
                       <th>ESTADO</th>
                       <th>direccion</th>
                     </tr>
-                    </tr>
 
                   </thead>
 
@@ -200,16 +199,14 @@ $mensajeros = $x1->get_mensajero();
                   </tbody>
 
                   <tfoot>
-                  <tr>
-
-                    <th>Barra</th>
-                    <th>remitente</th>
-                    <th>departamento</th>
-                    <th>destinatario</th>
-                    <th>fecha</th>
-                    <th>direccion</th>
-
-
+                  <th>N° de Barra</th>
+                  <th>Remitente</th>
+                  <th>Dep. Remitente</th>
+                  <th>Destinatario</th>
+                  <th>Dep. Destinatario</th>
+                  <th>Fecha</th>
+                  <th>ESTADO</th>
+                  <th>direccion</th>
                   </tr>
 
                 </table>
