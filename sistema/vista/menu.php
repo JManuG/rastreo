@@ -188,6 +188,12 @@ if($nivel>2){
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href='index.php?prc=control_guia&accion=g_asignacion_m'>
+          <i class="fas fa-users-cog nav-icon"></i>
+          <p>Asignacion de Mensajero</p>
+        </a>
+      </li>
 
     </ul>
   </li>
