@@ -101,7 +101,7 @@ $mensajeros=$x1->get_mensajero();
             }
 
           print '<div class="alert alert-success" role="alert">
-                       se relaizo la reasignacion de de la mensajeria exitosamente!!
+                       se relaizo la reasignacion de la mensajeria exitosamente!!
                       </div>
                       <script>
                       function redir(){
@@ -130,7 +130,14 @@ $mensajeros=$x1->get_mensajero();
 
             <div class="container">
               <div class="row align-items-center">
-                <div class="col"><br></div>
+                <div class="col">
+
+                  <div class="form-group">
+                  <label for="id_zona">Zona</label>
+
+                </div>
+
+              </div>
 
                 <div class="col">
                     <button class="btn btn-danger" type="button" onclick="mostrar('guias','mensajeros')">Mensajeros</button>
@@ -143,10 +150,13 @@ $mensajeros=$x1->get_mensajero();
 
 
               </div>
+
             </div>
 
 
             </div>
+
+          <
 
           <div id="guias" class="col-sm-12">
             <table id="guias" class="table table-hover table-bordered table-striped dataTable dtr-inline display" role="grid" aria-describedby="example1_info">
