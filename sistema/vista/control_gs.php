@@ -230,7 +230,7 @@ class control_gs extends Db{
 					WHERE u.cli_codigo='$shi_codigo'
 					AND z.zon_codigo !='ZZ'";
       //print_r();
-    $retorno ="<select name='id_zona' id='id_zona' class=\"form-control\" readonly>
+    $retorno ="<select name='id_zona' id='id_zona' class=\"form-control\" readonly required>
 					<option value=''>-</option>";
 
     $c= $bd->consultar($sql_c);
