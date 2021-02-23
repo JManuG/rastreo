@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+header('Strict-Transport-Security: max-age=0;');
 include("db_extend.php");
 $x1=new model_con();
 
