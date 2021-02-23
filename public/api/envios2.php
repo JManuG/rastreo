@@ -13,9 +13,11 @@ Lorem ipsum dolor si amet, consectetur adipiscing incidunt ut labore et dolore m
 $word=explode(" ",$lorem);
 
 
-
-            for($x=1;$x=200;$x++)
+$x=0;
+$cnt=200;
+            while($x<$cnt)
             {
+                $x++;
             $idpedido=rand(1,1000);
             $name="N".$word[rand(1,200)];
             $address="A".$word[rand(1,200)];
@@ -31,8 +33,8 @@ $word=explode(" ",$lorem);
 
 
             $b[]=[
-                'idPedido'=> (int)$row->idPedido,
-                'idRequest'=>$row->idPedido,
+                'idPedido'=> (int)$idpedido,
+                'idRequest'=>$idpedido,
                 'quantity'=>0,
                 'total'=>0.0,
                 'name' =>$name,
@@ -41,7 +43,7 @@ $word=explode(" ",$lorem);
                 'createdAt'=>str_replace(" ", "T", $createdAt),
                 'requestId'=>"1",
                 'comments'=>$comments,
-                'additionalShops'=>$row->remitente, //remitente
+                'additionalShops'=>$remitente, //remitente
                 'vuelto'=>$nombre_remitente,//nombre remitente
                 'recipe'=>$dep_remitente,//departamento_remitente
                 'insuranceId'=>0,
@@ -52,6 +54,6 @@ $word=explode(" ",$lorem);
                 ];
             }
 
-    echo json_encode($b);
+echo json_encode($b);
 
 ?>
