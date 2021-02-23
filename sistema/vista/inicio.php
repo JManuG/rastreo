@@ -1,7 +1,3 @@
-<?php
-header('Strict-Transport-Security: max-age=0;');
-echo "test";
-?>
 <!DOCTYPE html>
 <html>
 <head>
