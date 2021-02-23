@@ -1,6 +1,4 @@
-<?php
-header('Strict-Transport-Security: max-age=0;');
-?>
+
 
 <!DOCTYPE html>
 <html>
