@@ -34,7 +34,7 @@ $cnt=200;
 
             $b[]=[
                 'idPedido'=> (int)$idpedido,
-                'idRequest'=>$idpedido,
+                'idRequest'=>(string)$idpedido,
                 'quantity'=>0,
                 'total'=>0.0,
                 'name' =>$name,
