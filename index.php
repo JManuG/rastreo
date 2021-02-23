@@ -1,6 +1,6 @@
 <?php
 
-header( 'Strict-Transport-Security: max-age=15552000; includeSubDomains;' );
+header( 'Strict-Transport-Security: max-age=15552000; includeSubdomains; preload' );
 
 // ini_set ("display_errors","0" );
 // error_reporting(E_ALL);
