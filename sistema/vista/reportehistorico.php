@@ -146,6 +146,19 @@ $db=new model_tab();
             ?>
             <th>
               Reimpresi&oacute;n</th>
+
+
+            <?php
+            if($nivel>2){
+
+            }else{
+              ?>
+              <th>
+                Anular</th>
+              <?php
+            }
+            ?>
+
           </tr>
           </thead>
           <tbody id="developers">
@@ -185,7 +198,8 @@ $db=new model_tab();
                     <td>" . $row->estado       . "</td>
                     <td>" . $row->mensajero    . "</td>
                     <td>" . $img               . "</td>
-                    <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'><i class='fas fa-print fa-2x'></i></a></td></tr>";
+                    <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'><i class='fas fa-print fa-2x'></i></a></td>
+                    </tr>";
 
           }else {
 
@@ -221,7 +235,7 @@ $db=new model_tab();
                 
                     </td>
                     <td><a href='prg/generaAcuse.php?v=$row->barra' target='_blank'><i class='fas fa-print fa-2x'></i></a></td>
-
+                    <td><a href='index.php?prc=control_guia&accion=anulacion&br=$row->barra' ><i class='fas fa-trash-alt fa-2x danger'></i> </a> </td>
 </tr>";
           }//fin validacion de estado
           }
@@ -239,17 +253,36 @@ $db=new model_tab();
             <!--th rowspan="1" colspan="1">Centro de Costo</th-->
             <th rowspan="1" colspan="1">Categoria</th>
             <th rowspan="1" colspan="1">Estado</th>
-            <th rowspan="1" colspan="1">Mensajero</th>
+            <th>
+              Mensajero</th>
+            <th>
+              Imagen</th>
+
             <?php
             if($nivel>2){
 
             }else{
-            ?>
-            <th rowspan="1" colspan="1">Arribar</th>
-            <?php
+              ?>
+              <th>
+                Arribar</th>
+              <?php
             }
             ?>
-            <th rowspan="1" colspan="1">Reimpresi&oacute;n</th>
+            <th>
+              Reimpresi&oacute;n</th>
+
+
+            <?php
+            if($nivel>2){
+
+            }else{
+              ?>
+              <th>
+                Anular</th>
+              <?php
+            }
+            ?>
+
           </tr>
           </tfoot>
 

@@ -1,5 +1,5 @@
 <?php
-//header( 'Strict-Transport-Security: max-age=15552000; includeSubDomains;' );
+
 header( 'Strict-Transport-Security: max-age=15552000; includeSubdomains; preload' );
 ?>
 <!DOCTYPE html>
