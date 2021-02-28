@@ -1221,7 +1221,7 @@ class model_con extends Db
 
 
         $db=Db::getInstance();
-/*
+		/*
 		$sql = "SELECT 
 					id_envio,ori_ccosto,
 					fn_AgeXCc(ori_ccosto) AS age_ori,
@@ -1238,74 +1238,162 @@ class model_con extends Db
 			FROM rastreo.guia 
 			WHERE barra='$vineta'
 			ORDER BY id_envio";
-*/
+		*/
 
        /* $sql="SELECT
-	id_envio,ori_ccosto,
-	fn_AgeXCc(ori_ccosto) AS age_ori,
-	fn_ccostoNombre(ori_ccosto) AS ori_ccosto_nombre,
-	des_ccosto, 
-	fn_AgeXCc(des_ccosto) AS age_des,
-	fn_ccostoNombre(des_ccosto) AS des_ccosto_nombre,
-	fn_usrNombre(g.id_usr) AS usr_ori,
-	g.fecha_datetime,barra,comentario,destinatario,
-	g.char1 as tipo,
-	fn_catNombre(g.entero1) as categoria,
-	fn_ccostoDirNombre(ori_ccosto) as ccDirOri,
-	fn_ccostoDirNombre(des_ccosto) as ccDirdes,
-    c.ccosto_codigo
-	FROM rastreo.guia g inner join centro_costo c
-    on g.des_ccosto=c.id_ccosto
-    WHERE g.barra='$vineta'
-	ORDER BY g.id_envio";*/
+		id_envio,ori_ccosto,
+		fn_AgeXCc(ori_ccosto) AS age_ori,
+		fn_ccostoNombre(ori_ccosto) AS ori_ccosto_nombre,
+		des_ccosto, 
+		fn_AgeXCc(des_ccosto) AS age_des,
+		fn_ccostoNombre(des_ccosto) AS des_ccosto_nombre,
+		fn_usrNombre(g.id_usr) AS usr_ori,
+		g.fecha_datetime,barra,comentario,destinatario,
+		g.char1 as tipo,
+		fn_catNombre(g.entero1) as categoria,
+		fn_ccostoDirNombre(ori_ccosto) as ccDirOri,
+		fn_ccostoDirNombre(des_ccosto) as ccDirdes,
+		c.ccosto_codigo
+		FROM rastreo.guia g inner join centro_costo c
+		on g.des_ccosto=c.id_ccosto
+		WHERE g.barra='$vineta'
+		ORDER BY g.id_envio";*/
 
-    $sql="
-    SELECT 
-	id_envio,ori_ccosto,
-	fn_AgeXCc(ori_ccosto) AS age_ori,
-	fn_ccostoNombre(ori_ccosto) AS ori_ccosto_nombre,
-	des_ccosto, 
-	fn_AgeXCc(des_ccosto) AS age_des,
-	fn_ccostoNombre(des_ccosto) AS des_ccosto_nombre,
-	s.usr_nombre AS usr_ori,
-	g.fecha_datetime,barra,comentario,destinatario,
-	g.char1 as tipo
-	FROM rastreo.guia g inner join usuario s
-    on g.id_usr=s.id_usr
-    WHERE g.barra='$vineta'";
+		$sql="
+		SELECT 
+		id_envio,ori_ccosto,
+		fn_AgeXCc(ori_ccosto) AS age_ori,
+		fn_ccostoNombre(ori_ccosto) AS ori_ccosto_nombre,
+		des_ccosto, 
+		fn_AgeXCc(des_ccosto) AS age_des,
+		fn_ccostoNombre(des_ccosto) AS des_ccosto_nombre,
+		s.usr_nombre AS usr_ori,
+		g.fecha_datetime,barra,comentario,destinatario,
+		g.char1 as tipo
+		FROM rastreo.guia g inner join usuario s
+		on g.id_usr=s.id_usr
+		WHERE g.barra='$vineta'";
 
-		$stmt=$db->consultar($sql);
-		//echo $sql;
-		return $stmt;
+			$stmt=$db->consultar($sql);
+			//echo $sql;
+			return $stmt;
 	}
-
 
     public function data_acuse2($vineta)
     {
-
 
         $db=Db::getInstance();
 
 
         $sql="
-	SELECT `detalle_acuse`.`barra`,
-    `detalle_acuse`.`tipo_envio`,
-    `detalle_acuse`.`nombre_destinatario`,
-    `detalle_acuse`.`ccosto`,
-    `detalle_acuse`.`nombre_ccosto`,
-    `detalle_acuse`.`direccion`,
-    `detalle_acuse`.`agencia`,
-    `detalle_acuse`.`descripcion`,
-    `detalle_acuse`.`categoría`
-    FROM `rastreo`.`detalle_acuse`
-    WHERE barra='$vineta'";
+			SELECT `detalle_acuse`.`barra`,
+			`detalle_acuse`.`tipo_envio`,
+			`detalle_acuse`.`nombre_destinatario`,
+			`detalle_acuse`.`ccosto`,
+			`detalle_acuse`.`nombre_ccosto`,
+			`detalle_acuse`.`direccion`,
+			`detalle_acuse`.`agencia`,
+			`detalle_acuse`.`descripcion`,
+			FROM `rastreo`.`detalle_acuse`
+			WHERE barra='$vineta'";
 
         $stmt=$db->consultar($sql);
         //echo $sql;
         return $stmt;
     }
 
+	public function registra_envio_xls($usr_destino,$tipo,$descripcion,$id_cat)
+    {
+		$db=Db::getInstance();
+		session_start();
+		$msg="";
+        $usr	=$_SESSION['cod_user'];
+		$date1	=date('Y/m/d');
+		$date2	=date('Y/m/d H:i:s');
+		$tiempo	=time();
+		
+		if($tipo=='I')
+		{
+			$tipo_envio='I';
+		}
+		else
+		{
+			$tipo_envio='E';
+		}
 
+		$vineta= $this->consulta_correlativo();
 
+		$sql_ud="SELECT cc.id_ccosto,cc.centro_direccion,u.usr_nombre
+					FROM rastreo.centro_costo cc 
+					INNER JOIN rastreo.usuario u
+					ON u.id_ccosto=cc.id_ccosto
+					WHERE u.id_usr='$usr_destino'";
+
+		$c_ud= $db->consultar($sql_ud);
+		while ($row_ud=$c_ud->fetch(PDO::FETCH_NUM))
+		{
+			$ccosto_des       =$row_ud[0];
+			$des_direccion	  =$row_ud[1];
+			$destinatario     =$row_ud[2];
+		}
+
+		$sql_uo="SELECT cc.id_ccosto,cc.centro_direccion
+					FROM rastreo.centro_costo cc 
+					INNER JOIN rastreo.usuario u
+					ON u.id_ccosto=cc.id_ccosto
+					WHERE u.id_usr='$usr'";
+
+		$c_uo= $db->consultar($sql_uo);
+		while ($row_uo=$c_uo->fetch(PDO::FETCH_NUM))
+		{
+			$ccosto_ori       =$row_uo[0];	
+		}
+
+		$orden=1;
+        $numero_guia=0;
+		$sql_c = "SELECT max(id_guia) 
+					FROM guia ";
+		
+		$c= $db->consultar($sql_c);
+		while ($row=$c->fetch(PDO::FETCH_NUM))
+		{
+			$gui_anterior       =$row[0];
+			$numero_guia	    =$gui_anterior+1;
+		}
+
+		$id_envio=$numero_guia;
+		
+
+        $sql_d = "SELECT barra
+					FROM guia 
+					WHERE barra='$id_envio'";
+
+        $d= $db->consultar($sql_d);
+        while ($rowd=$d->fetch(PDO::FETCH_NUM))
+        {
+            $vin_anterior       =$rowd[0];
+        }
+		
+		if(!empty($vin_anterior))
+        {
+            $msg=" La vi&ntilde;eta ya existe.";
+        }else{
+			//char1 : Sera el campo que contiene el tipo de envio si es Externo o Interno
+			//Int1 : Sera el campo que tiene la categoria del envio 
+			$insert="INSERT INTO guia (id_guia, id_envio, ori_ccosto, des_ccosto, estado,id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, id_orden, barra, comentario,destinatario,des_direccion) 
+					VALUES($numero_guia,'$id_envio', '$ccosto_ori', '$ccosto_des', '1', '$usr', '$date1', '$date2', '$tiempo', '$tipo_envio','$id_cat', '$orden','$vineta', '$descripcion','$destinatario','$des_direccion')";
+	    	//echo $insert.'<br>';
+		    $insert1= $db->consultar($insert);
+        }
+
+		if(empty($msg)){
+		    //echo $msg;
+            return $numero_guia;
+        }else
+        {
+            //echo $msg;
+            return $msg;
+        }
+	}
 }
 ?>
