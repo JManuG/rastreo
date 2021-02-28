@@ -7,7 +7,7 @@
 //$p=md5("enviagt");
 
 ///**/
-
+header('Strict-Transport-Security: max-age=0;');
 $postdata = json_decode(file_get_contents("php://input"));
 
 //print_r($postdata);
