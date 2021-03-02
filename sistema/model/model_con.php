@@ -1286,15 +1286,15 @@ class model_con extends Db
 
 
         $sql="
-			SELECT `detalle_acuse`.`barra`,
-			`detalle_acuse`.`tipo_envio`,
-			`detalle_acuse`.`nombre_destinatario`,
-			`detalle_acuse`.`ccosto`,
-			`detalle_acuse`.`nombre_ccosto`,
-			`detalle_acuse`.`direccion`,
-			`detalle_acuse`.`agencia`,
-			`detalle_acuse`.`descripcion`,
-			FROM `rastreo`.`detalle_acuse`
+			select		barra,
+			tipo_envio,
+			nombre_destinatario,
+			ccosto,
+			nombre_ccosto,
+			direccion,
+			agencia,
+			descripcion
+			FROM detalle_acuse
 			WHERE barra='$vineta'";
 
         $stmt=$db->consultar($sql);
