@@ -388,7 +388,7 @@ class control_gs extends Db{
     $sql = "update guia set estado='" . $estado . "',
               comentario='".$comentario."'
         where barra='" . $barra . "'";
-    //$c=$db->consultar($sql);
+    $c=$db->consultar($sql);
 
     $sql2="select * from guia where barra='" . $barra . "'";
 
@@ -404,12 +404,13 @@ class control_gs extends Db{
     $fecha_datetime	=date('Y/m/d H:i:s');
     $marca     	 	=time();
     $des="ENVIO ANULADO";
+    $id_mj=1;
     $sql3="INSERT INTO movimiento
 							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
-					VALUES (0,$id_guia,$estado,1,'$id_usr','$id_usr','$fecha_date','$fecha_datetime','$marca','1','$des',NULL) ";
+					VALUES (0,$id_guia,$estado,1,$id_mj,'$id_usr','$fecha_date','$fecha_datetime','$marca','1','$des',NULL) ";
 
     $c=$db->consultar($sql3);
-    //print_r($c);
+
   }
 
 

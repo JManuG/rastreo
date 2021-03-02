@@ -20,7 +20,7 @@ $x1 = new control_gs();
         $r=$x1->guia_delete($estado,$barra,$comentario);
 
 
-        print '<div class="alert alert-danger" role="alert">
+       print '<div class="alert alert-danger" role="alert">
                        <i class="fas fa-exclamation-triangle"></i> Se efectuo la anulacion de la solisitud con exito, el cambio es permanente.
                       </div>
                       <script>
