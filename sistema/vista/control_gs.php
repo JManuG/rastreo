@@ -377,6 +377,46 @@ class control_gs extends Db{
               return $msj;
 }
 
+////////////////////////////////////////////////////////WARNING////////////////////////////////////////////////////////////
+////////////////////////////////////////////// ELIMINAR EL MANIFIESTO////////////
+
+  public function guia_delete($estado,$barra,$comentario)
+  {
+
+    $db = Db::getInstance();
+    //comentar el porblema
+    $sql = "update guia set estado='" . $estado . "',
+              comentario='".$comentario."'
+        where barra='" . $barra . "'";
+    $c=$db->consultar($sql);
+
+    $sql2="select * from guia where barra='" . $barra . "'";
+
+    $gia=$db->consultar($sql2);
+
+    while ($row=$gia->fetch(PDO::FETCH_NUM)){
+      $id_guia=$row[0];
+      $id_usr			=$row[5];
+
+
+    }
+    $fecha_date		=date('Y/m/d');
+    $fecha_datetime	=date('Y/m/d H:i:s');
+    $marca     	 	=time();
+    $des="ENVIO ANULADO";
+    $id_mj=1;
+    $sql3="INSERT INTO movimiento
+							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
+					VALUES (0,$id_guia,$estado,1,$id_mj,'$id_usr','$fecha_date','$fecha_datetime','$marca','1','$des',NULL) ";
+
+    $c=$db->consultar($sql3);
+
+  }
+
+
+
+
+
 
 
 }
