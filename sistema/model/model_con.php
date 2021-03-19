@@ -1395,5 +1395,156 @@ class model_con extends Db
             return $msg;
         }
 	}
+
+	public function ing_ruta($id_ruta,$nombre_ruta,$des_ruta)
+	{
+		$db=Db::getInstance();
+		session_start();
+		$date		=date('Y/m/d');
+		$datetime	=date('Y/m/d H:i:s');
+		$tiempo		=time();
+		$id_usr		=$_SESSION['cod_user'];
+	    $perfil     =4;
+        $id_ccosto  =366;
+        $shi_codigo=1;
+
+		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
+		if($id_ruta==''){
+			//Insert
+			$sql="INSERT INTO rastreo.ruta
+								(
+								id_ruta,
+								nombre_ruta, 
+								des_ruta, 
+								estado, 
+								id_cli
+								)
+					VALUES (0,
+							'$nombre_ruta',
+							'$des_ruta',
+							1,
+							'$shi_codigo'
+							)";
+		}else{
+			//Update
+			$sql="UPDATE rastreo.ruta
+					SET nombre_ruta='$nombre_ruta',
+						des_ruta='$des_ruta'
+					WHERE id_ruta='$id_ruta'";
+		}
+
+		//echo $sql;	
+		$stmt= $db->preparar($sql);
+		//echo '<pre>';
+		//print_r($stmt);
+		//echo '</pre>';
+		if($stmt->execute()){
+			$msj="Insertado";
+		}else{
+			$msj="Error";
+		}
+		//echo $msj;
+		return $msj;
+	}
+
+	public function ing_ruta_p($id_agencia,$comentario,$hora_ini,$hora_fin,$id_ruta)
+	{
+		$db=Db::getInstance();
+		session_start();
+		$date		=date('Y/m/d');
+		$datetime	=date('Y/m/d H:i:s');
+		$tiempo		=time();
+		$id_usr		=$_SESSION['cod_user'];
+	    $perfil     =4;
+        $id_ccosto  =366;
+        $shi_codigo=1;
+
+		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
+		if($id_ruta !='' || $id_ruta !=NULL){
+			//Insert
+			$sql="INSERT INTO rastreo.ruta_detalle
+								(
+								id_rutadetalle,
+								id_agencia, 
+								comentario, 
+								hora_ini, 
+								hora_fin,
+								id_periodicidad,
+								estado,
+								id_ruta,
+								tiempo
+								)
+					VALUES (0,
+							'$id_agencia',
+							'$comentario',
+							'$hora_ini',
+							'$hora_fin',
+							'1',
+							1,
+							$id_ruta,
+							$tiempo
+							)";
+		}
+
+		//echo $sql;	
+		$stmt= $db->preparar($sql);
+		//echo '<pre>';
+		//print_r($stmt);
+		//echo '</pre>';
+		if($stmt->execute()){
+			$msj="Insertado";
+		}else{
+			$msj="Error";
+		}
+		//echo $msj;
+		return $msj;
+	}
+
+	public function ing_progra($id_ruta,$id_mensajero)
+	{
+		$db=Db::getInstance();
+		session_start();
+		$date		=date('Y/m/d');
+		$datetime	=date('Y/m/d H:i:s');
+		$tiempo		=time();
+		$id_usr		=$_SESSION['cod_user'];
+	    $perfil     =4;
+        $id_ccosto  =366;
+        $shi_codigo=1;
+
+		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
+	
+			//Insert
+			$sql="INSERT INTO rastreo.programacion
+								(
+								id_progra,
+								id_ruta, 
+								id_mensajero, 
+								id_guia, 
+								id_chk,
+								estado
+								)
+					VALUES (0,
+							'$id_ruta',
+							'$id_mensajero',
+							NULL,
+							NULL,
+							1
+							)";
+		
+
+		//echo $sql;	
+		$stmt= $db->preparar($sql);
+		//echo '<pre>';
+		//print_r($stmt);
+		//echo '</pre>';
+		if($stmt->execute()){
+			$msj="Insertado";
+		}else{
+			$msj="Error";
+		}
+		//echo $msj;
+		return $msj;
+	}
 }
 ?>

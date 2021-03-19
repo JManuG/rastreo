@@ -168,4 +168,26 @@ class model_tab extends Db
 		//echo $sql;
 		return $stmt;
 	}
+
+    public function consulta_ruta_tabla($id_ccosto,$id_usr)
+    {
+        $db=Db::getInstance();
+        $msg="";
+        $date1=date('Y-m-d');
+        $date2=date('Y-m-d H:i:s');
+    
+        $tiempo=time();
+        $orden=1;
+        $existe_usr=0;
+
+		$sql = "SELECT  r.id_ruta,
+                        fn_rutaNombre(r.id_ruta),
+                        r.des_ruta
+                FROM ruta r 
+                WHERE  r.estado=1";
+
+		$stmt=$db->consultar($sql);
+		//echo $sql;
+		return $stmt;
+	}
 }
