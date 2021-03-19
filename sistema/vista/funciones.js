@@ -340,6 +340,7 @@ function changeCCostoDes()
     }
   });
 }
+
 function changeZona()
 {
   var id_zona = $("#id_zona").val();
@@ -642,6 +643,155 @@ function generarVinetas()
 
 function recargarTab(){
   location.reload(); 
+}
+
+function procesarMantRuta(id_ruta,nombre_ruta,des_ruta)
+{
+    var datos_origen={
+      "id_ruta":id_ruta,
+      "nombre_ruta":nombre_ruta,
+      "des_ruta":des_ruta
+    };
+    $.ajax({
+      data:datos_origen,
+      url:'../sistema/prg/mant_ruta.php',
+      type: 'post',
+      beforeSend: function(){
+        //$("#respuesta").html("procesando");
+        //$('.submitBtn').attr("disabled","disabled");
+      },
+      success: function (response){
+        var str = response;
+        var res = str.split("-");
+        if(res[0]==200)
+        {
+          $('#respuesta').html('<span style="color:green;"><b>Ruta <b>'+ id_ruta +'-'+nombre_ruta +'</b> Ingresado Correctamente.</b></span>');
+          $('#nombre_ruta').val('');
+          $('#des_ruta').val('');
+          $('#id_ruta').prop('selectedIndex', 0);
+        }else
+        {
+          $("#respuesta").html('<span style="color:red;"><b>Error form_mant_ruta:</b>  <p> '+res[0]+res[1]+'</span></p>');
+          //$('.submitBtn').removeAttr("disabled");
+        }
+      }
+    })
+}
+
+function changeRuta()
+{
+  var id_ruta = $("#id_ruta").val();
+
+  $.ajax({
+    type: "POST",
+    data: {id_ruta:id_ruta},
+    url: "../sistema/prg/selects/changeRuta.php",
+    cache: false,
+    success: function (response){
+      //alert(response);return false;
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        //alert(res[1]);
+        $('#nombre_ruta').val(res[2]);
+        $('#des_ruta').val(res[3]);
+      }
+      //$("#nombre_zona").val(response);
+    }
+  });
+}
+
+function changeRutaDeta()
+{
+  var id_ruta = $("#id_ruta").val();
+
+  $.ajax({
+    type: "POST",
+    data: {id_ruta:id_ruta},
+    url: "../sistema/prg/selects/changeRutaDeta.php",
+    cache: false,
+    success: function (response){
+      //alert(response);return false;
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        $("#msj_div").html('');
+        $("#msj_div").html('<span style="color:green;"><b>'+res[1]+'</span></p>');
+      }else{
+        $("#msj_div").html('');
+        $("#msj_div").html('<span style="color:red;"><b>Ruta sin agencias asignadas</b></span></p>');
+      }
+    }
+  });
+}
+
+function procesaMantRutaProgramacion(id_ruta,id_agencia,hora_ini,hora_fin,comentario)
+{
+  var datos_origen={
+    "id_ruta":id_ruta,
+    "id_agencia":id_agencia,
+    "hora_ini":hora_ini,
+    "hora_fin":hora_fin,
+    "comentario":comentario
+  };
+  $.ajax({
+    data:datos_origen,
+    url:'../sistema/prg/mant_ruta_p.php',
+    type: 'post',
+    beforeSend: function(){
+      //$("#respuesta").html("procesando");
+      //$('.submitBtn').attr("disabled","disabled");
+    },
+    success: function (response){
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        $('#respuesta').html('<span style="color:green;"><b>Ruta <b>'+ id_ruta +'-'+id_agencia +'</b> Ingresado Correctamente.</b></span>');
+        $('#nombre_ruta').val('');
+        $('#des_ruta').val('');
+        $('#id_ruta').prop('selectedIndex', 0);
+      }else
+      {
+        $("#respuesta").html('<span style="color:red;"><b>Error form_mant_ruta_p:</b>  <p> '+res[0]+res[1]+'</span></p>');
+        //$('.submitBtn').removeAttr("disabled");
+      }
+    }
+  })
+}
+
+function procesarProgramacion(id_ruta,id_mensajero)
+{
+  var datos_origen={
+    "id_ruta":id_ruta,
+    "id_mensajero":id_mensajero
+  };
+  $.ajax({
+    data:datos_origen,
+    url:'../sistema/prg/proc_progra.php',
+    type: 'post',
+    beforeSend: function(){
+      //$("#respuesta").html("procesando");
+      //$('.submitBtn').attr("disabled","disabled");
+    },
+    success: function (response){
+      var str = response;
+      var res = str.split("-");
+      if(res[0]==200)
+      {
+        $('#respuesta').html('<span style="color:green;"><b>Programacion Creada Satisfactoriamente.</b></span>');
+        $('#nombre_ruta').val('');
+        $('#des_ruta').val('');
+        $('#id_ruta').prop('selectedIndex', 0);
+      }else
+      {
+        $("#respuesta").html('<span style="color:red;"><b>Error form_bolsas:</b>  <p> '+res[0]+res[1]+'</span></p>');
+        //$('.submitBtn').removeAttr("disabled");
+      }
+    }
+  })
 }
 
 function test(){

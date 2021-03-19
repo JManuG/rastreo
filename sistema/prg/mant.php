@@ -70,5 +70,33 @@ class mant{
             echo "Debes iniciar session";
         }
     }
+
+    public function ruta(){
+        if(!empty($_SESSION['cod_usuario'])){
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/form_mant_ruta.php');
+            ?>
+            <?php
+            include('vista/inicio_pie.php');
+        }
+        else{
+            echo "Debes iniciar session";
+        }
+    }
+
+    public function ruta_programada(){
+        if(!empty($_SESSION['cod_usuario'])){
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/form_mant_ruta_p.php');
+            ?>
+            <?php
+            include('vista/inicio_pie.php');
+        }
+        else{
+            echo "Debes iniciar session";
+        }
+    }
 }
 ?>
