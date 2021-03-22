@@ -71,6 +71,13 @@ $nivel=$_SESSION['nivel'];
         <p>Carga Base Envios</p>
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=proc_bolsas'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Programacion</p>
+      </a>
+    </li>
     <?php
       ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
     }
@@ -239,6 +246,18 @@ if($nivel>2){
       <a class="nav-link" href='index.php?prc=mant&accion=usuarios'>
         <i class="far fa-circle nav-icon"></i>
         <p>Usuarios</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=mant&accion=ruta'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Ruta</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=mant&accion=ruta_programada'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Programacion Ruta</p>
       </a>
     </li>
 

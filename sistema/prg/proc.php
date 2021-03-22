@@ -32,8 +32,6 @@ class proc{
         }
     }
 
-
-    
     public function ld(){
         if(!empty($_SESSION['cod_usuario'])){
             //require('../class/cab.php');
@@ -47,8 +45,6 @@ class proc{
             echo "Debes iniciar session";
         }
     }
-
-
 
     public function dl(){
         if(!empty($_SESSION['cod_usuario'])){
@@ -97,6 +93,20 @@ class proc{
             //require('../class/cab.php');
             include('vista/inicio.php');
             include('vista/proc_carga_xls.php');
+            ?>
+            <?php
+            include('vista/inicio_pie.php');
+        }
+        else{
+            echo "Debes iniciar session";
+        }
+    }
+
+    public function proc_bolsas(){
+        if(!empty($_SESSION['cod_usuario'])){
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/form_bolsas.php');
             ?>
             <?php
             include('vista/inicio_pie.php');
