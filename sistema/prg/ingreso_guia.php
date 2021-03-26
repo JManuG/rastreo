@@ -79,6 +79,7 @@ if($ccosto_ori=='' || $ccosto_ori ==NULL){
     $sql=$db->registra_envio($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta,$tipo_envio,$des_direccion,$id_cat);
 
 
+
     if (intval($sql)>0)
     {
 

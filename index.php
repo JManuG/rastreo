@@ -70,9 +70,9 @@ if(isset($_GET['m'])){
             <p class="login-box-msg" id="mensaje">Ingresa tus credenciales de acceso</p>
             <p class="login-box-msg" id="mensaje"><b>Sistema de Rastreo</b></p>
 
-            <form method="post" id="formulario">
+            <form method="post" id="formulario" autocomplete="off">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre" id='usr' name='usr'>
+                    <input type="text" class="form-control" placeholder="Nombre" id='usr' name='usr' autocomplete="off">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-smile-beam"></span>
@@ -80,7 +80,7 @@ if(isset($_GET['m'])){
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Clave" id='pass' name='pass'>
+                    <input type="password" class="form-control" placeholder="Clave" id='pass' name='pass' autocomplete="off">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>

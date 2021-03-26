@@ -8,7 +8,7 @@ ini_set('max_execution_time','1000');
 ini_set('max_input_time','1000');
 
 include('../../class/db.php');
-
+include('../sistema/model/model_con.php');
 class model_con extends Db
 {
 	public function __construct()
@@ -91,6 +91,64 @@ class model_con extends Db
         }
 	}
 
+
+    public function registra_envio1($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta,$tipo_envio,$des_direccion,$id_cat,$id_usr)
+    {
+        $db=Db::getInstance();
+        session_start();
+        $msg="";
+        $usr	=$id_usr;
+        $date1	=date('Y/m/d');
+        $date2	=date('Y/m/d H:i:s');
+        $tiempo	=time();
+
+        $orden=1;
+        $numero_guia=0;
+        $sql_c = "SELECT max(id_guia) 
+					FROM guia ";
+
+        $c= $db->consultar($sql_c);
+        while ($row=$c->fetch(PDO::FETCH_NUM))
+        {
+            $gui_anterior       =$row[0];
+            $numero_guia	    =$gui_anterior+1;
+        }
+
+        $id_envio=$numero_guia;
+
+        $sql_d = "SELECT barra
+					FROM guia 
+					WHERE barra='$vineta'";
+
+        $d= $db->consultar($sql_d);
+        while ($rowd=$d->fetch(PDO::FETCH_NUM))
+        {
+            $vin_anterior       =$rowd[0];
+        }
+
+        if(!empty($vin_anterior))
+        {
+            $msg=" La vi&ntilde;eta ya existe.";
+        }else{
+            //char1 : Sera el campo que contiene el tipo de envio si es Externo o Interno
+            //Int1 : Sera el campo que tiene la categoria del envio
+            $insert="INSERT INTO guia (id_guia, id_envio, ori_ccosto, des_ccosto, estado,id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, id_orden, barra, comentario,destinatario,des_direccion) 
+					VALUES($numero_guia,'$id_envio', '$ccosto_ori', '$ccosto_des', '1', '$usr', '$date1', '$date2', '$tiempo', '$tipo_envio','$id_cat', '$orden','$vineta', '$descripcion','$destinatario','$des_direccion')";
+            //echo $insert;
+            $insert1= $db->consultar($insert);
+        }
+
+        if(empty($msg)){
+            //echo $msg;
+            return $numero_guia;
+        }else
+        {
+            //echo $msg;
+            return $msg;
+        }
+    }
+
+    ////////////////////funcion para autogenerados rutas>-------->
 	public function ing_agencia($cli_id,$id_agencia,$codigo_agencia,$nombre_agencia,$direccion_agencia,$telefono_agencia)
 	{
 		$db=Db::getInstance();
@@ -155,6 +213,8 @@ class model_con extends Db
 		//echo $msj;
 		return $msj;
 	}
+////////////////////funcion para autogenerados rutas--------<
+
 
 	public function ing_ccosto($id_ccosto,$cli_id,$id_agencia,$codigo_ccosto,$nombre_ccosto,$direccion_ccosto,$telefono_ccosto)
 	{
@@ -1462,7 +1522,7 @@ class model_con extends Db
 		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
 		if($id_ruta !='' || $id_ruta !=NULL){
 			//Insert
-			$sql="INSERT INTO rastreo.ruta_detalle
+			$sql="INSERT INTO ruta_detalle
 								(
 								id_rutadetalle,
 								id_agencia, 
