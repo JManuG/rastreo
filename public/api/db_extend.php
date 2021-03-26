@@ -47,7 +47,7 @@ class model_con1 extends Db
         $fun=new model_con();
 
         ///////////////////////////////////////////validacion de ruta asignada///////////////////
-
+/*
         $com="select * from ruta where fecha=$fecha_actual and id_usr=$id_usr";
         $ru=$db->consultar($com);
         while($rutas=$ru->fetch(PDO::FETCH_OBJ)) {
@@ -88,7 +88,7 @@ class model_con1 extends Db
                     $fun->procesar_GuiaOS($id_cli, $id_ccosto, $id_orden);
                 }
             }
-        }
+        }*/
         ////////////////////////////////////////validacion de ruta asignada/////////////////////////////
 
         $sql="select
