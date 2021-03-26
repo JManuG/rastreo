@@ -25,10 +25,15 @@ $x1=new model_con();
 //$sql = "select * from usuario where id_usr=4";
 //$sql = "select * from zona";
 
-$sql="SELECT g.* FROM rastreo.guia g INNER JOIN rastreo.orden o ON g.id_orden=o.id_orden WHERE g.barra='' AND o.cli_codigo='1' AND g.estado=4";
+/*$sql="UPDATE rastreo.guia
+						SET estado=3
+						WHERE id_envio='104317'";*/
 
-$data = $x1->consul($sql);
+date_default_timezone_set("America/Guatemala");
 
-echo json_encode($data);
+$date=date('Y/m/d');
+$date2	=date('Y/m/d H:i:s');
+
+echo $date2;
 
 ?>

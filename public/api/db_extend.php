@@ -1,7 +1,9 @@
 <?php
 include('../../class/db.php');
 
-class model_con extends Db
+date_default_timezone_set("America/Guatemala");
+
+class model_con1 extends Db
 {
     public function __construct()
     {
@@ -39,11 +41,55 @@ class model_con extends Db
 
     public function manifiesto($id_usr)
     {
-        //captura lso datos de manifiesto.
+        //captura lo datos de manifiesto.
+        $fecha_actual=date('Y/m/d');
+        $db = Db::getInstance();
+        $fun=new model_con();
 
-        $db=Db::getInstance();
+        ///////////////////////////////////////////validacion de ruta asignada///////////////////
+/*
+        $com="select * from ruta where fecha=$fecha_actual and id_usr=$id_usr";
+        $ru=$db->consultar($com);
+        while($rutas=$ru->fetch(PDO::FETCH_OBJ)) {
 
 
+
+            $conp = "select ru.nombre_ruta,ag.agencia_nombre,ag.agencia_direccion,ag.agencia_codigo from programacion pro
+                inner join ruta ru on ru.id_ruta=pro.id_ruta
+                inner join ruta_detalle rd on rd.id_ruta=ru.id_ruta
+                inner join agencia ag on ag.id_agencia=rd.id_agencia
+                where id_mensajero=$id_usr";
+
+            $progra = $db->consultar($conp);
+            while ($rowp = $progra->fetch(PDO::FETCH_OBJ)) {
+
+                $vineta=$fun->consulta_correlativo();
+                $tipo_envio='';
+                $destinatario=$rowp->agencia_nombre;
+                $ccosto_des=$rowp->agencia_codigo;
+                $ccosto_nombre=$rowp->agencia_nombre;
+                $des_direccion=$rowp->agencia_direccion;
+                $agencia=$rowp->agencia_nombre;
+                $descripcion='Ruta';
+                $id_cat='1';
+                $ccosto_ori=1;
+                $id_cli=$id_usr;
+                $id_ccosto=1;
+                $id_orden='';
+
+
+
+                $fun->d_acuse($vineta,$tipo_envio,$destinatario,$ccosto_des,$ccosto_nombre,$des_direccion,$agencia,$descripcion,$id_cat);
+                $fun->registra_envio1($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta,$tipo_envio,$des_direccion,$id_cat,$id_usr);
+
+                $os =$fun->procesar_OS($id_cli);
+                if($os>0) {
+                    $id_orden = $os;
+                    $fun->procesar_GuiaOS($id_cli, $id_ccosto, $id_orden);
+                }
+            }
+        }*/
+        ////////////////////////////////////////validacion de ruta asignada/////////////////////////////
 
         $sql="select
                             gi.barra as idPedido,
@@ -205,6 +251,7 @@ public function carga_img($movimiento,$barra,$imagen)
 
 
     }
+
 
 
 }
