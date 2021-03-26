@@ -19,7 +19,7 @@ if($proceso==4){$pro=2;}
 
 //print_r($postdata);
 include("db_extend.php");
-$x1=new model_con();
+$x1=new model_con1();
 
 $x1->guiaup($pro,$pedido);
 

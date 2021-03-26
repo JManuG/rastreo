@@ -7,7 +7,7 @@
 //$p=md5("enviagt");
 
 ///**/
-header('Strict-Transport-Security: max-age=0;');
+header('Strict-Transport-Security: max-age=15552000; includeSubDomains;');
 $postdata = json_decode(file_get_contents("php://input"));
 
 //print_r($postdata);
@@ -17,7 +17,7 @@ $p=md5(trim($postdata->password));
 $dvi=$postdata->device_id;
 
 include("db_extend.php");
-$x1=new model_con();
+$x1=new model_con1();
  
 $x2=$x1->login($u,$p);
 
