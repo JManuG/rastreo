@@ -44,7 +44,8 @@ class model_con1 extends Db
         //captura lo datos de manifiesto.
         $fecha_actual=date('Y/m/d');
         $db = Db::getInstance();
-        $fun=new model_con();
+
+       // $fun=new model_con();
 
         ///////////////////////////////////////////validacion de ruta asignada///////////////////
 /*
