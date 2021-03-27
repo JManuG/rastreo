@@ -1,9 +1,12 @@
 <?php
-include('../../class/db.php');
 
+include('../../sistema/model/model_con.php');
 date_default_timezone_set("America/Guatemala");
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-class model_con1 extends Db
+class model_con1 extends model_con
 {
     public function __construct()
     {
@@ -42,18 +45,25 @@ class model_con1 extends Db
     public function manifiesto($id_usr)
     {
         //captura lo datos de manifiesto.
-        $fecha_actual=date('Y/m/d');
+        $fecha_actual=date('Y-m-d');
         $db = Db::getInstance();
 
-       // $fun=new model_con();
+       $fun=new model_con();
 
         ///////////////////////////////////////////validacion de ruta asignada///////////////////
-/*
-        $com="select * from ruta where fecha=$fecha_actual and id_usr=$id_usr";
+
+        $com="Select id_progra,fecha from programacion where id_mensajero=$id_usr";
         $ru=$db->consultar($com);
+        $fecha_ruta=$fecha_actual;
+
         while($rutas=$ru->fetch(PDO::FETCH_OBJ)) {
 
+            $fecha_ruta=$rutas->fecha;
+            $id_progra=$rutas->id_progra;
+        }
+        //print_r($fecha_ruta);
 
+        if($fecha_actual!=$fecha_ruta){
 
             $conp = "select ru.nombre_ruta,ag.agencia_nombre,ag.agencia_direccion,ag.agencia_codigo from programacion pro
                 inner join ruta ru on ru.id_ruta=pro.id_ruta
@@ -64,33 +74,44 @@ class model_con1 extends Db
             $progra = $db->consultar($conp);
             while ($rowp = $progra->fetch(PDO::FETCH_OBJ)) {
 
-                $vineta=$fun->consulta_correlativo();
+                $vineta=$fun->consulta_correlativo1();
                 $tipo_envio='';
                 $destinatario=$rowp->agencia_nombre;
                 $ccosto_des=$rowp->agencia_codigo;
                 $ccosto_nombre=$rowp->agencia_nombre;
                 $des_direccion=$rowp->agencia_direccion;
                 $agencia=$rowp->agencia_nombre;
-                $descripcion='Ruta';
+                $descripcion='Ruta automaticamente';
                 $id_cat='1';
                 $ccosto_ori=1;
                 $id_cli=$id_usr;
                 $id_ccosto=1;
                 $id_orden='';
+                $id_zona=1;
 
 
 
-                $fun->d_acuse($vineta,$tipo_envio,$destinatario,$ccosto_des,$ccosto_nombre,$des_direccion,$agencia,$descripcion,$id_cat);
-                $fun->registra_envio1($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta,$tipo_envio,$des_direccion,$id_cat,$id_usr);
 
-                $os =$fun->procesar_OS($id_cli);
-                if($os>0) {
-                    $id_orden = $os;
-                    $fun->procesar_GuiaOS($id_cli, $id_ccosto, $id_orden);
-                }
-            }
-        }*/
-        ////////////////////////////////////////validacion de ruta asignada/////////////////////////////
+
+
+                                $fun->d_acuse($vineta,$tipo_envio,$destinatario,$ccosto_des,$ccosto_nombre,$des_direccion,$agencia,$descripcion,$id_cat);
+                                $fun->registra_envio1($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta,$tipo_envio,$des_direccion,$id_cat,$id_usr);
+
+                                $os =$fun->procesar_OS1($id_cli,$id_usr);
+                                if($os>0) {
+                                    $id_orden = $os;
+                                    $fun->procesar_GuiaOS1($id_cli, $id_ccosto, $id_orden,$id_usr);
+                                    $fun->procesar_AR1($vineta,$id_usr,$id_cli);
+                                    $fun->procesar_LD1($id_zona,$id_usr,$vineta,$id_usr,$id_cli);
+                                }
+
+                            }
+
+                            $rutaf="update programacion set fecha=$fecha_actual where id_progra=$id_progra";
+                            $db->consultar($rutaf);
+
+                        }
+                        ////////////////////////////////////////validacion de ruta asignada/////////////////////////////
 
         $sql="select
                             gi.barra as idPedido,
@@ -123,10 +144,13 @@ class model_con1 extends Db
                         and gi.estado=4
                         and ml.estado=1";
 
-
+/*--and mv.id_chk=3
+                        --and gi.estado=4
+                        --and ml.estado=1*/
         $c= $db->consultar($sql);
 
         //print_r($c);
+
         while ($row=$c->fetch(PDO::FETCH_OBJ))
         {
             $data[] = $row;
