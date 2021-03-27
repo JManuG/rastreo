@@ -95,7 +95,7 @@ class model_con extends Db
     public function registra_envio1($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta,$tipo_envio,$des_direccion,$id_cat,$id_usr)
     {
         $db=Db::getInstance();
-        session_start();
+        //session_start();
         $msg="";
         $usr	=$id_usr;
         $date1	=date('Y/m/d');
@@ -684,6 +684,45 @@ class model_con extends Db
 		return $msj;
 	}
 
+    public function procesar_OS1($id_cli,$us)
+    {
+        $db=Db::getInstance();
+        //session_start();
+        $date		=date('Y/m/d');
+        $datetime	=date('Y/m/d H:i:s');
+        $tiempo		=time();
+        $id_usr		=$us;
+        $llave      =$tiempo;
+        $estado     =1;
+
+        //Se crea primero la OS - Cuando se registra la Orden se ingresa con estado 1
+        $sql="INSERT INTO rastreo.orden
+				VALUES (0,'$id_cli','1','$date','OS Creada','$id_usr','$date','$datetime','$tiempo',$estado,NULL,NULL)";
+
+        //echo $sql;
+        $stmt= $db->preparar($sql);
+        //echo '<pre>';
+        //print_r($stmt);
+        //echo '</pre>';
+        if($stmt->execute()){
+            $id_os ="";
+            //Buscamos el numero de OS creado segun tiempo
+            $sql_1="SELECT id_orden FROM rastreo.orden WHERE llave='$tiempo'";
+
+            $stmt_1= $db->consultar($sql_1);
+            while ($row_1=$stmt_1->fetch(PDO::FETCH_NUM))
+            {
+                $id_os =$row_1[0];
+            }
+
+            $msj=$id_os;
+        }else{
+            $msj="Error";
+        }
+        //echo $msj;
+        return $msj;
+    }
+
 	public function procesar_GuiaOS($id_cli,$id_ccosto,$id_orden)
 	{
 		$db=Db::getInstance();
@@ -759,6 +798,83 @@ class model_con extends Db
 		//echo $msj;
 		return $msj;
 	}
+
+    public function procesar_GuiaOS1($id_cli,$id_ccosto,$id_orden,$us)
+    {
+        $db=Db::getInstance();
+        //session_start();
+        $fecha_date		=date('Y/m/d');
+        $fecha_datetime	=date('Y/m/d H:i:s');
+        $id_usr			=$us;
+        $marca     	 	=time();
+        $estado     	=1;
+        $cont_u     	=1;
+        $cont_i     	=1;
+
+        //Buscamos primero los registros aptos para actualziar
+        $sql="SELECT *
+				FROM rastreo.guia 
+				WHERE ori_ccosto='$id_ccosto' 
+				AND estado=1 
+				AND id_orden=1
+				ORDER BY id_envio";
+
+        $stmt= $db->consultar($sql);
+        while ($row=$stmt->fetch(PDO::FETCH_NUM))
+        {
+            $id_guia		=$row[0];
+            $id_envio		=$row[1];
+            $ori_ccosto		=$row[2];
+            $des_ccosto		=$row[3];
+            $estado			=$row[4];
+            $id_usr			=$row[5];
+            $tiempo			=$row[8];
+            $char1			=$row[9];
+            $entero1		=$row[10];
+            $barra			=$row[12];
+            $comentario		=$row[13];
+            $destinatario	=$row[14];
+
+            //Por ID guia actualizamos uno a uno
+            $upd="UPDATE rastreo.guia
+					SET id_orden='$id_orden', estado=2
+					WHERE id_guia='$id_guia'
+					AND  estado=1";
+            //echo $upd;
+            $stmt_u= $db->preparar($upd);
+
+            //print_r($stmt);
+            if($stmt_u->execute()){
+                $msj_u=$cont_u++;
+            }else{
+                $msj_u="Error Update Guia".$id_guia;
+            }
+
+            //Luego se inserta el PI (Pre Ingreso) en movimiento
+            $ing="INSERT INTO rastreo.movimiento 
+							(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
+					VALUES (0,'$id_guia',1,1,1,'$id_usr','$fecha_date','$fecha_datetime','$marca','1','INGRESO',NULL) ";
+            //echo "<br><br>".$ing;
+            $stmt_i= $db->preparar($ing);
+
+            //print_r($stmt);
+            if($stmt_i->execute()){
+                $msj_i=$cont_i++;
+            }else{
+                $msj_i="Error Insert Guia".$id_guia;
+            }
+        }
+
+        if($msj_u > 0 && $msj_i > 0){
+            $msj="Insertado";
+        }else{
+            $msj="Error";
+        }
+
+        //echo $msj;
+        return $msj;
+    }
+
 
 	public function procesar_AR($id_vineta)
 	{
@@ -848,6 +964,98 @@ class model_con extends Db
 		//echo $msj;
 		return $msj;
 	}
+
+
+    public function procesar_AR1($id_vineta,$us,$cli)
+    {
+        $db=Db::getInstance();
+        //session_start();
+        $fecha_date		=date('Y/m/d');
+        $fecha_datetime	=date('Y/m/d H:i:s');
+        $id_usr			=$us;
+        $id_cli         =$cli;
+        $marca     	 	=time();
+        $estado     	=1;
+        $cont_u     	=0;
+        $cont_i     	=0;
+        $existe_vineta  =0;
+
+        //Buscamos si existe una vineta apta para AR  --  Debe estar la guia en estado 2 para AR
+        $sql="SELECT g.*
+				FROM rastreo.guia g 
+				INNER JOIN rastreo.orden o
+				ON g.id_orden=o.id_orden
+				WHERE g.barra='$id_vineta'
+				AND o.cli_codigo='$id_cli'
+				AND g.estado=2";
+
+        $stmt= $db->consultar($sql);
+        while ($row=$stmt->fetch(PDO::FETCH_NUM))
+        {
+            $id_guia		=$row[0];
+            $id_envio		=$row[1];
+            $ori_ccosto		=$row[2];
+            $des_ccosto		=$row[3];
+            $estado			=$row[4];
+            $tiempo			=$row[8];
+            $char1			=$row[9];
+            $entero1		=isset($row[20]);
+            $id_orden		=$row[11];
+            $barra			=$row[12];
+            $comentario		=$row[13];
+            $destinatario	=$row[14];
+            $existe_vineta  = 1;
+        }
+
+        //Por ID guia actualizamos el estado - Se actualiza a estado 3
+        if($existe_vineta==1){
+            //ACtualizamos el estado de la guia/vineta
+            $upd="UPDATE rastreo.guia
+					SET estado=3
+					WHERE id_envio='$id_guia'
+					AND id_orden='$id_orden'
+					AND  estado=2";
+
+            $stmt_u= $db->preparar($upd);
+
+            //print_r($stmt);
+            if($stmt_u->execute()){
+                $msj_u="Ingresado";
+            }else{
+                $msj_u="Error Update Orden".$id_orden;
+            }
+
+            //Luego se inserta el AR (Arribo) en movimiento
+            $ing="INSERT INTO rastreo.movimiento 
+						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
+					VALUES (0,'$id_guia',2,1,1,'$id_usr','$fecha_date','$fecha_datetime','$marca','2','ARRIBO',NULL) ";
+
+            $stmt_i= $db->preparar($ing);
+
+            //print_r($stmt);
+            if($stmt_i->execute()){
+                $msj_i="Ingresado";
+            }
+            else{
+                $msj_i="Error Insert Orden".$id_orden;
+            }
+        }
+
+        if($existe_vineta==0){
+            $msj="Existe";
+        }
+        elseif($msj_u =='Ingresado' && $msj_i =='Ingresado'){
+            $msj="Insertado";
+        }
+        else{
+            $msj="Error";
+        }
+
+        //echo $msj;
+        return $msj;
+    }
+
+
 
 	public function procesar_LD($id_zona,$id_mensajero,$vineta)
 	{
@@ -978,6 +1186,137 @@ class model_con extends Db
 		//echo $msj;
 		return $msj;
 	}
+
+    public function procesar_LD1($id_zona,$id_mensajero,$vineta,$us,$cli)
+    {
+        $db=Db::getInstance();
+        //session_start();
+        $fecha_date		=date('Y/m/d');
+        $fecha_datetime	=date('Y/m/d H:i:s');
+        $id_usr			=$us;
+        $id_cli         =$cli;
+        $marca     	 	=time();
+        $estado     	=1;
+        $cont_u     	=0;
+        $cont_i     	=0;
+        $existe_vineta  =0;
+        $numid          =date('Ymdhis');
+        $posicion       =1;
+
+        //Buscamos si existe una vineta apta para LD  --  Debe estar la guia en estado 3 para LD
+        $sql="SELECT g.*
+				FROM rastreo.guia g 
+				INNER JOIN rastreo.orden o
+				ON g.id_orden=o.id_orden
+				WHERE g.barra='$vineta'
+				AND o.cli_codigo='$id_cli'
+				AND g.estado=3";
+
+        $stmt= $db->consultar($sql);
+        while ($row=$stmt->fetch(PDO::FETCH_NUM))
+        {
+            $id_guia		=$row[0];
+            $id_envio		=$row[1];
+            $ori_ccosto		=$row[2];
+            $des_ccosto		=$row[3];
+            $estado			=$row[4];
+            $tiempo			=$row[8];
+            $char1			=$row[9];
+            $entero1		=isset($row[20]);
+            $id_orden		=$row[11];
+            $barra			=$row[12];
+            $comentario		=$row[13];
+            $destinatario	=$row[14];
+            $existe_vineta  = 1;
+        }
+
+        //El numid que se trae se evalua
+        $sql_2="SELECT * FROM rastreo.manifiesto WHERE n_manifiesto='$numid'";
+        $existe_numid=0;
+        $stmt_2= $db->consultar($sql_2);
+        while ($row_2=$stmt_2->fetch(PDO::FETCH_NUM))
+        {
+            $existe_numid=1;
+        }
+
+        //Si no existe insertamos el numid en el encabezado
+        if($existe_numid==0)
+        {
+            $ing_1="INSERT INTO rastreo.manifiesto
+						VALUES (0, '$numid', '$id_zona', '$id_mensajero', 1, '$id_usr', '$fecha_date', '$fecha_datetime', '$marca')";
+
+            $stmt_i1= $db->preparar($ing_1);
+
+            if($stmt_i1->execute()){
+                $msj_i1="Ingresado";
+            }
+            else{
+                $msj_i1="Error Insert manifiesto".$numid;
+            }
+        }
+
+        //Por ID guia actualizamos el estado - Se actualiza a estado 4
+        if($existe_vineta==1){
+            //ACtualizamos el estado de la guia/vineta
+            $upd="UPDATE rastreo.guia
+					SET estado=4
+					WHERE id_envio='$id_guia'
+					AND id_orden='$id_orden'
+					AND  estado=3";
+
+            $stmt_u= $db->preparar($upd);
+
+            //print_r($stmt);
+            if($stmt_u->execute()){
+                $msj_u="Ingresado";
+            }else{
+                $msj_u="Error Update Orden LD".$id_orden;
+            }
+
+            //Insertamos la linea de cada posicion del manifiesto generado
+            $ing_2="INSERT INTO rastreo.manifiesto_linea
+					VALUES (0,'$numid','$posicion',3,1,'$id_guia')";
+
+            $stmt_i2= $db->preparar($ing_2);
+            //echo $ing_2;
+
+            if($stmt_i2->execute()){
+                $msj_i2="Ingresado";
+            }
+            else{
+                $msj_i2="Error manifiesto_linea".$numid."-".$posicion;
+            }
+
+            //Luego se inserta LD (Salida a Ruta) en movimiento
+            $ing="INSERT INTO rastreo.movimiento 
+						(id_movimiento,id_envio,id_chk,id_zona,id_mensajero,id_usr, fecha_date, fecha_datetime, tiempo, id_motivo, descripcion, movimientocol)
+					VALUES (0,'$id_guia',3,'$id_zona','$id_mensajero','$id_usr','$fecha_date','$fecha_datetime','$marca','3','SALIDA A RUTA',NULL) ";
+
+            $stmt_i= $db->preparar($ing);
+
+            //print_r($stmt);
+            if($stmt_i->execute()){
+                $msj_i="Ingresado";
+            }
+            else{
+                $msj_i="Error Insert Orden LD".$id_orden;
+            }
+        }
+
+        if($existe_vineta==0){
+            $msj="Existe";
+        }
+        elseif($msj_u =='Ingresado' && $msj_i =='Ingresado'){
+            $msj="Insertado";
+        }
+        else{
+            $msj="Error";
+        }
+
+        //echo $msj;
+        return $msj;
+    }
+
 
 	public function procesar_DL($numid)
 	{
@@ -1275,6 +1614,58 @@ class model_con extends Db
 		//echo $sql;
 		return $result;
 	}
+
+
+    public function consulta_correlativo1(){
+        $db=Db::getInstance();
+        //session_start();
+        $msg="";
+
+        //$usr    =$_SESSION['cod_user'];
+        $id_cli =1;
+
+        $sql = "SELECT *
+					FROM rastreo.correlativo 
+                    WHERE id_cli='$id_cli'
+                    AND estado=1";
+        //echo $sql;
+        $stmt= $db->consultar($sql);
+        while ($row=$stmt->fetch(PDO::FETCH_NUM))
+        {
+            $id_correlativo = $row[0];
+            $id_cli			= $row[1];
+            $seq_ini        = $row[2];
+            $seq_fin        = $row[3];
+            $seq            = $row[4];
+            $estado         = $row[5];
+            $seq_new        = $seq+1;
+        }
+
+        if($seq_new > $seq_ini && $seq_new < $seq_fin){
+            //Actualizamos el nuevo registro seq en la tabla
+            $upd="UPDATE rastreo.correlativo
+					SET seq=$seq_new
+					WHERE id_cli='$id_cli'
+                    AND estado=1 ";
+
+            $stmt_u= $db->preparar($upd);
+
+            //print_r($stmt);
+            if($stmt_u->execute()){
+                $msj_u="Ingresado";
+            }
+            else{
+                $msj_u="Error Actualizando proc_GeneraVineta";
+            }
+
+            $result = $seq_new;
+        }else{
+            $result="Error";
+        }
+
+        //echo $sql;
+        return $result;
+    }
 
 	public function data_acuse($vineta)
     {
