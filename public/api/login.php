@@ -7,6 +7,7 @@
 //$p=md5("enviagt");
 
 ///**/
+header( "Set-Cookie: name=value; httpOnly" );
 header('Strict-Transport-Security: max-age=15552000; includeSubDomains;');
 $postdata = json_decode(file_get_contents("php://input"));
 
