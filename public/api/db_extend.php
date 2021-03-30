@@ -57,7 +57,6 @@ class model_con1 extends model_con
         $fecha_ruta=$fecha_actual;
 
         while($rutas=$ru->fetch(PDO::FETCH_OBJ)) {
-
             $fecha_ruta=$rutas->fecha;
             $id_progra=$rutas->id_progra;
         }
@@ -75,10 +74,10 @@ class model_con1 extends model_con
             while ($rowp = $progra->fetch(PDO::FETCH_OBJ)) {
 
                 $vineta=$fun->consulta_correlativo1();
-                $tipo_envio='';
-                $destinatario=$rowp->agencia_nombre;
+                $tipo_envio='1';
+                $destinatario="Agencia ".$rowp->agencia_nombre;
                 $ccosto_des=$rowp->agencia_codigo;
-                $ccosto_nombre=$rowp->agencia_nombre;
+                $ccosto_nombre= "Agencia ".$rowp->agencia_nombre;
                 $des_direccion=$rowp->agencia_direccion;
                 $agencia=$rowp->agencia_nombre;
                 $descripcion='Ruta automaticamente';
@@ -107,8 +106,10 @@ class model_con1 extends model_con
 
                             }
 
-                            $rutaf="update programacion set fecha=$fecha_actual where id_progra=$id_progra";
-                            $db->consultar($rutaf);
+                            $rutafin="update programacion set fecha='$fecha_actual' where id_progra=$id_progra";
+                            $db->consultar($rutafin);
+
+                            //print_r($rutafin);
 
                         }
                         ////////////////////////////////////////validacion de ruta asignada/////////////////////////////
