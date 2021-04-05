@@ -1,5 +1,13 @@
 <?php
-header( "Set-Cookie: name=value; httpOnly" );
+ini_set('session.cookie_lifetime', 0);
+ini_set('session.use_cookies', 1);
+ini_set('session.use_only_cookies', 1);
+ini_set('session.use_strict_mode', 1);
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_secure', 1);
+ini_set('session.use_trans_sid', 0);
+ini_set('session.cache_limiter', 'private_no_expire');
+ini_set('session.hash_function', 'sha256');
 header( 'Strict-Transport-Security: max-age=15552000; includeSubdomains; preload' );
 ?>
 <!DOCTYPE html>

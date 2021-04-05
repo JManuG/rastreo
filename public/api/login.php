@@ -5,9 +5,18 @@
 
 //$u="enviagt";
 //$p=md5("enviagt");
-
+$arr_cookie_options = array (
+    'expires' => time() + 60*60*24*30,
+    'path' => '/',
+    'domain' => '.example.com', // leading dot for compatibility or use subdomain
+    'secure' => true,     // or false
+    'httponly' => true,    // or false
+    'samesite' => 'None' // None || Lax  || Strict
+);
+setcookie('TestCookie', 'The Cookie Value', $arr_cookie_options);
 ///**/
-header( "Set-Cookie: name=value; httpOnly" );
+///
+
 header('Strict-Transport-Security: max-age=15552000; includeSubDomains;');
 $postdata = json_decode(file_get_contents("php://input"));
 

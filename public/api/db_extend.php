@@ -80,8 +80,8 @@ class model_con1 extends model_con
                 $ccosto_nombre= "Agencia ".$rowp->agencia_nombre;
                 $des_direccion=$rowp->agencia_direccion;
                 $agencia=$rowp->agencia_nombre;
-                $descripcion='Ruta automaticamente';
-                $id_cat='1';
+                $descripcion='Ruta Automática';
+                $id_cat='5';
                 $ccosto_ori=1;
                 $id_cli=$id_usr;
                 $id_ccosto=1;
