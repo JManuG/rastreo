@@ -30,7 +30,7 @@ class model_con1 extends model_con
                 where u.usr_cod='$u' and u.usr_pass='$p'";
 
         $c= $db->consultar($sql);
-
+        $data=[];
         //print_r($sql);
         while ($row=$c->fetch(PDO::FETCH_OBJ))
         {
@@ -75,7 +75,7 @@ class model_con1 extends model_con
 
                 $vineta=$fun->consulta_correlativo1();
                 $tipo_envio='1';
-                $destinatario="Agencia ".$rowp->agencia_nombre;
+                $destinatario="Agencia ".$rowp->agencia_codigo." - ".$rowp->agencia_nombre;
                 $ccosto_des=$rowp->agencia_codigo;
                 $ccosto_nombre= "Agencia ".$rowp->agencia_nombre;
                 $des_direccion=$rowp->agencia_direccion;
@@ -91,18 +91,22 @@ class model_con1 extends model_con
 
 
 
+                            try {
 
+                                $fun->d_acuse($vineta, $tipo_envio, $destinatario, $ccosto_des, $ccosto_nombre, $des_direccion, $agencia, $descripcion, $id_cat);
+                                $fun->registra_envio1($ccosto_ori, $ccosto_des, $destinatario, $descripcion, $vineta, $tipo_envio, $des_direccion, $id_cat, $id_usr);
 
-                                $fun->d_acuse($vineta,$tipo_envio,$destinatario,$ccosto_des,$ccosto_nombre,$des_direccion,$agencia,$descripcion,$id_cat);
-                                $fun->registra_envio1($ccosto_ori,$ccosto_des,$destinatario,$descripcion,$vineta,$tipo_envio,$des_direccion,$id_cat,$id_usr);
-
-                                $os =$fun->procesar_OS1($id_cli,$id_usr);
-                                if($os>0) {
+                                $os = $fun->procesar_OS1($id_cli, $id_usr);
+                                if ($os > 0) {
                                     $id_orden = $os;
-                                    $fun->procesar_GuiaOS1($id_cli, $id_ccosto, $id_orden,$id_usr);
-                                    $fun->procesar_AR1($vineta,$id_usr,$id_cli);
-                                    $fun->procesar_LD1($id_zona,$id_usr,$vineta,$id_usr,$id_cli);
+                                    $fun->procesar_GuiaOS1($id_cli, $id_ccosto, $id_orden, $id_usr);
+                                    $fun->procesar_AR1($vineta, $id_usr, $id_cli);
+                                    $fun->procesar_LD1($id_zona, $id_usr, $vineta, $id_usr, $id_cli);
                                 }
+
+                            }catch (Exception $e){
+                                print_r($e);
+                            }
 
                             }
 
@@ -132,13 +136,13 @@ class model_con1 extends model_con
        
                         from guia gi
                         inner join usuario us on us.id_usr=gi.id_usr
-                        inner join centro_costo cctr on cctr.id_ccosto=us.id_ccosto
-                        inner join centro_costo cct on cct.id_ccosto=gi.des_ccosto
-                        inner join categoria ct on ct.id_cat=gi.entero1
+                        left join centro_costo cctr on cctr.id_ccosto=us.id_ccosto
+                        left join centro_costo cct on cct.id_ccosto=gi.des_ccosto
+                        left join categoria ct on ct.id_cat=gi.entero1
                         inner join movimiento mv on mv.id_envio=gi.id_envio
                         inner join manifiesto_linea ml on ml.id_envio=gi.id_envio
                         inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
-                        inner join zona z on z.id_zona=mv.id_zona
+                        left join zona z on z.id_zona=mv.id_zona
                         inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
                         where mj.id_mensajero=$id_usr
                         and mv.id_chk=3
@@ -216,7 +220,7 @@ class model_con1 extends model_con
 
         $sql="insert into recurso 
                 (id_recurso, id_movimiento, url, tipo, estado, latitud, longitud, altitud, id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, imagen)
-                VALUES(0,$movimiento,'-','-',$estado,'$latitud','$longitud','0',$id_usr,'$fecha','$fecha_datetime','$tiempo','$barra','1','$foto')";
+                VALUES(0,$movimiento,'Esperando imagen','-',$estado,'$latitud','$longitud','0',$id_usr,'$fecha','$fecha_datetime','$tiempo','$barra','1','$foto')";
         $c= $db->consultar($sql);
 
 
@@ -229,13 +233,20 @@ class model_con1 extends model_con
 public function carga_img($movimiento,$barra,$imagen)
 {
     try {
+        $url="";
+        if($imagen==""){
+            $url="sin imagen";
+        }else{
+            $url="imagen ingresada";
+        }
+
         $db=Db::getInstance();
         $imagen=addcslashes($imagen,"\x00\'\"\r\n");
-        $sql="update recurso set imagen=_binary'".$imagen."', tipo='".$movimiento."'
+        $sql="update recurso set imagen=_binary'".$imagen."', tipo='".$movimiento."', url='".$url."'
     where char1='".$barra."'";
 
         $c=$db->consultar($sql);
-        return "ingreso de imagen";
+        return $url;
     } catch (Exception $e){
         return $e->errorMessage();
     }
