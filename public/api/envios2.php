@@ -53,7 +53,7 @@ $cnt=200;
                 'estado'=>0
                 ];
             }
-
+header('Content-Type: application/json');
 echo json_encode($b);
 
 ?>
