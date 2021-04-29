@@ -54,7 +54,13 @@ $cnt=200;
                 'estado'=>0
                 ];
             }
+
+            $data= array(
+                "cantidad"=>"$x",
+                "datos" => $b
+            );
 header('Content-Type: application/json');
-echo json_encode($b);
+
+echo json_encode($data);
 
 ?>
