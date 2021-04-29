@@ -14,6 +14,7 @@ $word=explode(" ",$lorem);
 
 
 $x=0;
+$b=array();
 $cnt=200;
             while($x<$cnt)
             {
