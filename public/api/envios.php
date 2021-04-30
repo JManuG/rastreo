@@ -37,6 +37,20 @@ $x1=new model_con1();
         //'estado'=>$row->estado_guia
         //echo $cnt."<br>";
         //print_r($b);
-    echo json_encode($b);
+        if(isset($_GET['mj'])){
+    
+            $data= array(
+                "cantidad"=>"$x",
+                "datos" => $b
+            );
+            header('Content-Type: application/json');
+        
+            echo json_encode($data);
+        
+        
+        }else{
+            echo json_encode($b);
+
+        } 
 
 ?>
