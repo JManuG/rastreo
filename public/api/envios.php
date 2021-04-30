@@ -40,7 +40,7 @@ $x1=new model_con1();
         if(isset($_GET['mj'])){
     
             $data= array(
-                "cantidad"=>"$x",
+                "cantidad"=>"$cnt",
                 "datos" => $b
             );
             header('Content-Type: application/json');
