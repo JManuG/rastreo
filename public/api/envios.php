@@ -47,7 +47,6 @@ $x1=new model_con1();
         
             echo json_encode($data);
         
-        
         }else{
             echo json_encode($b);
 
