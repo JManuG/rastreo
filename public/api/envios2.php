@@ -55,12 +55,18 @@ $cnt=200;
                 ];
             }
 
-            $data= array(
-                "cantidad"=>"$x",
-                "datos" => $b
-            );
-header('Content-Type: application/json');
-
-echo json_encode($data);
-
+            if(isset($_POST['mj'])){
+    
+                $data= array(
+                    "cantidad"=>"$x",
+                    "datos" => $b
+                );
+                header('Content-Type: application/json');
+            
+                echo json_encode($data);
+            
+            
+            }else{
+                echo json_encode($b);
+            }
 ?>
