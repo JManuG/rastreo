@@ -55,7 +55,7 @@ $cnt=200;
                 ];
             }
 
-            
+
             if(isset($_POST['mj'])){
     
                 $data= array(
@@ -69,6 +69,7 @@ $cnt=200;
             
             }else{
                 echo json_encode($b);
+
             } 
 
 ?>
