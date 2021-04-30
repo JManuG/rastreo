@@ -55,8 +55,8 @@ $cnt=200;
                 ];
             }
 
-            
-            if(isset($_POST['mj'])){
+
+            if(isset($_GET['mj'])){
     
                 $data= array(
                     "cantidad"=>"$x",
