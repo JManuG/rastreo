@@ -49,7 +49,7 @@ class model_con1 extends model_con
         $db = Db::getInstance();
 
        $fun=new model_con();
-
+/*
         ///////////////////////////////////////////validacion de ruta asignada///////////////////
 
         $com="Select id_progra,fecha from programacion where id_mensajero=$id_usr";
@@ -116,7 +116,7 @@ class model_con1 extends model_con
                             //print_r($rutafin);
 
                         }
-                        ////////////////////////////////////////validacion de ruta asignada/////////////////////////////
+           */             ////////////////////////////////////////validacion de ruta asignada/////////////////////////////
 
         $sql="select
                             gi.barra as idPedido,
