@@ -33,7 +33,7 @@ $x2=$x1->login($u,$p);
 
 
 
-
+$a=null;
 $tk=20;
 $token=$x1->generar_token_seguro($tk);
 $a=null;
