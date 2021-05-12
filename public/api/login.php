@@ -36,7 +36,7 @@ $x2=$x1->login($u,$p);
 $a=null;
 $tk=20;
 $token=$x1->generar_token_seguro($tk);
-
+$a=null;
 foreach($x2 as $row) {
     $a = array(
             'id' => (int)$row->id_mensajero,
