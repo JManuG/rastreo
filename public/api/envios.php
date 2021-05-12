@@ -11,33 +11,36 @@ $x1=new model_con1();
    $x2=$x1->manifiesto($id);
         $b=array();
         $cnt=0;
-        foreach($x2 as $row) {
-            $cnt++;
-            $b[]=[
-                'idPedido'=> (int)$row->idPedido,
-                'idRequest'=>$row->idPedido,
-                'quantity'=>0,
-                'total'=>0.0,
-                'name' =>$row->name,
-                'address' =>$row->address,
-                'wayToPay'=>"Tarjeta",
-                'createdAt'=>str_replace(" ", "T", $row->createdAt),
-                'requestId'=>"1",
-                'comments'=>$row->comments,
-                'additionalShops'=>$row->remitente, //remitente
-                'vuelto'=>$row->nombre_remitente,//nombre remitente
-                'recipe'=>$row->dep_remitente,//departamento_remitente
-                'insuranceId'=>0,
-                'nit'=>"",
-                'cliId'=>"",
-                'char1'=>$row->direccion,
-                'estado'=>0
-            ];
-        }
+        
         //'estado'=>$row->estado_guia
         //echo $cnt."<br>";
         //print_r($b);
         if(isset($_GET['mj'])){
+
+            foreach($x2 as $row) {
+                $cnt++;
+                $b[]=[
+                    'idPedido'=> (int)$row->idPedido,
+                    'idRequest'=>$row->idPedido,
+                    'quantity'=>0,
+                    'total'=>0.0,
+                    'name' =>$row->name,
+                    'address' =>$row->address,
+                    'wayToPay'=>"Tarjeta",
+                    'createdAt'=>(string) $row->createdAt,
+                    'requestId'=>"1",
+                    'comments'=>$row->comments,
+                    'additionalShops'=>$row->remitente, //remitente
+                    'vuelto'=>$row->nombre_remitente,//nombre remitente
+                    'recipe'=>$row->dep_remitente,//departamento_remitente
+                    'insuranceId'=>0,
+                    'nit'=>"",
+                    'cliId'=>"",
+                    'char1'=>$row->direccion,
+                    'estado'=>0
+                ];
+            }
+
     
             $data= array(
                 "cantidad"=>"$cnt",
@@ -48,6 +51,32 @@ $x1=new model_con1();
             echo json_encode($data);
         
         }else{
+
+            foreach($x2 as $row) {
+                $cnt++;
+                $b[]=[
+                    'idPedido'=> (int)$row->idPedido,
+                    'idRequest'=>$row->idPedido,
+                    'quantity'=>0,
+                    'total'=>0.0,
+                    'name' =>$row->name,
+                    'address' =>$row->address,
+                    'wayToPay'=>"Tarjeta",
+                    'createdAt'=>str_replace(" ", "T", $row->createdAt),
+                    'requestId'=>"1",
+                    'comments'=>$row->comments,
+                    'additionalShops'=>$row->remitente, //remitente
+                    'vuelto'=>$row->nombre_remitente,//nombre remitente
+                    'recipe'=>$row->dep_remitente,//departamento_remitente
+                    'insuranceId'=>0,
+                    'nit'=>"",
+                    'cliId'=>"",
+                    'char1'=>$row->direccion,
+                    'estado'=>0
+                ];
+            }
+
+
             echo json_encode($b);
 
         } 
