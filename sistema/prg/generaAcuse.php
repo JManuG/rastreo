@@ -193,7 +193,7 @@ $pdf->Text(30,219,$direccion);
 $x = $pdf->GetX();
 $y = $pdf->GetY();
 
-echo $y;
+
 switch($y){
     case "90.00125";
     $y2=132;
