@@ -192,6 +192,8 @@ $pdf->Text(30,219,$direccion);
 //$pdf->Text(60,226,$descripcion);
 $x = $pdf->GetX();
 $y = $pdf->GetY();
+
+echo $y;
 switch($y){
     case "90.00125";
     $y2=132;
@@ -205,9 +207,14 @@ switch($y){
         $y2=122;
         break;
 
-    case "105.00125";
+    case "110.00125";
         $y2=117;
         break;
+
+    case "111.00125";
+        $y2=122;
+        break;
+
 }
 $pdf->SetXY($x + 49, $y+$y2);
 $y3=$y2+$y;
