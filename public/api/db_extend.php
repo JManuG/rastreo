@@ -321,7 +321,7 @@ public function carga_img($movimiento,$barra,$imagen)
 
             $db->consultar($sql);
             
-    }
+    } 
 
 
 }
