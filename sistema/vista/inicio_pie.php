@@ -48,8 +48,15 @@
 <script src="vista/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="vista/dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="vista/dist/js/pages/dashboard.js"></script>
+<!-- jquery -->
+<!--script src="https://code.jquery.com/jquery-3.5.1.js"></script-->
+<!-- datatable -->
+
+<!--script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script-->
+
+
+
+<!--<script src="vista/dist/js/pages/dashboard.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 <script src="vista/dist/js/demo.js"></script>
 <script src="vista/bootstrap-table-pagination.js"></script>

@@ -757,7 +757,7 @@ if($shi_codigo=='000591')
         $bd=Db::getInstance();
 		$shi_codigo=$_SESSION['shi_codigo'];
 		
-		$sql_c = "SELECT a.id_agencia,a.agencia_nombre,c.id_ccosto,c.ccosto_nombre 
+		$sql_c = "SELECT a.id_agencia,a.agencia_nombre,c.id_ccosto,c.ccosto_nombre,c.ccosto_codigo
 						FROM agencia a INNER JOIN centro_costo c
 						ON a.id_agencia=c.id_agencia
 						WHERE c.cli_id='$shi_codigo'
@@ -772,7 +772,7 @@ if($shi_codigo=='000591')
 		$c= $bd->consultar($sql_c);
 		
 		while ($row=$c->fetch(PDO::FETCH_NUM)){
-			$retorno .="<option value='".$row[2]."'>".$row[1]." - ".$row[3]."</option>";
+			$retorno .="<option value='".$row[2]."'>".$row[4]." ".$row[1]." - ".$row[3]."</option>";
 		}
 		
 		$retorno .="</select>";
@@ -898,6 +898,30 @@ if($shi_codigo=='000591')
 		return $retorno;
 	}
 
+	function select_periocidad()
+	{
+		@session_start();
+        $bd=Db::getInstance();
+		$shi_codigo=$_SESSION['shi_codigo'];
+		
+		$sql_c = "SELECT m.* 
+					FROM periodicidad m 
+					WHERE  m.estado=1";
+
+		$retorno ="<select name='id_periodicidad' id='id_periodicidad' class=\"form-control\">
+					";
+
+		$c= $bd->consultar($sql_c);
+		
+		while ($row=$c->fetch(PDO::FETCH_NUM)){
+			$retorno .="<option value='".$row[0]."'>".$row[0]." ".$row[1]."</option>";
+		}
+		
+		$retorno .="</select>";
+
+		return $retorno;
+	}
+
 	//Motivo de DV
 	function motivo_dv(){
 		@session_start();
@@ -917,6 +941,56 @@ if($shi_codigo=='000591')
 		
 		while ($row=$c->fetch(PDO::FETCH_NUM)){
 			$retorno .="<option value='".$row[0]."'>".$row[1]." ".$row[2]."</option>";
+		}
+		
+		$retorno .="</select>";
+
+		return $retorno;
+	}
+
+	function select_ruta()
+	{
+		@session_start();
+        $bd=Db::getInstance();
+		$shi_codigo=$_SESSION['shi_codigo'];
+		
+		$sql_c = "SELECT m.* 
+					FROM ruta m 
+					WHERE m.id_cli='$shi_codigo'
+					AND m.estado=1";
+
+		$retorno ="<select name='id_ruta' id='id_ruta' class=\"form-control\" onchange='changeRuta()'>
+					<option value=''>-</option>";
+
+		$c= $bd->consultar($sql_c);
+		
+		while ($row=$c->fetch(PDO::FETCH_NUM)){
+			$retorno .="<option value='".$row[0]."'>".$row[0]." ".$row[1]."</option>";
+		}
+		
+		$retorno .="</select>";
+
+		return $retorno;
+	}
+
+	function select_ruta_deta()
+	{
+		@session_start();
+        $bd=Db::getInstance();
+		$shi_codigo=$_SESSION['shi_codigo'];
+		
+		$sql_c = "SELECT m.* 
+					FROM ruta m 
+					WHERE m.id_cli='$shi_codigo'
+					AND m.estado=1";
+
+		$retorno ="<select name='id_ruta' id='id_ruta' class=\"form-control\" onchange='changeRutaDeta()'>
+					<option value=''>-</option>";
+
+		$c= $bd->consultar($sql_c);
+		
+		while ($row=$c->fetch(PDO::FETCH_NUM)){
+			$retorno .="<option value='".$row[0]."'>".$row[0]." ".$row[1]."</option>";
 		}
 		
 		$retorno .="</select>";

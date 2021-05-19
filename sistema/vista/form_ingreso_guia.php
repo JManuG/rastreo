@@ -1,3 +1,55 @@
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery.ui.js"></script>
+<link rel="stylesheet" href="lib/jquery.ui.css">
+
+<!-- Script -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+
+<!-- jQuery UI -->
+<!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>-->
+
+
+<script>
+  $( function() {
+
+    // Single Select
+    $( "#destinatario" ).autocomplete({
+      source: function( request, response ) {
+        // Fetch data
+        $.ajax({
+          url: "destinatario.php",
+          type: 'post',
+          dataType: "json",
+          data: {
+            search: request.term
+          },
+          success: function( data ) {
+            response( data );
+          }
+        });
+      },
+      select: function (event, ui) {
+        // Set selection
+        $('#destinatario').val(ui.item.label); // display the selected text
+        $('#cod_destinatario1').val(ui.item.value); // save selected id to input
+        $('#id_ccosto1').val(ui.item.id_ccosto); // save selected id to input
+        $('#ccosto_nombre1').val(ui.item.ccosto_nombre); // save selected id to input
+        $('#des_direccion1').val(ui.item.ccosto_direccion); // save selected id to input
+        $('#agencia1').val(ui.item.agencia); // save selected id to input
+        $('#ccosto1').val(ui.item.ccosto); // save selected id to input
+        return false;
+      }
+    });
+  });
+  function split( val ) {
+    return val.split( /,\s*/ );
+  }
+  function extractLast( term ) {
+    return split( term ).pop();
+  }
+</script>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -16,7 +68,7 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-  <!-- Main content -->
+  <!-- Main content  -->
   <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -46,6 +98,8 @@
                   <input type="hidden" id="ccosto_ori" name='ccosto_ori' value="<?php echo $_SESSION['ccosto']; ?>">
 
                 <div class="form-group">
+                  <br>
+                  <input type='text' id='cod_destinatario' readonly class="form-control" value="" />
                   <label for="tipo_envio">Tipo env&iacute;o</label>
                   <select name='tipo_envio' id='tipo_envio' class="form-control" >
                     <option value='I'>INTERNO</option>
@@ -53,21 +107,24 @@
                   </select>
                 </div>
 
+                <div>
+                  <label for="tipo_envio">Nombre Destinatario:</label>
+                  <br>
+                  <span><input type='text' id='destinatario' class="form-control"></span>
 
-                <div class="form-group">
-                  <label for="id_ccosto">Centro de costo destino</label>
-                  <?php echo select_ccosto_simple(); ?>
+
                 </div>
 
                 <div class="form-group">
-                  <label for="destinatario">Destinatario</label>
-                  <input type="text" class="form-control" id="destinatario" name='destinatario' placeholder="Nombre del destinatario">
+                  <label for="agencia">Agencia o Edificio</label>
+                  <input type="text" class="form-control" id="agencia" name='agencia' placeholder="Agencia">
                 </div>
-                
+
                 <div class="form-group">
                   <label for="des_direccion">Direcci&oacute;n</label>
                   <input type="text" class="form-control" id="des_direccion" name='des_direccion' placeholder="Direccion del destinatario">
                 </div>
+
 
                 <div class="form-group">
                   <label for="descripcion">Descripci&oacute;n del env&iacute;o</label>
@@ -78,6 +135,18 @@
                   <label for="id_cat">Categoria del env&iacute;o</label>
                   <?php echo select_categoria(); ?>
                 </div>
+
+                <!--div class="form-group">
+                  <label for="id_ccosto">Centro de costo destino</label-->
+                  <input type="hidden" id="id_ccosto" name="id_ccosto"  class="form-control" onchange='' value="1" >
+                  <?php //echo select_ccosto_simple(); ?>
+                <!--/div-->
+
+                <!--div class="form-group">
+                  <label for="id_ccosto">Centro de costo destino</label-->
+                  <input type="hidden" id="ccosto_nombre" name="ccosto_nombre" class="form-control" value="1" >
+                <!--/div-->
+
                 <!--
                 <div class="form-group">
                   <label for="vineta">Vi&ntilde;eta</label>
@@ -103,7 +172,10 @@
                                                     formulario.descripcion.value,
                                                     formulario.tipo_envio.value,
                                                     formulario.des_direccion.value,
-                                                    formulario.id_cat.value)">
+                                                    formulario.id_cat.value,
+                                                    formulario.ccosto_nombre.value,
+                                                    formulario.agencia.value
+                                                )">
                   Registrar Env&iacute;o
                 </button>
               </div>

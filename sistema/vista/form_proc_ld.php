@@ -1,4 +1,9 @@
-<?php 
+<?php
+$barra="";
+
+  if(isset($_GET['br'])){
+    $barra=$_GET['br'];
+  }
 
 ?>
 <style type="text/css">
@@ -67,7 +72,7 @@
 
                 <div class="form-group">
                   <label for="vineta">Etiqueta</label>
-                  <input type="text" class="form-control" id="vineta"  name='vineta' autofocus 
+                  <input type="text" value="<?php echo $barra;?>" class="form-control" id="vineta"  name='vineta' autofocus
                   onchange="procesarLD($('#id_zona').val(),
                                         $('#id_mensajero').val(),
                                         $('#vineta').val());
@@ -78,7 +83,20 @@
               </div>
               <div class="col-md-12 col-sm-6 col-12">
                   <div class="info-box ">
-                    <span class="info-box-icon bg-navy"><i class="far fa-envelope"></i></span>
+                    <span class="info-box-icon bg-navy">
+                      <?php
+                      if(isset($_GET['br'])) {
+                        ?>
+
+                        <i class="far fa-envelope" onclick="procesarLD($('#id_zona').val(),
+                                        $('#id_mensajero').val(),
+                                        $('#vineta').val());
+                        return false;"></i></span>
+                          <?php
+                      }else{
+                        echo '<i class="far fa-envelope"></i></span>';
+                      }
+                    ?>
                         <div class="info-box-content">
                           
                             <div class="form-group" id='msj_div'></div>

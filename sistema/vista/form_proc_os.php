@@ -52,7 +52,8 @@ $db=new model_tab();
                         <tbody id="developers">
                         <?php 
                             $id_ccosto = $_SESSION['ccosto'];
-                            $sql=$db->consulta_vineta_tabla($id_ccosto);
+                            $id_usr    = $_SESSION['cod_user'];
+                            $sql=$db->consulta_vineta_tabla($id_ccosto,$id_usr);
                             while ($row=$sql->fetch(PDO::FETCH_NUM))
                             { 
                         ?>

@@ -3,6 +3,8 @@ $shi_codigo=$_SESSION['shi_codigo'];
 $shi_nombre=strtoupper($_SESSION['cod_usuario']);
 
 date_default_timezone_set('America/El_Salvador');
+$nivel=$_SESSION['nivel'];
+
 ?>
 
 <!--Menu Procesos-->
@@ -28,7 +30,13 @@ date_default_timezone_set('America/El_Salvador');
         <p>Orden de Servicio</p>
       </a>
     </li>
+    <?php
+    if($nivel>2){
+    ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+    }else{
 
+
+    ?>
     <li class="nav-item">
       <a class="nav-link" href='index.php?prc=proc&accion=ar'>
         <i class="far fa-circle nav-icon"></i>
@@ -63,9 +71,21 @@ date_default_timezone_set('America/El_Salvador');
         <p>Carga Base Envios</p>
       </a>
     </li>
-  
+
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=proc&accion=proc_bolsas'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Programacion</p>
+      </a>
+    </li>
+    <?php
+      ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+    }
+    ?>
   </ul>
 </li>
+
+
 <!--Menu Consultas-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
@@ -98,6 +118,40 @@ date_default_timezone_set('America/El_Salvador');
   <ul class="nav nav-treeview">
 
     <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=repor_ingresos1'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Reporte de ingresos</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=reportehistorico'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Reporte de ingresos historico</p>
+      </a>
+    </li>
+
+    <?php
+    if($nivel>2){
+      ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+    }else{
+
+
+    ?>
+
+      <li class="nav-item">
+        <a class="nav-link" href='index.php?prc=rep_usuario&accion=usuarios'>
+          <i class="far fa-circle nav-icon"></i>
+          <p>Reporte general de Usuarios</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href='index.php?prc=centro_costos&accion=centrocosto'>
+          <i class="far fa-circle nav-icon"></i>
+          <p>Reporte de Centros de Costos</p>
+        </a>
+      </li>
+
+    <li class="nav-item">
       <a class="nav-link" href='index.php?prc=informe1'>
         <i class="far fa-circle nav-icon"></i>
         <p>Informe general</p>
@@ -105,8 +159,54 @@ date_default_timezone_set('America/El_Salvador');
     </li>
 
 
+    <?php
+      ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+    }
+
+    ?>
+
   </ul>
 </li>
+
+<?php
+if($nivel>2){
+  ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+}else{
+
+
+?>
+
+  <!--Menu Mantenimientos-->
+  <li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-cogs"></i>
+      <p>
+        Masivos
+        <i class="fas fa-angle-left right"></i>
+      </p>
+    </a>
+
+    <ul class="nav nav-treeview">
+
+      <li class="nav-item">
+        <a class="nav-link" href='index.php?prc=control_guia&accion=guias'>
+          <i class="fas fa-cog nav-icon"></i>
+          <p>Reasignacion de Mensajero</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href='index.php?prc=control_guia&accion=g_asignacion_m'>
+          <i class="fas fa-users-cog nav-icon"></i>
+          <p>Asignacion de Mensajero</p>
+        </a>
+      </li>
+
+    </ul>
+  </li>
+
+
+
 <!--Menu Mantenimientos-->
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
@@ -148,12 +248,30 @@ date_default_timezone_set('America/El_Salvador');
         <p>Usuarios</p>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=mant&accion=ruta'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Ruta</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=mant&accion=ruta_programada'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Programacion Ruta</p>
+      </a>
+    </li>
 
   </ul>
 </li>
 
 
+<?php
 
+  ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
+}
+
+
+?>
 
 
 

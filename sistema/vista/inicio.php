@@ -1,3 +1,15 @@
+<?php
+ini_set('session.cookie_lifetime', 0);
+ini_set('session.use_cookies', 1);
+ini_set('session.use_only_cookies', 1);
+ini_set('session.use_strict_mode', 1);
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_secure', 1);
+ini_set('session.use_trans_sid', 0);
+ini_set('session.cache_limiter', 'private_no_expire');
+ini_set('session.hash_function', 'sha256');
+header( 'Strict-Transport-Security: max-age=15552000; includeSubdomains; preload' );
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +39,14 @@
   <link rel="stylesheet" href="vista/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="vista/DataTables/datatables.min.css">
+
+  <!--botones-->
+  <link rel="stylesheet" href="vista/DataTables/DataTables-1.10.23/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="vista/DataTables/Buttons-1.6.5/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="vista/DataTables/Scroller-2.0.3/css/scroller.bootstrap4.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -56,7 +76,7 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-        <?php echo date('d-m-Y'); ?>
+        <?php echo date('d-m-Y H:i:s'); ?>
         </a>
 
 
