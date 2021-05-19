@@ -248,9 +248,10 @@ public function carga_img($movimiento,$barra,$imagen)
         $c=$db->consultar($sql);
         return $url;
     } catch (Exception $e){
-        return $e->errorMessage();
+        return $e->errorMessage;
     }
 
+   
 
 }
 
@@ -289,6 +290,38 @@ public function carga_img($movimiento,$barra,$imagen)
 
     }
 
+
+    public function gps_mensajero($longitud,$latitud,$mj,$accuracy,$altitude,$heading,$speed,$speedacurracy,$fecha,$tiempo){
+                $db=Db::getInstance();
+            $sql="insert into gps_mensajero(id_gps,
+            id_mensajero, 
+            longitude,
+            latitude,
+            accuracy,
+            altitude,
+            heading,
+            speed, 
+            speedacurracy,
+            fecha ,
+            tiempo)
+            values (
+                '0',
+                ".$mj.",
+                ".$longitud.",
+                ".$latitud.",
+                ".$accuracy.",
+                ".$altitude.",
+                ".$heading.",
+                ".$speed.",
+                ".$speedacurracy.",
+                ".$fecha.",
+                ".$tiempo."
+
+            )";
+
+            $db->consultar($sql);
+            
+    }
 
 
 }
