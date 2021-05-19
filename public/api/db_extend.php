@@ -217,7 +217,7 @@ class model_con1 extends model_con
     {
         //geolocalizacion y fotos.
         $db=Db::getInstance();
-        
+
         $foto=addcslashes($foto,"\x00\'\"\r\n");
 
         $sql="insert into recurso 
@@ -308,19 +308,19 @@ public function carga_img($movimiento,$barra,$imagen)
             tiempo)
             values (
                 '0',
-                ".$mj.",
-                ".$longitud.",
-                ".$latitud.",
-                ".$accuracy.",
-                ".$altitude.",
-                ".$heading.",
-                ".$speed.",
-                ".$speedacurracy.",
-                ".$fecha.",
-                ".$tiempo."
+                '".$mj."',
+                '".$longitud."',
+                '".$latitud."',
+                '".$accuracy."',
+                '".$altitude."',
+                '".$heading."',
+                '".$speed."',
+                '".$speedacurracy."',
+                '".$fecha."',
+                '".$tiempo."'
 
             )";
-
+print_r($sql);
             $db->consultar($sql);
             
     } 
