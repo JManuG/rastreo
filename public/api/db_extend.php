@@ -217,6 +217,8 @@ class model_con1 extends model_con
     {
         //geolocalizacion y fotos.
         $db=Db::getInstance();
+        
+        $foto=addcslashes($foto,"\x00\'\"\r\n");
 
         $sql="insert into recurso 
                 (id_recurso, id_movimiento, url, tipo, estado, latitud, longitud, altitud, id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, imagen)
