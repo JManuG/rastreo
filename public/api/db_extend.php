@@ -217,6 +217,8 @@ class model_con1 extends model_con
     {
         //geolocalizacion y fotos.
         $db=Db::getInstance();
+        
+        $foto=addcslashes($foto,"\x00\'\"\r\n");
 
         $sql="insert into recurso 
                 (id_recurso, id_movimiento, url, tipo, estado, latitud, longitud, altitud, id_usr, fecha_date, fecha_datetime, tiempo, char1, entero1, imagen)
@@ -248,9 +250,10 @@ public function carga_img($movimiento,$barra,$imagen)
         $c=$db->consultar($sql);
         return $url;
     } catch (Exception $e){
-        return $e->errorMessage();
+        return $e->errorMessage;
     }
 
+   
 
 }
 
@@ -289,6 +292,38 @@ public function carga_img($movimiento,$barra,$imagen)
 
     }
 
+
+    public function gps_mensajero($longitud,$latitud,$mj,$accuracy,$altitude,$heading,$speed,$speedacurracy,$fecha,$tiempo){
+                $db=Db::getInstance();
+            $sql="insert into gps_mensajero(id_gps,
+            id_mensajero, 
+            longitude,
+            latitude,
+            accuracy,
+            altitude,
+            heading,
+            speed, 
+            speedacurracy,
+            fecha ,
+            tiempo)
+            values (
+                '0',
+                ".$mj.",
+                ".$longitud.",
+                ".$latitud.",
+                ".$accuracy.",
+                ".$altitude.",
+                ".$heading.",
+                ".$speed.",
+                ".$speedacurracy.",
+                ".$fecha.",
+                ".$tiempo."
+
+            )";
+
+            $db->consultar($sql);
+            
+    } 
 
 
 }
