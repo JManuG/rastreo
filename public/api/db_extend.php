@@ -44,79 +44,9 @@ class model_con1 extends model_con
 
     public function manifiesto($id_usr)
     {
-        //captura lo datos de manifiesto.
-        $fecha_actual=date('Y-m-d');
+
         $db = Db::getInstance();
 
-       $fun=new model_con();
-/*
-        ///////////////////////////////////////////validacion de ruta asignada///////////////////
-
-        $com="Select id_progra,fecha from programacion where id_mensajero=$id_usr";
-        $ru=$db->consultar($com);
-        $fecha_ruta=$fecha_actual;
-
-        while($rutas=$ru->fetch(PDO::FETCH_OBJ)) {
-            $fecha_ruta=$rutas->fecha;
-            $id_progra=$rutas->id_progra;
-        }
-        //print_r($fecha_ruta);
-
-        if($fecha_actual!=$fecha_ruta){
-
-            $conp = "select ru.nombre_ruta,ag.agencia_nombre,ag.agencia_direccion,ag.agencia_codigo from programacion pro
-                inner join ruta ru on ru.id_ruta=pro.id_ruta
-                inner join ruta_detalle rd on rd.id_ruta=ru.id_ruta
-                inner join agencia ag on ag.id_agencia=rd.id_agencia
-                where id_mensajero=$id_usr";
-
-            $progra = $db->consultar($conp);
-            while ($rowp = $progra->fetch(PDO::FETCH_OBJ)) {
-
-                $vineta=$fun->consulta_correlativo1();
-                $tipo_envio='1';
-                $destinatario="Agencia ".$rowp->agencia_codigo." - ".$rowp->agencia_nombre;
-                $ccosto_des=$rowp->agencia_codigo;
-                $ccosto_nombre= "Agencia ".$rowp->agencia_nombre;
-                $des_direccion=$rowp->agencia_direccion;
-                $agencia=$rowp->agencia_nombre;
-                $descripcion='Ruta Automática';
-                $id_cat='5';
-                $ccosto_ori=1;
-                $id_cli=$id_usr;
-                $id_ccosto=1;
-                $id_orden='';
-                $id_zona=1;
-
-
-
-
-                            try {
-
-                                $fun->d_acuse($vineta, $tipo_envio, $destinatario, $ccosto_des, $ccosto_nombre, $des_direccion, $agencia, $descripcion, $id_cat);
-                                $fun->registra_envio1($ccosto_ori, $ccosto_des, $destinatario, $descripcion, $vineta, $tipo_envio, $des_direccion, $id_cat, $id_usr);
-
-                                $os = $fun->procesar_OS1($id_cli, $id_usr);
-                                if ($os > 0) {
-                                    $id_orden = $os;
-                                    $fun->procesar_GuiaOS1($id_cli, $id_ccosto, $id_orden, $id_usr);
-                                    $fun->procesar_AR1($vineta, $id_usr, $id_cli);
-                                    $fun->procesar_LD1($id_zona, $id_usr, $vineta, $id_usr, $id_cli);
-                                }
-
-                            }catch (Exception $e){
-                                print_r($e);
-                            }
-
-                            }
-
-                            $rutafin="update programacion set fecha='$fecha_actual' where id_progra=$id_progra";
-                            $db->consultar($rutafin);
-
-                            //print_r($rutafin);
-
-                        }
-           */             ////////////////////////////////////////validacion de ruta asignada/////////////////////////////
 
         $sql="select
                             gi.barra as idPedido,
@@ -325,6 +255,86 @@ print_r($sql);
             
     } 
 
+
+    public function rutas_auto($id_usr){
+
+        //captura lo datos de manifiesto.
+        $fecha_actual=date('Y-m-d');
+        $db = Db::getInstance();
+
+       $fun=new model_con();
+
+        ///////////////////////////////////////////validacion de ruta asignada///////////////////
+
+        $com="Select id_progra,fecha from programacion where id_mensajero=$id_usr";
+        $ru=$db->consultar($com);
+        $fecha_ruta=$fecha_actual;
+
+        while($rutas=$ru->fetch(PDO::FETCH_OBJ)) {
+            $fecha_ruta=$rutas->fecha;
+            $id_progra=$rutas->id_progra;
+        }
+       
+
+        if($fecha_actual!=$fecha_ruta){
+
+            $conp = "select ru.nombre_ruta,ag.agencia_nombre,ag.agencia_direccion,ag.agencia_codigo from programacion pro
+                inner join ruta ru on ru.id_ruta=pro.id_ruta
+                inner join ruta_detalle rd on rd.id_ruta=ru.id_ruta
+                inner join agencia ag on ag.id_agencia=rd.id_agencia
+                where id_mensajero=$id_usr and pro.id_progra=$id_progra";
+
+            $progra = $db->consultar($conp);
+            
+            while ($rowp = $progra->fetch(PDO::FETCH_OBJ)) {
+                
+                $vineta=$fun->consulta_correlativo1();
+                $tipo_envio='1';
+                $destinatario="Agencia ".$rowp->agencia_codigo." - ".$rowp->agencia_nombre;
+                $ccosto_des=$rowp->agencia_codigo;
+                $ccosto_nombre= "Agencia ".$rowp->agencia_nombre;
+                $des_direccion=$rowp->agencia_direccion;
+                $agencia=$rowp->agencia_nombre;
+                $descripcion='Ruta Automática';
+                $id_cat='5';
+                $ccosto_ori=1;
+                $id_cli=$id_usr;
+                $id_ccosto=1;
+                $id_orden='';
+                $id_zona=1;
+
+                //print_r($rowp);
+
+
+                            try {
+
+                               $fun->d_acuse($vineta, $tipo_envio, $destinatario, $ccosto_des, $ccosto_nombre, $des_direccion, $agencia, $descripcion, $id_cat);
+                               $fun->registra_envio1($ccosto_ori, $ccosto_des, $destinatario, $descripcion, $vineta, $tipo_envio, $des_direccion, $id_cat, $id_usr);
+
+                               $os = $fun->procesar_OS1($id_cli, $id_usr);
+                               if ($os > 0) {
+                                    $id_orden = $os;
+                                    $fun->procesar_GuiaOS1($id_cli, $id_ccosto, $id_orden, $id_usr);
+                                    $fun->procesar_AR1($vineta, $id_usr, $id_cli);
+                                    $fun->procesar_LD1($id_zona, $id_usr, $vineta, $id_usr, $id_cli);
+                                }
+
+                            }catch (Exception $e){
+                                print_r($e);
+                            }
+
+                            }
+
+                            $rutafin="update programacion set fecha='$fecha_actual' where id_progra=$id_progra";
+                            $db->consultar($rutafin);
+
+                            //print_r($rutafin);
+
+                        }
+                     ////////////////////////////////////////validacion de ruta asignada/////////////////////////////
+
+                     
+    }
 
 }
 ?>
