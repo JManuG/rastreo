@@ -47,6 +47,20 @@ class usuarios extends Db{
     return $sql;
   }
 
+
+  public function get_GPS(){
+
+    $db = Db::getInstance();
+
+    $sql="Select  mj.id_mensajero, mj.nombre, mj.telefono,gps.id_gps, gps.longitude, gps.latitude, gps.altitude, gps.fecha, gps.tiempo from mensajero mj 
+    left join gps_mensajero gps on gps.id_mensajero=mj.id_mensajero
+    where gps.id_gps=(select max(id_gps) from gps_mensajero where id_mensajero=mj.id_mensajero)";
+
+    $datos=$db->consultar($sql);
+    return $datos;
+
+  }
+
 }
 
 ?>

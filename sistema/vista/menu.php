@@ -130,6 +130,13 @@ $nivel=$_SESSION['nivel'];
       </a>
     </li>
 
+    <li class="nav-item">
+      <a class="nav-link" href='index.php?prc=rep_usuario&accion=mapa_mj'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>Posicion de mensajero</p>
+      </a>
+    </li>
+
     <?php
     if($nivel>2){
       ////////////////////////////////////////////////WARNING/////////////////////////////////////////////////////////////
