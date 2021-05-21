@@ -1,84 +1,5 @@
-
 <style>
-    /* Style the Image Used to Trigger the Modal */
-    #myImg {
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    #myImg:hover {opacity: 0.7;}
-
-    /* The Modal (background) */
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-    }
-
-    /* Modal Content (Image) */
-    .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-    }
-
-    /* Caption of Modal Image (Image Text) - Same Width as the Image */
-    #caption {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-        color: #ccc;
-        padding: 10px 0;
-        height: 150px;
-    }
-
-    /* Add Animation - Zoom in the Modal */
-    .modal-content, #caption {
-        animation-name: zoom;
-        animation-duration: 0.6s;
-    }
-
-    @keyframes zoom {
-        from {transform:scale(0)}
-        to {transform:scale(1)}
-    }
-
-    /* The Close Button */
-    .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    /* 100% Image Width on Smaller Screens */
-    @media only screen and (max-width: 700px){
-        .modal-content {
-            width: 100%;
-        }
-    }
+ 
 </style>
 
 <?php
@@ -93,6 +14,8 @@ ini_set("date.timezone", 'America/Guatemala');
 
 include('../model/model_mov.php');
 
+try 
+  {
 $db = new model_mov();
 
 $barra = $_POST['vineta'];
@@ -164,7 +87,7 @@ $barra = $_POST['vineta'];
                             $row_imagen_ar=$db->recurso_origen($barra);
                             while ($row_ar=$row_imagen_ar->fetch(PDO::FETCH_NUM))
                             {
-                                $imagen_ar=base64_encode($row_ar[0]);
+                                $imagen_ar=$row_ar[0];
                                 $lat_ar=$row_ar[1];
                                 $lon_ar=$row_ar[2];
                             }
@@ -201,10 +124,12 @@ $barra = $_POST['vineta'];
                             $row_imagen_dl=$db->recurso_destino($barra);
                             while ($row_dl=$row_imagen_dl->fetch(PDO::FETCH_NUM))
                             {
+                                if($row_dl[0]!=""){
                                 $imagen_dl=$row_dl[0];
                                 $lat_dl=$row_dl[1];
                                 $lon_dl=$row_dl[2];
                                 $geo_dl="https://www.google.com/maps/place/".$lat_dl.",".$lon_dl;
+                                }
                             }
 
 
@@ -272,55 +197,85 @@ $barra = $_POST['vineta'];
             </div>
 
             <div class="col-md-4">
-                <div class="card-orange">
-                    <img class="img-fluid pad" src="'data:image/jpeg;base64,<?php echo $imagen_ar;?>" alt="Recolección">
-                    <p>Imágen de recolección</p>
-                </div>
+            <div class="card-orange">
+                    <img class="img-fluid pad" src="'data:image/jpeg;base64,<?php echo $imagen_ar;?>" alt="Recoleccion">
+                    <p>Imágen de Recolección</p>
+                    <?php
+                    $img = '<a href="#" data-toggle="modal" data-target="#myModal1" style="width:auto;" onclick="solicitar_imagen('.$barra.')" ><img id="myImg" alt="Entrega Efectiva" style="width:20%;" src="data:image/jpeg;base64,'. $imagen_ar .'" ></a>
+                    ';
+                    print $img;
+                    ?>
 
+  <!--------------------------------------Waning-------------------------------->
+        <!-- The Modal -->
+  <div class="modal fade" id="myModal1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        <?php echo '<img id="myImg" alt="Entrega Efectiva" style="width:100%;" src="data:image/jpeg;base64,'. $imagen_ar .'" >';?>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+      <!--------------------------------------Waning-------------------------------->
+
+
+
+                  
+                </div>
                 <div class="card-orange">
                     <img class="img-fluid pad" src="'data:image/jpeg;base64,<?php echo $imagen_dl;?>" alt="Entrega">
                     <p>Imágen de Entrega</p>
                     <?php
-                    $img = '<img id="myImg" alt="Entrega Efectiva" style="width:20%;" src="data:image/jpeg;base64,'. $imagen_dl .'" >
-                    
-                    <!--------------------------------------Waning-------------------------------->
-                    <div id="myModal" class="modal">
-
-                        <!-- The Close Button -->
-                        <span class="close">&times;</span>
-
-                        <!-- Modal Content (The Image) -->
-                        <img class="modal-content" id="img01">
-
-                        <div id="caption"></div>
-                    </div>
-                    <!--------------------------------------Waning-------------------------------->
-                    <script>
-                        // Get the modal
-                        var modal = document.getElementById("myModal");
-
-                        // Get the image and insert it inside the modal - use its "alt" text as a caption
-                        var img = document.getElementById("myImg");
-                        var modalImg = document.getElementById("img01");
-                        var captionText = document.getElementById("caption");
-                        img.onclick = function(){
-                            modal.style.display = "block";
-                            modalImg.src = this.src;
-                            captionText.innerHTML = this.alt;
-                        }
-
-                        // Get the <span> element that closes the modal
-                        var span = document.getElementsByClassName("close")[0];
-
-                        // When the user clicks on <span> (x), close the modal
-                        span.onclick = function() {
-                            modal.style.display = "none";
-                        }
-                    </script>';
+                    $img = '<a href="#" data-toggle="modal" data-target="#myModal" style="width:auto;" onclick="solicitar_imagen('.$barra.')" ><img id="myImg" alt="Entrega Efectiva" style="width:20%;" src="data:image/jpeg;base64,'. $imagen_dl .'" ></a>
+                    ';
                     print $img;
                     ?>
 
+  <!--------------------------------------Waning-------------------------------->
+        <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        <?php echo '<img id="myImg" alt="Entrega Efectiva" style="width:100%;" src="data:image/jpeg;base64,'. $imagen_dl .'" >';?>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+      <!--------------------------------------Waning-------------------------------->
 
+
+
+                  
                 </div>
             </div>
             <!-- /.col -->
@@ -330,7 +285,8 @@ $barra = $_POST['vineta'];
         <!-- /.timeline -->
 </section>
 <!-- /.content -->
-
+<br>
+<br>
 <div class="row">
     <div class="col-md-12">
         <!-- Box Comment -->
@@ -389,6 +345,8 @@ $barra = $_POST['vineta'];
 
 
 <?php 
+  
+
  }else{
 ?>
 
@@ -403,4 +361,19 @@ $barra = $_POST['vineta'];
 </div>
 <?php
  }
+} catch(Exception $e) //capturamos un posible error
+{
+  //mostramos el texto del error al usuario	  
+  //echo "Error " . $e;
+  $respuesta=array(
+    'codigo'=> 502,
+    'mensaje'=>" A ocurrido un error critico: ".$e,
+    'SQL'=>$sql
+);
+  echo json_encode($respuesta);
+}
 ?>
+
+
+
+
