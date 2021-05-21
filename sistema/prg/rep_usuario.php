@@ -54,5 +54,22 @@ class rep_usuario{
     }
 
 
+    public function mapa_mj(){
+
+        if(!empty($_SESSION['cod_usuario']))
+        {
+            //require('../class/cab.php');
+            include('vista/inicio.php');
+            include('vista/mapa_mensajeros.php');
+            include('vista/pie_report.php');
+            //include('vista/inicio_pie.php');
+        }
+        else
+        {
+            echo "Debes iniciar session";
+        }
+
+    }
+
 
 }
