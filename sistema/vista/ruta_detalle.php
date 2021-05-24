@@ -159,7 +159,7 @@ $db=new model_tab();
                                     
                             $("#boton'.$cnt.'").click(function () {
                               
-                              $("#capa'.$cnt.'").load("prg/Ruta_Movimientos.php?vineta='.$vineta.'");
+                              $("#capa'.$cnt.'").load("../sistema/prg/Ruta_Movimientos.php?vineta='.$vineta.'");
                               $(".prueba'.$cnt.'").toggle("slow");
                             });
                             
@@ -251,7 +251,7 @@ $db=new model_tab();
           });
           function redireccionar(f1,f2){
 
-            setTimeout(window.location='index.php?prc=reportehistorico&f1='+f1+'&f2='+f2,2);
+            setTimeout(window.location='index.php?prc=gps&accion=detalle_ruta&id=<?php echo $id_ruta;?>&f1='+f1+'&f2='+f2,2);
           }
 
         </script>
