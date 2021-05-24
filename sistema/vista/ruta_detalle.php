@@ -153,7 +153,7 @@ $db=new model_tab();
                   echo "<td>".$row->agencia_direccion."</td>";
                   echo "<td>".$row->des_periodicidad."</td>";
                   echo "</tr>";
-                  echo "<tr class='prueba".$cnt."' style='display: none' ><td COLSPAN='7' > <div id='capa".$cnt."'>Hola funciona</div> </td> </tr>";
+                  echo "<tr class='prueba".$cnt."' style='display: none' ><td COLSPAN='7' > <div id='capa".$cnt."'></div> </td> </tr>";
                   echo '<script type="text/javascript">
                                 $(document).ready(function(){  
                                     
