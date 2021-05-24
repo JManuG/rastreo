@@ -111,6 +111,58 @@ class historico_ingresos extends Db
     return $imagen;
   }
 
+///////////////////////////////////////////////////*rutas autogeneradas*/////////////////////////////////////////////
+public function reporte_rutas(){
+
+  $db = Db::getInstance();
+  $sql="select * from ruta";
+  $ruta=$db->consultar($sql);
+  while($row_ruta=$ruta->fetch(PDO::FETCH_OBJ)){
+    $data[] = $row_ruta;
+  }
+  return $data;
+}
+
+public function ruta_detalle($id_ruta){
+  //aqui obtenemos el detalle de las rutas las cuales esta siguiendo el mensajero
+  $db = Db::getInstance();
+  $sql="select rd.comentario, rd.hora_ini, rd.hora_fin, ag.agencia_nombre, ag.agencia_direccion, pdd.des_periodicidad, ag.agencia_codigo
+        from ruta_detalle rd
+        inner join agencia ag on ag.id_agencia=rd.id_agencia
+        inner join periodicidad pdd on pdd.id_periodicidad=rd.id_periodicidad
+        
+        where rd.id_ruta=".$id_ruta;
+
+  $dd_ruta=$db->consultar($sql);
+  while ($row_detalle=$dd_ruta->fetch(PDO::FETCH_OBJ)){
+    $data[]=$row_detalle;
+  }
+
+  return $data;
+}
+
+public function vineta_ruta($codigo_agencia,$f_iniocio,$f_fin){
+
+  $db = Db::getInstance();
+  $sql=" select gi.barra  from guia gi
+                      inner join agencia ag on ag.id_agencia=gi.des_ccosto 
+          inner join manifiesto_linea ml on ml.id_envio=gi.id_envio
+                      inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
+                      inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
+                      where gi.fecha_date between '$f_iniocio' and '$f_fin' and gi.entero1=5
+                      and gi.des_ccosto = $codigo_agencia";
+
+  $dd_ruta=$db->consultar($sql);
+  while ($row_detalle=$dd_ruta->fetch(PDO::FETCH_OBJ)){
+    $data[]=$row_detalle;
+  }
+
+  return $data;
+
+}
+
 }
 ?>
+
+
 
