@@ -290,7 +290,7 @@ print_r($sql);
                 
                 $vineta=$fun->consulta_correlativo1();
                 $tipo_envio='1';
-                $destinatario=$rowp->nombre_ruta;
+                $destinatario="Ruta Autogenerada:".$rowp->agencia_nombre;
                 $ccosto_des=$rowp->agencia_codigo;
                 $ccosto_nombre= "Agencia ".$rowp->agencia_nombre;
                 $des_direccion=$rowp->agencia_direccion;
@@ -308,18 +308,25 @@ print_r($sql);
 
                             try {
 
-                               $fun->d_acuse($vineta, $tipo_envio, $destinatario, $ccosto_des, $ccosto_nombre, $des_direccion, $agencia, $descripcion, $id_cat);
-                               $fun->registra_envio1($ccosto_ori, $ccosto_des, $destinatario, $descripcion, $vineta, $tipo_envio, $des_direccion, $id_cat, $id_usr);
+                                $resultado=$fun->d_acuse($vineta, $tipo_envio, $destinatario, $ccosto_des, $ccosto_nombre, $des_direccion, $agencia, $descripcion, $id_cat);
+                                
+
+                                $resultado=$fun->registra_envio1($ccosto_ori, $ccosto_des, $destinatario, $descripcion, $vineta, $tipo_envio, $des_direccion, $id_cat, $id_usr);
+                               
 
                                $os = $fun->procesar_OS1($id_cli, $id_usr);
+
                                if ($os > 0) {
                                     $id_orden = $os;
                                     $fun->procesar_GuiaOS1($id_cli, $id_ccosto, $id_orden, $id_usr);
                                     $fun->procesar_AR1($vineta, $id_usr, $id_cli);
                                     $fun->procesar_LD1($id_zona, $id_usr, $vineta, $id_usr, $id_cli);
+
+
+                                   
                                 }
 
-                            }catch (Exception $e){
+                           }catch (Exception $e){
                                 print_r($e);
                             }
 
