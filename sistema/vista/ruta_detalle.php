@@ -159,7 +159,7 @@ $db=new model_tab();
                                     
                             $("#boton'.$cnt.'").click(function () {
                               
-                              $("#capa'.$cnt.'").load("../sistema/prg/Ruta_Movimientos.php?vineta='.$vineta.'");
+                              $("#capa'.$cnt.'").load("prg/Ruta_Movimientos.php?vineta='.$vineta.'");
                               $(".prueba'.$cnt.'").toggle("slow");
                             });
                             
