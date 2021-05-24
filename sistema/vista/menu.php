@@ -144,6 +144,13 @@ $nivel=$_SESSION['nivel'];
 
 
     ?>
+    
+<li class="nav-item">
+        <a class="nav-link" href='index.php?prc=gps&accion=rastreo_rutas'>
+          <i class="far fa-circle nav-icon"></i>
+          <p>Reporte Rutas automaticas</p>
+        </a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href='index.php?prc=rep_usuario&accion=usuarios'>
