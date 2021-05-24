@@ -3,9 +3,8 @@ header('Strict-Transport-Security: max-age=0;');
 //$postdata = json_decode(file_get_contents("php://input"));
 
 include("db_extend.php");
+
 $x1=new model_con1();
-
-
 
    $id=	$_GET['mensajero'];
 
@@ -43,7 +42,7 @@ $x1=new model_con1();
                     'recipe'=>$row->dep_remitente,//departamento_remitente
                     'insuranceId'=>0,
                     'nit'=>"$row->createdAt",
-                    'cliId'=>"",
+                    'cliId'=>$row->categoria,
                     'char1'=>$row->direccion,
                     'estado'=>0
                 ];
@@ -78,7 +77,7 @@ $x1=new model_con1();
                     'recipe'=>$row->dep_remitente,//departamento_remitente
                     'insuranceId'=>0,
                     'nit'=>"",
-                    'cliId'=>"",
+                    'cliId'=>$row->categoria,
                     'char1'=>$row->direccion,
                     'estado'=>0
                 ];
