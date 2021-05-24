@@ -290,12 +290,12 @@ print_r($sql);
                 
                 $vineta=$fun->consulta_correlativo1();
                 $tipo_envio='1';
-                $destinatario="Agencia ".$rowp->agencia_codigo." - ".$rowp->agencia_nombre;
+                $destinatario=$rowp->nombre_ruta;
                 $ccosto_des=$rowp->agencia_codigo;
                 $ccosto_nombre= "Agencia ".$rowp->agencia_nombre;
                 $des_direccion=$rowp->agencia_direccion;
                 $agencia=$rowp->agencia_nombre;
-                $descripcion='Ruta Automática';
+                $descripcion='Ruta Automática:'.$rowp->nombre_ruta;
                 $id_cat='5';
                 $ccosto_ori=1;
                 $id_cli=$id_usr;
