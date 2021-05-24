@@ -3,6 +3,7 @@ header('Strict-Transport-Security: max-age=0;');
 //$postdata = json_decode(file_get_contents("php://input"));
 
 
+
         $a=array(
             [
               'idPedido'=> random_int(0,100),
@@ -106,6 +107,7 @@ header('Strict-Transport-Security: max-age=0;');
                 'estado'=>0,
             ],
 =======
+
 include("db_extend.php");
 
 $x1=new model_con1();
