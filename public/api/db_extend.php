@@ -379,7 +379,7 @@ print_r($sql);
                          inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
                          left join zona z on z.id_zona=mv.id_zona
                          inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
-                         where mj.id_mensajero=30
+                         where mj.id_mensajero=$id_usr
                          and mv.id_chk=3
                          and gi.estado=4
                          and ml.estado=1
@@ -391,7 +391,7 @@ print_r($sql);
         $c= $db->consultar($sql);
 
         //print_r($c);
-
+        $data=[];
         while ($row=$c->fetch(PDO::FETCH_OBJ))
         {
             $data[] = $row;

@@ -59,24 +59,19 @@ $x1=new model_con1();
             foreach($x2 as $row) {
                 $cnt++;
                 $b[]=[
-                    'idPedido'=> (int)$row->idPedido,
-                    'idRequest'=>$row->idPedido,
-                    'quantity'=>0,
-                    'total'=>0.0,
-                    'name' =>$row->name,
-                    'address' =>$row->address,
-                    'wayToPay'=>"Tarjeta",
-                    'createdAt'=>str_replace(" ", "T", $row->createdAt),
-                    'requestId'=>"1",
-                    'comments'=>$row->comments,
-                    'additionalShops'=>$row->remitente, //remitente
-                    'vuelto'=>$row->nombre_remitente,//nombre remitente
-                    'recipe'=>$row->dep_remitente,//departamento_remitente
-                    'insuranceId'=>0,
-                    'nit'=>"",
-                    'cliId'=>$row->categoria,
-                    'char1'=>$row->direccion,
-                    'estado'=>0
+                    'barra'=> (int)$row->idPedido,
+                    'pedido'=>$row->idenvio,
+                    'destinatario' =>$row->destinatario,
+                    'zona' =>$row->zona,
+                    'fecha_hora'=>"$row->fecha_hora",
+                    'comentario'=>$row->comentario,
+                    'remitente'=>$row->remitente, //remitente
+                    'nombre_remitente'=>$row->nombre_remitente,//nombre remitente
+                    'dep_remitente'=>$row->dep_remitente,//departamento_remitente
+                    'fecha'=>"$row->fecha_hora",
+                    'categoria'=>$row->categoria,
+                    'direccion'=>$row->direccion,
+                    'estado'=>$row->estado
                 ];
             }
 
