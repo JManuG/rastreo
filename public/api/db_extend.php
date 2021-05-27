@@ -78,7 +78,8 @@ class model_con1 extends model_con
                         and mv.id_chk=3
                         and gi.estado=4
                         and ml.estado=1
-                        and gi.entero1!=5";
+                        and gi.entero1!=5
+                        group by gi.id_guia";
 
 /*--and mv.id_chk=3
                         --and gi.estado=4
