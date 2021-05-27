@@ -455,8 +455,8 @@ class model_con extends Db
 	{
 		$db=Db::getInstance();
 		session_start();
-		$date		=date('Y/m/d');
-		$datetime	=date('Y/m/d H:i:s');
+		$date		=date('Y-m-d');
+		$datetime	=date('Y-m-d H:i:s');
 		$tiempo		=time();
 		$id_usr		=$_SESSION['cod_user'];
 		$shi_codigo =1;//isset($_SESSION['cli_id']);
@@ -464,6 +464,16 @@ class model_con extends Db
 		//Se valida que el codigo de la agencia venga lleno para insertar sino es un update
 		//if($id_usr==''){
 			//Insert
+				$sql1="select max(id_usr) as id_usr from usuario";
+				$dd=$db->consultar($sql1);
+
+				foreach($dd as $rw){
+					
+						$id_usr_las=$rw['id_usr']+1;
+				}
+
+					
+
 			$sql="INSERT INTO rastreo.usuario
 								(
 									id_usr, 
@@ -488,7 +498,7 @@ class model_con extends Db
 									entero1, 
 									cliente_cli_id
 								)
-					VALUES (0,
+					VALUES ($id_usr_las,
 							'$usr_cod2',
 							'".md5($usr_pass)."',
 							'$usr_nombre',
@@ -501,7 +511,7 @@ class model_con extends Db
 							0,
 							0,
 							'$id_usr',
-							'".date('Y/m/d')."',
+							'".date('Y-m-d')."',
 							'".date('H:i:s')."',
 							$tiempo,
 							1,
@@ -528,7 +538,7 @@ class model_con extends Db
 		if($stmt->execute()){
 			$msj="Insertado";
 		}else{
-			$msj="Error";
+			$msj="Error ";
 		}
 		//echo $msj;
 		return $msj;
@@ -1955,7 +1965,7 @@ class model_con extends Db
 	{
 		$db=Db::getInstance();
 		session_start();
-		$date		=date('Y/m/d');
+		$date		= "2021/05/25";//date('Y/m/d');
 		$datetime	=date('Y/m/d H:i:s');
 		$tiempo		=time();
 		$id_usr		=$_SESSION['cod_user'];
