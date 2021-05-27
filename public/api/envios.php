@@ -115,7 +115,7 @@ $x1=new model_con1();
    $id=	$_GET['mensajero'];
 
    /**autogenerados prueba de recorrido*/
-   $data_auto=$x1->rutas_auto($id);
+   //$data_auto=$x1->rutas_auto($id);
 
      //echo json_encode($data_auto);
     // echo "/*/*/*/*/*/*/*/*/******/*/*/*/*/*/*/*/*/*/*/*///////////////////////**************";
