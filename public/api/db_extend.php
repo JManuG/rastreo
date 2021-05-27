@@ -381,9 +381,10 @@ print_r($sql);
                          left join zona z on z.id_zona=mv.id_zona
                          inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
                          where mj.id_mensajero=$id_usr
-                         and mv.id_chk=3
+                         and mv.id_movimiento=(select max(id_movimiento) from movimiento where id_envio=gi.id_envio)
+                         and mv.id_chk in (3,2,1)
                          and gi.estado in (4,2,3)
-                         and ml.estado=1
+                         and ml.estado in (1,2)
                          and gi.entero1=5
                         group by gi.id_guia";
 
