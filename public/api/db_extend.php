@@ -354,7 +354,7 @@ print_r($sql);
 
 
         $sql="select 
-        distinct gi.id_envio as idenvio,
+        distinct  distinct gi.id_envio as idenvio,
                              gi.barra as idPedido,
                              gi.destinatario as destinatario,
                              cct.ccosto_nombre as centro_costo,
@@ -381,9 +381,10 @@ print_r($sql);
                          inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
                          where mj.id_mensajero=$id_usr
                          and mv.id_chk=3
-                         and gi.estado=4
+                         and gi.estado in (4,2,3)
                          and ml.estado=1
-                         and gi.entero1=5";
+                         and gi.entero1=5
+                        group by gi.id_guia";
 
 /*--and mv.id_chk=3
                         --and gi.estado=4
