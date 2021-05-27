@@ -48,7 +48,7 @@ class model_con1 extends model_con
         $db = Db::getInstance();
 
 
-        $sql="select
+        $sql="select distinct gi.id_envio, 
                             gi.barra as idPedido,
                             gi.destinatario as name,
                             cct.ccosto_nombre as centro_costo,
@@ -77,7 +77,8 @@ class model_con1 extends model_con
                         where mj.id_mensajero=$id_usr
                         and mv.id_chk=3
                         and gi.estado=4
-                        and ml.estado=1";
+                        and ml.estado=1
+                        and gi.entero1!=5";
 
 /*--and mv.id_chk=3
                         --and gi.estado=4
@@ -332,7 +333,7 @@ print_r($sql);
 
                             }
 
-                            $rutafin="update programacion set fecha='$fecha_actual' where id_progra=$id_progra";
+                            $rutafin="update programacion set fecha='$fecha_actual', estado='2' where id_progra=$id_progra";
                             $db->consultar($rutafin);
 
                             //print_r($rutafin);
@@ -343,5 +344,62 @@ print_r($sql);
                      
     }
 
+
+
+    public function manifiesto_ruta($id_usr)
+    {
+        //esta funcion solo nos proporciona las encomiendas que se an autogenerrado,
+        //mediante el procesos de asignacion de rutas el tipo debne de ser 5 para que estas sean visibles.
+        $db = Db::getInstance();
+
+
+        $sql="select 
+        distinct gi.id_envio as idenvio,
+                             gi.barra as idPedido,
+                             gi.destinatario as destinatario,
+                             cct.ccosto_nombre as centro_costo,
+                             gi.des_direccion as direccion,
+                             ct.des_cat as categoria,
+                             mv.descripcion as estado,
+                             gi.fecha_datetime as fecha_hora,
+                             gi.comentario as comentario,
+                             cct.ccosto_nombre as centro_costo,
+                             z.zon_descripcion as zona,
+                             gi.estado as estado_guia,
+                             us.agencia_codigo as remitente,
+                             us.agencia_nombre as nombre_remitente,
+                             us.agencia_nombre as dep_remitente
+                         from guia gi
+                         inner join agencia us on us.agencia_codigo=gi.des_ccosto
+                         left join agencia cctr on cctr.agencia_codigo=gi.des_ccosto
+                         left join centro_costo cct on cct.id_ccosto=gi.des_ccosto
+                         left join categoria ct on ct.id_cat=gi.entero1
+                         inner join movimiento mv on mv.id_envio=gi.id_envio
+                         inner join manifiesto_linea ml on ml.id_envio=gi.id_envio
+                         inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
+                         left join zona z on z.id_zona=mv.id_zona
+                         inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
+                         where mj.id_mensajero=30
+                         and mv.id_chk=3
+                         and gi.estado=4
+                         and ml.estado=1
+                         and gi.entero1=5";
+
+/*--and mv.id_chk=3
+                        --and gi.estado=4
+                        --and ml.estado=1*/
+        $c= $db->consultar($sql);
+
+        //print_r($c);
+
+        while ($row=$c->fetch(PDO::FETCH_OBJ))
+        {
+            $data[] = $row;
+        }
+
+        //print_r($data);
+        return $data;
+
+    }
 }
 ?>
