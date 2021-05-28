@@ -404,5 +404,67 @@ print_r($sql);
         return $data;
 
     }
+
+
+
+    public function manifiesto_rebuild($id_usr)
+    {
+        //esta funcion solo nos proporciona las encomiendas que se an autogenerrado,
+        //mediante el procesos de asignacion de rutas el tipo debne de ser 5 para que estas sean visibles.
+        $db = Db::getInstance();
+
+
+        $sql="select distinct gi.id_envio, 
+                                gi.barra as barra,
+                                gi.destinatario as destinatario,
+                                cct.ccosto_nombre as cc_destinatario,
+                                gi.des_direccion as destino_direccion,
+                                ct.des_cat as categoria,
+                                mv.descripcion as estado,
+                                gi.fecha_datetime as fecha_cracion,
+                                gi.comentario as comentario,
+                                cctr.ccosto_nombre as centro_costo,
+                                z.zon_descripcion as zona,
+                                gi.estado as estado_guia,
+                                us.id_usr as remitente,
+                                us.usr_nombre as nombre_remitente,
+                                cctr.ccosto_nombre as dep_remitente
+                            from guia gi
+                            inner join usuario us on us.id_usr=gi.id_usr
+                            left join centro_costo cctr on cctr.id_ccosto=us.id_ccosto
+                            left join centro_costo cct on cct.id_ccosto=gi.des_ccosto
+                            left join categoria ct on ct.id_cat=gi.entero1
+                            inner join movimiento mv on mv.id_envio=gi.id_envio
+                            inner join manifiesto_linea ml on ml.id_envio=gi.id_envio
+                            inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
+                            left join zona z on z.id_zona=mv.id_zona
+                            inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
+                            where mj.id_mensajero=$id_usr
+                            and mv.id_movimiento=(select max(id_movimiento) from movimiento where id_envio=gi.id_envio)
+                            and mv.id_chk in (3,2,1)
+                            and gi.estado in (4,2,3)
+                            and ml.estado in (1,2)
+                            and gi.entero1!=5
+                            group by gi.id_guia";
+
+                        /*--and mv.id_chk=3
+                        --and gi.estado=4
+                        --and ml.estado=1*/
+        $c= $db->consultar($sql);
+
+        //print_r($c);
+        $data=[];
+        while ($row=$c->fetch(PDO::FETCH_OBJ))
+        {
+            $data[] = $row;
+        }
+
+        //print_r($data);
+        return $data;
+
+    }
+
+
+
 }
 ?>
