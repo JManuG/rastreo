@@ -292,7 +292,7 @@ print_r($sql);
                 
                 $vineta=$fun->consulta_correlativo1();
                 $tipo_envio='1';
-                $destinatario="Ruta Autogenerada:".$rowp->agencia_nombre;
+                $destinatario="Ruta Autogenerada".$rowp->agencia_nombre;
                 $ccosto_des=$rowp->agencia_codigo;
                 $ccosto_nombre= "Agencia ".$rowp->agencia_nombre;
                 $des_direccion=$rowp->agencia_direccion;
@@ -369,7 +369,7 @@ print_r($sql);
                              gi.estado as estado_guia,
                              us.agencia_codigo as remitente,
                              us.agencia_nombre as nombre_remitente,
-                             us.agencia_nombre as dep_remitente
+                             us.agencia_codigo as dep_remitente
                          from guia gi
                          inner join agencia us on us.agencia_codigo=gi.des_ccosto
                          left join agencia cctr on cctr.agencia_codigo=gi.des_ccosto
