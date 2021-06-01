@@ -115,17 +115,26 @@ $db=new model_tab();
             <th class="sorting" >
               Remitente</th>
             <th>
-            Departamento</th>
+            Departamento
+          </th>
             <th>
-              Fecha</th>
+              Fecha
+            </th>
             <th>
-              Destinatario</th>
+              Destinatario
+            </th>
             <th>
-              Zona</th>
+              Direccion
+            </th>
+            <th>
+              Centro de costo remitente
+            </th>
+            <th>
+              Categoria
+            </th>
             <!--th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
               Centro de Costo</th-->
-            <th>
-              Categoria</th>
+          
             <th>
               Estado</th>
 
@@ -193,7 +202,7 @@ $db=new model_tab();
                     <td>" . $row->fecha        . "</td>
                     <td>" . $row->destinatario . "</td>
                     <td>" . $row->direccion    . "</td>
-                     
+                    <td>" . $row->centro_costo . "</td>
                     <td>" . $row->categoria    . "</td>
                     <td>" . $row->estado       . "</td>
                     <td>" . $row->mensajero    . "</td>
@@ -211,7 +220,7 @@ $db=new model_tab();
                     <td>" . $row->fecha . "</td>
                     <td>" . $row->destinatario . "</td>
                     <td>" . $row->direccion . "</td>
-                     
+                    <td>" . $row->centro_costo . "</td>
                     <td>" . $row->categoria . "</td>
                     <td>" . $row->estado. "</td>
                     <td>" . $msj. "</td>
@@ -244,14 +253,30 @@ $db=new model_tab();
           </tbody>
           <tfoot>
           <tr>
-            <th rowspan="1" colspan="1">Transaccion</th>
-            <th rowspan="1" colspan="1">Fecha</th>
-            <th rowspan="1" colspan="1">Remitente</th>
-            <th rowspan="1" colspan="1">Departamento</th>
-            <th rowspan="1" colspan="1">Destinatario</th>
-            <th rowspan="1" colspan="1">Zona</th>
+          <th>
+              Transaccion</th>
+            <th class="sorting" >
+              Remitente</th>
+            <th>
+            Departamento
+          </th>
+            <th>
+              Fecha
+            </th>
+            <th>
+              Destinatario
+            </th>
+            <th>
+              Direccion
+            </th>
+            <th>
+              Centro de costo remitente
+            </th>
+            <th>
+            Categoria
+            </th>
             <!--th rowspan="1" colspan="1">Centro de Costo</th-->
-            <th rowspan="1" colspan="1">Categoria</th>
+            
             <th rowspan="1" colspan="1">Estado</th>
             <th>
               Mensajero</th>
@@ -388,7 +413,7 @@ $db=new model_tab();
           },
           //funcion para poder selecionar el estado de forma dinamica.
           initComplete: function () {
-            this.api().columns(7).every( function () {
+            this.api().columns(8).every( function () {
               var column = this;
               var select = $('<select><option value="">Estado</option></select>')
                 .appendTo( $(column.header()).empty() )

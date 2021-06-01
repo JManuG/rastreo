@@ -36,6 +36,7 @@ class historico_ingresos extends Db
                         left join mensajero mj on mj.id_mensajero=mnf.id_mensajero
         where mv.id_movimiento=(select max(id_movimiento) from movimiento where id_envio=gi.id_envio)
                 and gi.fecha_date between '".$f1."' and '".$f2."' 
+                and gi.entero1!=5
                         order by gi.barra desc";
 
     //and mv.descripcion='ARRIBO' or mv.descripcion='INGRESO'
@@ -158,6 +159,12 @@ public function vineta_ruta($codigo_agencia,$f_iniocio,$f_fin){
   }
 
   return $data;
+
+}
+
+
+public function reporte_automaticas(){
+      
 
 }
 
