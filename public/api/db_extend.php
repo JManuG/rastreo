@@ -49,37 +49,37 @@ class model_con1 extends model_con
 
 
         $sql="select distinct gi.id_envio, 
-                            gi.barra as idPedido,
-                            gi.destinatario as name,
-                            cct.ccosto_nombre as centro_costo,
-                            gi.des_direccion as direccion,
-                            ct.des_cat as categoria,
-                            mv.descripcion as estado,
-                            gi.fecha_datetime as createdAt,
-                            gi.comentario as comments,
-                            cct.ccosto_nombre as centro_costo,
-                            z.zon_descripcion as address,
-                            gi.estado as estado_guia,
-                            us.id_usr as remitente,
-                            us.usr_nombre as nombre_remitente,
-                            cctr.ccosto_nombre as dep_remitente
-       
-                        from guia gi
-                        inner join usuario us on us.id_usr=gi.id_usr
-                        left join centro_costo cctr on cctr.id_ccosto=us.id_ccosto
-                        left join centro_costo cct on cct.id_ccosto=gi.des_ccosto
-                        left join categoria ct on ct.id_cat=gi.entero1
-                        inner join movimiento mv on mv.id_envio=gi.id_envio
-                        inner join manifiesto_linea ml on ml.id_envio=gi.id_envio
-                        inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
-                        left join zona z on z.id_zona=mv.id_zona
-                        inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
-                        where mj.id_mensajero=$id_usr
-                        and mv.id_chk=3
-                        and gi.estado=4
-                        and ml.estado=1
-                        and gi.entero1!=5
-                        group by gi.id_guia";
+                                gi.barra as idPedido,
+                                gi.destinatario as name,
+                                cct.ccosto_nombre as centro_costo,
+                                gi.des_direccion as direccion,
+                                ct.des_cat as categoria,
+                                mv.descripcion as estado,
+                                gi.fecha_datetime as createdAt,
+                                gi.comentario as comments,
+                                cct.ccosto_nombre as centro_costo,
+                                z.zon_descripcion as address,
+                                gi.estado as estado_guia,
+                                us.id_usr as remitente,
+                                us.usr_nombre as nombre_remitente,
+                                cctr.ccosto_nombre as dep_remitente
+
+                            from guia gi
+                            inner join usuario us on us.id_usr=gi.id_usr
+                            left join centro_costo cctr on cctr.id_ccosto=us.id_ccosto
+                            left join centro_costo cct on cct.id_ccosto=gi.des_ccosto
+                            left join categoria ct on ct.id_cat=gi.entero1
+                            inner join movimiento mv on mv.id_envio=gi.id_envio
+                            inner join manifiesto_linea ml on ml.id_envio=gi.id_envio
+                            inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
+                            left join zona z on z.id_zona=mv.id_zona
+                            inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
+                            where mj.id_mensajero=$id_usr
+                            and mv.id_chk=3
+                            and gi.estado=4
+                            and ml.estado=1
+                            and gi.entero1!=5
+                            group by gi.id_guia";
 
 /*--and mv.id_chk=3
                         --and gi.estado=4
@@ -268,7 +268,7 @@ print_r($sql);
 
         ///////////////////////////////////////////validacion de ruta asignada///////////////////
 
-        $com="Select id_progra,fecha from programacion where id_mensajero=$id_usr";
+        $com="Select id_progra,fecha from programacion where id_mensajero=$id_usr and estado=1";
         $ru=$db->consultar($com);
         $fecha_ruta=$fecha_actual;
 
@@ -280,7 +280,7 @@ print_r($sql);
 
         if($fecha_actual!=$fecha_ruta){
 
-            $conp = "select ru.nombre_ruta,ag.agencia_nombre,ag.agencia_direccion,ag.agencia_codigo from programacion pro
+            $conp = "select ru.id_ruta, ru.nombre_ruta,ag.agencia_nombre,ag.agencia_direccion,ag.agencia_codigo from programacion pro
                 inner join ruta ru on ru.id_ruta=pro.id_ruta
                 inner join ruta_detalle rd on rd.id_ruta=ru.id_ruta
                 inner join agencia ag on ag.id_agencia=rd.id_agencia
@@ -304,13 +304,17 @@ print_r($sql);
                 $id_ccosto=1;
                 $id_orden='';
                 $id_zona=1;
+                $id_ruta=$rowp->id_ruta;
 
                 //print_r($rowp);
 
 
                             try {
+                                    //por motivos de reporterioa se utilizara el id de ruta como un tipo de envio,
+                                    //de esta forma se podra facilmente utilizar en la reporteria.
+                                    //
 
-                                $resultado=$fun->d_acuse($vineta, $tipo_envio, $destinatario, $ccosto_des, $ccosto_nombre, $des_direccion, $agencia, $descripcion, $id_cat);
+                                $resultado=$fun->d_acuse($vineta, $id_ruta, $destinatario, $ccosto_des, $ccosto_nombre, $des_direccion, $agencia, $descripcion, $id_cat);
                                 
 
                                 $resultado=$fun->registra_envio1($ccosto_ori, $ccosto_des, $destinatario, $descripcion, $vineta, $tipo_envio, $des_direccion, $id_cat, $id_usr);
@@ -334,7 +338,7 @@ print_r($sql);
 
                             }
 
-                            $rutafin="update programacion set fecha='$fecha_actual', estado='2' where id_progra=$id_progra";
+                            $rutafin="update programacion set fecha='$fecha_actual', estado='3' where id_progra=$id_progra";
                             $db->consultar($rutafin);
 
                             //print_r($rutafin);
@@ -464,7 +468,7 @@ print_r($sql);
 
     }
 
-
+    
 
 }
 ?>
