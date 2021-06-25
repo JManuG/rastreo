@@ -146,10 +146,6 @@ public function vineta_ruta($codigo_agencia,$f_iniocio,$f_fin){
 
   $db = Db::getInstance();
   $sql=" select gi.barra  from guia gi
-                      inner join agencia ag on ag.id_agencia=gi.des_ccosto 
-          inner join manifiesto_linea ml on ml.id_envio=gi.id_envio
-                      inner join manifiesto mnf on mnf.n_manifiesto=ml.n_manifiesto
-                      inner join mensajero mj on mj.id_mensajero=mnf.id_mensajero
                       where gi.fecha_date between '$f_iniocio' and '$f_fin' and gi.entero1=5
                       and gi.des_ccosto = $codigo_agencia";
 
