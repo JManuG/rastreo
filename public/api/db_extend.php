@@ -280,6 +280,10 @@ print_r($sql);
 
         if($fecha_actual!=$fecha_ruta){
 
+            $rutafin="update programacion set fecha='$fecha_actual', estado='3' where id_progra=$id_progra";
+            $db->consultar($rutafin);
+
+
             $conp = "select ru.id_ruta, ru.nombre_ruta,ag.agencia_nombre,ag.agencia_direccion,ag.agencia_codigo from programacion pro
                 inner join ruta ru on ru.id_ruta=pro.id_ruta
                 inner join ruta_detalle rd on rd.id_ruta=ru.id_ruta
