@@ -139,6 +139,7 @@ $db=new model_tab();
             $cnt=0;
                 foreach ($x2 as $row){
                   $vn=$x1->vineta_ruta($row->agencia_codigo,$f1,$f2);
+                 
                   $vineta="0";
                     foreach ($vn as $v){
                       $vineta=$v->barra;
