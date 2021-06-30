@@ -9,6 +9,9 @@ ini_set('session.use_trans_sid', 0);
 ini_set('session.cache_limiter', 'private_no_expire');
 ini_set('session.hash_function', 'sha256');
 header( 'Strict-Transport-Security: max-age=15552000; includeSubdomains; preload' );
+
+date_default_timezone_set('America/Guatemala');
+
 ?>
 <!DOCTYPE html>
 <html>
