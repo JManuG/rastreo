@@ -155,7 +155,7 @@ if($encuesta==0){
     <section class="row">
       <div class="col-md-12">
         <button type="submit" class="btn btn-info" id="saveForm" >Guardar Encuesta</button>
-        <button type="button" class="btn btn-danger" id="clearForm">Limpiar formulario</button>
+        
       </div>
     </section>
   </div>
