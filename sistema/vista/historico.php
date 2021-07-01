@@ -12,11 +12,11 @@ class historico_ingresos extends Db
   public function reporte_h($f1,$f2)
   {
     $db=Db::getInstance();
-    $sql = "select
+    $sql = "select distinct distinct
                             gi.barra as barra,
                             us.usr_nombre as remitente,
                             gi.destinatario as destinatario,
-                            cct.ccosto_nombre as centro_costo,
+                            if(gi.entero1!=5,cct.ccosto_nombre , cctu.ccosto_nombre)as centro_costo,
                             gi.des_direccion as direccion,
                             ct.des_cat as categoria,
                             mv.descripcion as estado,
@@ -28,7 +28,7 @@ class historico_ingresos extends Db
                         from guia gi
                         inner join usuario us on us.id_usr=gi.id_usr
                             inner join centro_costo cctu on cctu.id_ccosto=us.id_ccosto
-                        inner join centro_costo cct on cct.id_ccosto=gi.des_ccosto
+                        left join centro_costo cct on cct.id_ccosto=gi.des_ccosto
                         inner join categoria ct on ct.id_cat=gi.entero1
                         inner join movimiento mv on mv.id_envio=gi.id_envio
                         left join manifiesto_linea ml on ml.id_envio=gi.id_envio
@@ -159,9 +159,28 @@ public function vineta_ruta($codigo_agencia,$f_iniocio,$f_fin){
 }
 
 
-public function reporte_automaticas(){
-      
+public function encuesta(){
+  $db = Db::getInstance();
+  $id_usr= $_SESSION['cod_user'];
+  $sql="select * from encuesta where id_usr=".$id_usr;
+  //print_r($sql);
+  $data=0;
+  $dd_ruta=$db->consultar($sql);
+  while ($row_detalle=$dd_ruta->fetch(PDO::FETCH_OBJ)){
+    $data=1;
+  }
 
+  return $data;
+
+
+}
+public function llenar_encuesta($r1,$r2,$r3,$r4,$r5){
+  $db = Db::getInstance();
+  $id_usr= $_SESSION['cod_user'];
+  $sql="insert into encuesta (id_encuesta, id_usr, pregunta_1, pregunta_2, pregunta_3, pregunta_4, pregunta_5)
+  values(0,$id_usr,$r1,$r2,$r3,$r4,'$r5')";
+  $db->consultar($sql);
+  //print_r($sql);
 }
 
 }
