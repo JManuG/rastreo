@@ -174,7 +174,7 @@ $barra = $_POST['vineta'];
                     <div>
                         <i class="fas <?php echo $param_ld;?>"></i>
                         <div class="timeline-item">
-                            <h3 class="timeline-header "><a href="#">Salida a Ruta</a> <?php echo $datetime_ld; ?></h3>
+                            <h3 class="timeline-header "><a href="#">Salida a Ruta</a> <?php echo $datetime_ar; ?></h3>
                         </div>
                     </div>
                     <!-- END timeline item -->
