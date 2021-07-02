@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 require ('class/db.php');
 try 
   {
-    $usr	=$_POST['usr'];
+    $usr	=preg_replace('/[0-9\@\=<>*.\;\" "\']+/', '',$_POST['usr']);
     $pass	=md5($_POST['pss']);
     //$log  = $_POST['lg'];
     $resul=0;
