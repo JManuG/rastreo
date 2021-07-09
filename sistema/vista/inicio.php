@@ -79,7 +79,17 @@ date_default_timezone_set('America/Guatemala');
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-        <?php echo date('d-m-Y H:i:s'); ?>
+        <?php 
+        $ajuste=(60*60*6);
+        $time=date('d-m-Y H:i:s');
+        $fechat=strtotime($time)-$ajuste;
+
+        $datet=date("d-m-Y H:i:s",$fechat);
+        echo $datet; 
+        
+        
+        
+        ?>
         </a>
 
 
