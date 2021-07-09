@@ -174,6 +174,10 @@ $db=new model_tab();
 
           <?php
           $cn=0;
+          $ajuste=(60*60*6);
+          $time=date('d-m-Y H:i:s');
+         
+
           foreach($x2 as $row){
             $cn++;
             if($row->mensajero==""){
@@ -192,6 +196,9 @@ $db=new model_tab();
                     ';
             }
 
+            $fechat=strtotime($row->fecha)-$ajuste;
+  
+            $datet=date("d-m-Y H:i:s",$fechat);
 
           if($nivel>2){
             echo "<tr role='row' class='odd'>
@@ -199,7 +206,7 @@ $db=new model_tab();
                     
                     <td>" . $row->remitente    . "</td>
                     <td>" . $row->remitente_dep. "</td>
-                    <td>" . $row->fecha        . "</td>
+                    <td>" . $datet . "</td>
                     <td>" . $row->destinatario . "</td>
                     <td>" . $row->direccion    . "</td>
                     <td>" . $row->centro_costo . "</td>
@@ -217,7 +224,7 @@ $db=new model_tab();
                     
                     <td>" . $row->remitente . "</td>
                     <td>" . $row->remitente_dep . "</td>
-                    <td>" . $row->fecha . "</td>
+                    <td>" . $datet  . "</td>
                     <td>" . $row->destinatario . "</td>
                     <td>" . $row->direccion . "</td>
                     <td>" . $row->centro_costo . "</td>
@@ -270,7 +277,7 @@ $db=new model_tab();
               Direccion
             </th>
             <th>
-              Centro de costo remitente
+              Centro de costo destinatario
             </th>
             <th>
             Categoria
