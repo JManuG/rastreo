@@ -85,7 +85,7 @@ date_default_timezone_set('America/Guatemala');
         $fechat=strtotime($time)-$ajuste;
 
         $datet=date("d-m-Y H:i:s",$fechat);
-        echo $datet; 
+        echo $time; 
         
         
         
