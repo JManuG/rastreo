@@ -236,7 +236,7 @@ public function rep_historico_full($fecha_inicial, $fecha2){
 
 
 
-            echo "<style>
+            /*echo "<style>
             table {
                 border-collapse: collapse;
                 width: 100%;
@@ -253,24 +253,24 @@ public function rep_historico_full($fecha_inicial, $fecha2){
                 background-color: #04AA6D;
                 color: white;
               }
-                    </style>";
+                    </style>";*/
                     echo"<table border='1'>";
 
                     echo utf8_decode("<thead> 
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>N°</th>
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Barra</th> 
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Nombre Remitente</th> 
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Departamento Remitente</th> 
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Nombre Destinatario</th> 
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Departamento Destinatario</th> 
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Comentario</th> 
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Categoria</th>  
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Mensajero</th>
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Solicitud de Envío</th>
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Ingreso</th>
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Salida a Ruta</th>
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Entrega</th>
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Devolucion</th>");
+            <th>N°</th>
+            <th>Barra</th> 
+            <th>Nombre Remitente</th> 
+            <th>Departamento Remitente</th> 
+            <th>Nombre Destinatario</th> 
+            <th>Departamento Destinatario</th> 
+            <th>Comentario</th> 
+            <th>Categoria</th>  
+            <th>Mensajero</th>
+            <th>Solicitud de Envío</th>
+            <th>Ingreso</th>
+            <th>Salida a Ruta</th>
+            <th>Entrega</th>
+            <th>Devolucion</th>");
               $cnt=0;
               $x=false;
               $css="";
@@ -285,7 +285,7 @@ public function rep_historico_full($fecha_inicial, $fecha2){
                 $x=true;
             }
               $cnt++;
-              echo "<tr ".$css.">";
+              echo "<tr>";
               echo "<td>".$cnt."</td>";
                     echo"<td>".utf8_decode($row->barra)."</td>";
                     echo"<td>".utf8_decode($row->usr_nombre)."</td>";
