@@ -225,10 +225,18 @@ public function rep_historico_full($fecha_inicial, $fecha2){
             //print_r($c);
 
             $data=[];
-
+            $fecha = date("d-m-Y H:i:s");
            $filename = "libros.xls";
 
-            $salida="<style>
+           header('Content-type: application/vnd.ms-excel');
+           header("Content-Disposition: attachment; filename=Reporte_$fecha.xls"); //Indica el nombre del archivo resultante
+           header("Pragma: no-cache");
+           header("Expires: 0");
+
+
+
+
+            echo "<style>
             table {
                 border-collapse: collapse;
                 width: 100%;
@@ -246,9 +254,9 @@ public function rep_historico_full($fecha_inicial, $fecha2){
                 color: white;
               }
                     </style>";
-            $salida .= "<table border='1'>";
+                    echo"<table border='1'>";
 
-            $salida .= utf8_decode("<thead> 
+                    echo utf8_decode("<thead> 
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>N°</th>
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Barra</th> 
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Nombre Remitente</th> 
@@ -277,36 +285,32 @@ public function rep_historico_full($fecha_inicial, $fecha2){
                 $x=true;
             }
               $cnt++;
-              $salida .= "<tr ".$css.">";
-                    $salida .= "<td>".$cnt."</td>";
-                    $salida .= "<td>".utf8_decode($row->barra)."</td>";
-                    $salida .= "<td>".utf8_decode($row->usr_nombre)."</td>";
-                    $salida .= "<td>".utf8_decode($row->costo_origen)."</td>";
-                    $salida .= "<td>".utf8_decode($row->destinatario)."</td>";
-                    $salida .= "<td>".utf8_decode($row->costo_destino)."</td>";
-                    $salida .= "<td>".utf8_decode($row->comentario)."</td>";
-                    $salida .= "<td>".utf8_decode($row->categoria)."</td>";
-                    $salida .= "<td>".utf8_decode($row->mensajero)."</td>";
-                    $salida .= "<td>".utf8_decode($row->Solicitud_de_Envío)."</td>";
-                    $salida .= "<td>".utf8_decode($row->Ingreso)."</td>";
-                    $salida .= "<td>".utf8_decode($row->Salida_a_Ruta)."</td>";
-                    $salida .= "<td>".utf8_decode($row->Entrega)."</td>";
-                    $salida .= "<td>".utf8_decode($row->Devolucion)."</td>";
-                    $salida .= "</tr>";
+              echo "<tr ".$css.">";
+              echo "<td>".$cnt."</td>";
+                    echo"<td>".utf8_decode($row->barra)."</td>";
+                    echo"<td>".utf8_decode($row->usr_nombre)."</td>";
+                    echo"<td>".utf8_decode($row->costo_origen)."</td>";
+                    echo"<td>".utf8_decode($row->destinatario)."</td>";
+                    echo"<td>".utf8_decode($row->costo_destino)."</td>";
+                    echo"<td>".utf8_decode($row->comentario)."</td>";
+                    echo"<td>".utf8_decode($row->categoria)."</td>";
+                    echo"<td>".utf8_decode($row->mensajero)."</td>";
+                    echo"<td>".utf8_decode($row->Solicitud_de_Envío)."</td>";
+                    echo"<td>".utf8_decode($row->Ingreso)."</td>";
+                    echo"<td>".utf8_decode($row->Salida_a_Ruta)."</td>";
+                    echo"<td>".utf8_decode($row->Entrega)."</td>";
+                    echo"<td>".utf8_decode($row->Devolucion)."</td>";
+                    echo"</tr>";
             }
         
-            $salida .= "</table>";
+            echo "</table>";
 
 
             $fecha = date("d-m-Y H:i:s");
  
             //Inicio de exportación en Excel
-            header('Content-type: application/vnd.ms-excel');
-            header("Content-Disposition: attachment; filename=Reporte_$fecha.xls"); //Indica el nombre del archivo resultante
-            header("Pragma: no-cache");
-            header("Expires: 0");
-
-            print_r($salida);
+           
+            //print_r($salida);
 
 
             
