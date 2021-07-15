@@ -188,12 +188,6 @@ public function llenar_encuesta($r1,$r2,$r3,$r4,$r5){
 
 public function rep_historico_full($fecha_inicial, $fecha2){
 
-  ini_set('display_errors', 1);
-
-  ini_set('display_startup_errors', 1);
-  
-  error_reporting(E_ALL);
-
 
   $db = Db::getInstance();
 
@@ -228,15 +222,12 @@ public function rep_historico_full($fecha_inicial, $fecha2){
             $fecha = date("d-m-Y H:i:s");
            $filename = "libros.xls";
 
-           header('Content-type: application/vnd.ms-excel');
-           header("Content-Disposition: attachment; filename=Reporte_$fecha.xls"); //Indica el nombre del archivo resultante
-           header("Pragma: no-cache");
-           header("Expires: 0");
+          
 
 
 
 
-            /*echo "<style>
+            $salida="<style>
             table {
                 border-collapse: collapse;
                 width: 100%;
@@ -253,25 +244,24 @@ public function rep_historico_full($fecha_inicial, $fecha2){
                 background-color: #04AA6D;
                 color: white;
               }
-                    </style>";*/
-                    echo" <!DOCTYPE html>
-                    <table border='1'>";
+                    </style>";
+            $salida .= "<table border='1'>";
 
-                    echo utf8_decode("<thead> 
-            <th>N°</th>
-            <th>Barra</th> 
-            <th>Nombre Remitente</th> 
-            <th>Departamento Remitente</th> 
-            <th>Nombre Destinatario</th> 
-            <th>Departamento Destinatario</th> 
-            <th>Comentario</th> 
-            <th>Categoria</th>  
-            <th>Mensajero</th>
-            <th>Solicitud de Envío</th>
-            <th>Ingreso</th>
-            <th>Salida a Ruta</th>
-            <th>Entrega</th>
-            <th>Devolucion</th>");
+            $salida .= utf8_decode("<thead> 
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>N°</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Barra</th> 
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Nombre Remitente</th> 
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Departamento Remitente</th> 
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Nombre Destinatario</th> 
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Departamento Destinatario</th> 
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Comentario</th> 
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Categoria</th>  
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Mensajero</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Solicitud de Envío</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Ingreso</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Salida a Ruta</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Entrega</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Devolucion</th>");
               $cnt=0;
               $x=false;
               $css="";
@@ -286,25 +276,36 @@ public function rep_historico_full($fecha_inicial, $fecha2){
                 $x=true;
             }
               $cnt++;
-              echo "<tr>";
-              echo "<td>".$cnt."</td>";
-                    echo"<td>".utf8_decode($row->barra)."</td>";
-                    echo"<td>".utf8_decode($row->usr_nombre)."</td>";
-                    echo"<td>".utf8_decode($row->costo_origen)."</td>";
-                    echo"<td>".utf8_decode($row->destinatario)."</td>";
-                    echo"<td>".utf8_decode($row->costo_destino)."</td>";
-                    echo"<td>".utf8_decode($row->comentario)."</td>";
-                    echo"<td>".utf8_decode($row->categoria)."</td>";
-                    echo"<td>".utf8_decode($row->mensajero)."</td>";
-                    echo"<td>".utf8_decode($row->Solicitud_de_Envío)."</td>";
-                    echo"<td>".utf8_decode($row->Ingreso)."</td>";
-                    echo"<td>".utf8_decode($row->Salida_a_Ruta)."</td>";
-                    echo"<td>".utf8_decode($row->Entrega)."</td>";
-                    echo"<td>".utf8_decode($row->Devolucion)."</td>";
-                    echo"</tr>";
+              $salida .= "<tr ".$css.">";
+                    $salida .= "<td>".$cnt."</td>";
+                    $salida .= "<td>".utf8_decode($row->barra)."</td>";
+                    $salida .= "<td>".utf8_decode($row->usr_nombre)."</td>";
+                    $salida .= "<td>".utf8_decode($row->costo_origen)."</td>";
+                    $salida .= "<td>".utf8_decode($row->destinatario)."</td>";
+                    $salida .= "<td>".utf8_decode($row->costo_destino)."</td>";
+                    $salida .= "<td>".utf8_decode($row->comentario)."</td>";
+                    $salida .= "<td>".utf8_decode($row->categoria)."</td>";
+                    $salida .= "<td>".utf8_decode($row->mensajero)."</td>";
+                    $salida .= "<td>".utf8_decode($row->Solicitud_de_Envío)."</td>";
+                    $salida .= "<td>".utf8_decode($row->Ingreso)."</td>";
+                    $salida .= "<td>".utf8_decode($row->Salida_a_Ruta)."</td>";
+                    $salida .= "<td>".utf8_decode($row->Entrega)."</td>";
+                    $salida .= "<td>".utf8_decode($row->Devolucion)."</td>";
+                    $salida .= "</tr>";
             }
         
-            echo "</table>";
+            $salida .= "</table>";
+
+
+            $fecha = date("d-m-Y H:i:s");
+ 
+          
+           
+            return $salida;
+
+
+            
+          
             
 }
 
