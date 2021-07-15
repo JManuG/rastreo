@@ -1,5 +1,7 @@
 <?php
 
+use SimpleExcel\SimpleExcel;
+
 include('../../class/db.php');
 
 class historico_ingresos extends Db
@@ -186,6 +188,12 @@ public function llenar_encuesta($r1,$r2,$r3,$r4,$r5){
 
 public function rep_historico_full($fecha_inicial, $fecha2){
 
+  ini_set('display_errors', 1);
+
+  ini_set('display_startup_errors', 1);
+  
+  error_reporting(E_ALL);
+
 
   $db = Db::getInstance();
 
@@ -218,7 +226,7 @@ public function rep_historico_full($fecha_inicial, $fecha2){
 
             $data=[];
 
-            $filename = "libros.xls";
+           $filename = "libros.xls";
 
             $salida="<style>
             table {
@@ -290,29 +298,37 @@ public function rep_historico_full($fecha_inicial, $fecha2){
             $salida .= "</table>";
 
 
-      
-              /*header("Pragma: public");
-            header("Expires: 0");
-            header('Content-Type: text/html; charset=utf-8');
-            //header('Content-Type: text/html; charset=iso-8859-1');
-            header("Content-Type: application/vnd.ms-excel;charset=UTF-8");
-            header("Content-type: application/x-msdownload");*/
-            //header('Content-type: application/vnd.ms-excel');
-            //header("Content-Disposition: attachment; filename=Reporte_general".time().".xlsx");
-            $filename="Reporte_general".time().".xls";
-            header("Pragma: public");
-            header("Expires: 0");
-           
-            header("Content-type: application/x-msdownload");
-            header("Content-Disposition: attachment; filename=$filename");
+            $fecha = date("d-m-Y H:i:s");
+ 
+            //Inicio de exportación en Excel
+            header('Content-type: application/vnd.ms-excel');
+            header("Content-Disposition: attachment; filename=Reporte_$fecha.xls"); //Indica el nombre del archivo resultante
             header("Pragma: no-cache");
-            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-            /*
-            header("Pragma: no-cache");
-            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");*/
-            echo $salida;
-  
+            header("Expires: 0");
 
+            print_r($salida);
+
+
+            
+            /*require_once("../../lib/simple-excel-php/src/SimpleExcel/SimpleExcel.php");
+
+            $excel = new SimpleExcel('xml');                    // instantiate new object (will automatically construct the parser & writer type as CSV)
+
+            $excel->writer->setData(
+                array
+                (
+                    array('ID',  'Name',            'Kode'  ),
+                    array('1',   'Kab. Bogor',       '1'    ),
+                    array('2',   'Kab. Cianjur',     '1'    ),
+                    array('3',   'Kab. Sukabumi',    '1'    ),
+                    array('4',   'Kab. Tasikmalaya', '2'    )
+                )
+            );                                                  // add some data to the writer
+            $excel->writer->setDelimiter(";");                  // (optional) if delimiter not set, by default comma (",") will be used instead
+            $excel->writer->saveFile('example');                // save the file with specified name (example.csv) 
+                                          */            
+
+            
 }
 
 }
