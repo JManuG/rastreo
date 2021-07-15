@@ -254,7 +254,8 @@ public function rep_historico_full($fecha_inicial, $fecha2){
                 color: white;
               }
                     </style>";*/
-                    echo"<table border='1'>";
+                    echo" <!DOCTYPE html>
+                    <table border='1'>";
 
                     echo utf8_decode("<thead> 
             <th>N°</th>
@@ -304,34 +305,6 @@ public function rep_historico_full($fecha_inicial, $fecha2){
             }
         
             echo "</table>";
-
-
-            $fecha = date("d-m-Y H:i:s");
- 
-            //Inicio de exportación en Excel
-           
-            //print_r($salida);
-
-
-            
-            /*require_once("../../lib/simple-excel-php/src/SimpleExcel/SimpleExcel.php");
-
-            $excel = new SimpleExcel('xml');                    // instantiate new object (will automatically construct the parser & writer type as CSV)
-
-            $excel->writer->setData(
-                array
-                (
-                    array('ID',  'Name',            'Kode'  ),
-                    array('1',   'Kab. Bogor',       '1'    ),
-                    array('2',   'Kab. Cianjur',     '1'    ),
-                    array('3',   'Kab. Sukabumi',    '1'    ),
-                    array('4',   'Kab. Tasikmalaya', '2'    )
-                )
-            );                                                  // add some data to the writer
-            $excel->writer->setDelimiter(";");                  // (optional) if delimiter not set, by default comma (",") will be used instead
-            $excel->writer->saveFile('example');                // save the file with specified name (example.csv) 
-                                          */            
-
             
 }
 
