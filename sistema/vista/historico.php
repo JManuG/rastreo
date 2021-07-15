@@ -240,7 +240,7 @@ public function rep_historico_full($fecha_inicial, $fecha2){
                     </style>";
             $salida .= "<table border='1'>";
 
-            $salida .= "<thead> 
+            $salida .= utf8_decode("<thead> 
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>N°</th>
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Barra</th> 
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Nombre Remitente</th> 
@@ -254,7 +254,7 @@ public function rep_historico_full($fecha_inicial, $fecha2){
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Ingreso</th>
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Salida a Ruta</th>
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Entrega</th>
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Devolucion</th>";
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Devolucion</th>");
               $cnt=0;
               $x=false;
               $css="";
