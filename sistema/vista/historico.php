@@ -290,8 +290,19 @@ public function rep_historico_full($fecha_inicial, $fecha2){
             $salida .= "</table>";
 
 
+      
+              /*header("Pragma: public");
+            header("Expires: 0");
+            
+            //header('Content-Type: text/html; charset=iso-8859-1');
+            header("Content-Type: application/vnd.ms-excel;charset=UTF-8");
+            header("Content-type: application/x-msdownload");*/
+            //header('Content-type: application/vnd.ms-excel');
+            //header("Content-Disposition: attachment; filename=Reporte_general".time().".xlsx");
             $filename="Reporte_general".time().".xls";
-            header("Content-Type: application/vnd.ms-excel");
+            header("Content-Type: application/vnd.ms-excel;charset=UTF-8");
+            header('Content-Type: text/html; charset=utf-8');
+            header('Content-type: application/vnd.ms-excel');
 
             header("Content-Disposition: attachment; filename=".$filename);
             /*
