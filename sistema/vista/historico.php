@@ -192,15 +192,17 @@ public function rep_historico_full($fecha_inicial, $fecha2){
   $db = Db::getInstance();
 
   $sql="select distinct gi.id_guia, gi.barra, us.usr_nombre, 
-              cco.ccosto_nombre 	as costo_origen,gi.destinatario, 
-              ccd.ccosto_nombre 	as costo_destino, gi.comentario,
-              ct.des_cat 		  	  as categoria,
-              mj.nombre 			    as mensajero,
-              max(IF(mv.id_chk=1, subtime(mv.fecha_Datetime, '06:00:00'),0)) AS Solicitud_de_Envío,
-              max(IF(mv.id_chk=2, subtime(mv.fecha_Datetime, '06:00:00'),0)) AS Ingreso,
-              max(IF(mv.id_chk=2, subtime(mv.fecha_Datetime, '06:00:00'),0)) AS Salida_a_Ruta,
-              max(IF(mv.id_chk=4, mv.fecha_datetime,0)) AS Entrega,
-              max(IF(mv.id_chk=5, mv.fecha_datetime,0)) AS Devolucion
+                cco.ccosto_nombre 	as costo_origen,  gi.ori_ccosto, gi.destinatario, 
+                ccd.ccosto_nombre 	as costo_destino, gi.des_ccosto, gi.comentario,
+                ct.des_cat 		  	  as categoria,
+                mj.nombre 			    as mensajero,
+                max(IF(mv.descripcion='INGRESO', subtime(mv.fecha_Datetime, '06:00:00'),0)) AS Solicitud_de_Envío,
+                max(IF(mv.descripcion='ARRIBO', subtime(mv.fecha_Datetime, '06:00:00'),0)) AS Ingreso,
+                max(IF(mv.descripcion='SALIDA A RUTA', mv.fecha_Datetime,0)) AS Salida_a_Ruta,
+                max(IF(mv.descripcion='ENVIO RECIBIDO POR MENSAJERO', mv.fecha_Datetime,0)) AS Envío_mensajero,
+                max(IF(mv.descripcion='ENVIO RECIBIDO POR MENSAJERO', mv.fecha_datetime,0)) AS Ruta,
+                max(IF(mv.descripcion='ENVIO ENTREGADO', mv.fecha_datetime,0)) AS Entrega,
+                max(IF(mv.id_chk='5', mv.fecha_datetime,0)) AS Devolucion
               from guia gi
               inner join usuario us 		 	    on us.id_usr=gi.id_usr
               inner join centro_costo cco 	  on cco.id_ccosto=gi.ori_ccosto
@@ -220,7 +222,7 @@ public function rep_historico_full($fecha_inicial, $fecha2){
 
             $data=[];
             $fecha = date("d-m-Y H:i:s");
-           $filename = "libros.xls";
+            $filename = "libros.xls";
 
           
 
@@ -251,17 +253,21 @@ public function rep_historico_full($fecha_inicial, $fecha2){
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>N°</th>
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Barra</th> 
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Nombre Remitente</th> 
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Codigo Departamento Remitente</th> 
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Departamento Remitente</th> 
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Nombre Destinatario</th> 
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Nombre Destinatario</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Codigo Departamento Destinatario</th>  
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Departamento Destinatario</th> 
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Comentario</th> 
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Categoria</th>  
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Mensajero</th>
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Solicitud de Envío</th>
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Ingreso</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Arribo</th>
             <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Salida a Ruta</th>
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Entrega</th>
-            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Devolucion</th>");
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Envío Recibido por Mensajero</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Envío en Ruta</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Envío Entregado</th>
+            <th style='background-color: #04AA6D; color: white; font-size: 19px;'>Devolución</th>");
               $cnt=0;
               $x=false;
               $css="";
@@ -280,8 +286,10 @@ public function rep_historico_full($fecha_inicial, $fecha2){
                     $salida .= "<td>".$cnt."</td>";
                     $salida .= "<td>".utf8_decode($row->barra)."</td>";
                     $salida .= "<td>".utf8_decode($row->usr_nombre)."</td>";
+                    $salida .= "<td>".utf8_decode($row->ori_ccosto)."</td>";
                     $salida .= "<td>".utf8_decode($row->costo_origen)."</td>";
                     $salida .= "<td>".utf8_decode($row->destinatario)."</td>";
+                    $salida .= "<td>".utf8_decode($row->des_ccosto)."</td>";
                     $salida .= "<td>".utf8_decode($row->costo_destino)."</td>";
                     $salida .= "<td>".utf8_decode($row->comentario)."</td>";
                     $salida .= "<td>".utf8_decode($row->categoria)."</td>";
@@ -289,6 +297,8 @@ public function rep_historico_full($fecha_inicial, $fecha2){
                     $salida .= "<td>".utf8_decode($row->Solicitud_de_Envío)."</td>";
                     $salida .= "<td>".utf8_decode($row->Ingreso)."</td>";
                     $salida .= "<td>".utf8_decode($row->Salida_a_Ruta)."</td>";
+                    $salida .= "<td>".utf8_decode($row->Envío_mensajero)."</td>";
+                    $salida .= "<td>".utf8_decode($row->Ruta)."</td>";
                     $salida .= "<td>".utf8_decode($row->Entrega)."</td>";
                     $salida .= "<td>".utf8_decode($row->Devolucion)."</td>";
                     $salida .= "</tr>";
@@ -297,9 +307,6 @@ public function rep_historico_full($fecha_inicial, $fecha2){
             $salida .= "</table>";
 
 
-            $fecha = date("d-m-Y H:i:s");
- 
-          
            
             return $salida;
 
