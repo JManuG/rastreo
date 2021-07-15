@@ -172,7 +172,7 @@ $barra = $_GET['vineta'];
 
                         if(($PI)!=0){
                             $param_pi="fa-check bg-green";
-                            $datetime_pi=$db->humanizando_fecha($row_1[2]);
+                            $datetime_pi=$db->fecha_humana($row_1[2]);
                         }else{
                             $param_pi="fa-circle-thin bg-white";
                             $datetime_pi="";
@@ -194,7 +194,7 @@ $barra = $_GET['vineta'];
 
 
                             $param_ar="fa-check bg-green";
-                            $datetime_ar=$db->humanizando_fecha($row_1[3]);
+                            $datetime_ar=$db->fecha_humana($row_1[3]);
                         }else{
                             $param_ar="fa-circle-thin bg-white";
                             $datetime_ar="";
@@ -202,7 +202,7 @@ $barra = $_GET['vineta'];
 
                         if($LD != 0){
                             $param_ld="fa-check bg-green";
-                            $datetime_ld=$db->humanizando_fecha($row_1[4]);
+                            $datetime_ld=$db->fecha_humana($row_1[4]);
                         }else{
                             $param_ld="fa-circle-thin bg-white";
                             $datetime_ld="";

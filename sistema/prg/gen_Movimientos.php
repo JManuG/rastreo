@@ -63,7 +63,8 @@ $barra = $_POST['vineta'];
                     
                     //Consulta para el TimeLine
                     $sql_1=$db->mov_tl2($barra);
-                    
+                   
+
                     while ($row_1=$sql_1->fetch(PDO::FETCH_NUM))
                     {
                         $id_envio   =$row_1[1];
@@ -73,9 +74,12 @@ $barra = $_POST['vineta'];
                         $DL         =$row_1[5];
                         $DV         =$row_1[6];
 
+                         
+
                         if(($PI)!=0){
                             $param_pi="fa-check bg-green";
-                            $datetime_pi=$db->humanizando_fecha($row_1[2]);
+                            $datetime_pi=$db->fecha_correccion_e_humanizacion($row_1[2]);
+
                         }else{
                             $param_pi="fa-circle-thin bg-white";
                             $datetime_pi="";
@@ -97,7 +101,7 @@ $barra = $_POST['vineta'];
 
 
                             $param_ar="fa-check bg-green";
-                            $datetime_ar=$db->humanizando_fecha($row_1[3]);
+                            $datetime_ar=$db->fecha_correccion_e_humanizacion($row_1[3]);
                         }else{
                             $param_ar="fa-circle-thin bg-white";
                             $datetime_ar="";
@@ -105,7 +109,7 @@ $barra = $_POST['vineta'];
 
                         if($LD != 0){
                             $param_ld="fa-check bg-green";
-                            $datetime_ld=$db->humanizando_fecha($row_1[4]);
+                            $datetime_ld=$db->fecha_correccion_e_humanizacion($row_1[4]);
                         }else{
                             $param_ld="fa-circle-thin bg-white";
                             $datetime_ld="";
@@ -152,6 +156,10 @@ $barra = $_POST['vineta'];
                             $datetime_dl="";
                         }
                     }
+
+                    
+
+
                     ?>
 
                     <div>
