@@ -248,6 +248,28 @@ class model_mov extends Db
 
     }
 
+    public function fecha_correccion_e_humanizacion($fecha){
 
+                        $ajuste=(60*60*6);
+                        $time=date('d-m-Y H:i:s');
+
+                        $fecha_ajustada        =strtotime($fecha)-$ajuste;
+                        $h         =date("H:i:s",$fecha_ajustada);
+                        setlocale(LC_TIME, "spanish");
+                        $d         =strftime("%A, %d de %B de %Y",$fecha_ajustada);
+                        $fecha_humanizada=$d." ".$h; 
+                        return $fecha_humanizada;  
+    }
+
+    public function fecha_humana($fecha){
+
+    
+        $fecha_ajustada        =strtotime($fecha);
+        $h         =date("H:i:s",$fecha_ajustada);
+        setlocale(LC_TIME, "spanish");
+        $d         =strftime("%A, %d de %B de %Y",$fecha_ajustada);
+        $fecha_humanizada=$d." ".$h; 
+        return $fecha_humanizada;  
+}
 }
 ?>

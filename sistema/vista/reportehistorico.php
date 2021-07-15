@@ -91,6 +91,11 @@ $db=new model_tab();
     <br>
 
 
+
+   <a href="vista/<?php echo "excel_masivo.php?f1=".$f1."&f2=".$f2;?>" target="_blank" class="btn btn-success">Exportar a Excel <i class="fas fa-file-excel"></i></a><br><br>
+
+
+
     <div class="row"><div class="col-sm-12">
         <div id="load" class="alert alert-success" role="alert">
           <div class="text-center">

@@ -2007,5 +2007,8 @@ class model_con extends Db
 		//echo $msj;
 		return $msj;
 	}
+
+
+	
 }
 ?>
