@@ -300,14 +300,14 @@ public function rep_historico_full($fecha_inicial, $fecha2){
             //header('Content-type: application/vnd.ms-excel');
             //header("Content-Disposition: attachment; filename=Reporte_general".time().".xlsx");
             $filename="Reporte_general".time().".xls";
-            header("Content-Type: application/vnd.ms-excel;charset=UTF-8");
-            header('Content-Type: text/html; charset=utf-8');
-            header('Content-type: application/vnd.ms-excel');
-
-            header("Content-Disposition: attachment; filename=".$filename);
-            /*
+           
+            header("Accept-Ranges:bytes");
+            header("Content-type:application/vnd.ms-excel");
+            header("Content-Disposition:attachment;filename=".$filename.".xls");
             header("Pragma: no-cache");
-            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");*/
+            header("Expires: 0");
+            header("Pragma: no-cache");
+           
             echo $salida;
   
 
