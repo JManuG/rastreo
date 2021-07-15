@@ -3,7 +3,7 @@
 $f1=$_GET['f1'];
 $f2=$_GET['f2'];
 
-//echo $f1."------>".$f2;
+
 
 include("historico.php");
 
@@ -17,7 +17,9 @@ header("Content-Type: application/vnd.ms-excel");
 
 header("Content-Disposition: attachment; filename=".$filename);
 
+header("Pragma: no-cache");
+header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 
-$x1->rep_historico_full($f1,$f2);
-
+echo $data;
+exit;
 ?>
